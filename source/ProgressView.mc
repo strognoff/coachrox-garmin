@@ -2,6 +2,8 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 import Toybox.Graphics;
 
+module Progress {
+
 class ProgressView extends WatchUi.View {
     
     var app as CoachroxApp;
@@ -47,16 +49,18 @@ class ProgressView extends WatchUi.View {
     }
     
     // Progress bar (full width)
+    // Match PlanView thickness (thinner than previous 10px)
+    var barHeight = 6;
     var barColor = completion >= 100 ? COLOR_GREEN : (completion >= 50 ? COLOR_YELLOW : COLOR_BLUE);
     dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-    dc.fillRectangle(15, y, width - 30, 10);
+    dc.fillRectangle(15, y, width - 30, barHeight);
     dc.setColor(barColor, Graphics.COLOR_BLACK);
-    dc.fillRectangle(15, y, (width - 30) * completion / 100, 10);
+    dc.fillRectangle(15, y, (width - 30) * completion / 100, barHeight);
     y += lineHeight * 0.6;
     
-    // Percentage
+    // Percentage (1x bigger font)
     dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-    dc.drawText(width / 2, y, Graphics.FONT_XTINY, completion + "%", Graphics.TEXT_JUSTIFY_CENTER);
+    dc.drawText(width / 2, y, Graphics.FONT_TINY, completion + "%", Graphics.TEXT_JUSTIFY_CENTER);
     y += lineHeight;
     
     // Stats section - simple 2 columns
@@ -64,7 +68,7 @@ class ProgressView extends WatchUi.View {
     dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
     dc.drawText(20, y, Graphics.FONT_XTINY, "Done:", Graphics.TEXT_JUSTIFY_LEFT);
     dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-    dc.drawText(width - 20, y, Graphics.FONT_XTINY, "" + app.completedWeeks, Graphics.TEXT_JUSTIFY_RIGHT);
+    dc.drawText(width - 20, y, Graphics.FONT_TINY, "" + app.completedWeeks, Graphics.TEXT_JUSTIFY_RIGHT);
     y += lineHeight * 0.8;
     
     // Level
@@ -115,4 +119,6 @@ class ProgressDelegate extends WatchUi.InputDelegate {
         }
         return false;
     }
+}
+
 }
