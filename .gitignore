@@ -3,12 +3,13 @@
 *.debug.xml
 *.mir
 
-# Keys
+# Keys and certificates
 *.key
 *.pem
 *.der
-*.pk8
 *.p12
+*.pk8
+*.keystore
 keystore.p12
 
 # IDE
