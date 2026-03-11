@@ -116,7 +116,10 @@ class WorkoutSession extends WatchUi.View {
     dc.drawText(w / 2, barY + barH + 2 + smallFontH + 2, smallFont, "NEXT: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
 
     // Completed overlay (centered)
-    if (isCompleted) {
+    var totalSteps = workout.getStepCount();
+    var isAtEnd = (totalSteps > 0) && ((currentStepIndex + 1) >= totalSteps);
+
+    if (isCompleted || isAtEnd) {
         dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
         dc.drawText(w / 2, (contentTop + (contentH / 2).toNumber()), Graphics.FONT_MEDIUM, "COMPLETED!", Graphics.TEXT_JUSTIFY_CENTER);
     }
@@ -170,7 +173,15 @@ class WorkoutSession extends WatchUi.View {
     
     function getProgress() as Number {
         var total = workout.getStepCount();
-        return total > 0 ? (currentStepIndex * 100) / total : 0;
+        if (total <= 0) { return 0; }
+
+        // Use 1-based step position so the last step shows 100%.
+        var completedOrCurrent = currentStepIndex + 1;
+
+        // If we've advanced past the end (completed), clamp to total.
+        if (completedOrCurrent > total) { completedOrCurrent = total; }
+
+        return (completedOrCurrent * 100 / total).toNumber();
     }
     
     function getElapsedTimeFormatted() as String {
