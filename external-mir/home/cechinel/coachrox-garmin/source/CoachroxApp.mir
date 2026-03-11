@@ -112,220 +112,237 @@ _home_cechinel_coachrox_garmin_source_CoachroxApp_mc_24_26_36_4_stop:
     }
     [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc"; @line = 38; @symbol_functiondef = [getInitialView,38,13,27]; ]
     function getInitialView() {
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_38_30_41_4_start:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_38_30_42_4_start:
 [ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 40 8 ]
-        %tmp.1 = newa 1 [WatchUi.View];
-        symbol [ WatchUi %tmp.1 40 50 57 ];
-        symbol [ View %tmp.1 40 58 62 ];
-        symbol [ CoachroxMenuView %tmp.5 40 21 37 ];
-        %tmp.5 = getv ? :CoachroxMenuView;
-        %tmp.6 = self;
-        symbol [ self %tmp.6 40 38 42 ];
-        %tmp.2 = newc %tmp.5 (%tmp.6);
-        %tmp.7 = dup %tmp.1;
-        %tmp.8 = aputv %tmp.7 0 %tmp.2;
-        ret %tmp.8;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_38_30_41_4_stop:
+        [ "_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_38_30_42_4_start" "_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_38_30_42_4_stop" ]
+        %menuView.1 = local;
+        symbol [ menuView %menuView.1 40 12 20 ];
+        symbol [ CoachroxMenuView %tmp.4 40 27 43 ];
+        %tmp.4 = getv ? :CoachroxMenuView;
+        %tmp.5 = self;
+        symbol [ self %tmp.5 40 44 48 ];
+        %tmp.1 = newc %tmp.4 (%tmp.5);
+        lputv %menuView.1 %tmp.1;
+        symbol [ menuView %menuView.1 40 12 20 ];
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 41 8 ]
+        %tmp.6 = newa 2 [WatchUi.View, WatchUi.InputDelegate];
+        symbol [ WatchUi %tmp.6 41 68 75 ];
+        symbol [ View %tmp.6 41 76 80 ];
+        symbol [ WatchUi %tmp.6 41 82 89 ];
+        symbol [ InputDelegate %tmp.6 41 90 103 ];
+        %tmp.7 = lgetv %menuView.1;
+        symbol [ menuView %tmp.7 41 17 25 ];
+        %tmp.8 = dup %tmp.6;
+        %tmp.9 = aputv %tmp.8 0 %tmp.7;
+        symbol [ CoachroxMenuDelegate %tmp.13 41 31 51 ];
+        %tmp.13 = getv ? :CoachroxMenuDelegate;
+        %tmp.14 = lgetv %menuView.1;
+        symbol [ menuView %tmp.14 41 52 60 ];
+        %tmp.10 = newc %tmp.13 (%tmp.14);
+        %tmp.15 = dup %tmp.9;
+        %tmp.16 = aputv %tmp.15 1 %tmp.10;
+        ret %tmp.16;
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_38_30_42_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc"; @line = 43; @symbol_functiondef = [onStart,43,13,20]; @symbol_param<0> = [state,43,21,26]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc"; @line = 44; @symbol_functiondef = [onStart,44,13,20]; @symbol_param<0> = [state,44,21,26]; ]
     function onStart(state) {
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc"; @line = 47; @symbol_functiondef = [onStop,47,13,19]; @symbol_param<0> = [state,47,20,25]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc"; @line = 48; @symbol_functiondef = [onStop,48,13,19]; @symbol_param<0> = [state,48,20,25]; ]
     function onStop(state) {
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_47_27_53_4_start:
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 49 8 ]
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_49_8_52_8_if_stmt:
-        symbol [ sessionStorage %tmp.2 49 12 26 ];
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_48_27_54_4_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 50 8 ]
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_50_8_53_8_if_stmt:
+        symbol [ sessionStorage %tmp.2 50 12 26 ];
         %tmp.2 = getv ? :sessionStorage;
         %tmp.3 = null;
         %tmp.4 = ne %tmp.2 %tmp.3;
-        bf %tmp.4 @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_49_8_52_8_if_end;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_49_8_52_8_if_true:
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_49_36_52_8_start:
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 50 12 ]
-        symbol [ sessionStorage %tmp.6 50 12 26 ];
+        bf %tmp.4 @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_50_8_53_8_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_50_8_53_8_if_true:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_50_36_53_8_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 51 12 ]
+        symbol [ sessionStorage %tmp.6 51 12 26 ];
         %tmp.6 = getv ? :sessionStorage;
         %tmp.7 = as %tmp.6 { (!Null) };
-        symbol [ setValue %tmp.8 50 27 35 ];
+        symbol [ setValue %tmp.8 51 27 35 ];
         %tmp.8 = getv function %tmp.7 :setValue;
         %tmp.9 = "userLevel";
-        symbol [ userLevel %tmp.11 50 49 58 ];
+        symbol [ userLevel %tmp.11 51 49 58 ];
         %tmp.11 = getv ? :userLevel;
         invoke %tmp.7 %tmp.8(%tmp.9, %tmp.11);
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 51 12 ]
-        symbol [ sessionStorage %tmp.13 51 12 26 ];
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 52 12 ]
+        symbol [ sessionStorage %tmp.13 52 12 26 ];
         %tmp.13 = getv ? :sessionStorage;
-        symbol [ setValue %tmp.14 51 27 35 ];
+        symbol [ setValue %tmp.14 52 27 35 ];
         %tmp.14 = getv function %tmp.13 :setValue;
         %tmp.15 = "completedWeeks";
-        symbol [ completedWeeks %tmp.17 51 54 68 ];
+        symbol [ completedWeeks %tmp.17 52 54 68 ];
         %tmp.17 = getv ? :completedWeeks;
         invoke %tmp.13 %tmp.14(%tmp.15, %tmp.17);
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_49_36_52_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_49_8_52_8_if_end;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_49_8_52_8_if_end:
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_47_27_53_4_stop:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_50_36_53_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_50_8_53_8_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_50_8_53_8_if_end:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_48_27_54_4_stop:
     }
     //! Get the current training plan
-    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc"; @line = 56; @symbol_functiondef = [getCurrentPlan,56,13,27]; @symbol_return<0> = [Plan,56,33,37]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc"; @line = 57; @symbol_functiondef = [getCurrentPlan,57,13,27]; @symbol_return<0> = [Plan,57,33,37]; ]
     function getCurrentPlan() as Plan or Null {
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_56_39_61_4_start:
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 57 8 ]
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_57_8_59_8_if_stmt:
-        symbol [ planEngine %tmp.2 57 12 22 ];
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_57_39_62_4_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 58 8 ]
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_58_8_60_8_if_stmt:
+        symbol [ planEngine %tmp.2 58 12 22 ];
         %tmp.2 = getv ? :planEngine;
         %tmp.3 = null;
         %tmp.4 = ne %tmp.2 %tmp.3;
-        bf %tmp.4 @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_57_8_59_8_if_end;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_57_8_59_8_if_true:
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_57_32_59_8_start:
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 58 12 ]
-        symbol [ planEngine %tmp.6 58 19 29 ];
+        bf %tmp.4 @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_58_8_60_8_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_58_8_60_8_if_true:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_58_32_60_8_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 59 12 ]
+        symbol [ planEngine %tmp.6 59 19 29 ];
         %tmp.6 = getv ? :planEngine;
         %tmp.7 = as %tmp.6 { (!Null) };
-        symbol [ getPlan %tmp.8 58 30 37 ];
+        symbol [ getPlan %tmp.8 59 30 37 ];
         %tmp.8 = getv function %tmp.7 :getPlan;
-        symbol [ userLevel %tmp.10 58 38 47 ];
+        symbol [ userLevel %tmp.10 59 38 47 ];
         %tmp.10 = getv ? :userLevel;
-        symbol [ completedWeeks %tmp.12 58 49 63 ];
+        symbol [ completedWeeks %tmp.12 59 49 63 ];
         %tmp.12 = getv ? :completedWeeks;
         %tmp.13 = invoke %tmp.7 %tmp.8(%tmp.10, %tmp.12);
         ret %tmp.13;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_57_32_59_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_57_8_59_8_if_end;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_57_8_59_8_if_end:
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 60 8 ]
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_58_32_60_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_58_8_60_8_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_58_8_60_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 61 8 ]
         %tmp.14 = null;
         ret %tmp.14;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_56_39_61_4_stop:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_57_39_62_4_stop:
     }
     //! Start a workout session
-    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc"; @line = 64; @symbol_functiondef = [startWorkout,64,13,25]; @symbol_param<0> = [workoutId,64,26,35]; @symbol_param<0>_type<0> = [Number,64,39,45]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc"; @line = 65; @symbol_functiondef = [startWorkout,65,13,25]; @symbol_param<0> = [workoutId,65,26,35]; @symbol_param<0>_type<0> = [Number,65,39,45]; ]
     function startWorkout(workoutId as Number) as Void {
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_64_55_73_4_start:
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 65 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_64_55_73_4_start" "_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_64_55_73_4_stop" ]
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_65_55_74_4_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 66 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_65_55_74_4_start" "_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_65_55_74_4_stop" ]
         %plan.1 = local;
-        symbol [ plan %plan.1 65 12 16 ];
+        symbol [ plan %plan.1 66 12 16 ];
         %tmp.1 = self;
-        symbol [ getCurrentPlan %tmp.2 65 19 33 ];
+        symbol [ getCurrentPlan %tmp.2 66 19 33 ];
         %tmp.2 = getv function %tmp.1 :getCurrentPlan;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %plan.1 %tmp.3;
-        symbol [ plan %plan.1 65 12 16 ];
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 66 8 ]
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_66_8_72_8_if_stmt:
+        symbol [ plan %plan.1 66 12 16 ];
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 67 8 ]
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_67_8_73_8_if_stmt:
         %tmp.4 = lgetv %plan.1;
-        symbol [ plan %tmp.4 66 12 16 ];
+        symbol [ plan %tmp.4 67 12 16 ];
         %tmp.5 = null;
         %tmp.6 = ne %tmp.4 %tmp.5;
-        bf %tmp.6 @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_66_8_72_8_if_end;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_66_8_72_8_if_true:
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_66_26_72_8_start:
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 67 12 ]
-        [ "_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_66_26_72_8_start" "_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_66_26_72_8_stop" ]
+        bf %tmp.6 @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_67_8_73_8_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_67_8_73_8_if_true:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_67_26_73_8_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 68 12 ]
+        [ "_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_67_26_73_8_start" "_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_67_26_73_8_stop" ]
         %workout.2 = local;
-        symbol [ workout %workout.2 67 16 23 ];
+        symbol [ workout %workout.2 68 16 23 ];
         %tmp.7 = lgetv %plan.1;
-        symbol [ plan %tmp.7 67 26 30 ];
+        symbol [ plan %tmp.7 68 26 30 ];
         %tmp.8 = as %tmp.7 { (!Null) };
-        symbol [ getWorkout %tmp.9 67 31 41 ];
+        symbol [ getWorkout %tmp.9 68 31 41 ];
         %tmp.9 = getv function %tmp.8 :getWorkout;
         %tmp.10 = lgetv %workoutId;
-        symbol [ workoutId %tmp.10 67 42 51 ];
+        symbol [ workoutId %tmp.10 68 42 51 ];
         %tmp.11 = invoke %tmp.8 %tmp.9(%tmp.10);
         lputv %workout.2 %tmp.11;
-        symbol [ workout %workout.2 67 16 23 ];
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 68 12 ]
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_68_12_71_12_if_stmt:
+        symbol [ workout %workout.2 68 16 23 ];
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 69 12 ]
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_69_12_72_12_if_stmt:
         %tmp.12 = lgetv %workout.2;
-        symbol [ workout %tmp.12 68 16 23 ];
+        symbol [ workout %tmp.12 69 16 23 ];
         %tmp.13 = null;
         %tmp.14 = ne %tmp.12 %tmp.13;
-        bf %tmp.14 @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_68_12_71_12_if_end;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_68_12_71_12_if_true:
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_68_33_71_12_start:
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 69 16 ]
-        symbol [ WorkoutSession %tmp.18 69 37 51 ];
+        bf %tmp.14 @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_69_12_72_12_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_69_12_72_12_if_true:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_69_33_72_12_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 70 16 ]
+        symbol [ WorkoutSession %tmp.18 70 37 51 ];
         %tmp.18 = getv ? :WorkoutSession;
         %tmp.19 = lgetv %workout.2;
-        symbol [ workout %tmp.19 69 52 59 ];
+        symbol [ workout %tmp.19 70 52 59 ];
         %tmp.20 = as %tmp.19 { (!Null) };
-        symbol [ sessionStorage %tmp.22 69 61 75 ];
+        symbol [ sessionStorage %tmp.22 70 61 75 ];
         %tmp.22 = getv ? :sessionStorage;
         %tmp.15 = newc %tmp.18 (%tmp.20, %tmp.22);
-        symbol [ currentWorkout ? 69 16 30 ];
+        symbol [ currentWorkout ? 70 16 30 ];
         putv self :currentWorkout %tmp.15;
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 70 16 ]
-        symbol [ WatchUi %tmp.23 70 16 23 ];
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 71 16 ]
+        symbol [ WatchUi %tmp.23 71 16 23 ];
         %tmp.23 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.24 70 24 32 ];
+        symbol [ pushView %tmp.24 71 24 32 ];
         %tmp.24 = getv function %tmp.23 :pushView;
-        symbol [ currentWorkout %tmp.26 70 33 47 ];
+        symbol [ currentWorkout %tmp.26 71 33 47 ];
         %tmp.26 = getv ? :currentWorkout;
-        symbol [ WorkoutDelegate %tmp.30 70 53 68 ];
+        symbol [ WorkoutDelegate %tmp.30 71 53 68 ];
         %tmp.30 = getv ? :WorkoutDelegate;
         %tmp.31 = self;
-        symbol [ self %tmp.31 70 69 73 ];
+        symbol [ self %tmp.31 71 69 73 ];
         %tmp.27 = newc %tmp.30 (%tmp.31);
-        symbol [ WatchUi %tmp.32 70 76 83 ];
+        symbol [ WatchUi %tmp.32 71 76 83 ];
         %tmp.32 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_LEFT %tmp.33 70 84 94 ];
+        symbol [ SLIDE_LEFT %tmp.33 71 84 94 ];
         %tmp.33 = getv %tmp.32 :SLIDE_LEFT;
         invoke %tmp.23 %tmp.24(%tmp.26, %tmp.27, %tmp.33);
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_68_33_71_12_stop:
-        goto @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_68_12_71_12_if_end;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_68_12_71_12_if_end:
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_66_26_72_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_66_8_72_8_if_end;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_66_8_72_8_if_end:
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_64_55_73_4_stop:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_69_33_72_12_stop:
+        goto @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_69_12_72_12_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_69_12_72_12_if_end:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_67_26_73_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_67_8_73_8_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_67_8_73_8_if_end:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_65_55_74_4_stop:
     }
     //! Complete a workout
-    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc"; @line = 76; @symbol_functiondef = [completeWorkout,76,13,28]; @symbol_param<0> = [success,76,29,36]; @symbol_param<0>_type<0> = [Boolean,76,40,47]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc"; @line = 77; @symbol_functiondef = [completeWorkout,77,13,28]; @symbol_param<0> = [success,77,29,36]; @symbol_param<0>_type<0> = [Boolean,77,40,47]; ]
     function completeWorkout(success as Boolean) as Void {
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_76_57_85_4_start:
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 77 8 ]
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_77_8_84_8_if_stmt:
-        symbol [ currentWorkout %tmp.2 77 12 26 ];
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_77_57_86_4_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 78 8 ]
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_78_8_85_8_if_stmt:
+        symbol [ currentWorkout %tmp.2 78 12 26 ];
         %tmp.2 = getv ? :currentWorkout;
         %tmp.3 = null;
         %tmp.4 = ne %tmp.2 %tmp.3;
-        bf %tmp.4 @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_77_8_84_8_if_end;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_77_8_84_8_if_true:
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_77_36_84_8_start:
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 78 12 ]
-        symbol [ currentWorkout %tmp.6 78 12 26 ];
+        bf %tmp.4 @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_78_8_85_8_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_78_8_85_8_if_true:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_78_36_85_8_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 79 12 ]
+        symbol [ currentWorkout %tmp.6 79 12 26 ];
         %tmp.6 = getv ? :currentWorkout;
         %tmp.7 = as %tmp.6 { (!Null) };
-        symbol [ complete %tmp.8 78 27 35 ];
+        symbol [ complete %tmp.8 79 27 35 ];
         %tmp.8 = getv function %tmp.7 :complete;
         %tmp.9 = lgetv %success;
-        symbol [ success %tmp.9 78 36 43 ];
+        symbol [ success %tmp.9 79 36 43 ];
         invoke %tmp.7 %tmp.8(%tmp.9);
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 79 12 ]
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 80 12 ]
         %tmp.10 = null;
-        symbol [ currentWorkout ? 79 12 26 ];
+        symbol [ currentWorkout ? 80 12 26 ];
         putv self :currentWorkout %tmp.10;
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 82 12 ]
-        symbol [ completedWeeks %tmp.13 82 12 26 ];
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 83 12 ]
+        symbol [ completedWeeks %tmp.13 83 12 26 ];
         %tmp.13 = getv ? :completedWeeks;
         %tmp.14 = add %tmp.13 1;
-        symbol [ completedWeeks ? 82 12 26 ];
+        symbol [ completedWeeks ? 83 12 26 ];
         putv self :completedWeeks dup %tmp.14;
-[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 83 12 ]
-        symbol [ sessionStorage %tmp.16 83 12 26 ];
+[ "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" 84 12 ]
+        symbol [ sessionStorage %tmp.16 84 12 26 ];
         %tmp.16 = getv ? :sessionStorage;
-        symbol [ setValue %tmp.17 83 27 35 ];
+        symbol [ setValue %tmp.17 84 27 35 ];
         %tmp.17 = getv function %tmp.16 :setValue;
         %tmp.18 = "completedWeeks";
-        symbol [ completedWeeks %tmp.20 83 54 68 ];
+        symbol [ completedWeeks %tmp.20 84 54 68 ];
         %tmp.20 = getv ? :completedWeeks;
         invoke %tmp.16 %tmp.17(%tmp.18, %tmp.20);
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_77_36_84_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_77_8_84_8_if_end;
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_77_8_84_8_if_end:
-_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_76_57_85_4_stop:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_78_36_85_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_78_8_85_8_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_78_8_85_8_if_end:
+_home_cechinel_coachrox_garmin_source_CoachroxApp_mc_77_57_86_4_stop:
     }
 }
 [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxApp.mc"; @line = 1; ]

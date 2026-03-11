@@ -36,8 +36,9 @@ class CoachroxApp extends Application.AppBase {
     }
 
     function getInitialView() {
-        // Return the main menu view
-        return [ new CoachroxMenuView(self) ] as [WatchUi.View];
+        // Return the main menu view with its delegate
+        var menuView = new CoachroxMenuView(self);
+        return [ menuView, new CoachroxMenuDelegate(menuView) ] as [WatchUi.View, WatchUi.InputDelegate];
     }
 
     function onStart(state) {
