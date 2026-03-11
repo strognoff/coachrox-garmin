@@ -87,9 +87,14 @@ class SettingsView extends WatchUi.View {
             app.userLevel = 2;
             storage.setValue("userLevel", 2);
         } else if (selectedOption == 3) {
-            storage.clearAll();
+            // Reset overall progress markers
             app.completedWeeks = 0;
-            app.userLevel = 0;
+            storage.setValue("completedWeeks", 0);
+
+            // Reset per-week completion used by PlanEngine.getPlan() -> Plan.completedSessions -> getCompletionRate()
+            for (var week = 0; week < 12; week++) {
+                storage.setValue("week_" + week + "_completed", 0);
+            }
         }
         
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
