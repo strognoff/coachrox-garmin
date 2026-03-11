@@ -31,1015 +31,1033 @@ class WorkoutSession extends WatchUi.View {
     var timer as Timer.Timer or Null;
     [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 18; @position = 8; @symbol_vardef = [currentStepName,18,8,23]; @symbol_type<0> = [String,18,27,33]; ]
     var currentStepName as String = "";
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 19; @position = 8; @symbol_vardef = [currentStepDuration,19,8,27]; @symbol_type<0> = [String,19,31,37]; ]
-    var currentStepDuration as String = "";
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 20; @position = 8; @symbol_vardef = [nextStepName,20,8,20]; @symbol_type<0> = [String,20,24,30]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 19; @position = 8; @symbol_vardef = [nextStepName,19,8,20]; @symbol_type<0> = [String,19,24,30]; ]
     var nextStepName as String = "";
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 22; @position = 10; @symbol_constdef = [COLOR_ORANGE,22,10,22]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 21; @position = 10; @symbol_constdef = [COLOR_ORANGE,21,10,22]; ]
     const COLOR_ORANGE = 0xFF6B00;
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 23; @position = 10; @symbol_constdef = [COLOR_BLUE,23,10,20]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 22; @position = 10; @symbol_constdef = [COLOR_BLUE,22,10,20]; ]
     const COLOR_BLUE = 0x00A3E0;
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 24; @position = 10; @symbol_constdef = [COLOR_GREEN,24,10,21]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 23; @position = 10; @symbol_constdef = [COLOR_GREEN,23,10,21]; ]
     const COLOR_GREEN = 0x00C853;
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 26; @symbol_functiondef = [initialize,26,13,23]; @symbol_param<0> = [workoutInstance,26,24,39]; @symbol_param<0>_type<0> = [Workout,26,43,50]; @symbol_param<1> = [storage,26,52,59]; @symbol_param<1>_type<0> = [SessionStorage,26,63,77]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 25; @symbol_functiondef = [initialize,25,13,23]; @symbol_param<0> = [workoutInstance,25,24,39]; @symbol_param<0>_type<0> = [Workout,25,43,50]; @symbol_param<1> = [storage,25,52,59]; @symbol_param<1>_type<0> = [SessionStorage,25,63,77]; ]
     function initialize(workoutInstance as Workout, storage as SessionStorage) as Void {
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_26_79_34_4_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 27 8 ]
-        symbol [ WatchUi %tmp.1 27 8 15 ];
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_25_79_33_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 26 8 ]
+        symbol [ WatchUi %tmp.1 26 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ View %tmp.2 27 16 20 ];
+        symbol [ View %tmp.2 26 16 20 ];
         %tmp.2 = getv %tmp.1 :View;
-        symbol [ initialize %tmp.3 27 21 31 ];
+        symbol [ initialize %tmp.3 26 21 31 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 28 8 ]
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 27 8 ]
         %tmp.4 = lgetv %workoutInstance;
-        symbol [ workoutInstance %tmp.4 28 18 33 ];
-        symbol [ workout ? 28 8 15 ];
+        symbol [ workoutInstance %tmp.4 27 18 33 ];
+        symbol [ workout ? 27 8 15 ];
         putv self :workout %tmp.4;
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 29 8 ]
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 28 8 ]
         %tmp.5 = lgetv %storage;
-        symbol [ storage %tmp.5 29 25 32 ];
-        symbol [ sessionStorage ? 29 8 22 ];
+        symbol [ storage %tmp.5 28 25 32 ];
+        symbol [ sessionStorage ? 28 8 22 ];
         putv self :sessionStorage %tmp.5;
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 31 8 ]
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_31_8_33_8_if_stmt:
-        symbol [ workout %tmp.7 31 12 19 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 30 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_30_8_32_8_if_stmt:
+        symbol [ workout %tmp.7 30 12 19 ];
         %tmp.7 = getv ? :workout;
-        symbol [ getStepCount %tmp.8 31 20 32 ];
+        symbol [ getStepCount %tmp.8 30 20 32 ];
         %tmp.8 = getv function %tmp.7 :getStepCount;
         %tmp.9 = invoke %tmp.7 %tmp.8();
         %tmp.10 = 0;
         %tmp.11 = gt %tmp.9 %tmp.10;
-        bf %tmp.11 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_31_8_33_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_31_8_33_8_if_true:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_31_40_33_8_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 32 12 ]
+        bf %tmp.11 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_30_8_32_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_30_8_32_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_30_40_32_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 31 12 ]
         %tmp.12 = self;
-        symbol [ updateStepInfo %tmp.13 32 12 26 ];
+        symbol [ updateStepInfo %tmp.13 31 12 26 ];
         %tmp.13 = getv function %tmp.12 :updateStepInfo;
         invoke %tmp.12 %tmp.13();
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_31_40_33_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_31_8_33_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_31_8_33_8_if_end:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_26_79_34_4_stop:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_30_40_32_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_30_8_32_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_30_8_32_8_if_end:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_25_79_33_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 36; @symbol_functiondef = [updateStepInfo,36,13,27]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 35; @symbol_functiondef = [updateStepInfo,35,13,27]; ]
     function updateStepInfo() as Void {
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_36_38_45_4_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 37 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_36_38_45_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_36_38_45_4_stop" ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_35_38_43_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 36 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_35_38_43_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_35_38_43_4_stop" ]
         %step.1 = local;
-        symbol [ step %step.1 37 12 16 ];
-        symbol [ workout %tmp.2 37 19 26 ];
+        symbol [ step %step.1 36 12 16 ];
+        symbol [ workout %tmp.2 36 19 26 ];
         %tmp.2 = getv ? :workout;
-        symbol [ getStep %tmp.3 37 27 34 ];
+        symbol [ getStep %tmp.3 36 27 34 ];
         %tmp.3 = getv function %tmp.2 :getStep;
-        symbol [ currentStepIndex %tmp.5 37 35 51 ];
+        symbol [ currentStepIndex %tmp.5 36 35 51 ];
         %tmp.5 = getv ? :currentStepIndex;
         %tmp.6 = invoke %tmp.2 %tmp.3(%tmp.5);
         lputv %step.1 %tmp.6;
-        symbol [ step %step.1 37 12 16 ];
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 38 8 ]
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_38_8_44_8_if_stmt:
+        symbol [ step %step.1 36 12 16 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 37 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_37_8_42_8_if_stmt:
         %tmp.7 = lgetv %step.1;
-        symbol [ step %tmp.7 38 12 16 ];
+        symbol [ step %tmp.7 37 12 16 ];
         %tmp.8 = null;
         %tmp.9 = ne %tmp.7 %tmp.8;
-        bf %tmp.9 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_38_8_44_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_38_8_44_8_if_true:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_38_26_44_8_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 39 12 ]
+        bf %tmp.9 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_37_8_42_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_37_8_42_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_37_26_42_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 38 12 ]
         %tmp.10 = lgetv %step.1;
-        symbol [ step %tmp.10 39 30 34 ];
+        symbol [ step %tmp.10 38 30 34 ];
         %tmp.11 = as %tmp.10 { (!Null) };
-        symbol [ name %tmp.12 39 35 39 ];
+        symbol [ name %tmp.12 38 35 39 ];
         %tmp.12 = getv %tmp.11 :name;
-        symbol [ currentStepName ? 39 12 27 ];
+        symbol [ currentStepName ? 38 12 27 ];
         putv self :currentStepName %tmp.12;
 [ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 40 12 ]
-        %tmp.13 = lgetv %step.1;
-        symbol [ step %tmp.13 40 34 38 ];
-        %tmp.14 = as %tmp.13 { (!Null) };
-        symbol [ getDurationFormatted %tmp.15 40 39 59 ];
-        %tmp.15 = getv function %tmp.14 :getDurationFormatted;
-        %tmp.16 = invoke %tmp.14 %tmp.15();
-        symbol [ currentStepDuration ? 40 12 31 ];
-        putv self :currentStepDuration %tmp.16;
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 42 12 ]
-        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_38_26_44_8_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_38_26_44_8_stop" ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_37_26_42_8_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_37_26_42_8_stop" ]
         %next.2 = local;
-        symbol [ next %next.2 42 16 20 ];
-        symbol [ workout %tmp.18 42 23 30 ];
-        %tmp.18 = getv ? :workout;
-        symbol [ getStep %tmp.19 42 31 38 ];
-        %tmp.19 = getv function %tmp.18 :getStep;
-        symbol [ currentStepIndex %tmp.21 42 39 55 ];
-        %tmp.21 = getv ? :currentStepIndex;
-        %tmp.22 = 1;
-        %tmp.23 = add %tmp.21 %tmp.22;
-        %tmp.24 = invoke %tmp.18 %tmp.19(%tmp.23);
-        lputv %next.2 %tmp.24;
-        symbol [ next %next.2 42 16 20 ];
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 43 12 ]
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_43_27_43_54_begin:
-        %tmp.25 = lgetv %next.2;
-        symbol [ next %tmp.25 43 27 31 ];
-        %tmp.26 = null;
-        %tmp.27 = ne %tmp.25 %tmp.26;
-        bf %tmp.27 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_43_27_43_54_else_false;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_43_27_43_54_true:
-        %tmp.28 = lgetv %next.2;
-        symbol [ next %tmp.28 43 42 46 ];
-        %tmp.29 = as %tmp.28 { (!Null) };
-        symbol [ name %tmp.30 43 47 51 ];
-        %tmp.30 = getv %tmp.29 :name;
-        push %tmp.30;
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_43_27_43_54_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_43_27_43_54_else_false:
-        %tmp.31 = "DONE";
-        push %tmp.31;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_43_27_43_54_end:
-        %tmp.32 = phi [%tmp.27 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_43_27_43_54_begin] [%tmp.30 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_43_27_43_54_true] [%tmp.31 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_43_27_43_54_else_false] [%tmp.32 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_43_27_43_54_end];
-        symbol [ nextStepName ? 43 12 24 ];
-        putv self :nextStepName %tmp.32;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_38_26_44_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_38_8_44_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_38_8_44_8_if_end:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_36_38_45_4_stop:
+        symbol [ next %next.2 40 16 20 ];
+        symbol [ workout %tmp.14 40 23 30 ];
+        %tmp.14 = getv ? :workout;
+        symbol [ getStep %tmp.15 40 31 38 ];
+        %tmp.15 = getv function %tmp.14 :getStep;
+        symbol [ currentStepIndex %tmp.17 40 39 55 ];
+        %tmp.17 = getv ? :currentStepIndex;
+        %tmp.18 = 1;
+        %tmp.19 = add %tmp.17 %tmp.18;
+        %tmp.20 = invoke %tmp.14 %tmp.15(%tmp.19);
+        lputv %next.2 %tmp.20;
+        symbol [ next %next.2 40 16 20 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 41 12 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_41_27_41_54_begin:
+        %tmp.21 = lgetv %next.2;
+        symbol [ next %tmp.21 41 27 31 ];
+        %tmp.22 = null;
+        %tmp.23 = ne %tmp.21 %tmp.22;
+        bf %tmp.23 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_41_27_41_54_else_false;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_41_27_41_54_true:
+        %tmp.24 = lgetv %next.2;
+        symbol [ next %tmp.24 41 42 46 ];
+        %tmp.25 = as %tmp.24 { (!Null) };
+        symbol [ name %tmp.26 41 47 51 ];
+        %tmp.26 = getv %tmp.25 :name;
+        push %tmp.26;
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_41_27_41_54_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_41_27_41_54_else_false:
+        %tmp.27 = "DONE";
+        push %tmp.27;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_41_27_41_54_end:
+        %tmp.28 = phi [%tmp.23 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_41_27_41_54_begin] [%tmp.26 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_41_27_41_54_true] [%tmp.27 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_41_27_41_54_else_false] [%tmp.28 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_41_27_41_54_end];
+        symbol [ nextStepName ? 41 12 24 ];
+        putv self :nextStepName %tmp.28;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_37_26_42_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_37_8_42_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_37_8_42_8_if_end:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_35_38_43_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 47; @symbol_functiondef = [onLayout,47,13,21]; @symbol_param<0> = [dc,47,22,24]; @symbol_param<0>_type<0> = [Dc,47,28,30]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 45; @symbol_functiondef = [onLayout,45,13,21]; @symbol_param<0> = [dc,45,22,24]; @symbol_param<0>_type<0> = [Dc,45,28,30]; ]
     function onLayout(dc as Dc) as Void {
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 50; @symbol_functiondef = [onUpdate,50,13,21]; @symbol_param<0> = [dc,50,22,24]; @symbol_param<0>_type<0> = [Dc,50,28,30]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 48; @symbol_functiondef = [onUpdate,48,13,21]; @symbol_param<0> = [dc,48,22,24]; @symbol_param<0>_type<0> = [Dc,48,28,30]; ]
     function onUpdate(dc as Dc) as Void {
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_50_40_98_4_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 51 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 49 8 ]
         %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 51 8 10 ];
-        symbol [ setColor %tmp.2 51 11 19 ];
+        symbol [ dc %tmp.1 49 8 10 ];
+        symbol [ setColor %tmp.2 49 11 19 ];
         %tmp.2 = getv function %tmp.1 :setColor;
-        symbol [ Graphics %tmp.3 51 20 28 ];
+        symbol [ Graphics %tmp.3 49 20 28 ];
         %tmp.3 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.4 51 29 40 ];
+        symbol [ COLOR_BLACK %tmp.4 49 29 40 ];
         %tmp.4 = getv %tmp.3 :COLOR_BLACK;
-        symbol [ Graphics %tmp.5 51 42 50 ];
+        symbol [ Graphics %tmp.5 49 42 50 ];
         %tmp.5 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.6 51 51 62 ];
+        symbol [ COLOR_BLACK %tmp.6 49 51 62 ];
         %tmp.6 = getv %tmp.5 :COLOR_BLACK;
         invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 52 8 ]
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 50 8 ]
         %tmp.7 = lgetv %dc;
-        symbol [ dc %tmp.7 52 8 10 ];
-        symbol [ clear %tmp.8 52 11 16 ];
+        symbol [ dc %tmp.7 50 8 10 ];
+        symbol [ clear %tmp.8 50 11 16 ];
         %tmp.8 = getv function %tmp.7 :clear;
         invoke %tmp.7 %tmp.8();
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 55 8 ]
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 52 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_stop" ]
+        %w.1 = local;
+        symbol [ w %w.1 52 12 13 ];
         %tmp.9 = lgetv %dc;
-        symbol [ dc %tmp.9 55 8 10 ];
-        symbol [ setColor %tmp.10 55 11 19 ];
-        %tmp.10 = getv function %tmp.9 :setColor;
-        symbol [ COLOR_ORANGE %tmp.12 55 20 32 ];
-        %tmp.12 = getv ? :COLOR_ORANGE;
-        symbol [ Graphics %tmp.13 55 34 42 ];
-        %tmp.13 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.14 55 43 54 ];
-        %tmp.14 = getv %tmp.13 :COLOR_BLACK;
-        invoke %tmp.9 %tmp.10(%tmp.12, %tmp.14);
+        symbol [ dc %tmp.9 52 16 18 ];
+        symbol [ getWidth %tmp.10 52 19 27 ];
+        %tmp.10 = getv function %tmp.9 :getWidth;
+        %tmp.11 = invoke %tmp.9 %tmp.10();
+        lputv %w.1 %tmp.11;
+        symbol [ w %w.1 52 12 13 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 53 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_stop" ]
+        %h.2 = local;
+        symbol [ h %h.2 53 12 13 ];
+        %tmp.12 = lgetv %dc;
+        symbol [ dc %tmp.12 53 16 18 ];
+        symbol [ getHeight %tmp.13 53 19 28 ];
+        %tmp.13 = getv function %tmp.12 :getHeight;
+        %tmp.14 = invoke %tmp.12 %tmp.13();
+        lputv %h.2 %tmp.14;
+        symbol [ h %h.2 53 12 13 ];
 [ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 56 8 ]
         %tmp.15 = lgetv %dc;
         symbol [ dc %tmp.15 56 8 10 ];
-        symbol [ drawText %tmp.16 56 11 19 ];
-        %tmp.16 = getv function %tmp.15 :drawText;
-        %tmp.17 = lgetv %dc;
-        symbol [ dc %tmp.17 56 20 22 ];
-        symbol [ getWidth %tmp.18 56 23 31 ];
-        %tmp.18 = getv function %tmp.17 :getWidth;
-        %tmp.19 = invoke %tmp.17 %tmp.18();
-        %tmp.20 = 2;
-        %tmp.21 = div %tmp.19 %tmp.20;
-        %tmp.22 = 5;
-        symbol [ Graphics %tmp.23 56 42 50 ];
-        %tmp.23 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.24 56 51 61 ];
-        %tmp.24 = getv %tmp.23 :FONT_SMALL;
-        %tmp.25 = "WORKOUT";
-        symbol [ Graphics %tmp.26 56 74 82 ];
-        %tmp.26 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.27 56 83 102 ];
-        %tmp.27 = getv %tmp.26 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.15 %tmp.16(%tmp.21, %tmp.22, %tmp.24, %tmp.25, %tmp.27);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 59 8 ]
-        %tmp.28 = lgetv %dc;
-        symbol [ dc %tmp.28 59 8 10 ];
-        symbol [ setColor %tmp.29 59 11 19 ];
-        %tmp.29 = getv function %tmp.28 :setColor;
-        symbol [ Graphics %tmp.30 59 20 28 ];
+        symbol [ setColor %tmp.16 56 11 19 ];
+        %tmp.16 = getv function %tmp.15 :setColor;
+        symbol [ COLOR_ORANGE %tmp.18 56 20 32 ];
+        %tmp.18 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.19 56 34 42 ];
+        %tmp.19 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.20 56 43 54 ];
+        %tmp.20 = getv %tmp.19 :COLOR_BLACK;
+        invoke %tmp.15 %tmp.16(%tmp.18, %tmp.20);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 57 8 ]
+        %tmp.21 = lgetv %dc;
+        symbol [ dc %tmp.21 57 8 10 ];
+        symbol [ drawText %tmp.22 57 11 19 ];
+        %tmp.22 = getv function %tmp.21 :drawText;
+        %tmp.23 = lgetv %w.1;
+        symbol [ w %tmp.23 57 20 21 ];
+        %tmp.24 = 2;
+        %tmp.25 = div %tmp.23 %tmp.24;
+        %tmp.26 = 2;
+        symbol [ Graphics %tmp.27 57 30 38 ];
+        %tmp.27 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.28 57 39 48 ];
+        %tmp.28 = getv %tmp.27 :FONT_TINY;
+        %tmp.29 = "WORKOUT";
+        symbol [ Graphics %tmp.30 57 61 69 ];
         %tmp.30 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.31 59 29 40 ];
-        %tmp.31 = getv %tmp.30 :COLOR_WHITE;
-        symbol [ Graphics %tmp.32 59 42 50 ];
-        %tmp.32 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.33 59 51 62 ];
-        %tmp.33 = getv %tmp.32 :COLOR_BLACK;
-        invoke %tmp.28 %tmp.29(%tmp.31, %tmp.33);
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.31 57 70 89 ];
+        %tmp.31 = getv %tmp.30 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.21 %tmp.22(%tmp.25, %tmp.26, %tmp.28, %tmp.29, %tmp.31);
 [ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 60 8 ]
-        %tmp.34 = lgetv %dc;
-        symbol [ dc %tmp.34 60 8 10 ];
-        symbol [ drawText %tmp.35 60 11 19 ];
-        %tmp.35 = getv function %tmp.34 :drawText;
-        %tmp.36 = lgetv %dc;
-        symbol [ dc %tmp.36 60 20 22 ];
-        symbol [ getWidth %tmp.37 60 23 31 ];
-        %tmp.37 = getv function %tmp.36 :getWidth;
-        %tmp.38 = invoke %tmp.36 %tmp.37();
-        %tmp.39 = 2;
-        %tmp.40 = div %tmp.38 %tmp.39;
-        %tmp.41 = 30;
-        symbol [ Graphics %tmp.42 60 43 51 ];
-        %tmp.42 = getm $.Toybox.Graphics;
-        symbol [ FONT_MEDIUM %tmp.43 60 52 63 ];
-        %tmp.43 = getv %tmp.42 :FONT_MEDIUM;
-        symbol [ currentStepName %tmp.45 60 65 80 ];
-        %tmp.45 = getv ? :currentStepName;
-        symbol [ Graphics %tmp.46 60 82 90 ];
-        %tmp.46 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.47 60 91 110 ];
-        %tmp.47 = getv %tmp.46 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.34 %tmp.35(%tmp.40, %tmp.41, %tmp.43, %tmp.45, %tmp.47);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 63 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_50_40_98_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_50_40_98_4_stop" ]
-        %timeStr.1 = local;
-        symbol [ timeStr %timeStr.1 63 12 19 ];
-        %tmp.48 = self;
-        symbol [ getElapsedTimeFormatted %tmp.49 63 22 45 ];
-        %tmp.49 = getv function %tmp.48 :getElapsedTimeFormatted;
-        %tmp.50 = invoke %tmp.48 %tmp.49();
-        lputv %timeStr.1 %tmp.50;
-        symbol [ timeStr %timeStr.1 63 12 19 ];
+        %tmp.32 = lgetv %dc;
+        symbol [ dc %tmp.32 60 8 10 ];
+        symbol [ setColor %tmp.33 60 11 19 ];
+        %tmp.33 = getv function %tmp.32 :setColor;
+        symbol [ Graphics %tmp.34 60 20 28 ];
+        %tmp.34 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.35 60 29 40 ];
+        %tmp.35 = getv %tmp.34 :COLOR_WHITE;
+        symbol [ Graphics %tmp.36 60 42 50 ];
+        %tmp.36 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.37 60 51 62 ];
+        %tmp.37 = getv %tmp.36 :COLOR_BLACK;
+        invoke %tmp.32 %tmp.33(%tmp.35, %tmp.37);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 61 8 ]
+        %tmp.38 = lgetv %dc;
+        symbol [ dc %tmp.38 61 8 10 ];
+        symbol [ drawText %tmp.39 61 11 19 ];
+        %tmp.39 = getv function %tmp.38 :drawText;
+        %tmp.40 = lgetv %w.1;
+        symbol [ w %tmp.40 61 20 21 ];
+        %tmp.41 = 2;
+        %tmp.42 = div %tmp.40 %tmp.41;
+        %tmp.43 = 20;
+        symbol [ Graphics %tmp.44 61 31 39 ];
+        %tmp.44 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.45 61 40 50 ];
+        %tmp.45 = getv %tmp.44 :FONT_SMALL;
+        symbol [ currentStepName %tmp.47 61 52 67 ];
+        %tmp.47 = getv ? :currentStepName;
+        symbol [ Graphics %tmp.48 61 69 77 ];
+        %tmp.48 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.49 61 78 97 ];
+        %tmp.49 = getv %tmp.48 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.38 %tmp.39(%tmp.42, %tmp.43, %tmp.45, %tmp.47, %tmp.49);
 [ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 64 8 ]
-        %tmp.51 = lgetv %dc;
-        symbol [ dc %tmp.51 64 8 10 ];
-        symbol [ setColor %tmp.52 64 11 19 ];
-        %tmp.52 = getv function %tmp.51 :setColor;
-        symbol [ COLOR_BLUE %tmp.54 64 20 30 ];
-        %tmp.54 = getv ? :COLOR_BLUE;
-        symbol [ Graphics %tmp.55 64 32 40 ];
-        %tmp.55 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.56 64 41 52 ];
-        %tmp.56 = getv %tmp.55 :COLOR_BLACK;
-        invoke %tmp.51 %tmp.52(%tmp.54, %tmp.56);
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_stop" ]
+        %timeStr.3 = local;
+        symbol [ timeStr %timeStr.3 64 12 19 ];
+        %tmp.50 = self;
+        symbol [ getElapsedTimeFormatted %tmp.51 64 22 45 ];
+        %tmp.51 = getv function %tmp.50 :getElapsedTimeFormatted;
+        %tmp.52 = invoke %tmp.50 %tmp.51();
+        lputv %timeStr.3 %tmp.52;
+        symbol [ timeStr %timeStr.3 64 12 19 ];
 [ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 65 8 ]
-        %tmp.57 = lgetv %dc;
-        symbol [ dc %tmp.57 65 8 10 ];
-        symbol [ drawText %tmp.58 65 11 19 ];
-        %tmp.58 = getv function %tmp.57 :drawText;
+        %tmp.53 = lgetv %dc;
+        symbol [ dc %tmp.53 65 8 10 ];
+        symbol [ setColor %tmp.54 65 11 19 ];
+        %tmp.54 = getv function %tmp.53 :setColor;
+        symbol [ COLOR_BLUE %tmp.56 65 20 30 ];
+        %tmp.56 = getv ? :COLOR_BLUE;
+        symbol [ Graphics %tmp.57 65 32 40 ];
+        %tmp.57 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.58 65 41 52 ];
+        %tmp.58 = getv %tmp.57 :COLOR_BLACK;
+        invoke %tmp.53 %tmp.54(%tmp.56, %tmp.58);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 66 8 ]
         %tmp.59 = lgetv %dc;
-        symbol [ dc %tmp.59 65 20 22 ];
-        symbol [ getWidth %tmp.60 65 23 31 ];
-        %tmp.60 = getv function %tmp.59 :getWidth;
-        %tmp.61 = invoke %tmp.59 %tmp.60();
+        symbol [ dc %tmp.59 66 8 10 ];
+        symbol [ drawText %tmp.60 66 11 19 ];
+        %tmp.60 = getv function %tmp.59 :drawText;
+        %tmp.61 = lgetv %w.1;
+        symbol [ w %tmp.61 66 20 21 ];
         %tmp.62 = 2;
         %tmp.63 = div %tmp.61 %tmp.62;
-        %tmp.64 = 65;
-        symbol [ Graphics %tmp.65 65 43 51 ];
+        %tmp.64 = 50;
+        symbol [ Graphics %tmp.65 66 31 39 ];
         %tmp.65 = getm $.Toybox.Graphics;
-        symbol [ FONT_LARGE %tmp.66 65 52 62 ];
+        symbol [ FONT_LARGE %tmp.66 66 40 50 ];
         %tmp.66 = getv %tmp.65 :FONT_LARGE;
-        %tmp.67 = lgetv %timeStr.1;
-        symbol [ timeStr %tmp.67 65 64 71 ];
-        symbol [ Graphics %tmp.68 65 73 81 ];
+        %tmp.67 = lgetv %timeStr.3;
+        symbol [ timeStr %tmp.67 66 52 59 ];
+        symbol [ Graphics %tmp.68 66 61 69 ];
         %tmp.68 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.69 65 82 101 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.69 66 70 89 ];
         %tmp.69 = getv %tmp.68 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.57 %tmp.58(%tmp.63, %tmp.64, %tmp.66, %tmp.67, %tmp.69);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 68 8 ]
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_68_8_71_8_if_stmt:
-        symbol [ isPaused %tmp.71 68 12 20 ];
+        invoke %tmp.59 %tmp.60(%tmp.63, %tmp.64, %tmp.66, %tmp.67, %tmp.69);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 69 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_69_8_72_8_if_stmt:
+        symbol [ isPaused %tmp.71 69 12 20 ];
         %tmp.71 = getv ? :isPaused;
-        bf %tmp.71 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_68_8_71_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_68_8_71_8_if_true:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_68_22_71_8_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 69 12 ]
+        bf %tmp.71 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_69_8_72_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_69_8_72_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_69_22_72_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 70 12 ]
         %tmp.72 = lgetv %dc;
-        symbol [ dc %tmp.72 69 12 14 ];
-        symbol [ setColor %tmp.73 69 15 23 ];
+        symbol [ dc %tmp.72 70 12 14 ];
+        symbol [ setColor %tmp.73 70 15 23 ];
         %tmp.73 = getv function %tmp.72 :setColor;
-        symbol [ Graphics %tmp.74 69 24 32 ];
+        symbol [ Graphics %tmp.74 70 24 32 ];
         %tmp.74 = getm $.Toybox.Graphics;
-        symbol [ COLOR_YELLOW %tmp.75 69 33 45 ];
+        symbol [ COLOR_YELLOW %tmp.75 70 33 45 ];
         %tmp.75 = getv %tmp.74 :COLOR_YELLOW;
-        symbol [ Graphics %tmp.76 69 47 55 ];
+        symbol [ Graphics %tmp.76 70 47 55 ];
         %tmp.76 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.77 69 56 67 ];
+        symbol [ COLOR_BLACK %tmp.77 70 56 67 ];
         %tmp.77 = getv %tmp.76 :COLOR_BLACK;
         invoke %tmp.72 %tmp.73(%tmp.75, %tmp.77);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 70 12 ]
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 71 12 ]
         %tmp.78 = lgetv %dc;
-        symbol [ dc %tmp.78 70 12 14 ];
-        symbol [ drawText %tmp.79 70 15 23 ];
+        symbol [ dc %tmp.78 71 12 14 ];
+        symbol [ drawText %tmp.79 71 15 23 ];
         %tmp.79 = getv function %tmp.78 :drawText;
-        %tmp.80 = lgetv %dc;
-        symbol [ dc %tmp.80 70 24 26 ];
-        symbol [ getWidth %tmp.81 70 27 35 ];
-        %tmp.81 = getv function %tmp.80 :getWidth;
-        %tmp.82 = invoke %tmp.80 %tmp.81();
-        %tmp.83 = 2;
-        %tmp.84 = div %tmp.82 %tmp.83;
-        %tmp.85 = 95;
-        symbol [ Graphics %tmp.86 70 47 55 ];
-        %tmp.86 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.87 70 56 65 ];
-        %tmp.87 = getv %tmp.86 :FONT_TINY;
-        %tmp.88 = "PAUSED";
-        symbol [ Graphics %tmp.89 70 77 85 ];
-        %tmp.89 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.90 70 86 105 ];
-        %tmp.90 = getv %tmp.89 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.78 %tmp.79(%tmp.84, %tmp.85, %tmp.87, %tmp.88, %tmp.90);
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_68_22_71_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_68_8_71_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_68_8_71_8_if_end:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 74 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_50_40_98_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_50_40_98_4_stop" ]
-        %progress.2 = local;
-        symbol [ progress %progress.2 74 12 20 ];
-        %tmp.91 = self;
-        symbol [ getProgress %tmp.92 74 23 34 ];
-        %tmp.92 = getv function %tmp.91 :getProgress;
-        %tmp.93 = invoke %tmp.91 %tmp.92();
-        lputv %progress.2 %tmp.93;
-        symbol [ progress %progress.2 74 12 20 ];
+        %tmp.80 = lgetv %w.1;
+        symbol [ w %tmp.80 71 24 25 ];
+        %tmp.81 = 2;
+        %tmp.82 = div %tmp.80 %tmp.81;
+        %tmp.83 = 85;
+        symbol [ Graphics %tmp.84 71 35 43 ];
+        %tmp.84 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.85 71 44 53 ];
+        %tmp.85 = getv %tmp.84 :FONT_TINY;
+        %tmp.86 = "PAUSED";
+        symbol [ Graphics %tmp.87 71 65 73 ];
+        %tmp.87 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.88 71 74 93 ];
+        %tmp.88 = getv %tmp.87 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.78 %tmp.79(%tmp.82, %tmp.83, %tmp.85, %tmp.86, %tmp.88);
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_69_22_72_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_69_8_72_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_69_8_72_8_if_end:
 [ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 75 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_50_40_98_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_50_40_98_4_stop" ]
-        %barW.3 = local;
-        symbol [ barW %barW.3 75 12 16 ];
-        %tmp.94 = lgetv %dc;
-        symbol [ dc %tmp.94 75 19 21 ];
-        symbol [ getWidth %tmp.95 75 22 30 ];
-        %tmp.95 = getv function %tmp.94 :getWidth;
-        %tmp.96 = invoke %tmp.94 %tmp.95();
-        %tmp.97 = 30;
-        %tmp.98 = sub %tmp.96 %tmp.97;
-        lputv %barW.3 %tmp.98;
-        symbol [ barW %barW.3 75 12 16 ];
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_stop" ]
+        %progress.4 = local;
+        symbol [ progress %progress.4 75 12 20 ];
+        %tmp.89 = self;
+        symbol [ getProgress %tmp.90 75 23 34 ];
+        %tmp.90 = getv function %tmp.89 :getProgress;
+        %tmp.91 = invoke %tmp.89 %tmp.90();
+        lputv %progress.4 %tmp.91;
+        symbol [ progress %progress.4 75 12 20 ];
 [ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 76 8 ]
-        %tmp.99 = lgetv %dc;
-        symbol [ dc %tmp.99 76 8 10 ];
-        symbol [ setColor %tmp.100 76 11 19 ];
-        %tmp.100 = getv function %tmp.99 :setColor;
-        symbol [ Graphics %tmp.101 76 20 28 ];
-        %tmp.101 = getm $.Toybox.Graphics;
-        symbol [ COLOR_DK_GRAY %tmp.102 76 29 42 ];
-        %tmp.102 = getv %tmp.101 :COLOR_DK_GRAY;
-        symbol [ Graphics %tmp.103 76 44 52 ];
-        %tmp.103 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.104 76 53 64 ];
-        %tmp.104 = getv %tmp.103 :COLOR_BLACK;
-        invoke %tmp.99 %tmp.100(%tmp.102, %tmp.104);
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_stop" ]
+        %barW.5 = local;
+        symbol [ barW %barW.5 76 12 16 ];
+        %tmp.92 = lgetv %w.1;
+        symbol [ w %tmp.92 76 19 20 ];
+        %tmp.93 = 30;
+        %tmp.94 = sub %tmp.92 %tmp.93;
+        lputv %barW.5 %tmp.94;
+        symbol [ barW %barW.5 76 12 16 ];
 [ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 77 8 ]
-        %tmp.105 = lgetv %dc;
-        symbol [ dc %tmp.105 77 8 10 ];
-        symbol [ fillRectangle %tmp.106 77 11 24 ];
-        %tmp.106 = getv function %tmp.105 :fillRectangle;
-        %tmp.107 = 15;
-        %tmp.108 = 115;
-        %tmp.109 = lgetv %barW.3;
-        symbol [ barW %tmp.109 77 34 38 ];
-        %tmp.110 = 8;
-        invoke %tmp.105 %tmp.106(%tmp.107, %tmp.108, %tmp.109, %tmp.110);
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_stop" ]
+        %barY.6 = local;
+        symbol [ barY %barY.6 77 12 16 ];
+        %tmp.95 = 105;
+        lputv %barY.6 %tmp.95;
+        symbol [ barY %barY.6 77 12 16 ];
 [ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 78 8 ]
-        %tmp.111 = lgetv %dc;
-        symbol [ dc %tmp.111 78 8 10 ];
-        symbol [ setColor %tmp.112 78 11 19 ];
-        %tmp.112 = getv function %tmp.111 :setColor;
-        symbol [ COLOR_GREEN %tmp.114 78 20 31 ];
-        %tmp.114 = getv ? :COLOR_GREEN;
-        symbol [ Graphics %tmp.115 78 33 41 ];
-        %tmp.115 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.116 78 42 61 ];
-        %tmp.116 = getv %tmp.115 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.111 %tmp.112(%tmp.114, %tmp.116);
+        %tmp.96 = lgetv %dc;
+        symbol [ dc %tmp.96 78 8 10 ];
+        symbol [ setColor %tmp.97 78 11 19 ];
+        %tmp.97 = getv function %tmp.96 :setColor;
+        symbol [ Graphics %tmp.98 78 20 28 ];
+        %tmp.98 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.99 78 29 42 ];
+        %tmp.99 = getv %tmp.98 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.100 78 44 52 ];
+        %tmp.100 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.101 78 53 64 ];
+        %tmp.101 = getv %tmp.100 :COLOR_BLACK;
+        invoke %tmp.96 %tmp.97(%tmp.99, %tmp.101);
 [ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 79 8 ]
-        %tmp.117 = lgetv %dc;
-        symbol [ dc %tmp.117 79 8 10 ];
-        symbol [ fillRectangle %tmp.118 79 11 24 ];
-        %tmp.118 = getv function %tmp.117 :fillRectangle;
-        %tmp.119 = 15;
-        %tmp.120 = 115;
-        %tmp.121 = lgetv %barW.3;
-        symbol [ barW %tmp.121 79 34 38 ];
-        %tmp.122 = lgetv %progress.2;
-        symbol [ progress %tmp.122 79 41 49 ];
-        %tmp.123 = mul %tmp.121 %tmp.122;
-        %tmp.124 = 100;
-        %tmp.125 = div %tmp.123 %tmp.124;
-        %tmp.126 = 8;
-        invoke %tmp.117 %tmp.118(%tmp.119, %tmp.120, %tmp.125, %tmp.126);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 82 8 ]
-        %tmp.127 = lgetv %dc;
-        symbol [ dc %tmp.127 82 8 10 ];
-        symbol [ setColor %tmp.128 82 11 19 ];
-        %tmp.128 = getv function %tmp.127 :setColor;
-        symbol [ Graphics %tmp.129 82 20 28 ];
-        %tmp.129 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.130 82 29 40 ];
-        %tmp.130 = getv %tmp.129 :COLOR_WHITE;
-        symbol [ Graphics %tmp.131 82 42 50 ];
-        %tmp.131 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.132 82 51 62 ];
-        %tmp.132 = getv %tmp.131 :COLOR_BLACK;
-        invoke %tmp.127 %tmp.128(%tmp.130, %tmp.132);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 83 8 ]
-        %tmp.133 = lgetv %dc;
-        symbol [ dc %tmp.133 83 8 10 ];
-        symbol [ drawText %tmp.134 83 11 19 ];
-        %tmp.134 = getv function %tmp.133 :drawText;
-        %tmp.135 = lgetv %dc;
-        symbol [ dc %tmp.135 83 20 22 ];
-        symbol [ getWidth %tmp.136 83 23 31 ];
-        %tmp.136 = getv function %tmp.135 :getWidth;
-        %tmp.137 = invoke %tmp.135 %tmp.136();
-        %tmp.138 = 2;
-        %tmp.139 = div %tmp.137 %tmp.138;
-        %tmp.140 = 128;
-        symbol [ Graphics %tmp.141 83 44 52 ];
-        %tmp.141 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.142 83 53 62 ];
-        %tmp.142 = getv %tmp.141 :FONT_TINY;
-        %tmp.143 = lgetv %progress.2;
-        symbol [ progress %tmp.143 83 64 72 ];
-        %tmp.144 = "% - Step ";
-        %tmp.145 = add %tmp.143 %tmp.144;
-        symbol [ currentStepIndex %tmp.147 83 90 106 ];
-        %tmp.147 = getv ? :currentStepIndex;
-        %tmp.148 = 1;
-        %tmp.149 = add %tmp.147 %tmp.148;
-        %tmp.150 = add %tmp.145 %tmp.149;
-        %tmp.151 = "/";
-        %tmp.152 = add %tmp.150 %tmp.151;
-        symbol [ workout %tmp.154 83 120 127 ];
-        %tmp.154 = getv ? :workout;
-        symbol [ getStepCount %tmp.155 83 128 140 ];
-        %tmp.155 = getv function %tmp.154 :getStepCount;
-        %tmp.156 = invoke %tmp.154 %tmp.155();
-        %tmp.157 = add %tmp.152 %tmp.156;
-        symbol [ Graphics %tmp.158 83 144 152 ];
-        %tmp.158 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.159 83 153 172 ];
-        %tmp.159 = getv %tmp.158 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.133 %tmp.134(%tmp.139, %tmp.140, %tmp.142, %tmp.157, %tmp.159);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 86 8 ]
-        %tmp.160 = lgetv %dc;
-        symbol [ dc %tmp.160 86 8 10 ];
-        symbol [ setColor %tmp.161 86 11 19 ];
-        %tmp.161 = getv function %tmp.160 :setColor;
-        symbol [ Graphics %tmp.162 86 20 28 ];
-        %tmp.162 = getm $.Toybox.Graphics;
-        symbol [ COLOR_DK_GRAY %tmp.163 86 29 42 ];
-        %tmp.163 = getv %tmp.162 :COLOR_DK_GRAY;
-        symbol [ Graphics %tmp.164 86 44 52 ];
-        %tmp.164 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.165 86 53 64 ];
-        %tmp.165 = getv %tmp.164 :COLOR_BLACK;
-        invoke %tmp.160 %tmp.161(%tmp.163, %tmp.165);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 87 8 ]
-        %tmp.166 = lgetv %dc;
-        symbol [ dc %tmp.166 87 8 10 ];
-        symbol [ drawText %tmp.167 87 11 19 ];
-        %tmp.167 = getv function %tmp.166 :drawText;
-        %tmp.168 = lgetv %dc;
-        symbol [ dc %tmp.168 87 20 22 ];
-        symbol [ getWidth %tmp.169 87 23 31 ];
-        %tmp.169 = getv function %tmp.168 :getWidth;
-        %tmp.170 = invoke %tmp.168 %tmp.169();
-        %tmp.171 = 2;
-        %tmp.172 = div %tmp.170 %tmp.171;
-        %tmp.173 = 145;
-        symbol [ Graphics %tmp.174 87 44 52 ];
-        %tmp.174 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.175 87 53 62 ];
-        %tmp.175 = getv %tmp.174 :FONT_TINY;
-        %tmp.176 = "Next: ";
-        symbol [ nextStepName %tmp.178 87 75 87 ];
-        %tmp.178 = getv ? :nextStepName;
-        %tmp.179 = add %tmp.176 %tmp.178;
-        symbol [ Graphics %tmp.180 87 89 97 ];
-        %tmp.180 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.181 87 98 117 ];
-        %tmp.181 = getv %tmp.180 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.166 %tmp.167(%tmp.172, %tmp.173, %tmp.175, %tmp.179, %tmp.181);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 90 8 ]
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_90_8_93_8_if_stmt:
-        symbol [ isCompleted %tmp.183 90 12 23 ];
-        %tmp.183 = getv ? :isCompleted;
-        bf %tmp.183 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_90_8_93_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_90_8_93_8_if_true:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_90_25_93_8_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 91 12 ]
-        %tmp.184 = lgetv %dc;
-        symbol [ dc %tmp.184 91 12 14 ];
-        symbol [ setColor %tmp.185 91 15 23 ];
-        %tmp.185 = getv function %tmp.184 :setColor;
-        symbol [ COLOR_GREEN %tmp.187 91 24 35 ];
-        %tmp.187 = getv ? :COLOR_GREEN;
-        symbol [ Graphics %tmp.188 91 37 45 ];
-        %tmp.188 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.189 91 46 57 ];
-        %tmp.189 = getv %tmp.188 :COLOR_BLACK;
-        invoke %tmp.184 %tmp.185(%tmp.187, %tmp.189);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 92 12 ]
-        %tmp.190 = lgetv %dc;
-        symbol [ dc %tmp.190 92 12 14 ];
-        symbol [ drawText %tmp.191 92 15 23 ];
-        %tmp.191 = getv function %tmp.190 :drawText;
-        %tmp.192 = lgetv %dc;
-        symbol [ dc %tmp.192 92 24 26 ];
-        symbol [ getWidth %tmp.193 92 27 35 ];
-        %tmp.193 = getv function %tmp.192 :getWidth;
-        %tmp.194 = invoke %tmp.192 %tmp.193();
-        %tmp.195 = 2;
-        %tmp.196 = div %tmp.194 %tmp.195;
-        %tmp.197 = 170;
-        symbol [ Graphics %tmp.198 92 48 56 ];
-        %tmp.198 = getm $.Toybox.Graphics;
-        symbol [ FONT_MEDIUM %tmp.199 92 57 68 ];
-        %tmp.199 = getv %tmp.198 :FONT_MEDIUM;
-        %tmp.200 = "DONE!";
-        symbol [ Graphics %tmp.201 92 79 87 ];
-        %tmp.201 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.202 92 88 107 ];
-        %tmp.202 = getv %tmp.201 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.190 %tmp.191(%tmp.196, %tmp.197, %tmp.199, %tmp.200, %tmp.202);
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_90_25_93_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_90_8_93_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_90_8_93_8_if_end:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 96 8 ]
-        %tmp.203 = lgetv %dc;
-        symbol [ dc %tmp.203 96 8 10 ];
-        symbol [ setColor %tmp.204 96 11 19 ];
-        %tmp.204 = getv function %tmp.203 :setColor;
-        symbol [ Graphics %tmp.205 96 20 28 ];
-        %tmp.205 = getm $.Toybox.Graphics;
-        symbol [ COLOR_DK_GRAY %tmp.206 96 29 42 ];
-        %tmp.206 = getv %tmp.205 :COLOR_DK_GRAY;
-        symbol [ Graphics %tmp.207 96 44 52 ];
-        %tmp.207 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.208 96 53 64 ];
-        %tmp.208 = getv %tmp.207 :COLOR_BLACK;
-        invoke %tmp.203 %tmp.204(%tmp.206, %tmp.208);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 97 8 ]
-        %tmp.209 = lgetv %dc;
-        symbol [ dc %tmp.209 97 8 10 ];
-        symbol [ drawText %tmp.210 97 11 19 ];
-        %tmp.210 = getv function %tmp.209 :drawText;
-        %tmp.211 = lgetv %dc;
-        symbol [ dc %tmp.211 97 20 22 ];
-        symbol [ getWidth %tmp.212 97 23 31 ];
-        %tmp.212 = getv function %tmp.211 :getWidth;
-        %tmp.213 = invoke %tmp.211 %tmp.212();
-        %tmp.214 = 2;
-        %tmp.215 = div %tmp.213 %tmp.214;
-        %tmp.216 = lgetv %dc;
-        symbol [ dc %tmp.216 97 39 41 ];
-        symbol [ getHeight %tmp.217 97 42 51 ];
-        %tmp.217 = getv function %tmp.216 :getHeight;
-        %tmp.218 = invoke %tmp.216 %tmp.217();
-        %tmp.219 = 12;
-        %tmp.220 = sub %tmp.218 %tmp.219;
-        symbol [ Graphics %tmp.221 97 60 68 ];
-        %tmp.221 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.222 97 69 78 ];
-        %tmp.222 = getv %tmp.221 :FONT_TINY;
-        %tmp.223 = "DOWN: Pause | ENTER: Finish";
-        symbol [ Graphics %tmp.224 97 111 119 ];
-        %tmp.224 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.225 97 120 139 ];
-        %tmp.225 = getv %tmp.224 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.209 %tmp.210(%tmp.215, %tmp.220, %tmp.222, %tmp.223, %tmp.225);
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_50_40_98_4_stop:
+        %tmp.102 = lgetv %dc;
+        symbol [ dc %tmp.102 79 8 10 ];
+        symbol [ fillRectangle %tmp.103 79 11 24 ];
+        %tmp.103 = getv function %tmp.102 :fillRectangle;
+        %tmp.104 = 15;
+        %tmp.105 = lgetv %barY.6;
+        symbol [ barY %tmp.105 79 29 33 ];
+        %tmp.106 = lgetv %barW.5;
+        symbol [ barW %tmp.106 79 35 39 ];
+        %tmp.107 = 6;
+        invoke %tmp.102 %tmp.103(%tmp.104, %tmp.105, %tmp.106, %tmp.107);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 80 8 ]
+        %tmp.108 = lgetv %dc;
+        symbol [ dc %tmp.108 80 8 10 ];
+        symbol [ setColor %tmp.109 80 11 19 ];
+        %tmp.109 = getv function %tmp.108 :setColor;
+        symbol [ COLOR_GREEN %tmp.111 80 20 31 ];
+        %tmp.111 = getv ? :COLOR_GREEN;
+        symbol [ Graphics %tmp.112 80 33 41 ];
+        %tmp.112 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.113 80 42 53 ];
+        %tmp.113 = getv %tmp.112 :COLOR_BLACK;
+        invoke %tmp.108 %tmp.109(%tmp.111, %tmp.113);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 81 8 ]
+        %tmp.114 = lgetv %dc;
+        symbol [ dc %tmp.114 81 8 10 ];
+        symbol [ fillRectangle %tmp.115 81 11 24 ];
+        %tmp.115 = getv function %tmp.114 :fillRectangle;
+        %tmp.116 = 15;
+        %tmp.117 = lgetv %barY.6;
+        symbol [ barY %tmp.117 81 29 33 ];
+        %tmp.118 = lgetv %barW.5;
+        symbol [ barW %tmp.118 81 35 39 ];
+        %tmp.119 = lgetv %progress.4;
+        symbol [ progress %tmp.119 81 42 50 ];
+        %tmp.120 = mul %tmp.118 %tmp.119;
+        %tmp.121 = 100;
+        %tmp.122 = div %tmp.120 %tmp.121;
+        %tmp.123 = 6;
+        invoke %tmp.114 %tmp.115(%tmp.116, %tmp.117, %tmp.122, %tmp.123);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 84 8 ]
+        %tmp.124 = lgetv %dc;
+        symbol [ dc %tmp.124 84 8 10 ];
+        symbol [ setColor %tmp.125 84 11 19 ];
+        %tmp.125 = getv function %tmp.124 :setColor;
+        symbol [ Graphics %tmp.126 84 20 28 ];
+        %tmp.126 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.127 84 29 40 ];
+        %tmp.127 = getv %tmp.126 :COLOR_WHITE;
+        symbol [ Graphics %tmp.128 84 42 50 ];
+        %tmp.128 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.129 84 51 62 ];
+        %tmp.129 = getv %tmp.128 :COLOR_BLACK;
+        invoke %tmp.124 %tmp.125(%tmp.127, %tmp.129);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 85 8 ]
+        %tmp.130 = lgetv %dc;
+        symbol [ dc %tmp.130 85 8 10 ];
+        symbol [ drawText %tmp.131 85 11 19 ];
+        %tmp.131 = getv function %tmp.130 :drawText;
+        %tmp.132 = lgetv %w.1;
+        symbol [ w %tmp.132 85 20 21 ];
+        %tmp.133 = 2;
+        %tmp.134 = div %tmp.132 %tmp.133;
+        %tmp.135 = 116;
+        symbol [ Graphics %tmp.136 85 32 40 ];
+        %tmp.136 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.137 85 41 50 ];
+        %tmp.137 = getv %tmp.136 :FONT_TINY;
+        %tmp.138 = lgetv %progress.4;
+        symbol [ progress %tmp.138 85 52 60 ];
+        %tmp.139 = "% - ";
+        %tmp.140 = add %tmp.138 %tmp.139;
+        symbol [ currentStepIndex %tmp.142 85 73 89 ];
+        %tmp.142 = getv ? :currentStepIndex;
+        %tmp.143 = 1;
+        %tmp.144 = add %tmp.142 %tmp.143;
+        %tmp.145 = add %tmp.140 %tmp.144;
+        %tmp.146 = "/";
+        %tmp.147 = add %tmp.145 %tmp.146;
+        symbol [ workout %tmp.149 85 103 110 ];
+        %tmp.149 = getv ? :workout;
+        symbol [ getStepCount %tmp.150 85 111 123 ];
+        %tmp.150 = getv function %tmp.149 :getStepCount;
+        %tmp.151 = invoke %tmp.149 %tmp.150();
+        %tmp.152 = add %tmp.147 %tmp.151;
+        symbol [ Graphics %tmp.153 85 127 135 ];
+        %tmp.153 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.154 85 136 155 ];
+        %tmp.154 = getv %tmp.153 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.130 %tmp.131(%tmp.134, %tmp.135, %tmp.137, %tmp.152, %tmp.154);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 88 8 ]
+        %tmp.155 = lgetv %dc;
+        symbol [ dc %tmp.155 88 8 10 ];
+        symbol [ setColor %tmp.156 88 11 19 ];
+        %tmp.156 = getv function %tmp.155 :setColor;
+        symbol [ Graphics %tmp.157 88 20 28 ];
+        %tmp.157 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.158 88 29 42 ];
+        %tmp.158 = getv %tmp.157 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.159 88 44 52 ];
+        %tmp.159 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.160 88 53 64 ];
+        %tmp.160 = getv %tmp.159 :COLOR_BLACK;
+        invoke %tmp.155 %tmp.156(%tmp.158, %tmp.160);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 89 8 ]
+        %tmp.161 = lgetv %dc;
+        symbol [ dc %tmp.161 89 8 10 ];
+        symbol [ drawText %tmp.162 89 11 19 ];
+        %tmp.162 = getv function %tmp.161 :drawText;
+        %tmp.163 = lgetv %w.1;
+        symbol [ w %tmp.163 89 20 21 ];
+        %tmp.164 = 2;
+        %tmp.165 = div %tmp.163 %tmp.164;
+        %tmp.166 = 135;
+        symbol [ Graphics %tmp.167 89 32 40 ];
+        %tmp.167 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.168 89 41 50 ];
+        %tmp.168 = getv %tmp.167 :FONT_TINY;
+        %tmp.169 = "NEXT: ";
+        symbol [ nextStepName %tmp.171 89 63 75 ];
+        %tmp.171 = getv ? :nextStepName;
+        %tmp.172 = add %tmp.169 %tmp.171;
+        symbol [ Graphics %tmp.173 89 77 85 ];
+        %tmp.173 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.174 89 86 105 ];
+        %tmp.174 = getv %tmp.173 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.161 %tmp.162(%tmp.165, %tmp.166, %tmp.168, %tmp.172, %tmp.174);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 92 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_92_8_95_8_if_stmt:
+        symbol [ isCompleted %tmp.176 92 12 23 ];
+        %tmp.176 = getv ? :isCompleted;
+        bf %tmp.176 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_92_8_95_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_92_8_95_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_92_25_95_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 93 12 ]
+        %tmp.177 = lgetv %dc;
+        symbol [ dc %tmp.177 93 12 14 ];
+        symbol [ setColor %tmp.178 93 15 23 ];
+        %tmp.178 = getv function %tmp.177 :setColor;
+        symbol [ COLOR_GREEN %tmp.180 93 24 35 ];
+        %tmp.180 = getv ? :COLOR_GREEN;
+        symbol [ Graphics %tmp.181 93 37 45 ];
+        %tmp.181 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.182 93 46 57 ];
+        %tmp.182 = getv %tmp.181 :COLOR_BLACK;
+        invoke %tmp.177 %tmp.178(%tmp.180, %tmp.182);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 94 12 ]
+        %tmp.183 = lgetv %dc;
+        symbol [ dc %tmp.183 94 12 14 ];
+        symbol [ drawText %tmp.184 94 15 23 ];
+        %tmp.184 = getv function %tmp.183 :drawText;
+        %tmp.185 = lgetv %w.1;
+        symbol [ w %tmp.185 94 24 25 ];
+        %tmp.186 = 2;
+        %tmp.187 = div %tmp.185 %tmp.186;
+        %tmp.188 = lgetv %h.2;
+        symbol [ h %tmp.188 94 31 32 ];
+        %tmp.189 = 2;
+        %tmp.190 = div %tmp.188 %tmp.189;
+        %tmp.191 = 20;
+        %tmp.192 = add %tmp.190 %tmp.191;
+        symbol [ Graphics %tmp.193 94 43 51 ];
+        %tmp.193 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.194 94 52 63 ];
+        %tmp.194 = getv %tmp.193 :FONT_MEDIUM;
+        %tmp.195 = "DONE!";
+        symbol [ Graphics %tmp.196 94 74 82 ];
+        %tmp.196 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.197 94 83 102 ];
+        %tmp.197 = getv %tmp.196 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.183 %tmp.184(%tmp.187, %tmp.192, %tmp.194, %tmp.195, %tmp.197);
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_92_25_95_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_92_8_95_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_92_8_95_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 98 8 ]
+        %tmp.198 = lgetv %dc;
+        symbol [ dc %tmp.198 98 8 10 ];
+        symbol [ setColor %tmp.199 98 11 19 ];
+        %tmp.199 = getv function %tmp.198 :setColor;
+        symbol [ Graphics %tmp.200 98 20 28 ];
+        %tmp.200 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.201 98 29 42 ];
+        %tmp.201 = getv %tmp.200 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.202 98 44 52 ];
+        %tmp.202 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.203 98 53 64 ];
+        %tmp.203 = getv %tmp.202 :COLOR_BLACK;
+        invoke %tmp.198 %tmp.199(%tmp.201, %tmp.203);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 99 8 ]
+        %tmp.204 = lgetv %dc;
+        symbol [ dc %tmp.204 99 8 10 ];
+        symbol [ drawText %tmp.205 99 11 19 ];
+        %tmp.205 = getv function %tmp.204 :drawText;
+        %tmp.206 = lgetv %w.1;
+        symbol [ w %tmp.206 99 20 21 ];
+        %tmp.207 = 2;
+        %tmp.208 = div %tmp.206 %tmp.207;
+        %tmp.209 = lgetv %h.2;
+        symbol [ h %tmp.209 99 27 28 ];
+        %tmp.210 = 8;
+        %tmp.211 = sub %tmp.209 %tmp.210;
+        symbol [ Graphics %tmp.212 99 34 42 ];
+        %tmp.212 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.213 99 43 52 ];
+        %tmp.213 = getv %tmp.212 :FONT_TINY;
+        %tmp.214 = "DOWN: Pause | ENTER: Done";
+        symbol [ Graphics %tmp.215 99 83 91 ];
+        %tmp.215 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.216 99 92 111 ];
+        %tmp.216 = getv %tmp.215 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.204 %tmp.205(%tmp.208, %tmp.211, %tmp.213, %tmp.214, %tmp.216);
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_48_40_100_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 100; @symbol_functiondef = [onShow,100,13,19]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 102; @symbol_functiondef = [onShow,102,13,19]; ]
     function onShow() as Void {
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_100_30_103_4_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 101 8 ]
-        symbol [ Timer %tmp.3 101 20 25 ];
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_102_30_105_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 103 8 ]
+        symbol [ Timer %tmp.3 103 20 25 ];
         %tmp.3 = getm $.Toybox.Timer;
-        symbol [ Timer %tmp.4 101 26 31 ];
+        symbol [ Timer %tmp.4 103 26 31 ];
         %tmp.4 = getv function ? %tmp.3 :Timer;
         %tmp.1 = newc %tmp.4 ();
-        symbol [ timer ? 101 8 13 ];
+        symbol [ timer ? 103 8 13 ];
         putv self :timer %tmp.1;
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 102 8 ]
-        symbol [ timer %tmp.6 102 8 13 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 104 8 ]
+        symbol [ timer %tmp.6 104 8 13 ];
         %tmp.6 = getv ? :timer;
-        symbol [ start %tmp.7 102 14 19 ];
+        symbol [ start %tmp.7 104 14 19 ];
         %tmp.7 = getv function %tmp.6 :start;
         %tmp.8 = self;
-        symbol [ method %tmp.9 102 20 26 ];
+        symbol [ method %tmp.9 104 20 26 ];
         %tmp.9 = getv function %tmp.8 :method;
         %tmp.11 = const :onTimer;
-        symbol [ onTimer %tmp.11 102 28 35 const ];
+        symbol [ onTimer %tmp.11 104 28 35 const ];
         %tmp.12 = invoke %tmp.8 %tmp.9(%tmp.11);
         %tmp.13 = 1000;
         %tmp.14 = true;
         invoke %tmp.6 %tmp.7(%tmp.12, %tmp.13, %tmp.14);
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_100_30_103_4_stop:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_102_30_105_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 105; @symbol_functiondef = [onTimer,105,13,20]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 107; @symbol_functiondef = [onTimer,107,13,20]; ]
     function onTimer() as Void {
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_105_31_116_4_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 106 8 ]
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_8_115_8_if_stmt:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_12_106_26_begin:
-        symbol [ isPaused %tmp.2 106 13 21 ];
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_107_31_118_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 108 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_8_117_8_if_stmt:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_12_108_26_begin:
+        symbol [ isPaused %tmp.2 108 13 21 ];
         %tmp.2 = getv ? :isPaused;
         %tmp.3 = not %tmp.2;
-        bf %tmp.3 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_8_115_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_25_106_26_true:
-        symbol [ isCompleted %tmp.5 106 26 37 ];
+        bf %tmp.3 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_8_117_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_25_108_26_true:
+        symbol [ isCompleted %tmp.5 108 26 37 ];
         %tmp.5 = getv ? :isCompleted;
         %tmp.6 = not %tmp.5;
         push %tmp.6;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_25_106_26_end:
-        %tmp.7 = phi [%tmp.3 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_12_106_26_begin] [%tmp.6 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_25_106_26_true] [%tmp.7 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_25_106_26_end];
-        bf %tmp.7 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_8_115_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_8_115_8_if_true:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_39_115_8_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 107 12 ]
-        symbol [ elapsedSeconds %tmp.10 107 12 26 ];
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_25_108_26_end:
+        %tmp.7 = phi [%tmp.3 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_12_108_26_begin] [%tmp.6 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_25_108_26_true] [%tmp.7 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_25_108_26_end];
+        bf %tmp.7 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_8_117_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_8_117_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_39_117_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 109 12 ]
+        symbol [ elapsedSeconds %tmp.10 109 12 26 ];
         %tmp.10 = getv ? :elapsedSeconds;
         %tmp.11 = add %tmp.10 1;
-        symbol [ elapsedSeconds ? 107 12 26 ];
+        symbol [ elapsedSeconds ? 109 12 26 ];
         putv self :elapsedSeconds dup %tmp.11;
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 108 12 ]
-        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_39_115_8_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_39_115_8_stop" ]
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 110 12 ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_39_117_8_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_39_117_8_stop" ]
         %step.1 = local;
-        symbol [ step %step.1 108 16 20 ];
-        symbol [ workout %tmp.13 108 23 30 ];
+        symbol [ step %step.1 110 16 20 ];
+        symbol [ workout %tmp.13 110 23 30 ];
         %tmp.13 = getv ? :workout;
-        symbol [ getStep %tmp.14 108 31 38 ];
+        symbol [ getStep %tmp.14 110 31 38 ];
         %tmp.14 = getv function %tmp.13 :getStep;
-        symbol [ currentStepIndex %tmp.16 108 39 55 ];
+        symbol [ currentStepIndex %tmp.16 110 39 55 ];
         %tmp.16 = getv ? :currentStepIndex;
         %tmp.17 = invoke %tmp.13 %tmp.14(%tmp.16);
         lputv %step.1 %tmp.17;
-        symbol [ step %step.1 108 16 20 ];
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 109 12 ]
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_12_113_12_if_stmt:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_16_109_51_begin:
+        symbol [ step %step.1 110 16 20 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 111 12 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_12_115_12_if_stmt:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_16_111_51_begin:
         %tmp.18 = lgetv %step.1;
-        symbol [ step %tmp.18 109 16 20 ];
+        symbol [ step %tmp.18 111 16 20 ];
         %tmp.19 = null;
         %tmp.20 = ne %tmp.18 %tmp.19;
-        bf %tmp.20 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_12_113_12_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_32_109_51_true:
+        bf %tmp.20 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_12_115_12_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_32_111_51_true:
         %tmp.21 = lgetv %step.1;
-        symbol [ step %tmp.21 109 32 36 ];
+        symbol [ step %tmp.21 111 32 36 ];
         %tmp.22 = as %tmp.21 { (!Null) };
-        symbol [ durationSec %tmp.23 109 37 48 ];
+        symbol [ durationSec %tmp.23 111 37 48 ];
         %tmp.23 = getv %tmp.22 :durationSec;
         %tmp.24 = 0;
         %tmp.25 = gt %tmp.23 %tmp.24;
         push %tmp.25;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_32_109_51_end:
-        %tmp.26 = phi [%tmp.20 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_16_109_51_begin] [%tmp.25 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_32_109_51_true] [%tmp.26 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_32_109_51_end];
-        bf %tmp.26 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_12_113_12_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_12_113_12_if_true:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_54_113_12_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 110 16 ]
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_110_16_112_16_if_stmt:
-        symbol [ elapsedSeconds %tmp.28 110 20 34 ];
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_32_111_51_end:
+        %tmp.26 = phi [%tmp.20 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_16_111_51_begin] [%tmp.25 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_32_111_51_true] [%tmp.26 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_32_111_51_end];
+        bf %tmp.26 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_12_115_12_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_12_115_12_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_54_115_12_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 112 16 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_112_16_114_16_if_stmt:
+        symbol [ elapsedSeconds %tmp.28 112 20 34 ];
         %tmp.28 = getv ? :elapsedSeconds;
         %tmp.29 = lgetv %step.1;
-        symbol [ step %tmp.29 110 38 42 ];
+        symbol [ step %tmp.29 112 38 42 ];
         %tmp.30 = as %tmp.29 { (!Null) };
-        symbol [ durationSec %tmp.31 110 43 54 ];
+        symbol [ durationSec %tmp.31 112 43 54 ];
         %tmp.31 = getv %tmp.30 :durationSec;
         %tmp.32 = gte %tmp.28 %tmp.31;
-        bf %tmp.32 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_110_16_112_16_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_110_16_112_16_if_true:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_110_56_112_16_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 111 20 ]
+        bf %tmp.32 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_112_16_114_16_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_112_16_114_16_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_112_56_114_16_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 113 20 ]
         %tmp.33 = self;
-        symbol [ nextStep %tmp.34 111 20 28 ];
+        symbol [ nextStep %tmp.34 113 20 28 ];
         %tmp.34 = getv function %tmp.33 :nextStep;
         invoke %tmp.33 %tmp.34();
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_110_56_112_16_stop:
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_110_16_112_16_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_110_16_112_16_if_end:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_54_113_12_stop:
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_12_113_12_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_109_12_113_12_if_end:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 114 12 ]
-        symbol [ WatchUi %tmp.35 114 12 19 ];
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_112_56_114_16_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_112_16_114_16_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_112_16_114_16_if_end:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_54_115_12_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_12_115_12_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_111_12_115_12_if_end:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 116 12 ]
+        symbol [ WatchUi %tmp.35 116 12 19 ];
         %tmp.35 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.36 114 20 33 ];
+        symbol [ requestUpdate %tmp.36 116 20 33 ];
         %tmp.36 = getv function %tmp.35 :requestUpdate;
         invoke %tmp.35 %tmp.36();
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_39_115_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_8_115_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_106_8_115_8_if_end:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_105_31_116_4_stop:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_39_117_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_8_117_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_108_8_117_8_if_end:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_107_31_118_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 118; @symbol_functiondef = [nextStep,118,13,21]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 120; @symbol_functiondef = [nextStep,120,13,21]; ]
     function nextStep() as Void {
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_118_32_130_4_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 119 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_118_32_130_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_118_32_130_4_stop" ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_120_32_132_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 121 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_120_32_132_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_120_32_132_4_stop" ]
         %step.1 = local;
-        symbol [ step %step.1 119 12 16 ];
-        symbol [ workout %tmp.2 119 19 26 ];
+        symbol [ step %step.1 121 12 16 ];
+        symbol [ workout %tmp.2 121 19 26 ];
         %tmp.2 = getv ? :workout;
-        symbol [ getStep %tmp.3 119 27 34 ];
+        symbol [ getStep %tmp.3 121 27 34 ];
         %tmp.3 = getv function %tmp.2 :getStep;
-        symbol [ currentStepIndex %tmp.5 119 35 51 ];
+        symbol [ currentStepIndex %tmp.5 121 35 51 ];
         %tmp.5 = getv ? :currentStepIndex;
         %tmp.6 = invoke %tmp.2 %tmp.3(%tmp.5);
         lputv %step.1 %tmp.6;
-        symbol [ step %step.1 119 12 16 ];
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 120 8 ]
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_120_8_122_8_if_stmt:
+        symbol [ step %step.1 121 12 16 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 122 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_122_8_124_8_if_stmt:
         %tmp.7 = lgetv %step.1;
-        symbol [ step %tmp.7 120 12 16 ];
+        symbol [ step %tmp.7 122 12 16 ];
         %tmp.8 = null;
         %tmp.9 = ne %tmp.7 %tmp.8;
-        bf %tmp.9 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_120_8_122_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_120_8_122_8_if_true:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_120_26_122_8_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 121 12 ]
+        bf %tmp.9 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_122_8_124_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_122_8_124_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_122_26_124_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 123 12 ]
         %tmp.10 = lgetv %step.1;
-        symbol [ step %tmp.10 121 12 16 ];
+        symbol [ step %tmp.10 123 12 16 ];
         %tmp.11 = as %tmp.10 { (!Null) };
         %tmp.12 = true;
-        symbol [ completed ? 121 17 26 ];
+        symbol [ completed ? 123 17 26 ];
         putv %tmp.11 :completed %tmp.12;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_120_26_122_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_120_8_122_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_120_8_122_8_if_end:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 123 8 ]
-        symbol [ currentStepIndex %tmp.15 123 8 24 ];
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_122_26_124_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_122_8_124_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_122_8_124_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 125 8 ]
+        symbol [ currentStepIndex %tmp.15 125 8 24 ];
         %tmp.15 = getv ? :currentStepIndex;
         %tmp.16 = add %tmp.15 1;
-        symbol [ currentStepIndex ? 123 8 24 ];
+        symbol [ currentStepIndex ? 125 8 24 ];
         putv self :currentStepIndex dup %tmp.16;
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 124 8 ]
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_124_8_129_8_if_stmt:
-        symbol [ currentStepIndex %tmp.18 124 12 28 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 126 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_126_8_131_8_if_stmt:
+        symbol [ currentStepIndex %tmp.18 126 12 28 ];
         %tmp.18 = getv ? :currentStepIndex;
-        symbol [ workout %tmp.20 124 32 39 ];
+        symbol [ workout %tmp.20 126 32 39 ];
         %tmp.20 = getv ? :workout;
-        symbol [ getStepCount %tmp.21 124 40 52 ];
+        symbol [ getStepCount %tmp.21 126 40 52 ];
         %tmp.21 = getv function %tmp.20 :getStepCount;
         %tmp.22 = invoke %tmp.20 %tmp.21();
         %tmp.23 = gte %tmp.18 %tmp.22;
-        bf %tmp.23 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_124_8_129_8_if_else_false;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_124_8_129_8_if_true:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_124_56_126_8_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 125 12 ]
+        bf %tmp.23 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_126_8_131_8_if_else_false;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_126_8_131_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_126_56_128_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 127 12 ]
         %tmp.24 = self;
-        symbol [ complete %tmp.25 125 12 20 ];
+        symbol [ complete %tmp.25 127 12 20 ];
         %tmp.25 = getv function %tmp.24 :complete;
         %tmp.26 = true;
         invoke %tmp.24 %tmp.25(%tmp.26);
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_124_56_126_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_124_8_129_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_124_8_129_8_if_else_false:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_126_15_129_8_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 127 12 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_126_56_128_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_126_8_131_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_126_8_131_8_if_else_false:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_128_15_131_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 129 12 ]
         %tmp.27 = 0;
-        symbol [ elapsedSeconds ? 127 12 26 ];
+        symbol [ elapsedSeconds ? 129 12 26 ];
         putv self :elapsedSeconds %tmp.27;
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 128 12 ]
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 130 12 ]
         %tmp.28 = self;
-        symbol [ updateStepInfo %tmp.29 128 12 26 ];
+        symbol [ updateStepInfo %tmp.29 130 12 26 ];
         %tmp.29 = getv function %tmp.28 :updateStepInfo;
         invoke %tmp.28 %tmp.29();
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_126_15_129_8_stop:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_124_8_129_8_if_end:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_118_32_130_4_stop:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_128_15_131_8_stop:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_126_8_131_8_if_end:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_120_32_132_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 132; @symbol_functiondef = [skipStep,132,13,21]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 134; @symbol_functiondef = [skipStep,134,13,21]; ]
     function skipStep() as Void {
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_132_32_134_4_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 133 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_134_32_136_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 135 8 ]
         %tmp.1 = self;
-        symbol [ nextStep %tmp.2 133 8 16 ];
+        symbol [ nextStep %tmp.2 135 8 16 ];
         %tmp.2 = getv function %tmp.1 :nextStep;
         invoke %tmp.1 %tmp.2();
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_132_32_134_4_stop:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_134_32_136_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 136; @symbol_functiondef = [togglePause,136,13,24]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 138; @symbol_functiondef = [togglePause,138,13,24]; ]
     function togglePause() as Void {
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_136_35_138_4_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 137 8 ]
-        symbol [ isPaused %tmp.2 137 20 28 ];
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_138_35_140_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 139 8 ]
+        symbol [ isPaused %tmp.2 139 20 28 ];
         %tmp.2 = getv ? :isPaused;
         %tmp.3 = not %tmp.2;
-        symbol [ isPaused ? 137 8 16 ];
+        symbol [ isPaused ? 139 8 16 ];
         putv self :isPaused %tmp.3;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_136_35_138_4_stop:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_138_35_140_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 140; @symbol_functiondef = [complete,140,13,21]; @symbol_param<0> = [success,140,22,29]; @symbol_param<0>_type<0> = [Boolean,140,33,40]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 142; @symbol_functiondef = [complete,142,13,21]; @symbol_param<0> = [success,142,22,29]; @symbol_param<0>_type<0> = [Boolean,142,33,40]; ]
     function complete(success as Boolean) as Void {
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_140_50_154_4_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 141 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_50_155_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 143 8 ]
         %tmp.1 = true;
-        symbol [ isCompleted ? 141 8 19 ];
+        symbol [ isCompleted ? 143 8 19 ];
         putv self :isCompleted %tmp.1;
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 142 8 ]
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_8_145_8_if_stmt:
-        symbol [ timer %tmp.3 142 12 17 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 144 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_144_8_147_8_if_stmt:
+        symbol [ timer %tmp.3 144 12 17 ];
         %tmp.3 = getv ? :timer;
         %tmp.4 = null;
         %tmp.5 = ne %tmp.3 %tmp.4;
-        bf %tmp.5 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_8_145_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_8_145_8_if_true:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_27_145_8_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 143 12 ]
-        symbol [ timer %tmp.7 143 12 17 ];
+        bf %tmp.5 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_144_8_147_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_144_8_147_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_144_27_147_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 145 12 ]
+        symbol [ timer %tmp.7 145 12 17 ];
         %tmp.7 = getv ? :timer;
         %tmp.8 = as %tmp.7 { (!Null) };
-        symbol [ stop %tmp.9 143 18 22 ];
+        symbol [ stop %tmp.9 145 18 22 ];
         %tmp.9 = getv function %tmp.8 :stop;
         invoke %tmp.8 %tmp.9();
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 144 12 ]
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 146 12 ]
         %tmp.10 = null;
-        symbol [ timer ? 144 12 17 ];
+        symbol [ timer ? 146 12 17 ];
         putv self :timer %tmp.10;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_27_145_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_8_145_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_8_145_8_if_end:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 146 8 ]
-        symbol [ workout %tmp.12 146 8 15 ];
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_144_27_147_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_144_8_147_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_144_8_147_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 148 8 ]
+        symbol [ workout %tmp.12 148 8 15 ];
         %tmp.12 = getv ? :workout;
-        symbol [ markComplete %tmp.13 146 16 28 ];
+        symbol [ markComplete %tmp.13 148 16 28 ];
         %tmp.13 = getv function %tmp.12 :markComplete;
         invoke %tmp.12 %tmp.13();
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 148 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_140_50_154_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_140_50_154_4_stop" ]
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 150 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_50_155_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_50_155_4_stop" ]
         %week.1 = local;
-        symbol [ week %week.1 148 12 16 ];
-        symbol [ Application %tmp.15 148 19 30 ];
+        symbol [ week %week.1 150 12 16 ];
+        symbol [ Application %tmp.15 150 19 30 ];
         %tmp.15 = getv ? :Application;
-        symbol [ getApp %tmp.16 148 31 37 ];
+        symbol [ getApp %tmp.16 150 31 37 ];
         %tmp.16 = getv function %tmp.15 :getApp;
         %tmp.17 = invoke %tmp.15 %tmp.16();
-        symbol [ completedWeeks %tmp.18 148 40 54 ];
+        symbol [ completedWeeks %tmp.18 150 40 54 ];
         %tmp.18 = getv %tmp.17 :completedWeeks;
         lputv %week.1 %tmp.18;
-        symbol [ week %week.1 148 12 16 ];
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 149 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_140_50_154_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_140_50_154_4_stop" ]
+        symbol [ week %week.1 150 12 16 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 151 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_50_155_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_50_155_4_stop" ]
         %key.2 = local;
-        symbol [ key %key.2 149 12 15 ];
+        symbol [ key %key.2 151 12 15 ];
         %tmp.19 = "week_";
         %tmp.20 = lgetv %week.1;
-        symbol [ week %tmp.20 149 28 32 ];
+        symbol [ week %tmp.20 151 28 32 ];
         %tmp.21 = add %tmp.19 %tmp.20;
         %tmp.22 = "_completed";
         %tmp.23 = add %tmp.21 %tmp.22;
         lputv %key.2 %tmp.23;
-        symbol [ key %key.2 149 12 15 ];
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 150 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_140_50_154_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_140_50_154_4_stop" ]
+        symbol [ key %key.2 151 12 15 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 152 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_50_155_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_50_155_4_stop" ]
         %curr.3 = local;
-        symbol [ curr %curr.3 150 12 16 ];
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_150_19_150_89_begin:
-        symbol [ sessionStorage %tmp.25 150 19 33 ];
+        symbol [ curr %curr.3 152 12 16 ];
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_152_19_152_89_begin:
+        symbol [ sessionStorage %tmp.25 152 19 33 ];
         %tmp.25 = getv ? :sessionStorage;
-        symbol [ getValue %tmp.26 150 34 42 ];
+        symbol [ getValue %tmp.26 152 34 42 ];
         %tmp.26 = getv function %tmp.25 :getValue;
         %tmp.27 = lgetv %key.2;
-        symbol [ key %tmp.27 150 43 46 ];
+        symbol [ key %tmp.27 152 43 46 ];
         %tmp.28 = invoke %tmp.25 %tmp.26(%tmp.27);
         %tmp.29 = null;
         %tmp.30 = ne %tmp.28 %tmp.29;
-        bf %tmp.30 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_150_19_150_89_else_false;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_150_19_150_89_true:
-        symbol [ sessionStorage %tmp.32 150 58 72 ];
+        bf %tmp.30 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_152_19_152_89_else_false;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_152_19_152_89_true:
+        symbol [ sessionStorage %tmp.32 152 58 72 ];
         %tmp.32 = getv ? :sessionStorage;
-        symbol [ getValue %tmp.33 150 73 81 ];
+        symbol [ getValue %tmp.33 152 73 81 ];
         %tmp.33 = getv function %tmp.32 :getValue;
         %tmp.34 = lgetv %key.2;
-        symbol [ key %tmp.34 150 82 85 ];
+        symbol [ key %tmp.34 152 82 85 ];
         %tmp.35 = invoke %tmp.32 %tmp.33(%tmp.34);
         push %tmp.35;
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_150_19_150_89_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_150_19_150_89_else_false:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_152_19_152_89_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_152_19_152_89_else_false:
         %tmp.36 = 0;
         push %tmp.36;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_150_19_150_89_end:
-        %tmp.37 = phi [%tmp.30 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_150_19_150_89_begin] [%tmp.35 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_150_19_150_89_true] [%tmp.36 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_150_19_150_89_else_false] [%tmp.37 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_150_19_150_89_end];
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_152_19_152_89_end:
+        %tmp.37 = phi [%tmp.30 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_152_19_152_89_begin] [%tmp.35 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_152_19_152_89_true] [%tmp.36 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_152_19_152_89_else_false] [%tmp.37 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_152_19_152_89_end];
         lputv %curr.3 %tmp.37;
-        symbol [ curr %curr.3 150 12 16 ];
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 151 8 ]
-        symbol [ sessionStorage %tmp.39 151 8 22 ];
+        symbol [ curr %curr.3 152 12 16 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 153 8 ]
+        symbol [ sessionStorage %tmp.39 153 8 22 ];
         %tmp.39 = getv ? :sessionStorage;
-        symbol [ setValue %tmp.40 151 23 31 ];
+        symbol [ setValue %tmp.40 153 23 31 ];
         %tmp.40 = getv function %tmp.39 :setValue;
         %tmp.41 = lgetv %key.2;
-        symbol [ key %tmp.41 151 32 35 ];
+        symbol [ key %tmp.41 153 32 35 ];
         %tmp.42 = lgetv %curr.3;
-        symbol [ curr %tmp.42 151 37 41 ];
+        symbol [ curr %tmp.42 153 37 41 ];
         %tmp.43 = 1;
         %tmp.44 = add %tmp.42 %tmp.43;
         invoke %tmp.39 %tmp.40(%tmp.41, %tmp.44);
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 153 8 ]
-        symbol [ sessionStorage %tmp.46 153 8 22 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 154 8 ]
+        symbol [ sessionStorage %tmp.46 154 8 22 ];
         %tmp.46 = getv ? :sessionStorage;
-        symbol [ setValue %tmp.47 153 23 31 ];
+        symbol [ setValue %tmp.47 154 23 31 ];
         %tmp.47 = getv function %tmp.46 :setValue;
         %tmp.48 = "workout_";
-        symbol [ workout %tmp.50 153 45 52 ];
+        symbol [ workout %tmp.50 154 45 52 ];
         %tmp.50 = getv ? :workout;
-        symbol [ id %tmp.51 153 53 55 ];
+        symbol [ id %tmp.51 154 53 55 ];
         %tmp.51 = getv %tmp.50 :id;
         %tmp.52 = add %tmp.48 %tmp.51;
         %tmp.53 = "_completed";
         %tmp.54 = add %tmp.52 %tmp.53;
         %tmp.55 = 1;
         invoke %tmp.46 %tmp.47(%tmp.54, %tmp.55);
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_140_50_154_4_stop:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_142_50_155_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 156; @symbol_functiondef = [getProgress,156,13,24]; @symbol_return<0> = [Number,156,30,36]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 157; @symbol_functiondef = [getProgress,157,13,24]; @symbol_return<0> = [Number,157,30,36]; ]
     function getProgress() as Number {
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_156_37_158_4_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 157 8 ]
-        symbol [ currentStepIndex %tmp.2 157 16 32 ];
-        %tmp.2 = getv ? :currentStepIndex;
-        %tmp.3 = 100;
-        %tmp.4 = mul %tmp.2 %tmp.3;
-        symbol [ workout %tmp.6 157 42 49 ];
-        %tmp.6 = getv ? :workout;
-        symbol [ getStepCount %tmp.7 157 50 62 ];
-        %tmp.7 = getv function %tmp.6 :getStepCount;
-        %tmp.8 = invoke %tmp.6 %tmp.7();
-        %tmp.9 = div %tmp.4 %tmp.8;
-        ret %tmp.9;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_156_37_158_4_stop:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_157_37_161_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 158 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_157_37_161_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_157_37_161_4_stop" ]
+        %total.1 = local;
+        symbol [ total %total.1 158 12 17 ];
+        symbol [ workout %tmp.2 158 20 27 ];
+        %tmp.2 = getv ? :workout;
+        symbol [ getStepCount %tmp.3 158 28 40 ];
+        %tmp.3 = getv function %tmp.2 :getStepCount;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        lputv %total.1 %tmp.4;
+        symbol [ total %total.1 158 12 17 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 159 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_159_8_159_36_if_stmt:
+        %tmp.5 = lgetv %total.1;
+        symbol [ total %tmp.5 159 12 17 ];
+        %tmp.6 = 0;
+        %tmp.7 = eq %tmp.5 %tmp.6;
+        bf %tmp.7 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_159_8_159_36_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_159_8_159_36_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_159_24_159_36_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 159 26 ]
+        %tmp.8 = 0;
+        ret %tmp.8;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_159_24_159_36_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_159_8_159_36_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_159_8_159_36_if_end:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 160 8 ]
+        symbol [ currentStepIndex %tmp.10 160 16 32 ];
+        %tmp.10 = getv ? :currentStepIndex;
+        %tmp.11 = 100;
+        %tmp.12 = mul %tmp.10 %tmp.11;
+        %tmp.13 = lgetv %total.1;
+        symbol [ total %tmp.13 160 42 47 ];
+        %tmp.14 = div %tmp.12 %tmp.13;
+        ret %tmp.14;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_157_37_161_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 160; @symbol_functiondef = [getElapsedTimeFormatted,160,13,36]; @symbol_return<0> = [String,160,42,48]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 163; @symbol_functiondef = [getElapsedTimeFormatted,163,13,36]; @symbol_return<0> = [String,163,42,48]; ]
     function getElapsedTimeFormatted() as String {
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_160_49_164_4_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 161 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_160_49_164_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_160_49_164_4_stop" ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_163_49_167_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 164 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_163_49_167_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_163_49_167_4_stop" ]
         %min.1 = local;
-        symbol [ min %min.1 161 12 15 ];
-        symbol [ elapsedSeconds %tmp.2 161 18 32 ];
+        symbol [ min %min.1 164 12 15 ];
+        symbol [ elapsedSeconds %tmp.2 164 18 32 ];
         %tmp.2 = getv ? :elapsedSeconds;
         %tmp.3 = 60;
         %tmp.4 = div %tmp.2 %tmp.3;
         lputv %min.1 %tmp.4;
-        symbol [ min %min.1 161 12 15 ];
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 162 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_160_49_164_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_160_49_164_4_stop" ]
+        symbol [ min %min.1 164 12 15 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 165 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_163_49_167_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_163_49_167_4_stop" ]
         %sec.2 = local;
-        symbol [ sec %sec.2 162 12 15 ];
-        symbol [ elapsedSeconds %tmp.6 162 18 32 ];
+        symbol [ sec %sec.2 165 12 15 ];
+        symbol [ elapsedSeconds %tmp.6 165 18 32 ];
         %tmp.6 = getv ? :elapsedSeconds;
         %tmp.7 = 60;
         %tmp.8 = mod %tmp.6 %tmp.7;
         lputv %sec.2 %tmp.8;
-        symbol [ sec %sec.2 162 12 15 ];
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 163 8 ]
+        symbol [ sec %sec.2 165 12 15 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 166 8 ]
         %tmp.9 = lgetv %min.1;
-        symbol [ min %tmp.9 163 15 18 ];
+        symbol [ min %tmp.9 166 15 18 ];
         %tmp.10 = ":";
         %tmp.11 = add %tmp.9 %tmp.10;
         %tmp.12 = lgetv %sec.2;
-        symbol [ sec %tmp.12 163 27 30 ];
-        symbol [ format %tmp.13 163 31 37 ];
+        symbol [ sec %tmp.12 166 27 30 ];
+        symbol [ format %tmp.13 166 31 37 ];
         %tmp.13 = getv function %tmp.12 :format;
         %tmp.14 = "%02d";
         %tmp.15 = invoke %tmp.12 %tmp.13(%tmp.14);
         %tmp.16 = add %tmp.11 %tmp.15;
         ret %tmp.16;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_160_49_164_4_stop:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_163_49_167_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 166; @symbol_functiondef = [onHide,166,13,19]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 169; @symbol_functiondef = [onHide,169,13,19]; ]
     function onHide() as Void {
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_166_30_170_4_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 167 8 ]
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_167_8_169_8_if_stmt:
-        symbol [ timer %tmp.2 167 12 17 ];
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_169_30_173_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 170 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_170_8_172_8_if_stmt:
+        symbol [ timer %tmp.2 170 12 17 ];
         %tmp.2 = getv ? :timer;
         %tmp.3 = null;
         %tmp.4 = ne %tmp.2 %tmp.3;
-        bf %tmp.4 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_167_8_169_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_167_8_169_8_if_true:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_167_27_169_8_start:
-[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 168 12 ]
-        symbol [ timer %tmp.6 168 12 17 ];
+        bf %tmp.4 @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_170_8_172_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_170_8_172_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_170_27_172_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" 171 12 ]
+        symbol [ timer %tmp.6 171 12 17 ];
         %tmp.6 = getv ? :timer;
         %tmp.7 = as %tmp.6 { (!Null) };
-        symbol [ stop %tmp.8 168 18 22 ];
+        symbol [ stop %tmp.8 171 18 22 ];
         %tmp.8 = getv function %tmp.7 :stop;
         invoke %tmp.7 %tmp.8();
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_167_27_169_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_167_8_169_8_if_end;
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_167_8_169_8_if_end:
-_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_166_30_170_4_stop:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_170_27_172_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_170_8_172_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_170_8_172_8_if_end:
+_home_cechinel_coachrox_garmin_source_WorkoutSession_mc_169_30_173_4_stop:
     }
 }
 [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutSession.mc"; @line = 1; ]

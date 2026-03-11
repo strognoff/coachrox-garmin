@@ -16,7 +16,6 @@ class WorkoutSession extends WatchUi.View {
     var timer as Timer.Timer?;
     
     var currentStepName as String = "";
-    var currentStepDuration as String = "";
     var nextStepName as String = "";
     
     const COLOR_ORANGE = 0xFF6B00;
@@ -37,7 +36,6 @@ class WorkoutSession extends WatchUi.View {
         var step = workout.getStep(currentStepIndex);
         if (step != null) {
             currentStepName = step.name;
-            currentStepDuration = step.getDurationFormatted();
             
             var next = workout.getStep(currentStepIndex + 1);
             nextStepName = next != null ? next.name : "DONE";
@@ -51,50 +49,54 @@ class WorkoutSession extends WatchUi.View {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
         
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+        
         // Header
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 5, Graphics.FONT_SMALL, "WORKOUT", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w / 2, 2, Graphics.FONT_TINY, "WORKOUT", Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Current step name - large in center
+        // Current step - large in upper middle
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 30, Graphics.FONT_MEDIUM, currentStepName, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w / 2, 20, Graphics.FONT_SMALL, currentStepName, Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Timer
+        // Timer - big in center
         var timeStr = getElapsedTimeFormatted();
         dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 65, Graphics.FONT_LARGE, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w / 2, 50, Graphics.FONT_LARGE, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Paused?
+        // Paused indicator
         if (isPaused) {
             dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_BLACK);
-            dc.drawText(dc.getWidth() / 2, 95, Graphics.FONT_TINY, "PAUSED", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(w / 2, 85, Graphics.FONT_TINY, "PAUSED", Graphics.TEXT_JUSTIFY_CENTER);
         }
         
-        // Progress bar
+        // Progress bar - middle
         var progress = getProgress();
-        var barW = dc.getWidth() - 30;
+        var barW = w - 30;
+        var barY = 105;
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.fillRectangle(15, 115, barW, 8);
-        dc.setColor(COLOR_GREEN, Graphics.TEXT_JUSTIFY_CENTER);
-        dc.fillRectangle(15, 115, barW * progress / 100, 8);
+        dc.fillRectangle(15, barY, barW, 6);
+        dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
+        dc.fillRectangle(15, barY, barW * progress / 100, 6);
         
         // Progress text
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 128, Graphics.FONT_TINY, progress + "% - Step " + (currentStepIndex + 1) + "/" + workout.getStepCount(), Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w / 2, 116, Graphics.FONT_TINY, progress + "% - " + (currentStepIndex + 1) + "/" + workout.getStepCount(), Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Next step
+        // Next step - lower
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 145, Graphics.FONT_TINY, "Next: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w / 2, 135, Graphics.FONT_TINY, "NEXT: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
         
         // Completion
         if (isCompleted) {
             dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
-            dc.drawText(dc.getWidth() / 2, 170, Graphics.FONT_MEDIUM, "DONE!", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(w / 2, h / 2 + 20, Graphics.FONT_MEDIUM, "DONE!", Graphics.TEXT_JUSTIFY_CENTER);
         }
         
-        // Controls hint
+        // Footer controls
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, dc.getHeight() - 12, Graphics.FONT_TINY, "DOWN: Pause | ENTER: Finish", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w / 2, h - 8, Graphics.FONT_TINY, "DOWN: Pause | ENTER: Done", Graphics.TEXT_JUSTIFY_CENTER);
     }
     
     function onShow() as Void {
@@ -132,7 +134,7 @@ class WorkoutSession extends WatchUi.View {
     function skipStep() as Void {
         nextStep();
     }
-    
+
     function togglePause() as Void {
         isPaused = !isPaused;
     }
@@ -149,12 +151,13 @@ class WorkoutSession extends WatchUi.View {
         var key = "week_" + week + "_completed";
         var curr = sessionStorage.getValue(key) != null ? sessionStorage.getValue(key) : 0;
         sessionStorage.setValue(key, curr + 1);
-        
         sessionStorage.setValue("workout_" + workout.id + "_completed", 1);
     }
     
     function getProgress() as Number {
-        return (currentStepIndex * 100) / workout.getStepCount();
+        var total = workout.getStepCount();
+        if (total == 0) { return 0; }
+        return (currentStepIndex * 100) / total;
     }
     
     function getElapsedTimeFormatted() as String {
