@@ -190,12 +190,12 @@ _home_cechinel_coachrox_garmin_source_WorkoutListView_mc_38_44_42_20_start:
         %tmp.52 = getv function %tmp.51 :setColor;
         symbol [ Graphics %tmp.53 39 36 44 ];
         %tmp.53 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.54 39 45 56 ];
-        %tmp.54 = getv %tmp.53 :COLOR_BLACK;
-        symbol [ Graphics %tmp.55 39 58 66 ];
+        symbol [ COLOR_DK_GRAY %tmp.54 39 45 58 ];
+        %tmp.54 = getv %tmp.53 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.55 39 60 68 ];
         %tmp.55 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.56 39 67 77 ];
-        %tmp.56 = getv %tmp.55 :FONT_SMALL;
+        symbol [ COLOR_WHITE %tmp.56 39 69 80 ];
+        %tmp.56 = getv %tmp.55 :COLOR_WHITE;
         invoke %tmp.51 %tmp.52(%tmp.54, %tmp.56);
 [ "/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" 40 24 ]
         %tmp.57 = lgetv %dc;
@@ -225,8 +225,8 @@ _home_cechinel_coachrox_garmin_source_WorkoutListView_mc_38_44_42_20_start:
         %tmp.70 = getv %tmp.69 :COLOR_WHITE;
         symbol [ Graphics %tmp.71 41 58 66 ];
         %tmp.71 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.72 41 67 78 ];
-        %tmp.72 = getv %tmp.71 :COLOR_BLACK;
+        symbol [ COLOR_TRANSPARENT %tmp.72 41 67 84 ];
+        %tmp.72 = getv %tmp.71 :COLOR_TRANSPARENT;
         invoke %tmp.67 %tmp.68(%tmp.70, %tmp.72);
 _home_cechinel_coachrox_garmin_source_WorkoutListView_mc_38_44_42_20_stop:
         goto @_home_cechinel_coachrox_garmin_source_WorkoutListView_mc_38_20_44_20_if_end;
@@ -637,6 +637,20 @@ _home_cechinel_coachrox_garmin_source_WorkoutListView_mc_91_8_103_8_if_end:
         %tmp.42 = false;
         ret %tmp.42;
 _home_cechinel_coachrox_garmin_source_WorkoutListView_mc_90_62_105_4_stop:
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutListView.mc"; @line = 107; @symbol_functiondef = [onSelect,107,13,21]; @symbol_return<0> = [Boolean,107,27,34]; ]
+    function onSelect() as Boolean {
+_home_cechinel_coachrox_garmin_source_WorkoutListView_mc_107_35_110_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" 108 8 ]
+        symbol [ view %tmp.2 108 8 12 ];
+        %tmp.2 = getv ? :view;
+        symbol [ startSelected %tmp.3 108 13 26 ];
+        %tmp.3 = getv function %tmp.2 :startSelected;
+        invoke %tmp.2 %tmp.3();
+[ "/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" 109 8 ]
+        %tmp.4 = true;
+        ret %tmp.4;
+_home_cechinel_coachrox_garmin_source_WorkoutListView_mc_107_35_110_4_stop:
     }
 }
 [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutListView.mc"; @line = 1; ]

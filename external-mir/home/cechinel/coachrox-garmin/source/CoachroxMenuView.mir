@@ -199,11 +199,11 @@ _home_cechinel_coachrox_garmin_source_CoachroxMenuView_mc_58_35_62_12_start:
         %tmp.47 = getv function %tmp.46 :setColor;
         symbol [ Graphics %tmp.48 59 28 36 ];
         %tmp.48 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.49 59 37 48 ];
-        %tmp.49 = getv %tmp.48 :COLOR_BLACK;
-        symbol [ Graphics %tmp.50 59 50 58 ];
+        symbol [ COLOR_DK_GRAY %tmp.49 59 37 50 ];
+        %tmp.49 = getv %tmp.48 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.50 59 52 60 ];
         %tmp.50 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.51 59 59 70 ];
+        symbol [ COLOR_WHITE %tmp.51 59 61 72 ];
         %tmp.51 = getv %tmp.50 :COLOR_WHITE;
         invoke %tmp.46 %tmp.47(%tmp.49, %tmp.51);
 [ "/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" 60 16 ]
@@ -237,8 +237,8 @@ _home_cechinel_coachrox_garmin_source_CoachroxMenuView_mc_58_35_62_12_start:
         %tmp.67 = getv %tmp.66 :COLOR_WHITE;
         symbol [ Graphics %tmp.68 61 50 58 ];
         %tmp.68 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.69 61 59 70 ];
-        %tmp.69 = getv %tmp.68 :COLOR_BLACK;
+        symbol [ COLOR_TRANSPARENT %tmp.69 61 59 76 ];
+        %tmp.69 = getv %tmp.68 :COLOR_TRANSPARENT;
         invoke %tmp.64 %tmp.65(%tmp.67, %tmp.69);
 _home_cechinel_coachrox_garmin_source_CoachroxMenuView_mc_58_35_62_12_stop:
         goto @_home_cechinel_coachrox_garmin_source_CoachroxMenuView_mc_58_12_64_12_if_end;
