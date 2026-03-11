@@ -10,10 +10,10 @@ class PlanEngine {
     const PLAN_12_WEEK = 12;
     
     // Week types for 12-week plan
-    const PHASE_BASE = 0;      // Weeks 1-4: Foundation
-    const PHASE_BUILD = 1;     // Weeks 5-8: Building intensity
-    const PHASE_SPECIFIC = 2;  // Weeks 9-11: Race-specific
-    const PHASE_TAPER = 3;     // Week 12: Taper for race
+    const PHASE_BASE = 0;      // Weeks 1-4: Foundation (low intensity, technique focus)
+    const PHASE_BUILD = 1;     // Weeks 5-8: Building intensity (threshold work, higher volume)
+    const PHASE_SPECIFIC = 2;  // Weeks 9-11: Race-specific (race simulation, compromised runs)
+    const PHASE_TAPER = 3;     // Week 12: Taper (reduced volume)
     
     // HYROX Levels
     const LEVEL_BEGINNER = 0;    // New to HYROX
@@ -24,6 +24,15 @@ class PlanEngine {
     const ADAPTATION_SUCCESS = "adapt_success";
     const ADAPTATION_FAIL = "adapt_fail";
     const ADAPTATION_THRESHOLD = 2;
+    const ADHERENCE_THRESHOLD = 85; // 85% weekly adherence for progression
+    const WEEKS_FOR_PROGRESSION = 2; // 2 consecutive weeks at threshold for progression
+    
+    // Load jump guardrail
+    const MAX_LOAD_JUMP = 12; // Max 12% load increase
+    
+    // Current week adherence tracking
+    var currentWeekWorkouts as Number = 0;
+    var currentWeekCompleted as Number = 0;
     
     function initialize(storage as SessionStorage) {
         sessionStorage = storage;
@@ -97,7 +106,23 @@ class PlanEngine {
         // Day 5: Lower Body + Cardio (Lunges, Farmer's Carry, Rowing)
         workouts[4] = createLowerBodyWorkout(level, week, weekMultiplier, phase, 4, storage);
         
+        // Set phase on all workouts and add targets
+        for (var i = 0; i < workouts.size(); i++) {
+            workouts[i].setPhase(week);
+            addTargetsToWorkout(workouts[i], phase, week, level);
+        }
+        
         return workouts;
+    }
+    
+    //! Add target model to all steps in a workout
+    function addTargetsToWorkout(workout as Workout, phase as Number, week as Number, level as Number) as Void {
+        for (var i = 0; i < workout.getStepCount(); i++) {
+            var step = workout.getStep(i);
+            if (step != null) {
+                setStepTargets(step, step.activityType, phase, week, level);
+            }
+        }
     }
     
     //! Create phase-specific workout for Day 3
@@ -425,6 +450,122 @@ class PlanEngine {
         }
         
         return "Progress: " + successes + "/" + ADAPTATION_THRESHOLD + " OK, " + fails + "/" + ADAPTATION_THRESHOLD + " FAIL";
+    }
+    
+    //! Enhanced adaptation logic with weekly adherence tracking
+    function recordWeeklyAdherence(week as Number, adherencePercent as Number) as Void {
+        // Store weekly adherence
+        sessionStorage.setValue("week_" + week + "_adherence", adherencePercent);
+        
+        // Check for 2 consecutive weeks ≥85% adherence → progression suggestion
+        var prevWeekAdherenceVal = sessionStorage.getValue("week_" + (week - 1) + "_adherence");
+        var prevWeekAdherence = prevWeekAdherenceVal != null ? prevWeekAdherenceVal as Number : 0;
+        
+        var currentLevel = sessionStorage.getValue("userLevel") != null 
+            ? sessionStorage.getValue("userLevel") as Number
+            : 0;
+        
+        if (adherencePercent >= ADHERENCE_THRESHOLD && 
+            prevWeekAdherenceVal != null && 
+            prevWeekAdherence >= ADHERENCE_THRESHOLD &&
+            currentLevel < LEVEL_ADVANCED) {
+            // 2 consecutive weeks at threshold - suggest progression
+            sessionStorage.setValue("progression_suggested", 1);
+            sessionStorage.setValue("progression_reason", "2 weeks >= 85% adherence");
+        }
+    }
+    
+    //! Apply max load jump guardrail (max 12% increase)
+    function applyLoadGuardrail(currentLoad as Float, proposedLoad as Float) as Float {
+        var maxLoad = currentLoad * (1.0 + (MAX_LOAD_JUMP / 100.0));
+        if (proposedLoad > maxLoad) {
+            return maxLoad;
+        }
+        return proposedLoad;
+    }
+    
+    //! Calculate load for a given week based on phase and progression
+    function calculateWeekLoad(week as Number, baseLoad as Number) as Number {
+        var phase = getPhaseForWeek(week);
+        var load = baseLoad;
+        
+        // Apply phase-specific multipliers
+        if (phase == PHASE_BASE) {
+            // BASE: Low intensity, focus on technique (weeks 1-4)
+            load = baseLoad * 0.7; 
+        } else if (phase == PHASE_BUILD) {
+            // BUILD: Threshold work, higher volume (weeks 5-8)
+            load = baseLoad * (0.8 + ((week - 4) * 0.05)); // Progressive increase
+        } else if (phase == PHASE_SPECIFIC) {
+            // SPECIFIC: Race simulation, compromised runs (weeks 9-11)
+            load = baseLoad * (1.0 + ((week - 8) * 0.05)); // Peak load
+        } else {
+            // TAPER: Reduced volume (week 12)
+            load = baseLoad * 0.6;
+        }
+        
+        // Apply load guardrail
+        var prevWeekLoadVal = sessionStorage.getValue("prev_week_load");
+        if (prevWeekLoadVal != null) {
+            var prevWeekLoad = prevWeekLoadVal as Float;
+            load = applyLoadGuardrail(prevWeekLoad, load);
+        }
+        
+        sessionStorage.setValue("prev_week_load", load);
+        return load.toNumber();
+    }
+    
+    //! Set targets on a workout step based on phase and activity type
+    function setStepTargets(step as WorkoutStep, activityType as String, phase as Number, week as Number, level as Number) as Void {
+        // Set HR zone based on phase
+        if (phase == PHASE_BASE) {
+            // BASE: Zone 1-2 (Recovery, Aerobic)
+            step.setTargetHRZone(2);
+            step.setTargetRPE(3 + (week * 0.5).toNumber()); // RPE 3-5
+            step.setTargetPace(360 + (week * 10)); // Easy pace ~6:00/km
+        } else if (phase == PHASE_BUILD) {
+            // BUILD: Zone 2-3 (Tempo/Threshold)
+            step.setTargetHRZone(3);
+            step.setTargetRPE(5 + (week * 0.5).toNumber()); // RPE 5-7
+            step.setTargetPace(330 + (week * 8)); // ~5:30/km
+        } else if (phase == PHASE_SPECIFIC) {
+            // SPECIFIC: Zone 3-4 (Race pace)
+            step.setTargetHRZone(4);
+            step.setTargetRPE(7 + (week * 0.5).toNumber()); // RPE 7-9
+            step.setTargetPace(300 + (week * 5)); // ~5:00/km
+        } else {
+            // TAPER: Zone 1-2 (Recovery)
+            step.setTargetHRZone(1);
+            step.setTargetRPE(2); // Very easy
+            step.setTargetPace(380); // Very easy pace
+        }
+        
+        // Adjust for activity type
+        if (activityType.equals("run")) {
+            // Running pace targets already set above
+        } else if (activityType.equals("rowing") || activityType.equals("ski_erg")) {
+            // Cardio equipment - use pace equivalent
+            step.setTargetPace(step.targetPaceSecPerKm / 2); // Convert to effort
+        } else if (activityType.equals("burpee_broad_jump") || 
+                   activityType.equals("wall_ball") || 
+                   activityType.equals("pull_up") ||
+                   activityType.equals("kettlebell_swing")) {
+            // Rep-based exercises - RPE is primary target
+            step.setTargetPace(0); // Not applicable
+        }
+    }
+    
+    //! Get phase description for display
+    function getPhaseDescription(phase as Number) as String {
+        if (phase == PHASE_BASE) {
+            return "Base: Low intensity, technique focus";
+        } else if (phase == PHASE_BUILD) {
+            return "Build: Threshold work, higher volume";
+        } else if (phase == PHASE_SPECIFIC) {
+            return "Specific: Race simulation, race pace";
+        } else {
+            return "Taper: Reduced volume, freshen up";
+        }
     }
 }
 

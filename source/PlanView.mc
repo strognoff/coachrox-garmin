@@ -32,20 +32,29 @@ class PlanView extends WatchUi.View {
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
         dc.drawText(w/2, 2, Graphics.FONT_TINY, "WEEK " + plan.getWeekNumber(), Graphics.TEXT_JUSTIFY_CENTER);
 
+        // Show phase info
+        var engine = app.planEngine;
+        if (engine != null) {
+            var phase = engine.getPhaseForWeek(plan.getWeekNumber());
+            var phaseName = engine.getPhaseName(phase);
+            dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
+            dc.drawText(w/2, 14, Graphics.FONT_TINY, phaseName + " PHASE", Graphics.TEXT_JUSTIFY_CENTER);
+        }
+
         // Progress bar
         var completion = plan.getCompletionRate().toNumber();
         var barColor = completion >= 100 ? COLOR_GREEN : (completion >= 50 ? COLOR_YELLOW : COLOR_BLUE);
         
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.fillRectangle(10, 18, w - 20, 4);
+        dc.fillRectangle(10, 28, w - 20, 4);
         dc.setColor(barColor, Graphics.COLOR_BLACK);
-        dc.fillRectangle(10, 18, (w - 20) * completion / 100, 4);
+        dc.fillRectangle(10, 28, (w - 20) * completion / 100, 4);
         
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 26, Graphics.FONT_TINY, completion + "%", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w/2, 36, Graphics.FONT_TINY, completion + "%", Graphics.TEXT_JUSTIFY_CENTER);
 
         // Workouts list from Plan
-        var y = 42;
+        var y = 50;
         
         for (var i = 0; i < 5; i++) {
             var workout = plan.getWorkout(i);
@@ -54,11 +63,11 @@ class PlanView extends WatchUi.View {
                 dc.setColor(done ? COLOR_GREEN : Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
                 dc.drawText(10, y, Graphics.FONT_TINY, (i+1) + ". " + workout.name, Graphics.TEXT_JUSTIFY_LEFT);
                 
-                // Duration
+                // Phase indicator
                 dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-                dc.drawText(w - 10, y, Graphics.FONT_TINY, workout.durationMinutes + "m", Graphics.TEXT_JUSTIFY_RIGHT);
+                dc.drawText(w - 10, y, Graphics.FONT_TINY, workout.getPhaseName(), Graphics.TEXT_JUSTIFY_RIGHT);
             }
-            y += 18;
+            y += 16;
         }
 
         // Footer

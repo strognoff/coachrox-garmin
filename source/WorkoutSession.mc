@@ -93,6 +93,20 @@ class WorkoutSession extends WatchUi.View {
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
         dc.drawText(w/2, 100, Graphics.FONT_TINY, "NEXT: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
         
+        // Show step targets if available
+        var currentStep = workout.getStep(currentStepIndex);
+        if (currentStep != null) {
+            var targetY = 115;
+            if (currentStep.targetHRZone > 0) {
+                dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
+                dc.drawText(10, targetY, Graphics.FONT_TINY, "HR: " + WorkoutStep.getHRZoneName(currentStep.targetHRZone), Graphics.TEXT_JUSTIFY_LEFT);
+            }
+            if (currentStep.targetRPE > 0) {
+                dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
+                dc.drawText(w - 10, targetY, Graphics.FONT_TINY, "RPE: " + currentStep.targetRPE + " (" + WorkoutStep.getRPEDescription(currentStep.targetRPE) + ")", Graphics.TEXT_JUSTIFY_RIGHT);
+            }
+        }
+        
         // Done
         if (isCompleted) {
             dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
@@ -114,33 +128,50 @@ class WorkoutSession extends WatchUi.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
         dc.drawText(w/2, 20, Graphics.FONT_TINY, workout.name, Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Total time
+        // Phase indicator
         dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 40, Graphics.FONT_MEDIUM, getTotalElapsedTimeFormatted(), Graphics.TEXT_JUSTIFY_CENTER);
+        var phaseName = workout.getPhaseName();
+        dc.drawText(w/2, 35, Graphics.FONT_TINY, "Phase: " + phaseName, Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Total time
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, 52, Graphics.FONT_MEDIUM, getTotalElapsedTimeFormatted(), Graphics.TEXT_JUSTIFY_CENTER);
         
         // Stats
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        var statsY = 65;
+        var statsY = 75;
         
         // Steps completed
-        dc.drawText(10, statsY, Graphics.FONT_TINY, "Steps: " + workout.getStepCount(), Graphics.TEXT_JUSTIFY_LEFT);
+        var completedSteps = 0;
+        for (var i = 0; i < workout.getStepCount(); i++) {
+            var step = workout.getStep(i);
+            if (step != null && step.completed) { completedSteps++; }
+        }
+        dc.drawText(10, statsY, Graphics.FONT_TINY, "Steps: " + completedSteps + "/" + workout.getStepCount(), Graphics.TEXT_JUSTIFY_LEFT);
         
-        // Duration
-        dc.drawText(10, statsY + 15, Graphics.FONT_TINY, "Est. Time: " + workout.durationMinutes + " min", Graphics.TEXT_JUSTIFY_LEFT);
+        // Compliance percentage
+        var compliance = workout.getCompliancePercent();
+        var complianceColor = COLOR_GREEN;
+        if (compliance < 70) { complianceColor = COLOR_ORANGE; }
+        if (compliance < 50) { complianceColor = COLOR_RED; }
         
-        // Intensity
-        dc.drawText(10, statsY + 30, Graphics.FONT_TINY, "Intensity: " + workout.getIntensityLabel(), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.setColor(complianceColor, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, statsY + 12, Graphics.FONT_TINY, "Compliance: " + compliance + "%", Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Compliance status
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(10, statsY + 24, Graphics.FONT_TINY, "Status: " + workout.getComplianceStatus(), Graphics.TEXT_JUSTIFY_LEFT);
         
         // Week info
         var week = Application.getApp().completedWeeks;
-        dc.drawText(10, statsY + 45, Graphics.FONT_TINY, "Week: " + (week + 1), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(10, statsY + 36, Graphics.FONT_TINY, "Week: " + (week + 1), Graphics.TEXT_JUSTIFY_LEFT);
         
         // Adaptation status
         var app = Application.getApp();
         if (app.planEngine != null) {
             var adaptStatus = app.planEngine.getAdaptationStatus();
             dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_BLACK);
-            dc.drawText(w/2, statsY + 65, Graphics.FONT_TINY, adaptStatus, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(w/2, statsY + 55, Graphics.FONT_TINY, adaptStatus, Graphics.TEXT_JUSTIFY_CENTER);
         }
         
         // Exit hint
@@ -167,7 +198,11 @@ class WorkoutSession extends WatchUi.View {
     
     function nextStep() as Void {
         var step = workout.getStep(currentStepIndex);
-        if (step != null) { step.completed = true; }
+        if (step != null) { 
+            step.completed = true;
+            // Record actual performance for compliance tracking
+            step.recordActual(elapsedSeconds, step.targetReps, step.distanceMeters);
+        }
         currentStepIndex++;
         if (currentStepIndex >= workout.getStepCount()) {
             complete(true);
@@ -212,10 +247,16 @@ class WorkoutSession extends WatchUi.View {
         var curr = sessionStorage.getValue(key) != null ? sessionStorage.getValue(key) : 0;
         sessionStorage.setValue(key, curr + 1);
         
+        // Calculate weekly adherence percentage (completed/5 * 100)
+        var weeklyAdherence = ((curr + 1) * 100) / 5;
+        
         // Record the workout result for adaptation
         var app = Application.getApp();
         if (app.planEngine != null) {
             app.planEngine.recordWorkoutResult(success);
+            
+            // Record weekly adherence for progression logic
+            app.planEngine.recordWeeklyAdherence(week, weeklyAdherence);
         }
         
         WatchUi.requestUpdate();
