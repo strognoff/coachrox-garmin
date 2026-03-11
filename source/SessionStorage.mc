@@ -54,6 +54,8 @@ class SessionStorage {
     //! Note: Storage.clear() is not available in SDK 8.x
     //! Use setValue for individual keys to null to remove them
     function clearAll() as Void {
+        Storage.setValue("userLevel", null);
+        Storage.setValue("completedWeeks", null);
         // Storage.clear() was removed in newer SDKs
         // Individual keys need to be set to null to be removed
     }
