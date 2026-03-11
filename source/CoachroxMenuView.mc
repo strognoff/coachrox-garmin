@@ -24,56 +24,51 @@ class CoachroxMenuView extends WatchUi.View {
         WatchUi.View.initialize();
         app = application;
         
-        menuItems = [
-            "Start Workout",
-            "View Plan",
-            "Progress",
-            "Settings"
-        ];
+        menuItems = ["Start Workout", "View Plan", "Progress", "Settings"];
     }
     
     function onLayout(dc as Dc) as Void {
     }
     
-    function onShow() as Void {
-    }
-    
     function onUpdate(dc as Dc) as Void {
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+        
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
         
-        // Header - smaller
+        // Header at top
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 3, Graphics.FONT_TINY, "COACHROX", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w/2, 2, Graphics.FONT_TINY, "COACHROX", Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Decorative line
         dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-        dc.fillRectangle(20, 18, dc.getWidth() - 40, 1);
+        dc.fillRectangle(20, 16, w - 40, 1);
         
-        // Menu items - smaller fonts, more spacing
-        var startY = 28;
-        var itemHeight = 28;
+        // Menu items centered vertically
+        var itemHeight = 22;
+        var totalHeight = menuItems.size() * itemHeight;
+        var startY = (h - totalHeight) / 2 - 10;
         
         for (var i = 0; i < menuItems.size(); i++) {
             var y = startY + (i * itemHeight);
             
             if (i == selectedItem) {
                 dc.setColor(COLOR_BLUE, Graphics.COLOR_WHITE);
-                dc.fillRectangle(3, y, dc.getWidth() - 6, itemHeight - 2);
+                dc.fillRectangle(5, y, w - 10, itemHeight - 1);
                 dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
             } else {
                 dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
             }
             
-            dc.drawText(dc.getWidth() / 2, y + 5, Graphics.FONT_TINY, menuItems[i], Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(w/2, y + 3, Graphics.FONT_TINY, menuItems[i], Graphics.TEXT_JUSTIFY_CENTER);
         }
         
-        // Footer
+        // Footer at bottom
         var plan = app.getCurrentPlan();
         if (plan != null) {
             var weekText = "W" + plan.getWeekNumber() + " | " + plan.getCompletionRate() + "%";
             dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-            dc.drawText(dc.getWidth() / 2, dc.getHeight() - 10, Graphics.FONT_TINY, weekText, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(w/2, h - 12, Graphics.FONT_TINY, weekText, Graphics.TEXT_JUSTIFY_CENTER);
         }
     }
     
@@ -89,21 +84,13 @@ class CoachroxMenuView extends WatchUi.View {
     
     function selectItem() as Void {
         if (selectedItem == ITEM_START_WORKOUT) {
-            var view = new WorkoutListView(app);
-            var delegate = new WorkoutListDelegate(view);
-            WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);
+            WatchUi.pushView(new WorkoutListView(app), new WorkoutListDelegate(new WorkoutListView(app)), WatchUi.SLIDE_LEFT);
         } else if (selectedItem == ITEM_VIEW_PLAN) {
-            var view = new PlanView(app);
-            var delegate = new PlanDelegate(view);
-            WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);
+            WatchUi.pushView(new PlanView(app), new PlanDelegate(new PlanView(app)), WatchUi.SLIDE_LEFT);
         } else if (selectedItem == ITEM_PROGRESS) {
-            var view = new ProgressView(app);
-            var delegate = new ProgressDelegate(view);
-            WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);
+            WatchUi.pushView(new ProgressView(app), new ProgressDelegate(new ProgressView(app)), WatchUi.SLIDE_LEFT);
         } else if (selectedItem == ITEM_SETTINGS) {
-            var view = new SettingsView(app);
-            var delegate = new SettingsDelegate(view);
-            WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);
+            WatchUi.pushView(new SettingsView(app), new SettingsDelegate(new SettingsView(app)), WatchUi.SLIDE_LEFT);
         }
     }
 }
