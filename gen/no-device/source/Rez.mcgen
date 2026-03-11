@@ -1,0 +1,31 @@
+import Toybox.Lang;
+using Toybox.WatchUi;
+using Toybox.WatchUi as Ui;
+using Toybox.Graphics;
+using Toybox.Graphics as Gfx;
+
+module Rez {
+    module Drawables {
+        (:initialized) var LauncherIcon as ResourceId;
+    } // Drawables
+
+    module Strings {
+        (:initialized) var ActivityRun as ResourceId;
+        (:initialized) var Progress as ResourceId;
+        (:initialized) var LevelAdvanced as ResourceId;
+        (:initialized) var AppNameLong as ResourceId;
+        (:initialized) var StartWorkout as ResourceId;
+        (:initialized) var LevelIntermediate as ResourceId;
+        (:initialized) var Coachrox as ResourceId;
+        (:initialized) var AppName as ResourceId;
+        (:initialized) var ViewPlan as ResourceId;
+        (:initialized) var LevelBeginner as ResourceId;
+        (:initialized) var WorkoutActive as ResourceId;
+        (:initialized) var Completed as ResourceId;
+        (:initialized) var ActivityRest as ResourceId;
+        (:initialized) var ActivityBurpees as ResourceId;
+        (:initialized) var ActivityLunges as ResourceId;
+        (:initialized) var Settings as ResourceId;
+        (:initialized) var Paused as ResourceId;
+    } // Strings
+} // Rez

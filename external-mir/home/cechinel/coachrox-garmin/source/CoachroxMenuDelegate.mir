@@ -1,0 +1,129 @@
+[ @file = "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+import Toybox.WatchUi;
+//! Input delegate for main menu
+[ @file = "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc"; @line = 5; @symbol_classdef = [CoachroxMenuDelegate,5,6,26]; @symbol_extends<0> = [WatchUi,5,35,42]; @symbol_extends<1> = [InputDelegate,5,43,56]; ]
+class CoachroxMenuDelegate extends WatchUi.InputDelegate {
+    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc"; @line = 7; @position = 8; @symbol_vardef = [view,7,8,12]; @symbol_type<0> = [CoachroxMenuView,7,16,32]; ]
+    var view as CoachroxMenuView;
+    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc"; @line = 9; @symbol_functiondef = [initialize,9,13,23]; @symbol_param<0> = [menuView,9,24,32]; @symbol_param<0>_type<0> = [CoachroxMenuView,9,36,52]; ]
+    function initialize(menuView as CoachroxMenuView) as Void {
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_9_54_12_4_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" 10 8 ]
+        symbol [ WatchUi %tmp.1 10 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ InputDelegate %tmp.2 10 16 29 ];
+        %tmp.2 = getv %tmp.1 :InputDelegate;
+        symbol [ initialize %tmp.3 10 30 40 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" 11 8 ]
+        %tmp.4 = lgetv %menuView;
+        symbol [ menuView %tmp.4 11 15 23 ];
+        symbol [ view ? 11 8 12 ];
+        putv self :view %tmp.4;
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_9_54_12_4_stop:
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc"; @line = 14; @symbol_functiondef = [onKeyPressed,14,13,25]; @symbol_param<0> = [key,14,26,29]; @symbol_param<0>_type<0> = [WatchUi,14,33,40]; @symbol_param<0>_type<1> = [KeyEvent,14,41,49]; @symbol_return<0> = [Boolean,14,54,61]; ]
+    function onKeyPressed(key as WatchUi.KeyEvent) as Boolean {
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_14_62_26_4_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" 15 8 ]
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_15_8_24_8_if_stmt:
+        %tmp.1 = lgetv %key;
+        symbol [ key %tmp.1 15 12 15 ];
+        symbol [ getKey %tmp.2 15 16 22 ];
+        %tmp.2 = getv function %tmp.1 :getKey;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ WatchUi %tmp.4 15 28 35 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ KEY_UP %tmp.5 15 36 42 ];
+        %tmp.5 = getv %tmp.4 :KEY_UP;
+        %tmp.6 = eq %tmp.3 %tmp.5;
+        bf %tmp.6 @_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_15_8_24_8_if_false;
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_15_8_24_8_if_true:
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_15_44_18_8_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" 16 12 ]
+        symbol [ view %tmp.8 16 12 16 ];
+        %tmp.8 = getv ? :view;
+        symbol [ selectPrevious %tmp.9 16 17 31 ];
+        %tmp.9 = getv function %tmp.8 :selectPrevious;
+        invoke %tmp.8 %tmp.9();
+[ "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" 17 12 ]
+        %tmp.10 = true;
+        ret %tmp.10;
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_15_44_18_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_15_8_24_8_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_15_8_24_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" 18 15 ]
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_18_15_24_8_if_stmt:
+        %tmp.11 = lgetv %key;
+        symbol [ key %tmp.11 18 19 22 ];
+        symbol [ getKey %tmp.12 18 23 29 ];
+        %tmp.12 = getv function %tmp.11 :getKey;
+        %tmp.13 = invoke %tmp.11 %tmp.12();
+        symbol [ WatchUi %tmp.14 18 35 42 ];
+        %tmp.14 = getm $.Toybox.WatchUi;
+        symbol [ KEY_DOWN %tmp.15 18 43 51 ];
+        %tmp.15 = getv %tmp.14 :KEY_DOWN;
+        %tmp.16 = eq %tmp.13 %tmp.15;
+        bf %tmp.16 @_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_18_15_24_8_if_false;
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_18_15_24_8_if_true:
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_18_53_21_8_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" 19 12 ]
+        symbol [ view %tmp.18 19 12 16 ];
+        %tmp.18 = getv ? :view;
+        symbol [ selectNext %tmp.19 19 17 27 ];
+        %tmp.19 = getv function %tmp.18 :selectNext;
+        invoke %tmp.18 %tmp.19();
+[ "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" 20 12 ]
+        %tmp.20 = true;
+        ret %tmp.20;
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_18_53_21_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_18_15_24_8_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_18_15_24_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" 21 15 ]
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_21_15_24_8_if_stmt:
+        %tmp.21 = lgetv %key;
+        symbol [ key %tmp.21 21 19 22 ];
+        symbol [ getKey %tmp.22 21 23 29 ];
+        %tmp.22 = getv function %tmp.21 :getKey;
+        %tmp.23 = invoke %tmp.21 %tmp.22();
+        symbol [ WatchUi %tmp.24 21 35 42 ];
+        %tmp.24 = getm $.Toybox.WatchUi;
+        symbol [ KEY_ENTER %tmp.25 21 43 52 ];
+        %tmp.25 = getv %tmp.24 :KEY_ENTER;
+        %tmp.26 = eq %tmp.23 %tmp.25;
+        bf %tmp.26 @_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_21_15_24_8_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_21_15_24_8_if_true:
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_21_54_24_8_start:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" 22 12 ]
+        symbol [ view %tmp.28 22 12 16 ];
+        %tmp.28 = getv ? :view;
+        symbol [ selectItem %tmp.29 22 17 27 ];
+        %tmp.29 = getv function %tmp.28 :selectItem;
+        invoke %tmp.28 %tmp.29();
+[ "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" 23 12 ]
+        %tmp.30 = true;
+        ret %tmp.30;
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_21_54_24_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_21_15_24_8_if_end;
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_21_15_24_8_if_end:
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_18_15_24_8_if_end:
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_15_8_24_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" 25 8 ]
+        %tmp.31 = false;
+        ret %tmp.31;
+_home_cechinel_coachrox_garmin_source_CoachroxMenuDelegate_mc_14_62_26_4_stop:
+    }
+}
+[ @file = "/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc"; @line = 1; ]
+<init> {
+}

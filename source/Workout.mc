@@ -1,3 +1,5 @@
+import Toybox.Lang;
+
 //! Represents a single workout step
 class WorkoutStep {
     var name as String;

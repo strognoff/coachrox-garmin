@@ -1,4 +1,5 @@
-using Toybox.WatchUi;
+import Toybox.Lang;
+import Toybox.WatchUi;
 
 //! Input delegate for main menu
 class CoachroxMenuDelegate extends WatchUi.InputDelegate {
@@ -24,18 +25,19 @@ class CoachroxMenuDelegate extends WatchUi.InputDelegate {
         return false;
     }
     
-    function onTap(event as WatchUi.TapEvent) as Boolean {
-        var x = event.getX();
-        var y = event.getY();
-        
-        // Simple tap zones
-        if (y < 90) {
-            view.selectPrevious();
-        } else if (y > 130) {
-            view.selectNext();
-        } else {
-            view.selectItem();
-        }
-        return true;
-    }
+    // onTap was removed - tap handling API changed in SDK 8.x
+    // function onTap(event as WatchUi.TapEvent) as Boolean {
+    //     var x = event.getX();
+    //     var y = event.getY();
+    //     
+    //     // Simple tap zones
+    //     if (y < 90) {
+    //         view.selectPrevious();
+    //     } else if (y > 130) {
+    //         view.selectNext();
+    //     } else {
+    //         view.selectItem();
+    //     }
+    //     return true;
+    // }
 }

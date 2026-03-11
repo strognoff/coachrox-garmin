@@ -1,4 +1,5 @@
-using Toybox.Storage;
+import Toybox.Lang;
+import Toybox.Application.Storage;
 
 //! Plan Engine - manages training plans
 class PlanEngine {
@@ -126,7 +127,7 @@ class Plan {
     var level as Number;
     var currentWeek as Number;
     var completedSessions as Number;
-    var workouts as Array<Workout>;
+    var workouts as Array<Workout> = [];
     
     function initialize(lvl as Number, week as Number, completed as Number) {
         level = lvl;

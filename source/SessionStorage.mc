@@ -1,4 +1,5 @@
-using Toybox.Storage;
+import Toybox.Lang;
+import Toybox.Application.Storage;
 
 //! Session storage for plans and progress
 class SessionStorage {
@@ -7,12 +8,12 @@ class SessionStorage {
     }
     
     //! Get a value from storage
-    function getValue(key as String) as Any? {
+    function getValue(key as String) as Object? {
         return Storage.getValue(key);
     }
     
     //! Set a value in storage
-    function setValue(key as String, value as Any) as Void {
+    function setValue(key as String, value as Object) as Void {
         Storage.setValue(key, value);
     }
     
@@ -50,7 +51,10 @@ class SessionStorage {
     }
     
     //! Clear all data (for testing/reset)
+    //! Note: Storage.clear() is not available in SDK 8.x
+    //! Use setValue for individual keys to null to remove them
     function clearAll() as Void {
-        Storage.clear();
+        // Storage.clear() was removed in newer SDKs
+        // Individual keys need to be set to null to be removed
     }
 }

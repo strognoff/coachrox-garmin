@@ -1,5 +1,6 @@
-using Toybox.WatchUi;
-using Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.Graphics;
 
 //! Settings view for app configuration
 class SettingsView extends WatchUi.View {
@@ -35,7 +36,7 @@ class SettingsView extends WatchUi.View {
         if (currentLevel == 1) { levelName = "Intermediate"; }
         if (currentLevel == 2) { levelName = "Advanced"; }
         
-        dc.setColor(Graphics.COLOR_GRAY, Graphics.COLOR_BLACK);
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
         dc.drawText(dc.getWidth() / 2, 40, Graphics.FONT_SMALL, "Current: " + levelName, Graphics.TEXT_JUSTIFY_CENTER);
         
         // Options
@@ -54,7 +55,7 @@ class SettingsView extends WatchUi.View {
         }
         
         // Instructions
-        dc.setColor(Graphics.COLOR_GRAY, Graphics.COLOR_BLACK);
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
         dc.drawText(dc.getWidth() / 2, dc.getHeight() - 30, Graphics.FONT_TINY, "UP/DOWN: Select | ENTER: Set", Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(dc.getWidth() / 2, dc.getHeight() - 15, Graphics.FONT_TINY, "ESC: Back", Graphics.TEXT_JUSTIFY_CENTER);
     }

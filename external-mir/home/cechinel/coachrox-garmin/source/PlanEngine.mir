@@ -1,0 +1,851 @@
+[ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Application,2,14,25]; @symbol_importdef<2> = [Storage,2,26,33]; ]
+import Toybox.Application.Storage;
+//! Plan Engine - manages training plans
+[ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 5; @symbol_classdef = [PlanEngine,5,6,16]; ]
+class PlanEngine {
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 7; @position = 8; @symbol_vardef = [sessionStorage,7,8,22]; @symbol_type<0> = [SessionStorage,7,26,40]; ]
+    var sessionStorage as SessionStorage;
+    //! Available plan templates
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 10; @position = 10; @symbol_constdef = [PLAN_8_WEEK,10,10,21]; ]
+    const PLAN_8_WEEK = 8;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 11; @position = 10; @symbol_constdef = [PLAN_12_WEEK,11,10,22]; ]
+    const PLAN_12_WEEK = 12;
+    //! Training levels
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 14; @position = 10; @symbol_constdef = [LEVEL_BEGINNER,14,10,24]; ]
+    const LEVEL_BEGINNER = 0;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 15; @position = 10; @symbol_constdef = [LEVEL_INTERMEDIATE,15,10,28]; ]
+    const LEVEL_INTERMEDIATE = 1;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 16; @position = 10; @symbol_constdef = [LEVEL_ADVANCED,16,10,24]; ]
+    const LEVEL_ADVANCED = 2;
+    //! Session types
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 19; @position = 10; @symbol_constdef = [SESSION_INTERVALS,19,10,27]; ]
+    const SESSION_INTERVALS = 0;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 20; @position = 10; @symbol_constdef = [SESSION_COMBO,20,10,23]; ]
+    const SESSION_COMBO = 1;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 21; @position = 10; @symbol_constdef = [SESSION_THRESHOLD,21,10,27]; ]
+    const SESSION_THRESHOLD = 2;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 22; @position = 10; @symbol_constdef = [SESSION_RECOVERY,22,10,26]; ]
+    const SESSION_RECOVERY = 3;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 24; @symbol_functiondef = [initialize,24,13,23]; @symbol_param<0> = [storage,24,24,31]; @symbol_param<0>_type<0> = [SessionStorage,24,35,49]; ]
+    function initialize(storage as SessionStorage) as Void {
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_24_51_26_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 25 8 ]
+        %tmp.1 = lgetv %storage;
+        symbol [ storage %tmp.1 25 25 32 ];
+        symbol [ sessionStorage ? 25 8 22 ];
+        putv self :sessionStorage %tmp.1;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_24_51_26_4_stop:
+    }
+    //! Get a training plan based on level and week
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 29; @symbol_functiondef = [getPlan,29,13,20]; @symbol_param<0> = [level,29,21,26]; @symbol_param<0>_type<0> = [Number,29,30,36]; @symbol_param<1> = [week,29,38,42]; @symbol_param<1>_type<0> = [Number,29,46,52]; @symbol_return<0> = [Plan,29,57,61]; ]
+    function getPlan(level as Number, week as Number) as Plan {
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_29_62_46_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 30 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_29_62_46_4_start" "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_29_62_46_4_stop" ]
+        %planLength.1 = local;
+        symbol [ planLength %planLength.1 30 12 22 ];
+        symbol [ PLAN_8_WEEK %tmp.2 30 25 36 ];
+        %tmp.2 = getv ? :PLAN_8_WEEK;
+        lputv %planLength.1 %tmp.2;
+        symbol [ planLength %planLength.1 30 12 22 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 31 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_29_62_46_4_start" "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_29_62_46_4_stop" ]
+        %planType.2 = local;
+        symbol [ planType %planType.2 31 12 20 ];
+        symbol [ LEVEL_BEGINNER %tmp.4 31 23 37 ];
+        %tmp.4 = getv ? :LEVEL_BEGINNER;
+        lputv %planType.2 %tmp.4;
+        symbol [ planType %planType.2 31 12 20 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 33 8 ]
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_33_8_35_8_if_stmt:
+        %tmp.5 = lgetv %level;
+        symbol [ level %tmp.5 33 12 17 ];
+        symbol [ LEVEL_INTERMEDIATE %tmp.7 33 21 39 ];
+        %tmp.7 = getv ? :LEVEL_INTERMEDIATE;
+        %tmp.8 = gte %tmp.5 %tmp.7;
+        bf %tmp.8 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_33_8_35_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_33_8_35_8_if_true:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_33_41_35_8_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 34 12 ]
+        symbol [ LEVEL_INTERMEDIATE %tmp.10 34 23 41 ];
+        %tmp.10 = getv ? :LEVEL_INTERMEDIATE;
+        lputv %planType.2 %tmp.10;
+        symbol [ planType %planType.2 34 12 20 ];
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_33_41_35_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_33_8_35_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_33_8_35_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 36 8 ]
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_36_8_38_8_if_stmt:
+        %tmp.11 = lgetv %level;
+        symbol [ level %tmp.11 36 12 17 ];
+        symbol [ LEVEL_ADVANCED %tmp.13 36 21 35 ];
+        %tmp.13 = getv ? :LEVEL_ADVANCED;
+        %tmp.14 = gte %tmp.11 %tmp.13;
+        bf %tmp.14 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_36_8_38_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_36_8_38_8_if_true:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_36_37_38_8_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 37 12 ]
+        symbol [ LEVEL_ADVANCED %tmp.16 37 23 37 ];
+        %tmp.16 = getv ? :LEVEL_ADVANCED;
+        lputv %planType.2 %tmp.16;
+        symbol [ planType %planType.2 37 12 20 ];
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_36_37_38_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_36_8_38_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_36_8_38_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 41 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_29_62_46_4_start" "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_29_62_46_4_stop" ]
+        %completedThisWeek.3 = local;
+        symbol [ completedThisWeek %completedThisWeek.3 41 12 29 ];
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_41_32_43_14_begin:
+        symbol [ sessionStorage %tmp.18 41 32 46 ];
+        %tmp.18 = getv ? :sessionStorage;
+        symbol [ getValue %tmp.19 41 47 55 ];
+        %tmp.19 = getv function %tmp.18 :getValue;
+        %tmp.20 = "week_";
+        %tmp.21 = lgetv %week;
+        symbol [ week %tmp.21 41 66 70 ];
+        %tmp.22 = add %tmp.20 %tmp.21;
+        %tmp.23 = "_completed";
+        %tmp.24 = add %tmp.22 %tmp.23;
+        %tmp.25 = invoke %tmp.18 %tmp.19(%tmp.24);
+        %tmp.26 = null;
+        %tmp.27 = ne %tmp.25 %tmp.26;
+        bf %tmp.27 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_41_32_43_14_else_false;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_41_32_43_14_true:
+        symbol [ sessionStorage %tmp.29 42 14 28 ];
+        %tmp.29 = getv ? :sessionStorage;
+        symbol [ getValue %tmp.30 42 29 37 ];
+        %tmp.30 = getv function %tmp.29 :getValue;
+        %tmp.31 = "week_";
+        %tmp.32 = lgetv %week;
+        symbol [ week %tmp.32 42 48 52 ];
+        %tmp.33 = add %tmp.31 %tmp.32;
+        %tmp.34 = "_completed";
+        %tmp.35 = add %tmp.33 %tmp.34;
+        %tmp.36 = invoke %tmp.29 %tmp.30(%tmp.35);
+        push %tmp.36;
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_41_32_43_14_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_41_32_43_14_else_false:
+        %tmp.37 = 0;
+        push %tmp.37;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_41_32_43_14_end:
+        %tmp.38 = phi [%tmp.27 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_41_32_43_14_begin] [%tmp.36 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_41_32_43_14_true] [%tmp.37 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_41_32_43_14_else_false] [%tmp.38 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_41_32_43_14_end];
+        lputv %completedThisWeek.3 %tmp.38;
+        symbol [ completedThisWeek %completedThisWeek.3 41 12 29 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 45 8 ]
+        symbol [ Plan %tmp.42 45 19 23 ];
+        %tmp.42 = getv ? :Plan;
+        %tmp.43 = lgetv %planType.2;
+        symbol [ planType %tmp.43 45 24 32 ];
+        %tmp.44 = lgetv %week;
+        symbol [ week %tmp.44 45 34 38 ];
+        %tmp.45 = lgetv %completedThisWeek.3;
+        symbol [ completedThisWeek %tmp.45 45 40 57 ];
+        %tmp.39 = newc %tmp.42 (%tmp.43, %tmp.44, %tmp.45);
+        ret %tmp.39;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_29_62_46_4_stop:
+    }
+    //! Get suggested adaptation based on performance
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 49; @symbol_functiondef = [getAdaptationSuggestion,49,13,36]; @symbol_return<0> = [Number,49,42,48]; ]
+    function getAdaptationSuggestion() as Number {
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_49_49_69_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 51 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_49_49_69_4_start" "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_49_49_69_4_stop" ]
+        %lastWeekCompleted.1 = local;
+        symbol [ lastWeekCompleted %lastWeekCompleted.1 51 12 29 ];
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_51_32_53_14_begin:
+        symbol [ sessionStorage %tmp.2 51 32 46 ];
+        %tmp.2 = getv ? :sessionStorage;
+        symbol [ getValue %tmp.3 51 47 55 ];
+        %tmp.3 = getv function %tmp.2 :getValue;
+        %tmp.4 = "week_completed";
+        %tmp.5 = invoke %tmp.2 %tmp.3(%tmp.4);
+        %tmp.6 = null;
+        %tmp.7 = ne %tmp.5 %tmp.6;
+        bf %tmp.7 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_51_32_53_14_else_false;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_51_32_53_14_true:
+        symbol [ sessionStorage %tmp.9 52 14 28 ];
+        %tmp.9 = getv ? :sessionStorage;
+        symbol [ getValue %tmp.10 52 29 37 ];
+        %tmp.10 = getv function %tmp.9 :getValue;
+        %tmp.11 = "week_completed";
+        %tmp.12 = invoke %tmp.9 %tmp.10(%tmp.11);
+        push %tmp.12;
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_51_32_53_14_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_51_32_53_14_else_false:
+        %tmp.13 = 0;
+        push %tmp.13;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_51_32_53_14_end:
+        %tmp.14 = phi [%tmp.7 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_51_32_53_14_begin] [%tmp.12 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_51_32_53_14_true] [%tmp.13 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_51_32_53_14_else_false] [%tmp.14 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_51_32_53_14_end];
+        lputv %lastWeekCompleted.1 %tmp.14;
+        symbol [ lastWeekCompleted %lastWeekCompleted.1 51 12 29 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 54 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_49_49_69_4_start" "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_49_49_69_4_stop" ]
+        %weekBeforeCompleted.2 = local;
+        symbol [ weekBeforeCompleted %weekBeforeCompleted.2 54 12 31 ];
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_54_34_56_14_begin:
+        symbol [ sessionStorage %tmp.16 54 34 48 ];
+        %tmp.16 = getv ? :sessionStorage;
+        symbol [ getValue %tmp.17 54 49 57 ];
+        %tmp.17 = getv function %tmp.16 :getValue;
+        %tmp.18 = "week_-1_completed";
+        %tmp.19 = invoke %tmp.16 %tmp.17(%tmp.18);
+        %tmp.20 = null;
+        %tmp.21 = ne %tmp.19 %tmp.20;
+        bf %tmp.21 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_54_34_56_14_else_false;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_54_34_56_14_true:
+        symbol [ sessionStorage %tmp.23 55 14 28 ];
+        %tmp.23 = getv ? :sessionStorage;
+        symbol [ getValue %tmp.24 55 29 37 ];
+        %tmp.24 = getv function %tmp.23 :getValue;
+        %tmp.25 = "week_-1_completed";
+        %tmp.26 = invoke %tmp.23 %tmp.24(%tmp.25);
+        push %tmp.26;
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_54_34_56_14_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_54_34_56_14_else_false:
+        %tmp.27 = 0;
+        push %tmp.27;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_54_34_56_14_end:
+        %tmp.28 = phi [%tmp.21 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_54_34_56_14_begin] [%tmp.26 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_54_34_56_14_true] [%tmp.27 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_54_34_56_14_else_false] [%tmp.28 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_54_34_56_14_end];
+        lputv %weekBeforeCompleted.2 %tmp.28;
+        symbol [ weekBeforeCompleted %weekBeforeCompleted.2 54 12 31 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 59 8 ]
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_8_61_8_if_stmt:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_12_59_59_begin:
+        %tmp.29 = lgetv %lastWeekCompleted.1;
+        symbol [ lastWeekCompleted %tmp.29 59 12 29 ];
+        %tmp.30 = 3;
+        %tmp.31 = lt %tmp.29 %tmp.30;
+        bf %tmp.31 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_8_61_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_37_59_59_true:
+        %tmp.32 = lgetv %weekBeforeCompleted.2;
+        symbol [ weekBeforeCompleted %tmp.32 59 37 56 ];
+        %tmp.33 = 3;
+        %tmp.34 = lt %tmp.32 %tmp.33;
+        push %tmp.34;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_37_59_59_end:
+        %tmp.35 = phi [%tmp.31 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_12_59_59_begin] [%tmp.34 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_37_59_59_true] [%tmp.35 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_37_59_59_end];
+        bf %tmp.35 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_8_61_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_8_61_8_if_true:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_62_61_8_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 60 12 ]
+        %tmp.36 = -1;
+        ret %tmp.36;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_62_61_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_8_61_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_59_8_61_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 64 8 ]
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_8_66_8_if_stmt:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_12_64_61_begin:
+        %tmp.37 = lgetv %lastWeekCompleted.1;
+        symbol [ lastWeekCompleted %tmp.37 64 12 29 ];
+        %tmp.38 = 4;
+        %tmp.39 = gte %tmp.37 %tmp.38;
+        bf %tmp.39 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_8_66_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_38_64_61_true:
+        %tmp.40 = lgetv %weekBeforeCompleted.2;
+        symbol [ weekBeforeCompleted %tmp.40 64 38 57 ];
+        %tmp.41 = 4;
+        %tmp.42 = gte %tmp.40 %tmp.41;
+        push %tmp.42;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_38_64_61_end:
+        %tmp.43 = phi [%tmp.39 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_12_64_61_begin] [%tmp.42 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_38_64_61_true] [%tmp.43 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_38_64_61_end];
+        bf %tmp.43 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_8_66_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_8_66_8_if_true:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_64_66_8_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 65 12 ]
+        %tmp.44 = 1;
+        ret %tmp.44;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_64_66_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_8_66_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_64_8_66_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 68 8 ]
+        %tmp.45 = 0;
+        ret %tmp.45;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_49_49_69_4_stop:
+    }
+    //! Generate workout for the week
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 72; @symbol_functiondef = [generateWeeklyWorkouts,72,13,35]; @symbol_param<0> = [week,72,36,40]; @symbol_param<0>_type<0> = [Number,72,44,50]; @symbol_param<1> = [level,72,52,57]; @symbol_param<1>_type<0> = [Number,72,61,67]; @symbol_return<0> = [Array,72,72,77]; @symbol_return<1> = [Workout,72,78,85]; ]
+    function generateWeeklyWorkouts(week as Number, level as Number) as Array<Workout> {
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_72_87_91_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 73 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_72_87_91_4_start" "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_72_87_91_4_stop" ]
+        %workouts.1 = local;
+        symbol [ workouts %workouts.1 73 12 20 ];
+        %tmp.2 = 5;
+        %tmp.1 = newa %tmp.2;
+        %tmp.3 = as %tmp.1 Array<Workout>;
+        symbol [ Array %tmp.3 73 34 39 ];
+        symbol [ Workout %tmp.3 73 40 47 ];
+        lputv %workouts.1 %tmp.3;
+        symbol [ workouts %workouts.1 73 12 20 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 76 8 ]
+        %tmp.4 = lgetv %workouts.1;
+        symbol [ workouts %tmp.4 76 8 16 ];
+        %tmp.5 = self;
+        symbol [ createWorkout %tmp.6 76 22 35 ];
+        %tmp.6 = getv function %tmp.5 :createWorkout;
+        %tmp.7 = "Intervals ";
+        %tmp.8 = lgetv %week;
+        symbol [ week %tmp.8 76 52 56 ];
+        %tmp.9 = 1;
+        %tmp.10 = add %tmp.8 %tmp.9;
+        %tmp.11 = add %tmp.7 %tmp.10;
+        symbol [ SESSION_INTERVALS %tmp.13 76 63 80 ];
+        %tmp.13 = getv ? :SESSION_INTERVALS;
+        %tmp.14 = lgetv %level;
+        symbol [ level %tmp.14 76 82 87 ];
+        %tmp.15 = 30;
+        %tmp.16 = lgetv %week;
+        symbol [ week %tmp.16 76 94 98 ];
+        %tmp.17 = 2;
+        %tmp.18 = mul %tmp.16 %tmp.17;
+        %tmp.19 = add %tmp.15 %tmp.18;
+        %tmp.20 = invoke %tmp.5 %tmp.6(%tmp.11, %tmp.13, %tmp.14, %tmp.19);
+        %tmp.21 = 0;
+        aputv %tmp.4 %tmp.21 %tmp.20;
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 79 8 ]
+        %tmp.22 = lgetv %workouts.1;
+        symbol [ workouts %tmp.22 79 8 16 ];
+        %tmp.23 = self;
+        symbol [ createWorkout %tmp.24 79 22 35 ];
+        %tmp.24 = getv function %tmp.23 :createWorkout;
+        %tmp.25 = "Combo ";
+        %tmp.26 = lgetv %week;
+        symbol [ week %tmp.26 79 48 52 ];
+        %tmp.27 = 1;
+        %tmp.28 = add %tmp.26 %tmp.27;
+        %tmp.29 = add %tmp.25 %tmp.28;
+        symbol [ SESSION_COMBO %tmp.31 79 59 72 ];
+        %tmp.31 = getv ? :SESSION_COMBO;
+        %tmp.32 = lgetv %level;
+        symbol [ level %tmp.32 79 74 79 ];
+        %tmp.33 = 35;
+        %tmp.34 = lgetv %week;
+        symbol [ week %tmp.34 79 86 90 ];
+        %tmp.35 = 2;
+        %tmp.36 = mul %tmp.34 %tmp.35;
+        %tmp.37 = add %tmp.33 %tmp.36;
+        %tmp.38 = invoke %tmp.23 %tmp.24(%tmp.29, %tmp.31, %tmp.32, %tmp.37);
+        %tmp.39 = 1;
+        aputv %tmp.22 %tmp.39 %tmp.38;
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 82 8 ]
+        %tmp.40 = lgetv %workouts.1;
+        symbol [ workouts %tmp.40 82 8 16 ];
+        %tmp.41 = self;
+        symbol [ createWorkout %tmp.42 82 22 35 ];
+        %tmp.42 = getv function %tmp.41 :createWorkout;
+        %tmp.43 = "Recovery ";
+        %tmp.44 = lgetv %week;
+        symbol [ week %tmp.44 82 51 55 ];
+        %tmp.45 = 1;
+        %tmp.46 = add %tmp.44 %tmp.45;
+        %tmp.47 = add %tmp.43 %tmp.46;
+        symbol [ SESSION_RECOVERY %tmp.49 82 62 78 ];
+        %tmp.49 = getv ? :SESSION_RECOVERY;
+        %tmp.50 = lgetv %level;
+        symbol [ level %tmp.50 82 80 85 ];
+        %tmp.51 = 20;
+        %tmp.52 = invoke %tmp.41 %tmp.42(%tmp.47, %tmp.49, %tmp.50, %tmp.51);
+        %tmp.53 = 2;
+        aputv %tmp.40 %tmp.53 %tmp.52;
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 85 8 ]
+        %tmp.54 = lgetv %workouts.1;
+        symbol [ workouts %tmp.54 85 8 16 ];
+        %tmp.55 = self;
+        symbol [ createWorkout %tmp.56 85 22 35 ];
+        %tmp.56 = getv function %tmp.55 :createWorkout;
+        %tmp.57 = "Threshold ";
+        %tmp.58 = lgetv %week;
+        symbol [ week %tmp.58 85 52 56 ];
+        %tmp.59 = 1;
+        %tmp.60 = add %tmp.58 %tmp.59;
+        %tmp.61 = add %tmp.57 %tmp.60;
+        symbol [ SESSION_THRESHOLD %tmp.63 85 63 80 ];
+        %tmp.63 = getv ? :SESSION_THRESHOLD;
+        %tmp.64 = lgetv %level;
+        symbol [ level %tmp.64 85 82 87 ];
+        %tmp.65 = 40;
+        %tmp.66 = lgetv %week;
+        symbol [ week %tmp.66 85 94 98 ];
+        %tmp.67 = 3;
+        %tmp.68 = mul %tmp.66 %tmp.67;
+        %tmp.69 = add %tmp.65 %tmp.68;
+        %tmp.70 = invoke %tmp.55 %tmp.56(%tmp.61, %tmp.63, %tmp.64, %tmp.69);
+        %tmp.71 = 3;
+        aputv %tmp.54 %tmp.71 %tmp.70;
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 88 8 ]
+        %tmp.72 = lgetv %workouts.1;
+        symbol [ workouts %tmp.72 88 8 16 ];
+        %tmp.73 = self;
+        symbol [ createWorkout %tmp.74 88 22 35 ];
+        %tmp.74 = getv function %tmp.73 :createWorkout;
+        %tmp.75 = "Finale ";
+        %tmp.76 = lgetv %week;
+        symbol [ week %tmp.76 88 49 53 ];
+        %tmp.77 = 1;
+        %tmp.78 = add %tmp.76 %tmp.77;
+        %tmp.79 = add %tmp.75 %tmp.78;
+        symbol [ SESSION_COMBO %tmp.81 88 60 73 ];
+        %tmp.81 = getv ? :SESSION_COMBO;
+        %tmp.82 = lgetv %level;
+        symbol [ level %tmp.82 88 75 80 ];
+        %tmp.83 = 45;
+        %tmp.84 = lgetv %week;
+        symbol [ week %tmp.84 88 87 91 ];
+        %tmp.85 = 2;
+        %tmp.86 = mul %tmp.84 %tmp.85;
+        %tmp.87 = add %tmp.83 %tmp.86;
+        %tmp.88 = invoke %tmp.73 %tmp.74(%tmp.79, %tmp.81, %tmp.82, %tmp.87);
+        %tmp.89 = 4;
+        aputv %tmp.72 %tmp.89 %tmp.88;
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 90 8 ]
+        %tmp.90 = lgetv %workouts.1;
+        symbol [ workouts %tmp.90 90 15 23 ];
+        ret %tmp.90;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_72_87_91_4_stop:
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 93; @symbol_functiondef = [createWorkout,93,13,26]; @symbol_param<0> = [name,93,27,31]; @symbol_param<0>_type<0> = [String,93,35,41]; @symbol_param<1> = [type,93,43,47]; @symbol_param<1>_type<0> = [Number,93,51,57]; @symbol_param<2> = [level,93,59,64]; @symbol_param<2>_type<0> = [Number,93,68,74]; @symbol_param<3> = [durationMin,93,76,87]; @symbol_param<3>_type<0> = [Number,93,91,97]; @symbol_return<0> = [Workout,93,102,109]; ]
+    function createWorkout(name as String, type as Number, level as Number, durationMin as Number) as Workout {
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_93_110_122_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 94 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_93_110_122_4_start" "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_93_110_122_4_stop" ]
+        %steps.1 = local;
+        symbol [ steps %steps.1 94 12 17 ];
+        %tmp.2 = 0;
+        %tmp.1 = newa %tmp.2;
+        %tmp.3 = as %tmp.1 Array<WorkoutStep>;
+        symbol [ Array %tmp.3 94 31 36 ];
+        symbol [ WorkoutStep %tmp.3 94 37 48 ];
+        lputv %steps.1 %tmp.3;
+        symbol [ steps %steps.1 94 12 17 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 97 8 ]
+        %tmp.4 = lgetv %steps.1;
+        symbol [ steps %tmp.4 97 8 13 ];
+        symbol [ add %tmp.5 97 14 17 ];
+        %tmp.5 = getv function %tmp.4 :add;
+        symbol [ WorkoutStep %tmp.9 97 22 33 ];
+        %tmp.9 = getv ? :WorkoutStep;
+        %tmp.10 = "Warm Up";
+        %tmp.11 = "run";
+        %tmp.12 = 300;
+        %tmp.13 = 0;
+        %tmp.14 = 0;
+        %tmp.6 = newc %tmp.9 (%tmp.10, %tmp.11, %tmp.12, %tmp.13, %tmp.14);
+        invoke %tmp.4 %tmp.5(%tmp.6);
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 100 8 ]
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_100_8_116_8_if_stmt:
+        %tmp.15 = lgetv %type;
+        symbol [ type %tmp.15 100 12 16 ];
+        symbol [ SESSION_INTERVALS %tmp.17 100 20 37 ];
+        %tmp.17 = getv ? :SESSION_INTERVALS;
+        %tmp.18 = eq %tmp.15 %tmp.17;
+        bf %tmp.18 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_100_8_116_8_if_false;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_100_8_116_8_if_true:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_100_39_106_8_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 101 12 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_100_39_106_8_start" "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_100_39_106_8_stop" ]
+        %rounds.2 = local;
+        symbol [ rounds %rounds.2 101 16 22 ];
+        %tmp.19 = 4;
+        %tmp.20 = lgetv %level;
+        symbol [ level %tmp.20 101 29 34 ];
+        %tmp.21 = add %tmp.19 %tmp.20;
+        lputv %rounds.2 %tmp.21;
+        symbol [ rounds %rounds.2 101 16 22 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 102 12 ]
+        for @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_12_105_12_for_test @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_12_105_12_for_incr @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_12_105_12_for_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_12_105_12_for_init:
+        [ "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_12_105_12_for_begin" "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_12_105_12_for_end" ]
+        %i.3 = local;
+        symbol [ i %i.3 102 21 22 ];
+        %tmp.22 = 0;
+        lputv %i.3 %tmp.22;
+        symbol [ i %i.3 102 21 22 ];
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_12_105_12_for_test:
+        %tmp.23 = lgetv %i.3;
+        symbol [ i %tmp.23 102 28 29 ];
+        %tmp.24 = lgetv %rounds.2;
+        symbol [ rounds %tmp.24 102 32 38 ];
+        %tmp.25 = lt %tmp.23 %tmp.24;
+        bf %tmp.25 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_12_105_12_for_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_12_105_12_for_begin:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_45_105_12_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 103 16 ]
+        %tmp.26 = lgetv %steps.1;
+        symbol [ steps %tmp.26 103 16 21 ];
+        symbol [ add %tmp.27 103 22 25 ];
+        %tmp.27 = getv function %tmp.26 :add;
+        symbol [ WorkoutStep %tmp.31 103 30 41 ];
+        %tmp.31 = getv ? :WorkoutStep;
+        %tmp.32 = "Work ";
+        %tmp.33 = lgetv %i.3;
+        symbol [ i %tmp.33 103 53 54 ];
+        %tmp.34 = 1;
+        %tmp.35 = add %tmp.33 %tmp.34;
+        %tmp.36 = add %tmp.32 %tmp.35;
+        %tmp.37 = "run";
+        %tmp.38 = 120;
+        %tmp.39 = 0;
+        %tmp.40 = 0;
+        %tmp.28 = newc %tmp.31 (%tmp.36, %tmp.37, %tmp.38, %tmp.39, %tmp.40);
+        invoke %tmp.26 %tmp.27(%tmp.28);
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 104 16 ]
+        %tmp.41 = lgetv %steps.1;
+        symbol [ steps %tmp.41 104 16 21 ];
+        symbol [ add %tmp.42 104 22 25 ];
+        %tmp.42 = getv function %tmp.41 :add;
+        symbol [ WorkoutStep %tmp.46 104 30 41 ];
+        %tmp.46 = getv ? :WorkoutStep;
+        %tmp.47 = "Rest ";
+        %tmp.48 = lgetv %i.3;
+        symbol [ i %tmp.48 104 53 54 ];
+        %tmp.49 = 1;
+        %tmp.50 = add %tmp.48 %tmp.49;
+        %tmp.51 = add %tmp.47 %tmp.50;
+        %tmp.52 = "rest";
+        %tmp.53 = 60;
+        %tmp.54 = 0;
+        %tmp.55 = 0;
+        %tmp.43 = newc %tmp.46 (%tmp.51, %tmp.52, %tmp.53, %tmp.54, %tmp.55);
+        invoke %tmp.41 %tmp.42(%tmp.43);
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_45_105_12_stop:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_12_105_12_for_incr:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 102 ]
+        %tmp.58 = lgetv %i.3;
+        symbol [ i %tmp.58 102 40 41 ];
+        %tmp.59 = add %tmp.58 1;
+        lputv %i.3 %tmp.59;
+        symbol [ i %i.3 102 40 41 ];
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_12_105_12_for_test;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_102_12_105_12_for_end:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_100_39_106_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_100_8_116_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_100_8_116_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 106 15 ]
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_106_15_116_8_if_stmt:
+        %tmp.60 = lgetv %type;
+        symbol [ type %tmp.60 106 19 23 ];
+        symbol [ SESSION_COMBO %tmp.62 106 27 40 ];
+        %tmp.62 = getv ? :SESSION_COMBO;
+        %tmp.63 = eq %tmp.60 %tmp.62;
+        bf %tmp.63 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_106_15_116_8_if_false;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_106_15_116_8_if_true:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_106_42_111_8_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 107 12 ]
+        %tmp.64 = lgetv %steps.1;
+        symbol [ steps %tmp.64 107 12 17 ];
+        symbol [ add %tmp.65 107 18 21 ];
+        %tmp.65 = getv function %tmp.64 :add;
+        symbol [ WorkoutStep %tmp.69 107 26 37 ];
+        %tmp.69 = getv ? :WorkoutStep;
+        %tmp.70 = "Run Block";
+        %tmp.71 = "run";
+        %tmp.72 = 600;
+        %tmp.73 = 0;
+        %tmp.74 = 0;
+        %tmp.66 = newc %tmp.69 (%tmp.70, %tmp.71, %tmp.72, %tmp.73, %tmp.74);
+        invoke %tmp.64 %tmp.65(%tmp.66);
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 108 12 ]
+        %tmp.75 = lgetv %steps.1;
+        symbol [ steps %tmp.75 108 12 17 ];
+        symbol [ add %tmp.76 108 18 21 ];
+        %tmp.76 = getv function %tmp.75 :add;
+        symbol [ WorkoutStep %tmp.80 108 26 37 ];
+        %tmp.80 = getv ? :WorkoutStep;
+        %tmp.81 = "Burpees";
+        %tmp.82 = "burpee broad jump";
+        %tmp.83 = 180;
+        %tmp.84 = 0;
+        %tmp.85 = 15;
+        %tmp.77 = newc %tmp.80 (%tmp.81, %tmp.82, %tmp.83, %tmp.84, %tmp.85);
+        invoke %tmp.75 %tmp.76(%tmp.77);
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 109 12 ]
+        %tmp.86 = lgetv %steps.1;
+        symbol [ steps %tmp.86 109 12 17 ];
+        symbol [ add %tmp.87 109 18 21 ];
+        %tmp.87 = getv function %tmp.86 :add;
+        symbol [ WorkoutStep %tmp.91 109 26 37 ];
+        %tmp.91 = getv ? :WorkoutStep;
+        %tmp.92 = "Run Block";
+        %tmp.93 = "run";
+        %tmp.94 = 600;
+        %tmp.95 = 0;
+        %tmp.96 = 0;
+        %tmp.88 = newc %tmp.91 (%tmp.92, %tmp.93, %tmp.94, %tmp.95, %tmp.96);
+        invoke %tmp.86 %tmp.87(%tmp.88);
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 110 12 ]
+        %tmp.97 = lgetv %steps.1;
+        symbol [ steps %tmp.97 110 12 17 ];
+        symbol [ add %tmp.98 110 18 21 ];
+        %tmp.98 = getv function %tmp.97 :add;
+        symbol [ WorkoutStep %tmp.102 110 26 37 ];
+        %tmp.102 = getv ? :WorkoutStep;
+        %tmp.103 = "Lunges";
+        %tmp.104 = "lunges";
+        %tmp.105 = 180;
+        %tmp.106 = 0;
+        %tmp.107 = 20;
+        %tmp.99 = newc %tmp.102 (%tmp.103, %tmp.104, %tmp.105, %tmp.106, %tmp.107);
+        invoke %tmp.97 %tmp.98(%tmp.99);
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_106_42_111_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_106_15_116_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_106_15_116_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 111 15 ]
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_111_15_116_8_if_stmt:
+        %tmp.108 = lgetv %type;
+        symbol [ type %tmp.108 111 19 23 ];
+        symbol [ SESSION_THRESHOLD %tmp.110 111 27 44 ];
+        %tmp.110 = getv ? :SESSION_THRESHOLD;
+        %tmp.111 = eq %tmp.108 %tmp.110;
+        bf %tmp.111 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_111_15_116_8_if_false;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_111_15_116_8_if_true:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_111_46_113_8_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 112 12 ]
+        %tmp.112 = lgetv %steps.1;
+        symbol [ steps %tmp.112 112 12 17 ];
+        symbol [ add %tmp.113 112 18 21 ];
+        %tmp.113 = getv function %tmp.112 :add;
+        symbol [ WorkoutStep %tmp.117 112 26 37 ];
+        %tmp.117 = getv ? :WorkoutStep;
+        %tmp.118 = "Tempo";
+        %tmp.119 = "run";
+        %tmp.120 = 1800;
+        %tmp.121 = 0;
+        %tmp.122 = 0;
+        %tmp.114 = newc %tmp.117 (%tmp.118, %tmp.119, %tmp.120, %tmp.121, %tmp.122);
+        invoke %tmp.112 %tmp.113(%tmp.114);
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_111_46_113_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_111_15_116_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_111_15_116_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 113 15 ]
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_113_15_116_8_if_stmt:
+        %tmp.123 = lgetv %type;
+        symbol [ type %tmp.123 113 19 23 ];
+        symbol [ SESSION_RECOVERY %tmp.125 113 27 43 ];
+        %tmp.125 = getv ? :SESSION_RECOVERY;
+        %tmp.126 = eq %tmp.123 %tmp.125;
+        bf %tmp.126 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_113_15_116_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_113_15_116_8_if_true:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_113_45_116_8_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 114 12 ]
+        %tmp.127 = lgetv %steps.1;
+        symbol [ steps %tmp.127 114 12 17 ];
+        symbol [ add %tmp.128 114 18 21 ];
+        %tmp.128 = getv function %tmp.127 :add;
+        symbol [ WorkoutStep %tmp.132 114 26 37 ];
+        %tmp.132 = getv ? :WorkoutStep;
+        %tmp.133 = "Easy Run";
+        %tmp.134 = "run";
+        %tmp.135 = 900;
+        %tmp.136 = 0;
+        %tmp.137 = 0;
+        %tmp.129 = newc %tmp.132 (%tmp.133, %tmp.134, %tmp.135, %tmp.136, %tmp.137);
+        invoke %tmp.127 %tmp.128(%tmp.129);
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 115 12 ]
+        %tmp.138 = lgetv %steps.1;
+        symbol [ steps %tmp.138 115 12 17 ];
+        symbol [ add %tmp.139 115 18 21 ];
+        %tmp.139 = getv function %tmp.138 :add;
+        symbol [ WorkoutStep %tmp.143 115 26 37 ];
+        %tmp.143 = getv ? :WorkoutStep;
+        %tmp.144 = "Walk";
+        %tmp.145 = "rest";
+        %tmp.146 = 300;
+        %tmp.147 = 0;
+        %tmp.148 = 0;
+        %tmp.140 = newc %tmp.143 (%tmp.144, %tmp.145, %tmp.146, %tmp.147, %tmp.148);
+        invoke %tmp.138 %tmp.139(%tmp.140);
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_113_45_116_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_113_15_116_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_113_15_116_8_if_end:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_111_15_116_8_if_end:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_106_15_116_8_if_end:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_100_8_116_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 119 8 ]
+        %tmp.149 = lgetv %steps.1;
+        symbol [ steps %tmp.149 119 8 13 ];
+        symbol [ add %tmp.150 119 14 17 ];
+        %tmp.150 = getv function %tmp.149 :add;
+        symbol [ WorkoutStep %tmp.154 119 22 33 ];
+        %tmp.154 = getv ? :WorkoutStep;
+        %tmp.155 = "Cool Down";
+        %tmp.156 = "run";
+        %tmp.157 = 300;
+        %tmp.158 = 0;
+        %tmp.159 = 0;
+        %tmp.151 = newc %tmp.154 (%tmp.155, %tmp.156, %tmp.157, %tmp.158, %tmp.159);
+        invoke %tmp.149 %tmp.150(%tmp.151);
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 121 8 ]
+        symbol [ Workout %tmp.163 121 19 26 ];
+        %tmp.163 = getv ? :Workout;
+        %tmp.164 = lgetv %name;
+        symbol [ name %tmp.164 121 27 31 ];
+        %tmp.165 = lgetv %type;
+        symbol [ type %tmp.165 121 33 37 ];
+        %tmp.166 = lgetv %durationMin;
+        symbol [ durationMin %tmp.166 121 39 50 ];
+        %tmp.167 = lgetv %steps.1;
+        symbol [ steps %tmp.167 121 52 57 ];
+        %tmp.160 = newc %tmp.163 (%tmp.164, %tmp.165, %tmp.166, %tmp.167);
+        ret %tmp.160;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_93_110_122_4_stop:
+    }
+}
+//! Training Plan
+[ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 126; @symbol_classdef = [Plan,126,6,10]; ]
+class Plan {
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 126; ]
+    <init> {
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 130 8 ]
+        %tmp.168 = newa 0;
+        putv self :workouts %tmp.168;
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 126; ]
+    static
+    <init> {
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 127; @position = 8; @symbol_vardef = [level,127,8,13]; @symbol_type<0> = [Number,127,17,23]; ]
+    var level as Number;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 128; @position = 8; @symbol_vardef = [currentWeek,128,8,19]; @symbol_type<0> = [Number,128,23,29]; ]
+    var currentWeek as Number;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 129; @position = 8; @symbol_vardef = [completedSessions,129,8,25]; @symbol_type<0> = [Number,129,29,35]; ]
+    var completedSessions as Number;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 130; @position = 8; @symbol_vardef = [workouts,130,8,16]; @symbol_type<0> = [Array,130,20,25]; @symbol_type<1> = [Workout,130,26,33]; ]
+    var workouts as Array<Workout>;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 132; @symbol_functiondef = [initialize,132,13,23]; @symbol_param<0> = [lvl,132,24,27]; @symbol_param<0>_type<0> = [Number,132,31,37]; @symbol_param<1> = [week,132,39,43]; @symbol_param<1>_type<0> = [Number,132,47,53]; @symbol_param<2> = [completed,132,55,64]; @symbol_param<2>_type<0> = [Number,132,68,74]; ]
+    function initialize(lvl as Number, week as Number, completed as Number) as Void {
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_132_76_142_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 133 8 ]
+        %tmp.1 = lgetv %lvl;
+        symbol [ lvl %tmp.1 133 16 19 ];
+        symbol [ level ? 133 8 13 ];
+        putv self :level %tmp.1;
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 134 8 ]
+        %tmp.2 = lgetv %week;
+        symbol [ week %tmp.2 134 22 26 ];
+        symbol [ currentWeek ? 134 8 19 ];
+        putv self :currentWeek %tmp.2;
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 135 8 ]
+        %tmp.3 = lgetv %completed;
+        symbol [ completed %tmp.3 135 28 37 ];
+        symbol [ completedSessions ? 135 8 25 ];
+        putv self :completedSessions %tmp.3;
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 138 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_132_76_142_4_start" "_home_cechinel_coachrox_garmin_source_PlanEngine_mc_132_76_142_4_stop" ]
+        %engine.1 = local;
+        symbol [ engine %engine.1 138 12 18 ];
+        symbol [ Application %tmp.5 138 21 32 ];
+        %tmp.5 = getv ? :Application;
+        symbol [ getApp %tmp.6 138 33 39 ];
+        %tmp.6 = getv function %tmp.5 :getApp;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        symbol [ planEngine %tmp.8 138 42 52 ];
+        %tmp.8 = getv %tmp.7 :planEngine;
+        lputv %engine.1 %tmp.8;
+        symbol [ engine %engine.1 138 12 18 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 139 8 ]
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_139_8_141_8_if_stmt:
+        %tmp.9 = lgetv %engine.1;
+        symbol [ engine %tmp.9 139 12 18 ];
+        %tmp.10 = null;
+        %tmp.11 = ne %tmp.9 %tmp.10;
+        bf %tmp.11 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_139_8_141_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_139_8_141_8_if_true:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_139_28_141_8_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 140 12 ]
+        %tmp.12 = lgetv %engine.1;
+        symbol [ engine %tmp.12 140 23 29 ];
+        %tmp.13 = as %tmp.12 { (!Null) };
+        symbol [ generateWeeklyWorkouts %tmp.14 140 30 52 ];
+        %tmp.14 = getv function %tmp.13 :generateWeeklyWorkouts;
+        %tmp.15 = lgetv %week;
+        symbol [ week %tmp.15 140 53 57 ];
+        symbol [ level %tmp.17 140 59 64 ];
+        %tmp.17 = getv ? :level;
+        %tmp.18 = invoke %tmp.13 %tmp.14(%tmp.15, %tmp.17);
+        symbol [ workouts ? 140 12 20 ];
+        putv self :workouts %tmp.18;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_139_28_141_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_139_8_141_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_139_8_141_8_if_end:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_132_76_142_4_stop:
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 144; @symbol_functiondef = [getWorkout,144,13,23]; @symbol_param<0> = [index,144,24,29]; @symbol_param<0>_type<0> = [Number,144,33,39]; @symbol_return<0> = [Workout,144,44,51]; ]
+    function getWorkout(index as Number) as Workout or Null {
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_144_53_149_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 145 8 ]
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_8_147_8_if_stmt:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_12_145_48_begin:
+        %tmp.1 = lgetv %index;
+        symbol [ index %tmp.1 145 12 17 ];
+        %tmp.2 = 0;
+        %tmp.3 = gte %tmp.1 %tmp.2;
+        bf %tmp.3 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_8_147_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_26_145_48_true:
+        %tmp.4 = lgetv %index;
+        symbol [ index %tmp.4 145 26 31 ];
+        symbol [ workouts %tmp.6 145 34 42 ];
+        %tmp.6 = getv ? :workouts;
+        symbol [ size %tmp.7 145 43 47 ];
+        %tmp.7 = getv function %tmp.6 :size;
+        %tmp.8 = invoke %tmp.6 %tmp.7();
+        %tmp.9 = lt %tmp.4 %tmp.8;
+        push %tmp.9;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_26_145_48_end:
+        %tmp.10 = phi [%tmp.3 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_12_145_48_begin] [%tmp.9 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_26_145_48_true] [%tmp.10 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_26_145_48_end];
+        bf %tmp.10 @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_8_147_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_8_147_8_if_true:
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_51_147_8_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 146 12 ]
+        symbol [ workouts %tmp.12 146 19 27 ];
+        %tmp.12 = getv ? :workouts;
+        %tmp.13 = lgetv %index;
+        symbol [ index %tmp.13 146 28 33 ];
+        %tmp.14 = agetv %tmp.12 %tmp.13;
+        ret %tmp.14;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_51_147_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_8_147_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_145_8_147_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 148 8 ]
+        %tmp.15 = null;
+        ret %tmp.15;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_144_53_149_4_stop:
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 151; @symbol_functiondef = [getWeekNumber,151,13,26]; @symbol_return<0> = [Number,151,32,38]; ]
+    function getWeekNumber() as Number {
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_151_39_153_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 152 8 ]
+        symbol [ currentWeek %tmp.2 152 15 26 ];
+        %tmp.2 = getv ? :currentWeek;
+        %tmp.3 = 1;
+        %tmp.4 = add %tmp.2 %tmp.3;
+        ret %tmp.4;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_151_39_153_4_stop:
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 155; @symbol_functiondef = [getCompletionRate,155,13,30]; @symbol_return<0> = [Number,155,36,42]; ]
+    function getCompletionRate() as Number {
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_155_43_157_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanEngine.mc" 156 8 ]
+        symbol [ completedSessions %tmp.2 156 16 33 ];
+        %tmp.2 = getv ? :completedSessions;
+        %tmp.3 = 100;
+        %tmp.4 = mul %tmp.2 %tmp.3;
+        %tmp.5 = 5;
+        %tmp.6 = div %tmp.4 %tmp.5;
+        ret %tmp.6;
+_home_cechinel_coachrox_garmin_source_PlanEngine_mc_155_43_157_4_stop:
+    }
+}
+[ @file = "/home/cechinel/coachrox-garmin/source/PlanEngine.mc"; @line = 1; ]
+<init> {
+}

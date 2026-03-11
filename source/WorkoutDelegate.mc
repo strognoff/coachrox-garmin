@@ -1,5 +1,6 @@
-using Toybox.WatchUi;
-using Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.Graphics;
 
 //! Input delegate for active workout
 class WorkoutDelegate extends WatchUi.InputDelegate {

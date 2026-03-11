@@ -1,5 +1,6 @@
-using Toybox.WatchUi;
-using Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.Graphics;
 
 //! View for listing available workouts
 class WorkoutListView extends WatchUi.View {
@@ -15,7 +16,7 @@ class WorkoutListView extends WatchUi.View {
     }
     
     function onLayout(dc as Dc) as Void {
-        setLayout(dc);
+        // Custom drawn view - no layout needed
     }
     
     function onUpdate(dc as Dc) as Void {
@@ -53,7 +54,7 @@ class WorkoutListView extends WatchUi.View {
         }
         
         // Instructions
-        dc.setColor(Graphics.COLOR_GRAY, Graphics.COLOR_BLACK);
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
         dc.drawText(dc.getWidth() / 2, dc.getHeight() - 20, Graphics.FONT_TINY, "UP/DOWN: Select | ENTER: Start", Graphics.TEXT_JUSTIFY_CENTER);
     }
     

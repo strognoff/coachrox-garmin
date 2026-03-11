@@ -1,5 +1,6 @@
-using Toybox.WatchUi;
-using Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.Graphics;
 
 //! Main menu view for COACHROX app
 class CoachroxMenuView extends WatchUi.View {
@@ -30,7 +31,7 @@ class CoachroxMenuView extends WatchUi.View {
     }
     
     function onLayout(dc as Dc) as Void {
-        setLayout(dc);
+        // Custom drawn view - no layout needed
     }
     
     function onShow() as Void {
@@ -69,7 +70,7 @@ class CoachroxMenuView extends WatchUi.View {
         var plan = app.getCurrentPlan();
         if (plan != null) {
             var weekText = "Week " + plan.getWeekNumber() + " | " + plan.getCompletionRate() + "%";
-            dc.setColor(Graphics.COLOR_GRAY, Graphics.COLOR_BLACK);
+            dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
             dc.drawText(dc.getWidth() / 2, dc.getHeight() - 30, Graphics.FONT_SMALL, weekText, Graphics.TEXT_JUSTIFY_CENTER);
         }
     }
@@ -87,16 +88,24 @@ class CoachroxMenuView extends WatchUi.View {
     function selectItem() as Void {
         if (selectedItem == ITEM_START_WORKOUT) {
             // Show workout list
-            WatchUi.pushView(new WorkoutListView(app), new WorkoutListDelegate(app), WatchUi.SLIDE_LEFT);
+            var view = new WorkoutListView(app);
+            var delegate = new WorkoutListDelegate(view);
+            WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);
         } else if (selectedItem == ITEM_VIEW_PLAN) {
             // Show plan view
-            WatchUi.pushView(new PlanView(app), new PlanDelegate(app), WatchUi.SLIDE_LEFT);
+            var view = new PlanView(app);
+            var delegate = new PlanDelegate(view);
+            WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);
         } else if (selectedItem == ITEM_PROGRESS) {
             // Show progress view
-            WatchUi.pushView(new ProgressView(app), new ProgressDelegate(app), WatchUi.SLIDE_LEFT);
+            var view = new ProgressView(app);
+            var delegate = new ProgressDelegate(view);
+            WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);
         } else if (selectedItem == ITEM_SETTINGS) {
             // Show settings view
-            WatchUi.pushView(new SettingsView(app), new SettingsDelegate(app), WatchUi.SLIDE_LEFT);
+            var view = new SettingsView(app);
+            var delegate = new SettingsDelegate(view);
+            WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);
         }
     }
 }

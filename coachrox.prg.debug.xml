@@ -1,0 +1,1224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+    <manifest filename="/home/cechinel/coachrox-garmin/manifest.xml"/>
+    <pcToLineNum>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="1" lineNum="6" parent="globals/WorkoutListView" pc="268435460" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="2" lineNum="6" parent="globals/ProgressView" pc="268435472" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="3" lineNum="6" parent="globals/WorkoutDelegate" pc="268435484" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="4" lineNum="64" parent="globals/PlanDelegate" pc="268435496" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen" id="5" lineNum="7" parent="globals/Rez" pc="268435508" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="6" lineNum="9" parent="globals/WorkoutSession" pc="268435528" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="7" lineNum="5" parent="globals/CoachroxMenuDelegate" pc="268435540" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="8" lineNum="130" parent="globals/Plan" pc="268435552" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="9" lineNum="6" parent="globals/SettingsView" pc="268435562" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="10" lineNum="6" parent="globals/PlanView" pc="268435574" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="11" lineNum="6" parent="globals/CoachroxMenuView" pc="268435586" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="12" lineNum="7" parent="globals/CoachroxApp" pc="268435598" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="13" lineNum="53" parent="globals/ProgressDelegate" pc="268435610" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="14" lineNum="96" parent="globals/SettingsDelegate" pc="268435622" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="15" lineNum="81" parent="globals/WorkoutListDelegate" pc="268435634" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="16" lineNum="71" parent="globals/WorkoutListView" pc="268435646" symbol="startSelected"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="16" lineNum="72" parent="globals/WorkoutListView" pc="268435649" symbol="startSelected"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="16" lineNum="73" parent="globals/WorkoutListView" pc="268435658" symbol="startSelected"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="16" lineNum="74" parent="globals/WorkoutListView" pc="268435678" symbol="startSelected"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="16" lineNum="75" parent="globals/WorkoutListView" pc="268435696" symbol="startSelected"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="17" lineNum="66" parent="globals/WorkoutListView" pc="268435722" symbol="selectPrevious"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="17" lineNum="67" parent="globals/WorkoutListView" pc="268435724" symbol="selectPrevious"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="17" lineNum="68" parent="globals/WorkoutListView" pc="268435745" symbol="selectPrevious"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="18" lineNum="18" parent="globals/WorkoutListView" pc="268435757" symbol="onLayout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="19" lineNum="61" parent="globals/WorkoutListView" pc="268435760" symbol="selectNext"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="19" lineNum="62" parent="globals/WorkoutListView" pc="268435762" symbol="selectNext"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="19" lineNum="63" parent="globals/WorkoutListView" pc="268435780" symbol="selectNext"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="20" lineNum="12" parent="globals/WorkoutListView" pc="268435792" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="20" lineNum="13" parent="globals/WorkoutListView" pc="268435794" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="20" lineNum="14" parent="globals/WorkoutListView" pc="268435810" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="20" lineNum="15" parent="globals/WorkoutListView" pc="268435819" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="22" parent="globals/WorkoutListView" pc="268435838" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="23" parent="globals/WorkoutListView" pc="268435841" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="24" parent="globals/WorkoutListView" pc="268435853" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="27" parent="globals/WorkoutListView" pc="268435861" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="28" parent="globals/WorkoutListView" pc="268435877" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="30" parent="globals/WorkoutListView" pc="268435908" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="31" parent="globals/WorkoutListView" pc="268435917" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="32" parent="globals/WorkoutListView" pc="268435921" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="34" parent="globals/WorkoutListView" pc="268435925" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="35" parent="globals/WorkoutListView" pc="268435936" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="36" parent="globals/WorkoutListView" pc="268435953" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="38" parent="globals/WorkoutListView" pc="268435959" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="39" parent="globals/WorkoutListView" pc="268435970" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="40" parent="globals/WorkoutListView" pc="268435983" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="41" parent="globals/WorkoutListView" pc="268436009" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="43" parent="globals/WorkoutListView" pc="268436028" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="46" parent="globals/WorkoutListView" pc="268436044" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="47" parent="globals/WorkoutListView" pc="268436073" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="48" parent="globals/WorkoutListView" pc="268436084" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="50" parent="globals/WorkoutListView" pc="268436097" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="51" parent="globals/WorkoutListView" pc="268436120" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="57" parent="globals/WorkoutListView" pc="268436143" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="21" lineNum="58" parent="globals/WorkoutListView" pc="268436158" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="22" lineNum="11" parent="globals/ProgressView" pc="268436198" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="22" lineNum="12" parent="globals/ProgressView" pc="268436200" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="22" lineNum="13" parent="globals/ProgressView" pc="268436216" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="22" lineNum="14" parent="globals/ProgressView" pc="268436225" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="17" parent="globals/ProgressView" pc="268436248" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="18" parent="globals/ProgressView" pc="268436251" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="19" parent="globals/ProgressView" pc="268436263" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="22" parent="globals/ProgressView" pc="268436271" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="23" parent="globals/ProgressView" pc="268436287" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="25" parent="globals/ProgressView" pc="268436318" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="26" parent="globals/ProgressView" pc="268436331" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="29" parent="globals/ProgressView" pc="268436344" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="30" parent="globals/ProgressView" pc="268436375" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="32" parent="globals/ProgressView" pc="268436408" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="33" parent="globals/ProgressView" pc="268436439" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="36" parent="globals/ProgressView" pc="268436474" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="37" parent="globals/ProgressView" pc="268436492" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="38" parent="globals/ProgressView" pc="268436499" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="39" parent="globals/ProgressView" pc="268436506" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="40" parent="globals/ProgressView" pc="268436516" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="41" parent="globals/ProgressView" pc="268436523" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="44" parent="globals/ProgressView" pc="268436533" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="45" parent="globals/ProgressView" pc="268436548" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="48" parent="globals/ProgressView" pc="268436577" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="23" lineNum="49" parent="globals/ProgressView" pc="268436592" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="24" lineNum="10" parent="globals/WorkoutDelegate" pc="268436632" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="24" lineNum="11" parent="globals/WorkoutDelegate" pc="268436634" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="24" lineNum="12" parent="globals/WorkoutDelegate" pc="268436650" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="15" parent="globals/WorkoutDelegate" pc="268436660" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="16" parent="globals/WorkoutDelegate" pc="268436663" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="18" parent="globals/WorkoutDelegate" pc="268436675" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="19" parent="globals/WorkoutDelegate" pc="268436681" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="22" parent="globals/WorkoutDelegate" pc="268436686" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="24" parent="globals/WorkoutDelegate" pc="268436699" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="25" parent="globals/WorkoutDelegate" pc="268436707" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="26" parent="globals/WorkoutDelegate" pc="268436718" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="27" parent="globals/WorkoutDelegate" pc="268436723" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="29" parent="globals/WorkoutDelegate" pc="268436736" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="30" parent="globals/WorkoutDelegate" pc="268436744" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="31" parent="globals/WorkoutDelegate" pc="268436755" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="32" parent="globals/WorkoutDelegate" pc="268436760" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="34" parent="globals/WorkoutDelegate" pc="268436773" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="35" parent="globals/WorkoutDelegate" pc="268436784" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="36" parent="globals/WorkoutDelegate" pc="268436799" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="37" parent="globals/WorkoutDelegate" pc="268436804" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="39" parent="globals/WorkoutDelegate" pc="268436817" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="40" parent="globals/WorkoutDelegate" pc="268436828" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="41" parent="globals/WorkoutDelegate" pc="268436843" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="25" lineNum="44" parent="globals/WorkoutDelegate" pc="268436848" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="26" lineNum="68" parent="globals/PlanDelegate" pc="268436850" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="26" lineNum="69" parent="globals/PlanDelegate" pc="268436852" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="26" lineNum="70" parent="globals/PlanDelegate" pc="268436868" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="27" lineNum="73" parent="globals/PlanDelegate" pc="268436878" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="27" lineNum="74" parent="globals/PlanDelegate" pc="268436880" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="27" lineNum="75" parent="globals/PlanDelegate" pc="268436893" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="27" lineNum="76" parent="globals/PlanDelegate" pc="268436908" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="27" lineNum="78" parent="globals/PlanDelegate" pc="268436913" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="93" parent="globals/PlanEngine" pc="268436915" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="94" parent="globals/PlanEngine" pc="268436918" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="97" parent="globals/PlanEngine" pc="268436922" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="100" parent="globals/PlanEngine" pc="268436965" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="101" parent="globals/PlanEngine" pc="268436972" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="102" parent="globals/PlanEngine" pc="268436979" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="103" parent="globals/PlanEngine" pc="268436990" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="104" parent="globals/PlanEngine" pc="268437038" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="106" parent="globals/PlanEngine" pc="268437099" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="107" parent="globals/PlanEngine" pc="268437107" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="108" parent="globals/PlanEngine" pc="268437150" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="109" parent="globals/PlanEngine" pc="268437194" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="110" parent="globals/PlanEngine" pc="268437237" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="111" parent="globals/PlanEngine" pc="268437284" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="112" parent="globals/PlanEngine" pc="268437292" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="113" parent="globals/PlanEngine" pc="268437338" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="114" parent="globals/PlanEngine" pc="268437346" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="115" parent="globals/PlanEngine" pc="268437389" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="119" parent="globals/PlanEngine" pc="268437435" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="28" lineNum="121" parent="globals/PlanEngine" pc="268437478" symbol="createWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="29" lineNum="49" parent="globals/PlanEngine" pc="268437505" symbol="getAdaptationSuggestion"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="29" lineNum="51" parent="globals/PlanEngine" pc="268437508" symbol="getAdaptationSuggestion"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="29" lineNum="54" parent="globals/PlanEngine" pc="268437554" symbol="getAdaptationSuggestion"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="29" lineNum="59" parent="globals/PlanEngine" pc="268437600" symbol="getAdaptationSuggestion"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="29" lineNum="60" parent="globals/PlanEngine" pc="268437616" symbol="getAdaptationSuggestion"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="29" lineNum="64" parent="globals/PlanEngine" pc="268437622" symbol="getAdaptationSuggestion"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="29" lineNum="65" parent="globals/PlanEngine" pc="268437638" symbol="getAdaptationSuggestion"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="29" lineNum="68" parent="globals/PlanEngine" pc="268437644" symbol="getAdaptationSuggestion"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="30" lineNum="24" parent="globals/PlanEngine" pc="268437646" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="30" lineNum="25" parent="globals/PlanEngine" pc="268437648" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="31" lineNum="29" parent="globals/PlanEngine" pc="268437658" symbol="getPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="31" lineNum="30" parent="globals/PlanEngine" pc="268437661" symbol="getPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="31" lineNum="31" parent="globals/PlanEngine" pc="268437665" symbol="getPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="31" lineNum="33" parent="globals/PlanEngine" pc="268437668" symbol="getPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="31" lineNum="34" parent="globals/PlanEngine" pc="268437676" symbol="getPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="31" lineNum="36" parent="globals/PlanEngine" pc="268437683" symbol="getPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="31" lineNum="37" parent="globals/PlanEngine" pc="268437691" symbol="getPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="31" lineNum="41" parent="globals/PlanEngine" pc="268437698" symbol="getPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="31" lineNum="45" parent="globals/PlanEngine" pc="268437762" symbol="getPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="32" lineNum="72" parent="globals/PlanEngine" pc="268437787" symbol="generateWeeklyWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="32" lineNum="73" parent="globals/PlanEngine" pc="268437790" symbol="generateWeeklyWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="32" lineNum="76" parent="globals/PlanEngine" pc="268437795" symbol="generateWeeklyWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="32" lineNum="79" parent="globals/PlanEngine" pc="268437829" symbol="generateWeeklyWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="32" lineNum="82" parent="globals/PlanEngine" pc="268437865" symbol="generateWeeklyWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="32" lineNum="85" parent="globals/PlanEngine" pc="268437895" symbol="generateWeeklyWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="32" lineNum="88" parent="globals/PlanEngine" pc="268437931" symbol="generateWeeklyWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="32" lineNum="90" parent="globals/PlanEngine" pc="268437967" symbol="generateWeeklyWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="33" lineNum="34" parent="globals/WorkoutStep" pc="268437970" symbol="isRepBased"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="33" lineNum="35" parent="globals/WorkoutStep" pc="268437972" symbol="isRepBased"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="34" lineNum="30" parent="globals/WorkoutStep" pc="268437980" symbol="isTimeBased"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="34" lineNum="31" parent="globals/WorkoutStep" pc="268437982" symbol="isTimeBased"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="35" lineNum="12" parent="globals/WorkoutStep" pc="268437990" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="35" lineNum="13" parent="globals/WorkoutStep" pc="268437992" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="35" lineNum="14" parent="globals/WorkoutStep" pc="268438001" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="35" lineNum="15" parent="globals/WorkoutStep" pc="268438010" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="35" lineNum="16" parent="globals/WorkoutStep" pc="268438019" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="35" lineNum="17" parent="globals/WorkoutStep" pc="268438028" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="35" lineNum="18" parent="globals/WorkoutStep" pc="268438037" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="36" lineNum="21" parent="globals/WorkoutStep" pc="268438046" symbol="getDurationFormatted"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="36" lineNum="22" parent="globals/WorkoutStep" pc="268438049" symbol="getDurationFormatted"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="36" lineNum="23" parent="globals/WorkoutStep" pc="268438059" symbol="getDurationFormatted"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="36" lineNum="24" parent="globals/WorkoutStep" pc="268438069" symbol="getDurationFormatted"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="36" lineNum="25" parent="globals/WorkoutStep" pc="268438076" symbol="getDurationFormatted"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="36" lineNum="27" parent="globals/WorkoutStep" pc="268438103" symbol="getDurationFormatted"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="37" lineNum="38" parent="globals/WorkoutStep" pc="268438112" symbol="isDistanceBased"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="37" lineNum="39" parent="globals/WorkoutStep" pc="268438114" symbol="isDistanceBased"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="38" lineNum="55" parent="globals/WorkoutSession" pc="268438122" symbol="onShow"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="38" lineNum="57" parent="globals/WorkoutSession" pc="268438124" symbol="onShow"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="38" lineNum="58" parent="globals/WorkoutSession" pc="268438153" symbol="onShow"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="39" lineNum="51" parent="globals/WorkoutSession" pc="268438185" symbol="onLayout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="40" lineNum="101" parent="globals/WorkoutSession" pc="268438188" symbol="togglePause"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="40" lineNum="102" parent="globals/WorkoutSession" pc="268438190" symbol="togglePause"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="41" lineNum="97" parent="globals/WorkoutSession" pc="268438204" symbol="skipStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="41" lineNum="98" parent="globals/WorkoutSession" pc="268438206" symbol="skipStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="42" lineNum="128" parent="globals/WorkoutSession" pc="268438214" symbol="getProgress"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="42" lineNum="129" parent="globals/WorkoutSession" pc="268438216" symbol="getProgress"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="43" lineNum="132" parent="globals/WorkoutSession" pc="268438237" symbol="getElapsedTimeFormatted"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="43" lineNum="133" parent="globals/WorkoutSession" pc="268438240" symbol="getElapsedTimeFormatted"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="43" lineNum="134" parent="globals/WorkoutSession" pc="268438250" symbol="getElapsedTimeFormatted"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="43" lineNum="135" parent="globals/WorkoutSession" pc="268438260" symbol="getElapsedTimeFormatted"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="44" lineNum="78" parent="globals/WorkoutSession" pc="268438284" symbol="nextStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="44" lineNum="79" parent="globals/WorkoutSession" pc="268438287" symbol="nextStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="44" lineNum="80" parent="globals/WorkoutSession" pc="268438307" symbol="nextStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="44" lineNum="81" parent="globals/WorkoutSession" pc="268438313" symbol="nextStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="44" lineNum="84" parent="globals/WorkoutSession" pc="268438322" symbol="nextStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="44" lineNum="87" parent="globals/WorkoutSession" pc="268438351" symbol="nextStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="44" lineNum="89" parent="globals/WorkoutSession" pc="268438366" symbol="nextStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="44" lineNum="90" parent="globals/WorkoutSession" pc="268438386" symbol="nextStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="44" lineNum="92" parent="globals/WorkoutSession" pc="268438399" symbol="nextStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="44" lineNum="93" parent="globals/WorkoutSession" pc="268438407" symbol="nextStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="45" lineNum="27" parent="globals/WorkoutSession" pc="268438415" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="45" lineNum="28" parent="globals/WorkoutSession" pc="268438417" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="45" lineNum="30" parent="globals/WorkoutSession" pc="268438433" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="45" lineNum="31" parent="globals/WorkoutSession" pc="268438442" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="45" lineNum="33" parent="globals/WorkoutSession" pc="268438451" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="45" lineNum="35" parent="globals/WorkoutSession" pc="268438474" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="45" lineNum="36" parent="globals/WorkoutSession" pc="268438490" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="46" lineNum="138" parent="globals/WorkoutSession" pc="268438501" symbol="onHide"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="46" lineNum="139" parent="globals/WorkoutSession" pc="268438503" symbol="onHide"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="46" lineNum="140" parent="globals/WorkoutSession" pc="268438512" symbol="onHide"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="105" parent="globals/WorkoutSession" pc="268438528" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="106" parent="globals/WorkoutSession" pc="268438531" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="108" parent="globals/WorkoutSession" pc="268438539" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="109" parent="globals/WorkoutSession" pc="268438548" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="110" parent="globals/WorkoutSession" pc="268438560" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="113" parent="globals/WorkoutSession" pc="268438571" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="116" parent="globals/WorkoutSession" pc="268438583" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="117" parent="globals/WorkoutSession" pc="268438600" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="118" parent="globals/WorkoutSession" pc="268438616" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="119" parent="globals/WorkoutSession" pc="268438656" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="122" parent="globals/WorkoutSession" pc="268438677" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="123" parent="globals/WorkoutSession" pc="268438689" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="124" parent="globals/WorkoutSession" pc="268438719" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="47" lineNum="125" parent="globals/WorkoutSession" pc="268438752" symbol="complete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="48" lineNum="40" parent="globals/WorkoutSession" pc="268438792" symbol="updateStepInfo"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="48" lineNum="41" parent="globals/WorkoutSession" pc="268438795" symbol="updateStepInfo"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="48" lineNum="42" parent="globals/WorkoutSession" pc="268438815" symbol="updateStepInfo"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="48" lineNum="43" parent="globals/WorkoutSession" pc="268438821" symbol="updateStepInfo"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="48" lineNum="44" parent="globals/WorkoutSession" pc="268438835" symbol="updateStepInfo"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="48" lineNum="46" parent="globals/WorkoutSession" pc="268438850" symbol="updateStepInfo"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="48" lineNum="47" parent="globals/WorkoutSession" pc="268438873" symbol="updateStepInfo"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="49" lineNum="61" parent="globals/WorkoutSession" pc="268438905" symbol="onTimer"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="49" lineNum="62" parent="globals/WorkoutSession" pc="268438908" symbol="onTimer"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="49" lineNum="63" parent="globals/WorkoutSession" pc="268438926" symbol="onTimer"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="49" lineNum="65" parent="globals/WorkoutSession" pc="268438941" symbol="onTimer"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="49" lineNum="66" parent="globals/WorkoutSession" pc="268438961" symbol="onTimer"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="49" lineNum="67" parent="globals/WorkoutSession" pc="268438979" symbol="onTimer"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="49" lineNum="69" parent="globals/WorkoutSession" pc="268438995" symbol="onTimer"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="49" lineNum="74" parent="globals/WorkoutSession" pc="268439008" symbol="onTimer"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="50" lineNum="9" parent="globals/CoachroxMenuDelegate" pc="268439023" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="50" lineNum="10" parent="globals/CoachroxMenuDelegate" pc="268439025" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="50" lineNum="11" parent="globals/CoachroxMenuDelegate" pc="268439041" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="51" lineNum="14" parent="globals/CoachroxMenuDelegate" pc="268439051" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="51" lineNum="15" parent="globals/CoachroxMenuDelegate" pc="268439053" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="51" lineNum="16" parent="globals/CoachroxMenuDelegate" pc="268439066" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="51" lineNum="17" parent="globals/CoachroxMenuDelegate" pc="268439078" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="51" lineNum="18" parent="globals/CoachroxMenuDelegate" pc="268439083" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="51" lineNum="19" parent="globals/CoachroxMenuDelegate" pc="268439096" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="51" lineNum="20" parent="globals/CoachroxMenuDelegate" pc="268439108" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="51" lineNum="21" parent="globals/CoachroxMenuDelegate" pc="268439113" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="51" lineNum="22" parent="globals/CoachroxMenuDelegate" pc="268439126" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="51" lineNum="23" parent="globals/CoachroxMenuDelegate" pc="268439138" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="51" lineNum="25" parent="globals/CoachroxMenuDelegate" pc="268439143" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="52" lineNum="151" parent="globals/Plan" pc="268439145" symbol="getWeekNumber"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="52" lineNum="152" parent="globals/Plan" pc="268439147" symbol="getWeekNumber"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="53" lineNum="144" parent="globals/Plan" pc="268439156" symbol="getWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="53" lineNum="145" parent="globals/Plan" pc="268439158" symbol="getWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="53" lineNum="146" parent="globals/Plan" pc="268439182" symbol="getWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="53" lineNum="148" parent="globals/Plan" pc="268439194" symbol="getWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="54" lineNum="132" parent="globals/Plan" pc="268439196" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="54" lineNum="133" parent="globals/Plan" pc="268439199" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="54" lineNum="134" parent="globals/Plan" pc="268439208" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="54" lineNum="135" parent="globals/Plan" pc="268439217" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="54" lineNum="138" parent="globals/Plan" pc="268439226" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="54" lineNum="139" parent="globals/Plan" pc="268439243" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="54" lineNum="140" parent="globals/Plan" pc="268439249" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="55" lineNum="155" parent="globals/Plan" pc="268439277" symbol="getCompletionRate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="55" lineNum="156" parent="globals/Plan" pc="268439279" symbol="getCompletionRate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="56" lineNum="68" parent="globals/SettingsView" pc="268439291" symbol="selectPrevious"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="56" lineNum="69" parent="globals/SettingsView" pc="268439293" symbol="selectPrevious"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="56" lineNum="70" parent="globals/SettingsView" pc="268439332" symbol="selectPrevious"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="57" lineNum="63" parent="globals/SettingsView" pc="268439344" symbol="selectNext"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="57" lineNum="64" parent="globals/SettingsView" pc="268439346" symbol="selectNext"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="57" lineNum="65" parent="globals/SettingsView" pc="268439373" symbol="selectNext"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="73" parent="globals/SettingsView" pc="268439385" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="74" parent="globals/SettingsView" pc="268439388" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="76" parent="globals/SettingsView" pc="268439400" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="77" parent="globals/SettingsView" pc="268439410" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="78" parent="globals/SettingsView" pc="268439422" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="79" parent="globals/SettingsView" pc="268439441" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="80" parent="globals/SettingsView" pc="268439452" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="81" parent="globals/SettingsView" pc="268439465" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="82" parent="globals/SettingsView" pc="268439485" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="83" parent="globals/SettingsView" pc="268439496" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="84" parent="globals/SettingsView" pc="268439509" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="85" parent="globals/SettingsView" pc="268439529" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="87" parent="globals/SettingsView" pc="268439540" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="88" parent="globals/SettingsView" pc="268439548" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="89" parent="globals/SettingsView" pc="268439560" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="58" lineNum="92" parent="globals/SettingsView" pc="268439575" symbol="applySetting"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="59" lineNum="13" parent="globals/SettingsView" pc="268439591" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="59" lineNum="14" parent="globals/SettingsView" pc="268439593" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="59" lineNum="15" parent="globals/SettingsView" pc="268439609" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="59" lineNum="17" parent="globals/SettingsView" pc="268439618" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="25" parent="globals/SettingsView" pc="268439631" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="26" parent="globals/SettingsView" pc="268439634" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="27" parent="globals/SettingsView" pc="268439646" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="30" parent="globals/SettingsView" pc="268439654" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="31" parent="globals/SettingsView" pc="268439670" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="34" parent="globals/SettingsView" pc="268439701" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="35" parent="globals/SettingsView" pc="268439713" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="36" parent="globals/SettingsView" pc="268439720" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="36" parent="globals/SettingsView" pc="268439728" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="37" parent="globals/SettingsView" pc="268439738" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="37" parent="globals/SettingsView" pc="268439746" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="39" parent="globals/SettingsView" pc="268439756" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="40" parent="globals/SettingsView" pc="268439771" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="43" parent="globals/SettingsView" pc="268439805" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="44" parent="globals/SettingsView" pc="268439809" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="45" parent="globals/SettingsView" pc="268439829" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="46" parent="globals/SettingsView" pc="268439840" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="47" parent="globals/SettingsView" pc="268439856" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="48" parent="globals/SettingsView" pc="268439882" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="50" parent="globals/SettingsView" pc="268439901" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="53" parent="globals/SettingsView" pc="268439917" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="54" parent="globals/SettingsView" pc="268439954" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="58" parent="globals/SettingsView" pc="268439971" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="59" parent="globals/SettingsView" pc="268439986" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="60" lineNum="60" parent="globals/SettingsView" pc="268440025" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="61" lineNum="11" parent="globals/PlanView" pc="268440065" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="61" lineNum="12" parent="globals/PlanView" pc="268440067" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="61" lineNum="13" parent="globals/PlanView" pc="268440083" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="61" lineNum="14" parent="globals/PlanView" pc="268440092" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="17" parent="globals/PlanView" pc="268440111" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="18" parent="globals/PlanView" pc="268440114" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="19" parent="globals/PlanView" pc="268440126" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="22" parent="globals/PlanView" pc="268440134" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="23" parent="globals/PlanView" pc="268440150" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="25" parent="globals/PlanView" pc="268440181" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="26" parent="globals/PlanView" pc="268440190" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="27" parent="globals/PlanView" pc="268440197" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="27" parent="globals/PlanView" pc="268440213" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="28" parent="globals/PlanView" pc="268440223" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="28" parent="globals/PlanView" pc="268440239" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="30" parent="globals/PlanView" pc="268440249" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="31" parent="globals/PlanView" pc="268440283" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="34" parent="globals/PlanView" pc="268440332" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="35" parent="globals/PlanView" pc="268440344" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="36" parent="globals/PlanView" pc="268440357" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="37" parent="globals/PlanView" pc="268440372" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="38" parent="globals/PlanView" pc="268440390" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="39" parent="globals/PlanView" pc="268440405" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="41" parent="globals/PlanView" pc="268440429" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="44" parent="globals/PlanView" pc="268440463" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="45" parent="globals/PlanView" pc="268440479" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="47" parent="globals/PlanView" pc="268440503" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="48" parent="globals/PlanView" pc="268440508" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="49" parent="globals/PlanView" pc="268440519" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="50" parent="globals/PlanView" pc="268440536" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="51" parent="globals/PlanView" pc="268440542" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="52" parent="globals/PlanView" pc="268440568" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="53" parent="globals/PlanView" pc="268440602" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="59" parent="globals/PlanView" pc="268440625" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="62" lineNum="60" parent="globals/PlanView" pc="268440640" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="64" lineNum="83" parent="globals/CoachroxMenuView" pc="268440680" symbol="selectPrevious"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="64" lineNum="84" parent="globals/CoachroxMenuView" pc="268440682" symbol="selectPrevious"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="64" lineNum="85" parent="globals/CoachroxMenuView" pc="268440721" symbol="selectPrevious"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="65" lineNum="33" parent="globals/CoachroxMenuView" pc="268440733" symbol="onLayout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="66" lineNum="78" parent="globals/CoachroxMenuView" pc="268440736" symbol="selectNext"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="66" lineNum="79" parent="globals/CoachroxMenuView" pc="268440738" symbol="selectNext"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="66" lineNum="80" parent="globals/CoachroxMenuView" pc="268440765" symbol="selectNext"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="88" parent="globals/CoachroxMenuView" pc="268440777" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="89" parent="globals/CoachroxMenuView" pc="268440780" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="91" parent="globals/CoachroxMenuView" pc="268440790" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="92" parent="globals/CoachroxMenuView" pc="268440815" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="93" parent="globals/CoachroxMenuView" pc="268440837" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="94" parent="globals/CoachroxMenuView" pc="268440859" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="96" parent="globals/CoachroxMenuView" pc="268440870" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="97" parent="globals/CoachroxMenuView" pc="268440895" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="98" parent="globals/CoachroxMenuView" pc="268440917" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="99" parent="globals/CoachroxMenuView" pc="268440939" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="101" parent="globals/CoachroxMenuView" pc="268440950" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="102" parent="globals/CoachroxMenuView" pc="268440975" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="103" parent="globals/CoachroxMenuView" pc="268440997" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="104" parent="globals/CoachroxMenuView" pc="268441019" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="106" parent="globals/CoachroxMenuView" pc="268441030" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="107" parent="globals/CoachroxMenuView" pc="268441055" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="108" parent="globals/CoachroxMenuView" pc="268441077" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="68" lineNum="21" parent="globals/CoachroxMenuView" pc="268441100" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="68" lineNum="22" parent="globals/CoachroxMenuView" pc="268441102" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="68" lineNum="23" parent="globals/CoachroxMenuView" pc="268441118" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="68" lineNum="25" parent="globals/CoachroxMenuView" pc="268441127" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="41" parent="globals/CoachroxMenuView" pc="268441140" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="43" parent="globals/CoachroxMenuView" pc="268441143" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="44" parent="globals/CoachroxMenuView" pc="268441155" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="47" parent="globals/CoachroxMenuView" pc="268441163" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="48" parent="globals/CoachroxMenuView" pc="268441179" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="51" parent="globals/CoachroxMenuView" pc="268441210" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="52" parent="globals/CoachroxMenuView" pc="268441214" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="54" parent="globals/CoachroxMenuView" pc="268441218" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="55" parent="globals/CoachroxMenuView" pc="268441238" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="58" parent="globals/CoachroxMenuView" pc="268441248" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="59" parent="globals/CoachroxMenuView" pc="268441259" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="60" parent="globals/CoachroxMenuView" pc="268441275" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="61" parent="globals/CoachroxMenuView" pc="268441304" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="63" parent="globals/CoachroxMenuView" pc="268441323" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="66" parent="globals/CoachroxMenuView" pc="268441339" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="70" parent="globals/CoachroxMenuView" pc="268441386" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="71" parent="globals/CoachroxMenuView" pc="268441399" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="72" parent="globals/CoachroxMenuView" pc="268441405" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="73" parent="globals/CoachroxMenuView" pc="268441442" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="74" parent="globals/CoachroxMenuView" pc="268441457" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="70" lineNum="76" parent="globals/CoachroxApp" pc="268441497" symbol="completeWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="70" lineNum="77" parent="globals/CoachroxApp" pc="268441499" symbol="completeWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="70" lineNum="78" parent="globals/CoachroxApp" pc="268441508" symbol="completeWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="70" lineNum="79" parent="globals/CoachroxApp" pc="268441524" symbol="completeWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="70" lineNum="82" parent="globals/CoachroxApp" pc="268441532" symbol="completeWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="70" lineNum="83" parent="globals/CoachroxApp" pc="268441547" symbol="completeWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="71" lineNum="43" parent="globals/CoachroxApp" pc="268441575" symbol="onStart"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="72" lineNum="56" parent="globals/CoachroxApp" pc="268441578" symbol="getCurrentPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="72" lineNum="57" parent="globals/CoachroxApp" pc="268441580" symbol="getCurrentPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="72" lineNum="58" parent="globals/CoachroxApp" pc="268441589" symbol="getCurrentPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="72" lineNum="60" parent="globals/CoachroxApp" pc="268441616" symbol="getCurrentPlan"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="73" lineNum="38" parent="globals/CoachroxApp" pc="268441618" symbol="getInitialView"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="73" lineNum="40" parent="globals/CoachroxApp" pc="268441620" symbol="getInitialView"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="74" lineNum="24" parent="globals/CoachroxApp" pc="268441647" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="74" lineNum="25" parent="globals/CoachroxApp" pc="268441649" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="74" lineNum="28" parent="globals/CoachroxApp" pc="268441661" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="74" lineNum="31" parent="globals/CoachroxApp" pc="268441686" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="74" lineNum="34" parent="globals/CoachroxApp" pc="268441716" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="74" lineNum="35" parent="globals/CoachroxApp" pc="268441767" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="75" lineNum="47" parent="globals/CoachroxApp" pc="268441819" symbol="onStop"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="75" lineNum="49" parent="globals/CoachroxApp" pc="268441821" symbol="onStop"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="75" lineNum="50" parent="globals/CoachroxApp" pc="268441830" symbol="onStop"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="75" lineNum="51" parent="globals/CoachroxApp" pc="268441854" symbol="onStop"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="76" lineNum="64" parent="globals/CoachroxApp" pc="268441882" symbol="startWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="76" lineNum="65" parent="globals/CoachroxApp" pc="268441885" symbol="startWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="76" lineNum="66" parent="globals/CoachroxApp" pc="268441893" symbol="startWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="76" lineNum="67" parent="globals/CoachroxApp" pc="268441899" symbol="startWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="76" lineNum="68" parent="globals/CoachroxApp" pc="268441913" symbol="startWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="76" lineNum="69" parent="globals/CoachroxApp" pc="268441919" symbol="startWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="76" lineNum="70" parent="globals/CoachroxApp" pc="268441951" symbol="startWorkout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="77" lineNum="57" parent="globals/ProgressDelegate" pc="268441997" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="77" lineNum="58" parent="globals/ProgressDelegate" pc="268441999" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="77" lineNum="59" parent="globals/ProgressDelegate" pc="268442015" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="78" lineNum="62" parent="globals/ProgressDelegate" pc="268442025" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="78" lineNum="63" parent="globals/ProgressDelegate" pc="268442027" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="78" lineNum="64" parent="globals/ProgressDelegate" pc="268442040" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="78" lineNum="65" parent="globals/ProgressDelegate" pc="268442055" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="78" lineNum="67" parent="globals/ProgressDelegate" pc="268442060" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="79" lineNum="11" parent="globals/SessionStorage" pc="268442062" symbol="getValue"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="79" lineNum="12" parent="globals/SessionStorage" pc="268442064" symbol="getValue"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="80" lineNum="21" parent="globals/SessionStorage" pc="268442079" symbol="getSessionCount"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="80" lineNum="22" parent="globals/SessionStorage" pc="268442082" symbol="getSessionCount"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="80" lineNum="23" parent="globals/SessionStorage" pc="268442101" symbol="getSessionCount"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="81" lineNum="33" parent="globals/SessionStorage" pc="268442114" symbol="getWeeklyVolume"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="81" lineNum="34" parent="globals/SessionStorage" pc="268442117" symbol="getWeeklyVolume"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="81" lineNum="35" parent="globals/SessionStorage" pc="268442136" symbol="getWeeklyVolume"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="82" lineNum="16" parent="globals/SessionStorage" pc="268442149" symbol="setValue"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="82" lineNum="17" parent="globals/SessionStorage" pc="268442151" symbol="setValue"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="84" lineNum="27" parent="globals/SessionStorage" pc="268442169" symbol="incrementSessionCount"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="84" lineNum="28" parent="globals/SessionStorage" pc="268442172" symbol="incrementSessionCount"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="84" lineNum="29" parent="globals/SessionStorage" pc="268442180" symbol="incrementSessionCount"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="85" lineNum="45" parent="globals/SessionStorage" pc="268442204" symbol="getCompletedWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="85" lineNum="46" parent="globals/SessionStorage" pc="268442207" symbol="getCompletedWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="85" lineNum="47" parent="globals/SessionStorage" pc="268442226" symbol="getCompletedWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="85" lineNum="48" parent="globals/SessionStorage" pc="268442232" symbol="getCompletedWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="85" lineNum="50" parent="globals/SessionStorage" pc="268442238" symbol="getCompletedWorkouts"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="87" lineNum="39" parent="globals/SessionStorage" pc="268442241" symbol="addWeeklyVolume"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="87" lineNum="40" parent="globals/SessionStorage" pc="268442244" symbol="addWeeklyVolume"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SessionStorage.mc" id="87" lineNum="41" parent="globals/SessionStorage" pc="268442252" symbol="addWeeklyVolume"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="88" lineNum="65" parent="globals/Workout" pc="268442276" symbol="getStepCount"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="88" lineNum="66" parent="globals/Workout" pc="268442278" symbol="getStepCount"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="89" lineNum="69" parent="globals/Workout" pc="268442290" symbol="getStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="89" lineNum="70" parent="globals/Workout" pc="268442292" symbol="getStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="89" lineNum="71" parent="globals/Workout" pc="268442316" symbol="getStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="89" lineNum="73" parent="globals/Workout" pc="268442328" symbol="getStep"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="90" lineNum="92" parent="globals/Workout" pc="268442330" symbol="getIntensityLabel"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="90" lineNum="93" parent="globals/Workout" pc="268442332" symbol="getIntensityLabel"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="90" lineNum="94" parent="globals/Workout" pc="268442342" symbol="getIntensityLabel"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="90" lineNum="95" parent="globals/Workout" pc="268442351" symbol="getIntensityLabel"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="90" lineNum="96" parent="globals/Workout" pc="268442362" symbol="getIntensityLabel"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="90" lineNum="97" parent="globals/Workout" pc="268442371" symbol="getIntensityLabel"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="90" lineNum="98" parent="globals/Workout" pc="268442382" symbol="getIntensityLabel"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="90" lineNum="100" parent="globals/Workout" pc="268442391" symbol="getIntensityLabel"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="91" lineNum="84" parent="globals/Workout" pc="268442397" symbol="getTotalDuration"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="91" lineNum="85" parent="globals/Workout" pc="268442400" symbol="getTotalDuration"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="91" lineNum="86" parent="globals/Workout" pc="268442403" symbol="getTotalDuration"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="91" lineNum="87" parent="globals/Workout" pc="268442423" symbol="getTotalDuration"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="91" lineNum="89" parent="globals/Workout" pc="268442451" symbol="getTotalDuration"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="92" lineNum="54" parent="globals/Workout" pc="268442454" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="92" lineNum="55" parent="globals/Workout" pc="268442456" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="92" lineNum="56" parent="globals/Workout" pc="268442473" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="92" lineNum="58" parent="globals/Workout" pc="268442492" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="92" lineNum="59" parent="globals/Workout" pc="268442501" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="92" lineNum="60" parent="globals/Workout" pc="268442510" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="92" lineNum="61" parent="globals/Workout" pc="268442519" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="92" lineNum="62" parent="globals/Workout" pc="268442528" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="93" lineNum="76" parent="globals/Workout" pc="268442537" symbol="markComplete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="93" lineNum="77" parent="globals/Workout" pc="268442539" symbol="markComplete"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="94" lineNum="80" parent="globals/Workout" pc="268442563" symbol="isCompleted"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/Workout.mc" id="94" lineNum="81" parent="globals/Workout" pc="268442565" symbol="isCompleted"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="95" lineNum="100" parent="globals/SettingsDelegate" pc="268442572" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="95" lineNum="101" parent="globals/SettingsDelegate" pc="268442574" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="95" lineNum="102" parent="globals/SettingsDelegate" pc="268442590" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="105" parent="globals/SettingsDelegate" pc="268442600" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="106" parent="globals/SettingsDelegate" pc="268442602" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="107" parent="globals/SettingsDelegate" pc="268442615" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="108" parent="globals/SettingsDelegate" pc="268442627" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="109" parent="globals/SettingsDelegate" pc="268442632" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="110" parent="globals/SettingsDelegate" pc="268442645" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="111" parent="globals/SettingsDelegate" pc="268442657" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="112" parent="globals/SettingsDelegate" pc="268442662" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="113" parent="globals/SettingsDelegate" pc="268442675" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="114" parent="globals/SettingsDelegate" pc="268442687" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="115" parent="globals/SettingsDelegate" pc="268442692" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="116" parent="globals/SettingsDelegate" pc="268442705" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="117" parent="globals/SettingsDelegate" pc="268442720" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="96" lineNum="119" parent="globals/SettingsDelegate" pc="268442725" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="97" lineNum="85" parent="globals/WorkoutListDelegate" pc="268442727" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="97" lineNum="86" parent="globals/WorkoutListDelegate" pc="268442729" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="97" lineNum="87" parent="globals/WorkoutListDelegate" pc="268442745" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="90" parent="globals/WorkoutListDelegate" pc="268442755" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="91" parent="globals/WorkoutListDelegate" pc="268442757" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="92" parent="globals/WorkoutListDelegate" pc="268442770" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="93" parent="globals/WorkoutListDelegate" pc="268442782" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="94" parent="globals/WorkoutListDelegate" pc="268442787" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="95" parent="globals/WorkoutListDelegate" pc="268442800" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="96" parent="globals/WorkoutListDelegate" pc="268442812" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="97" parent="globals/WorkoutListDelegate" pc="268442817" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="98" parent="globals/WorkoutListDelegate" pc="268442830" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="99" parent="globals/WorkoutListDelegate" pc="268442842" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="100" parent="globals/WorkoutListDelegate" pc="268442847" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="101" parent="globals/WorkoutListDelegate" pc="268442860" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="102" parent="globals/WorkoutListDelegate" pc="268442875" symbol="onKeyPressed"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="98" lineNum="104" parent="globals/WorkoutListDelegate" pc="268442880" symbol="onKeyPressed"/>
+    </pcToLineNum>
+    <symbolTable>
+        <entry id="32" method="true" symbol="getAdaptationSuggestion"/>
+        <entry id="8388639" module="true" symbol="Graphics"/>
+        <entry id="80" method="true" symbol="addWeeklyVolume"/>
+        <entry id="91" method="true" symbol="getTotalDuration"/>
+        <entry id="38" method="true" symbol="getDurationFormatted"/>
+        <entry id="40" method="true" symbol="isRepBased"/>
+        <entry id="84" method="true" symbol="getWeeklyVolume"/>
+        <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
+        <entry id="8391573" object="true" symbol="WorkoutStep"/>
+        <entry field="true" id="42" symbol="targetReps"/>
+        <entry id="64" method="true" symbol="getWorkout"/>
+        <entry field="true" id="8388731" symbol="startTime"/>
+        <entry field="true" id="56" symbol="timer"/>
+        <entry id="13" object="true" symbol="ProgressDelegate"/>
+        <entry field="true" id="74" symbol="completedWeeks"/>
+        <entry field="true" id="109" symbol="StartWorkout"/>
+        <entry field="true" id="59" symbol="workout"/>
+        <entry field="true" id="103" symbol="Completed"/>
+        <entry id="8390424" module="true" symbol="Storage"/>
+        <entry field="true" id="51" symbol="isPaused"/>
+        <entry field="true" id="105" symbol="LevelBeginner"/>
+        <entry id="83" method="true" symbol="getSessionCount"/>
+        <entry field="true" id="36" symbol="distanceMeters"/>
+        <entry id="20" object="true" symbol="WorkoutListView"/>
+        <entry id="62" method="true" symbol="getCompletionRate"/>
+        <entry id="8389629" method="true" symbol="getValue"/>
+        <entry field="true" id="8388611" module="true" symbol="Toybox"/>
+        <entry id="6" object="true" symbol="CoachroxApp"/>
+        <entry field="true" id="34" symbol="activityType"/>
+        <entry field="true" id="22" symbol="app"/>
+        <entry field="true" id="100" symbol="AppName"/>
+        <entry id="4" module="true" symbol="globals/Rez/Strings"/>
+        <entry field="true" id="104" symbol="LevelAdvanced"/>
+        <entry field="true" id="8388912" symbol="steps"/>
+        <entry id="8388631" module="true" symbol="Activity"/>
+        <entry field="true" id="53" symbol="nextStepName"/>
+        <entry id="8388648" module="true" symbol="WatchUi"/>
+        <entry field="true" id="96" symbol="ActivityBurpees"/>
+        <entry id="78" method="true" symbol="startWorkout"/>
+        <entry id="2" module="true" symbol="globals/Rez"/>
+        <entry id="88" method="true" symbol="getIntensityLabel"/>
+        <entry id="7" object="true" symbol="CoachroxMenuDelegate"/>
+        <entry field="true" id="46" symbol="currentStepName"/>
+        <entry field="true" id="94" symbol="&lt;globals/Workout/&lt;statics&gt;/&lt;&gt;nextId&gt;"/>
+        <entry id="8389124" method="true" symbol="onUpdate"/>
+        <entry field="true" id="87" symbol="durationMinutes"/>
+        <entry field="true" id="50" method="true" symbol="isCompleted"/>
+        <entry id="12" object="true" symbol="PlanView"/>
+        <entry id="8389553" method="true" symbol="onKeyPressed"/>
+        <entry id="71" method="true" symbol="selectItem"/>
+        <entry id="24" method="true" symbol="selectNext"/>
+        <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry id="8" object="true" symbol="CoachroxMenuView"/>
+        <entry id="52" method="true" symbol="nextStep"/>
+        <entry id="82" method="true" symbol="getCompletedWorkouts"/>
+        <entry id="31" method="true" symbol="generateWeeklyWorkouts"/>
+        <entry field="true" id="47" symbol="elapsedSeconds"/>
+        <entry id="58" method="true" symbol="updateStepInfo"/>
+        <entry id="8389122" method="true" symbol="onLayout"/>
+        <entry field="true" id="23" symbol="plan"/>
+        <entry id="55" method="true" symbol="skipStep"/>
+        <entry field="true" id="92" symbol="id"/>
+        <entry id="67" method="true" symbol="applySetting"/>
+        <entry id="10" object="true" symbol="PlanDelegate"/>
+        <entry id="49" method="true" symbol="getProgress"/>
+        <entry field="true" id="37" symbol="durationSec"/>
+        <entry id="90" method="true" symbol="getStepCount"/>
+        <entry field="true" id="70" symbol="menuItems"/>
+        <entry field="true" id="107" symbol="Paused"/>
+        <entry field="true" id="69" symbol="selectedOption"/>
+        <entry field="true" id="79" symbol="userLevel"/>
+        <entry id="3" module="true" symbol="globals/Rez/Drawables"/>
+        <entry id="81" method="true" symbol="clearAll"/>
+        <entry field="true" id="102" symbol="Coachrox"/>
+        <entry field="true" id="8392335" object="true" symbol="Settings"/>
+        <entry id="43" method="true" symbol="complete"/>
+        <entry id="33" method="true" symbol="getPlan"/>
+        <entry field="true" id="28" symbol="sessionStorage"/>
+        <entry field="true" id="77" symbol="planEngine"/>
+        <entry id="8389960" object="true" symbol="Workout"/>
+        <entry id="25" method="true" symbol="selectPrevious"/>
+        <entry id="11" object="true" symbol="PlanEngine"/>
+        <entry id="9" object="true" symbol="Plan"/>
+        <entry id="48" method="true" symbol="getElapsedTimeFormatted"/>
+        <entry id="8388769" module="true" object="true" symbol="Rez"/>
+        <entry field="true" id="26" symbol="selectedIndex"/>
+        <entry field="true" id="66" symbol="workouts"/>
+        <entry id="16" object="true" symbol="SettingsDelegate"/>
+        <entry field="true" id="86" symbol="completedAt"/>
+        <entry field="true" id="35" symbol="completed"/>
+        <entry id="27" method="true" symbol="startSelected"/>
+        <entry field="true" id="111" symbol="WorkoutActive"/>
+        <entry id="8388640" module="true" symbol="Lang"/>
+        <entry id="18" object="true" symbol="WorkoutDelegate"/>
+        <entry id="14" object="true" symbol="ProgressView"/>
+        <entry field="true" id="75" symbol="currentWorkout"/>
+        <entry field="true" id="95" symbol="LauncherIcon"/>
+        <entry id="8388610" symbol="statics"/>
+        <entry id="8389123" method="true" symbol="onShow"/>
+        <entry id="30" method="true" symbol="createWorkout"/>
+        <entry field="true" id="97" symbol="ActivityLunges"/>
+        <entry id="8389350" module="true" symbol="globals"/>
+        <entry field="true" id="99" symbol="ActivityRun"/>
+        <entry id="41" method="true" symbol="isTimeBased"/>
+        <entry id="85" method="true" symbol="incrementSessionCount"/>
+        <entry field="true" id="72" symbol="selectedItem"/>
+        <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry id="8388702" method="true" symbol="initialize"/>
+        <entry id="8389279" method="true" symbol="onStart"/>
+        <entry id="63" method="true" symbol="getWeekNumber"/>
+        <entry id="89" method="true" symbol="getStep"/>
+        <entry field="true" id="110" symbol="ViewPlan"/>
+        <entry field="true" id="44" symbol="currentStepDuration"/>
+        <entry field="true" id="29" symbol="view"/>
+        <entry field="true" id="65" symbol="level"/>
+        <entry field="true" id="60" symbol="completedSessions"/>
+        <entry field="true" id="45" symbol="currentStepIndex"/>
+        <entry field="true" id="106" symbol="LevelIntermediate"/>
+        <entry field="true" id="8388892" symbol="name"/>
+        <entry id="39" method="true" symbol="isDistanceBased"/>
+        <entry id="73" method="true" symbol="completeWorkout"/>
+        <entry id="8389280" method="true" symbol="getInitialView"/>
+        <entry id="8389281" method="true" symbol="onStop"/>
+        <entry field="true" id="98" symbol="ActivityRest"/>
+        <entry id="76" method="true" symbol="getCurrentPlan"/>
+        <entry field="true" id="61" symbol="currentWeek"/>
+        <entry id="8389781" module="true" symbol="SensorHistory"/>
+        <entry id="8388646" module="true" object="true" symbol="Timer"/>
+        <entry id="21" object="true" symbol="WorkoutSession"/>
+        <entry id="5" module="true" symbol="globals/Workout/&lt;statics&gt;"/>
+        <entry id="17" object="true" symbol="SettingsView"/>
+        <entry id="93" method="true" symbol="markComplete"/>
+        <entry field="true" id="68" symbol="options"/>
+        <entry field="true" id="101" symbol="AppNameLong"/>
+        <entry field="true" id="8389846" symbol="type"/>
+        <entry id="8389125" method="true" symbol="onHide"/>
+        <entry id="57" method="true" symbol="togglePause"/>
+        <entry id="19" object="true" symbol="WorkoutListDelegate"/>
+        <entry id="8390426" method="true" symbol="setValue"/>
+        <entry id="8388635" module="true" symbol="Application"/>
+        <entry id="54" method="true" symbol="onTimer"/>
+        <entry field="true" id="108" symbol="Progress"/>
+        <entry id="15" object="true" symbol="SessionStorage"/>
+    </symbolTable>
+    <localVars>
+        <entry endPc="268435717" name="workout" stackId="1" startPc="268435658"/>
+        <entry arg="true" endPc="268435837" name="application" stackId="1" startPc="268435792"/>
+        <entry arg="true" endPc="268436197" name="dc" stackId="1" startPc="268435838"/>
+        <entry endPc="268436139" name="y" stackId="2" startPc="268435917"/>
+        <entry endPc="268436139" name="workoutCount" stackId="3" startPc="268435917"/>
+        <entry endPc="268436139" name="i" stackId="4" startPc="268435936"/>
+        <entry endPc="268436129" name="workout" stackId="5" startPc="268435936"/>
+        <entry endPc="268436126" name="text" stackId="6" startPc="268435959"/>
+        <entry arg="true" endPc="268436247" name="application" stackId="1" startPc="268436198"/>
+        <entry arg="true" endPc="268436631" name="dc" stackId="1" startPc="268436248"/>
+        <entry endPc="268436630" name="totalSessions" stackId="2" startPc="268436251"/>
+        <entry endPc="268436630" name="weeklyVolume" stackId="3" startPc="268436251"/>
+        <entry endPc="268436630" name="adaptation" stackId="4" startPc="268436251"/>
+        <entry endPc="268436630" name="suggestionText" stackId="5" startPc="268436251"/>
+        <entry arg="true" endPc="268436659" name="application" stackId="1" startPc="268436632"/>
+        <entry arg="true" endPc="268436849" name="key" stackId="1" startPc="268436660"/>
+        <entry endPc="268436849" name="session" stackId="2" startPc="268436663"/>
+        <entry arg="true" endPc="268436877" name="pView" stackId="1" startPc="268436850"/>
+        <entry arg="true" endPc="268436914" name="key" stackId="1" startPc="268436878"/>
+        <entry arg="true" endPc="268437504" name="name" stackId="1" startPc="268436915"/>
+        <entry arg="true" endPc="268437504" name="type" stackId="2" startPc="268436915"/>
+        <entry arg="true" endPc="268437504" name="level" stackId="3" startPc="268436915"/>
+        <entry arg="true" endPc="268437504" name="durationMin" stackId="4" startPc="268436915"/>
+        <entry endPc="268437504" name="steps" stackId="5" startPc="268436918"/>
+        <entry endPc="268437095" name="rounds" stackId="6" startPc="268436972"/>
+        <entry endPc="268437095" name="i" stackId="7" startPc="268436990"/>
+        <entry endPc="268437645" name="lastWeekCompleted" stackId="1" startPc="268437508"/>
+        <entry endPc="268437645" name="weekBeforeCompleted" stackId="2" startPc="268437508"/>
+        <entry arg="true" endPc="268437657" name="storage" stackId="1" startPc="268437646"/>
+        <entry arg="true" endPc="268437786" name="level" stackId="1" startPc="268437658"/>
+        <entry arg="true" endPc="268437786" name="week" stackId="2" startPc="268437658"/>
+        <entry endPc="268437786" name="planLength" stackId="3" startPc="268437661"/>
+        <entry endPc="268437786" name="planType" stackId="4" startPc="268437661"/>
+        <entry endPc="268437786" name="completedThisWeek" stackId="5" startPc="268437661"/>
+        <entry arg="true" endPc="268437969" name="week" stackId="1" startPc="268437787"/>
+        <entry arg="true" endPc="268437969" name="level" stackId="2" startPc="268437787"/>
+        <entry endPc="268437969" name="workouts" stackId="3" startPc="268437790"/>
+        <entry arg="true" endPc="268438045" name="stepName" stackId="1" startPc="268437990"/>
+        <entry arg="true" endPc="268438045" name="actType" stackId="2" startPc="268437990"/>
+        <entry arg="true" endPc="268438045" name="duration" stackId="3" startPc="268437990"/>
+        <entry arg="true" endPc="268438045" name="distance" stackId="4" startPc="268437990"/>
+        <entry arg="true" endPc="268438045" name="reps" stackId="5" startPc="268437990"/>
+        <entry endPc="268438111" name="minutes" stackId="1" startPc="268438049"/>
+        <entry endPc="268438111" name="seconds" stackId="2" startPc="268438049"/>
+        <entry endPc="268438283" name="minutes" stackId="1" startPc="268438240"/>
+        <entry endPc="268438283" name="seconds" stackId="2" startPc="268438240"/>
+        <entry endPc="268438413" name="step" stackId="1" startPc="268438287"/>
+        <entry arg="true" endPc="268438500" name="workoutInstance" stackId="1" startPc="268438415"/>
+        <entry arg="true" endPc="268438500" name="storage" stackId="2" startPc="268438415"/>
+        <entry arg="true" endPc="268438791" name="success" stackId="1" startPc="268438528"/>
+        <entry endPc="268438790" name="week" stackId="2" startPc="268438531"/>
+        <entry endPc="268438790" name="completedKey" stackId="3" startPc="268438531"/>
+        <entry endPc="268438790" name="current" stackId="4" startPc="268438531"/>
+        <entry endPc="268438790" name="workoutId" stackId="5" startPc="268438531"/>
+        <entry endPc="268438903" name="step" stackId="1" startPc="268438795"/>
+        <entry endPc="268438900" name="next" stackId="2" startPc="268438821"/>
+        <entry endPc="268439018" name="currentStep" stackId="1" startPc="268438926"/>
+        <entry arg="true" endPc="268439050" name="menuView" stackId="1" startPc="268439023"/>
+        <entry arg="true" endPc="268439144" name="key" stackId="1" startPc="268439051"/>
+        <entry arg="true" endPc="268439195" name="index" stackId="1" startPc="268439156"/>
+        <entry arg="true" endPc="268439276" name="lvl" stackId="1" startPc="268439196"/>
+        <entry arg="true" endPc="268439276" name="week" stackId="2" startPc="268439196"/>
+        <entry arg="true" endPc="268439276" name="completed" stackId="3" startPc="268439196"/>
+        <entry endPc="268439275" name="engine" stackId="4" startPc="268439199"/>
+        <entry endPc="268439589" name="storage" stackId="1" startPc="268439388"/>
+        <entry arg="true" endPc="268439630" name="application" stackId="1" startPc="268439591"/>
+        <entry arg="true" endPc="268440064" name="dc" stackId="1" startPc="268439631"/>
+        <entry endPc="268440063" name="currentLevel" stackId="2" startPc="268439634"/>
+        <entry endPc="268440063" name="levelName" stackId="3" startPc="268439634"/>
+        <entry endPc="268440063" name="y" stackId="4" startPc="268439634"/>
+        <entry endPc="268439970" name="i" stackId="5" startPc="268439829"/>
+        <entry arg="true" endPc="268440110" name="application" stackId="1" startPc="268440065"/>
+        <entry arg="true" endPc="268440679" name="dc" stackId="1" startPc="268440111"/>
+        <entry endPc="268440621" name="levelName" stackId="2" startPc="268440190"/>
+        <entry endPc="268440621" name="barWidth" stackId="3" startPc="268440190"/>
+        <entry endPc="268440621" name="progress" stackId="4" startPc="268440190"/>
+        <entry endPc="268440621" name="y" stackId="5" startPc="268440190"/>
+        <entry endPc="268440621" name="i" stackId="6" startPc="268440519"/>
+        <entry endPc="268440611" name="workout" stackId="7" startPc="268440519"/>
+        <entry endPc="268440608" name="status" stackId="8" startPc="268440542"/>
+        <entry endPc="268440855" name="view" stackId="1" startPc="268440790"/>
+        <entry endPc="268440855" name="delegate" stackId="2" startPc="268440790"/>
+        <entry endPc="268440935" name="view" stackId="3" startPc="268440870"/>
+        <entry endPc="268440935" name="delegate" stackId="4" startPc="268440870"/>
+        <entry endPc="268441015" name="view" stackId="5" startPc="268440950"/>
+        <entry endPc="268441015" name="delegate" stackId="6" startPc="268440950"/>
+        <entry endPc="268441095" name="view" stackId="7" startPc="268441030"/>
+        <entry endPc="268441095" name="delegate" stackId="8" startPc="268441030"/>
+        <entry arg="true" endPc="268441139" name="application" stackId="1" startPc="268441100"/>
+        <entry arg="true" endPc="268441496" name="dc" stackId="1" startPc="268441140"/>
+        <entry endPc="268441495" name="startY" stackId="2" startPc="268441143"/>
+        <entry endPc="268441495" name="itemHeight" stackId="3" startPc="268441143"/>
+        <entry endPc="268441385" name="i" stackId="4" startPc="268441238"/>
+        <entry endPc="268441375" name="y" stackId="5" startPc="268441238"/>
+        <entry endPc="268441495" name="plan" stackId="6" startPc="268441143"/>
+        <entry endPc="268441492" name="weekText" stackId="7" startPc="268441405"/>
+        <entry arg="true" endPc="268441574" name="success" stackId="1" startPc="268441497"/>
+        <entry arg="true" endPc="268441881" name="state" stackId="1" startPc="268441819"/>
+        <entry arg="true" endPc="268441996" name="workoutId" stackId="1" startPc="268441882"/>
+        <entry endPc="268441995" name="plan" stackId="2" startPc="268441885"/>
+        <entry endPc="268441992" name="workout" stackId="3" startPc="268441899"/>
+        <entry arg="true" endPc="268442024" name="pView" stackId="1" startPc="268441997"/>
+        <entry arg="true" endPc="268442061" name="key" stackId="1" startPc="268442025"/>
+        <entry arg="true" endPc="268442078" name="key" stackId="1" startPc="268442062"/>
+        <entry endPc="268442113" name="count" stackId="1" startPc="268442082"/>
+        <entry endPc="268442148" name="volume" stackId="1" startPc="268442117"/>
+        <entry arg="true" endPc="268442168" name="key" stackId="1" startPc="268442149"/>
+        <entry arg="true" endPc="268442168" name="value" stackId="2" startPc="268442149"/>
+        <entry endPc="268442202" name="count" stackId="1" startPc="268442172"/>
+        <entry endPc="268442240" name="completed" stackId="1" startPc="268442207"/>
+        <entry arg="true" endPc="268442275" name="minutes" stackId="1" startPc="268442241"/>
+        <entry endPc="268442274" name="current" stackId="2" startPc="268442244"/>
+        <entry arg="true" endPc="268442329" name="index" stackId="1" startPc="268442290"/>
+        <entry endPc="268442453" name="total" stackId="1" startPc="268442400"/>
+        <entry endPc="268442450" name="i" stackId="2" startPc="268442423"/>
+        <entry arg="true" endPc="268442536" name="workoutName" stackId="1" startPc="268442454"/>
+        <entry arg="true" endPc="268442536" name="workoutType" stackId="2" startPc="268442454"/>
+        <entry arg="true" endPc="268442536" name="duration" stackId="3" startPc="268442454"/>
+        <entry arg="true" endPc="268442536" name="workoutSteps" stackId="4" startPc="268442454"/>
+        <entry arg="true" endPc="268442599" name="sView" stackId="1" startPc="268442572"/>
+        <entry arg="true" endPc="268442726" name="key" stackId="1" startPc="268442600"/>
+        <entry arg="true" endPc="268442754" name="wView" stackId="1" startPc="268442727"/>
+        <entry arg="true" endPc="268442881" name="key" stackId="1" startPc="268442755"/>
+    </localVars>
+    <annotations>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ActivityBurpees"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="Paused"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="Progress"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="WorkoutActive"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="LevelAdvanced"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ViewPlan"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppName"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="Completed"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="Coachrox"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ActivityRun"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppNameLong"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ActivityRest"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="LevelBeginner"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="LevelIntermediate"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ActivityLunges"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="Settings"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="StartWorkout"/>
+    </annotations>
+    <dataEntryOffsetMappings>
+        <dataEntry label="globals" offset="58" parentId="" symbolId="globals" type="module"/>
+        <dataEntry label="globals/WorkoutListView" offset="260" parentId="globals" symbolId="WorkoutListView" type="class"/>
+        <dataEntry label="globals/ProgressView" offset="376" parentId="globals" symbolId="ProgressView" type="class"/>
+        <dataEntry label="globals/WorkoutDelegate" offset="447" parentId="globals" symbolId="WorkoutDelegate" type="class"/>
+        <dataEntry label="globals/PlanDelegate" offset="509" parentId="globals" symbolId="PlanDelegate" type="class"/>
+        <dataEntry label="globals/PlanEngine" offset="571" parentId="globals" symbolId="PlanEngine" type="class"/>
+        <dataEntry label="globals/WorkoutStep" offset="660" parentId="globals" symbolId="WorkoutStep" type="class"/>
+        <dataEntry label="globals/Rez" offset="794" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry label="globals/WorkoutSession" offset="838" parentId="globals" symbolId="WorkoutSession" type="class"/>
+        <dataEntry label="globals/CoachroxMenuDelegate" offset="1080" parentId="globals" symbolId="CoachroxMenuDelegate" type="class"/>
+        <dataEntry label="globals/Plan" offset="1142" parentId="globals" symbolId="Plan" type="class"/>
+        <dataEntry label="globals/SettingsView" offset="1249" parentId="globals" symbolId="SettingsView" type="class"/>
+        <dataEntry label="globals/PlanView" offset="1356" parentId="globals" symbolId="PlanView" type="class"/>
+        <dataEntry label="globals/CoachroxMenuView" offset="1427" parentId="globals" symbolId="CoachroxMenuView" type="class"/>
+        <dataEntry label="globals/CoachroxApp" offset="1552" parentId="globals" symbolId="CoachroxApp" type="class"/>
+        <dataEntry label="globals/ProgressDelegate" offset="1695" parentId="globals" symbolId="ProgressDelegate" type="class"/>
+        <dataEntry label="globals/SessionStorage" offset="1757" parentId="globals" symbolId="SessionStorage" type="class"/>
+        <dataEntry label="globals/Workout" offset="1873" parentId="globals" symbolId="Workout" type="class"/>
+        <dataEntry label="globals/Workout/&lt;statics&gt;" offset="2029" parentId="Workout" symbolId="&lt;statics&gt;" type="module"/>
+        <dataEntry label="globals/SettingsDelegate" offset="2060" parentId="globals" symbolId="SettingsDelegate" type="class"/>
+        <dataEntry label="globals/WorkoutListDelegate" offset="2122" parentId="globals" symbolId="WorkoutListDelegate" type="class"/>
+        <dataEntry label="globals/Rez/Drawables" offset="2184" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry label="globals/Rez/Strings" offset="2219" parentId="Rez" symbolId="Strings" type="module"/>
+    </dataEntryOffsetMappings>
+    <functions>
+        <functionEntry accessMode="public" endPc="268435471" name="&lt;init&gt;" parent="WorkoutListView" startPc="268435460">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435483" name="&lt;init&gt;" parent="ProgressView" startPc="268435472">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435495" name="&lt;init&gt;" parent="WorkoutDelegate" startPc="268435484">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435507" name="&lt;init&gt;" parent="PlanDelegate" startPc="268435496">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="PlanEngine">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="WorkoutStep">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435527" name="&lt;init&gt;" parent="Rez" startPc="268435508">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435539" name="&lt;init&gt;" parent="WorkoutSession" startPc="268435528">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435551" name="&lt;init&gt;" parent="CoachroxMenuDelegate" startPc="268435540">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435561" name="&lt;init&gt;" parent="Plan" startPc="268435552">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435573" name="&lt;init&gt;" parent="SettingsView" startPc="268435562">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435585" name="&lt;init&gt;" parent="PlanView" startPc="268435574">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435597" name="&lt;init&gt;" parent="CoachroxMenuView" startPc="268435586">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435609" name="&lt;init&gt;" parent="CoachroxApp" startPc="268435598">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435621" name="&lt;init&gt;" parent="ProgressDelegate" startPc="268435610">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="SessionStorage">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Workout">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="globals/Workout">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435633" name="&lt;init&gt;" parent="SettingsDelegate" startPc="268435622">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435645" name="&lt;init&gt;" parent="WorkoutListDelegate" startPc="268435634">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435721" name="startSelected" parent="WorkoutListView" startPc="268435646">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435756" name="selectPrevious" parent="WorkoutListView" startPc="268435722">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435759" name="onLayout" parent="WorkoutListView" startPc="268435757">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435791" name="selectNext" parent="WorkoutListView" startPc="268435760">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435837" name="initialize" parent="WorkoutListView" startPc="268435792">
+            <param id="application"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436197" name="onUpdate" parent="WorkoutListView" startPc="268435838">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436247" name="initialize" parent="ProgressView" startPc="268436198">
+            <param id="application"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436631" name="onUpdate" parent="ProgressView" startPc="268436248">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436659" name="initialize" parent="WorkoutDelegate" startPc="268436632">
+            <param id="application"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436849" name="onKeyPressed" parent="WorkoutDelegate" startPc="268436660">
+            <param id="key"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436877" name="initialize" parent="PlanDelegate" startPc="268436850">
+            <param id="pView"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436914" name="onKeyPressed" parent="PlanDelegate" startPc="268436878">
+            <param id="key"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437504" name="createWorkout" parent="PlanEngine" startPc="268436915">
+            <param id="name"/>
+            <param id="type"/>
+            <param id="level"/>
+            <param id="durationMin"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437645" name="getAdaptationSuggestion" parent="PlanEngine" startPc="268437505">
+            <documentation><![CDATA[<div class="description"> Get suggested adaptation based on performance<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437657" name="initialize" parent="PlanEngine" startPc="268437646">
+            <param id="storage"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437786" name="getPlan" parent="PlanEngine" startPc="268437658">
+            <param id="level"/>
+            <param id="week"/>
+            <documentation><![CDATA[<div class="description"> Get a training plan based on level and week<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437969" name="generateWeeklyWorkouts" parent="PlanEngine" startPc="268437787">
+            <param id="week"/>
+            <param id="level"/>
+            <documentation><![CDATA[<div class="description"> Generate workout for the week<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437979" name="isRepBased" parent="WorkoutStep" startPc="268437970">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437989" name="isTimeBased" parent="WorkoutStep" startPc="268437980">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438045" name="initialize" parent="WorkoutStep" startPc="268437990">
+            <param id="stepName"/>
+            <param id="actType"/>
+            <param id="duration"/>
+            <param id="distance"/>
+            <param id="reps"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438111" name="getDurationFormatted" parent="WorkoutStep" startPc="268438046">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438121" name="isDistanceBased" parent="WorkoutStep" startPc="268438112">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Drawables">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Strings">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438184" name="onShow" parent="WorkoutSession" startPc="268438122">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438187" name="onLayout" parent="WorkoutSession" startPc="268438185">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438203" name="togglePause" parent="WorkoutSession" startPc="268438188">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438213" name="skipStep" parent="WorkoutSession" startPc="268438204">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438236" name="getProgress" parent="WorkoutSession" startPc="268438214">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438283" name="getElapsedTimeFormatted" parent="WorkoutSession" startPc="268438237">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438414" name="nextStep" parent="WorkoutSession" startPc="268438284">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438500" name="initialize" parent="WorkoutSession" startPc="268438415">
+            <param id="workoutInstance"/>
+            <param id="storage"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438527" name="onHide" parent="WorkoutSession" startPc="268438501">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438791" name="complete" parent="WorkoutSession" startPc="268438528">
+            <param id="success"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438904" name="updateStepInfo" parent="WorkoutSession" startPc="268438792">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439022" name="onTimer" parent="WorkoutSession" startPc="268438905">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439050" name="initialize" parent="CoachroxMenuDelegate" startPc="268439023">
+            <param id="menuView"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439144" name="onKeyPressed" parent="CoachroxMenuDelegate" startPc="268439051">
+            <param id="key"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439155" name="getWeekNumber" parent="Plan" startPc="268439145">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439195" name="getWorkout" parent="Plan" startPc="268439156">
+            <param id="index"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439276" name="initialize" parent="Plan" startPc="268439196">
+            <param id="lvl"/>
+            <param id="week"/>
+            <param id="completed"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439290" name="getCompletionRate" parent="Plan" startPc="268439277">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439343" name="selectPrevious" parent="SettingsView" startPc="268439291">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439384" name="selectNext" parent="SettingsView" startPc="268439344">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439590" name="applySetting" parent="SettingsView" startPc="268439385">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439630" name="initialize" parent="SettingsView" startPc="268439591">
+            <param id="application"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440064" name="onUpdate" parent="SettingsView" startPc="268439631">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440110" name="initialize" parent="PlanView" startPc="268440065">
+            <param id="application"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440679" name="onUpdate" parent="PlanView" startPc="268440111">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onShow" parent="CoachroxMenuView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440732" name="selectPrevious" parent="CoachroxMenuView" startPc="268440680">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440735" name="onLayout" parent="CoachroxMenuView" startPc="268440733">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440776" name="selectNext" parent="CoachroxMenuView" startPc="268440736">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441099" name="selectItem" parent="CoachroxMenuView" startPc="268440777">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441139" name="initialize" parent="CoachroxMenuView" startPc="268441100">
+            <param id="application"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441496" name="onUpdate" parent="CoachroxMenuView" startPc="268441140">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441574" name="completeWorkout" parent="CoachroxApp" startPc="268441497">
+            <param id="success"/>
+            <documentation><![CDATA[<div class="description"> Complete a workout<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441577" name="onStart" parent="CoachroxApp" startPc="268441575">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441617" name="getCurrentPlan" parent="CoachroxApp" startPc="268441578">
+            <documentation><![CDATA[<div class="description"> Get the current training plan<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441646" name="getInitialView" parent="CoachroxApp" startPc="268441618">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441818" name="initialize" parent="CoachroxApp" startPc="268441647">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441881" name="onStop" parent="CoachroxApp" startPc="268441819">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441996" name="startWorkout" parent="CoachroxApp" startPc="268441882">
+            <param id="workoutId"/>
+            <documentation><![CDATA[<div class="description"> Start a workout session<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442024" name="initialize" parent="ProgressDelegate" startPc="268441997">
+            <param id="pView"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442061" name="onKeyPressed" parent="ProgressDelegate" startPc="268442025">
+            <param id="key"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442078" name="getValue" parent="SessionStorage" startPc="268442062">
+            <param id="key"/>
+            <documentation><![CDATA[<div class="description"> Get a value from storage<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442113" name="getSessionCount" parent="SessionStorage" startPc="268442079">
+            <documentation><![CDATA[<div class="description"> Get session completion count<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442148" name="getWeeklyVolume" parent="SessionStorage" startPc="268442114">
+            <documentation><![CDATA[<div class="description"> Get weekly volume (total minutes)<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442168" name="setValue" parent="SessionStorage" startPc="268442149">
+            <param id="key"/>
+            <param id="value"/>
+            <documentation><![CDATA[<div class="description"> Set a value in storage<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="SessionStorage">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442203" name="incrementSessionCount" parent="SessionStorage" startPc="268442169">
+            <documentation><![CDATA[<div class="description"> Increment session count<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442240" name="getCompletedWorkouts" parent="SessionStorage" startPc="268442204">
+            <documentation><![CDATA[<div class="description"> Get all completed workout IDs<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" name="clearAll" parent="SessionStorage">
+            <documentation><![CDATA[<div class="description"> Clear all data (for testing/reset)<br/> Note: Storage.clear() is not available in SDK 8.x<br/> Use setValue for individual keys to null to remove them<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442275" name="addWeeklyVolume" parent="SessionStorage" startPc="268442241">
+            <param id="minutes"/>
+            <documentation><![CDATA[<div class="description"> Add to weekly volume<br/></div>]]></documentation>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442289" name="getStepCount" parent="Workout" startPc="268442276">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442329" name="getStep" parent="Workout" startPc="268442290">
+            <param id="index"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442396" name="getIntensityLabel" parent="Workout" startPc="268442330">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442453" name="getTotalDuration" parent="Workout" startPc="268442397">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442536" name="initialize" parent="Workout" startPc="268442454">
+            <param id="workoutName"/>
+            <param id="workoutType"/>
+            <param id="duration"/>
+            <param id="workoutSteps"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442562" name="markComplete" parent="Workout" startPc="268442537">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442571" name="isCompleted" parent="Workout" startPc="268442563">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442599" name="initialize" parent="SettingsDelegate" startPc="268442572">
+            <param id="sView"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442726" name="onKeyPressed" parent="SettingsDelegate" startPc="268442600">
+            <param id="key"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442754" name="initialize" parent="WorkoutListDelegate" startPc="268442727">
+            <param id="wView"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442881" name="onKeyPressed" parent="WorkoutListDelegate" startPc="268442755">
+            <param id="key"/>
+            <documentation/>
+        </functionEntry>
+    </functions>
+</debugInfo>

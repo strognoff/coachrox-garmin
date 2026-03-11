@@ -1,6 +1,7 @@
-using Toybox.Application;
-using Toybox.WatchUi;
-using Toybox.Activity;
+import Toybox.Lang;
+import Toybox.Application;
+import Toybox.WatchUi;
+import Toybox.Activity;
 
 //! Main application entry point for COACHROX
 class CoachroxApp extends Application.AppBase {

@@ -1,0 +1,218 @@
+[ @file = "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Graphics,3,14,22]; ]
+import Toybox.Graphics;
+//! Input delegate for active workout
+[ @file = "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc"; @line = 6; @symbol_classdef = [WorkoutDelegate,6,6,21]; @symbol_extends<0> = [WatchUi,6,30,37]; @symbol_extends<1> = [InputDelegate,6,38,51]; ]
+class WorkoutDelegate extends WatchUi.InputDelegate {
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc"; @line = 6; ]
+    <init> {
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc"; @line = 6; ]
+    static
+    <init> {
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc"; @line = 8; @position = 8; @symbol_vardef = [app,8,8,11]; @symbol_type<0> = [CoachroxApp,8,15,26]; ]
+    var app as CoachroxApp;
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc"; @line = 10; @symbol_functiondef = [initialize,10,13,23]; @symbol_param<0> = [application,10,24,35]; @symbol_param<0>_type<0> = [CoachroxApp,10,39,50]; ]
+    function initialize(application as CoachroxApp) as Void {
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_10_52_13_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 11 8 ]
+        symbol [ WatchUi %tmp.1 11 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ InputDelegate %tmp.2 11 16 29 ];
+        %tmp.2 = getv %tmp.1 :InputDelegate;
+        symbol [ initialize %tmp.3 11 30 40 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 12 8 ]
+        %tmp.4 = lgetv %application;
+        symbol [ application %tmp.4 12 14 25 ];
+        symbol [ app ? 12 8 11 ];
+        putv self :app %tmp.4;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_10_52_13_4_stop:
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc"; @line = 15; @symbol_functiondef = [onKeyPressed,15,13,25]; @symbol_param<0> = [key,15,26,29]; @symbol_param<0>_type<0> = [WatchUi,15,33,40]; @symbol_param<0>_type<1> = [KeyEvent,15,41,49]; @symbol_return<0> = [Boolean,15,54,61]; ]
+    function onKeyPressed(key as WatchUi.KeyEvent) as Boolean {
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_15_62_45_4_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 16 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_15_62_45_4_start" "_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_15_62_45_4_stop" ]
+        %session.1 = local;
+        symbol [ session %session.1 16 12 19 ];
+        symbol [ app %tmp.2 16 22 25 ];
+        %tmp.2 = getv ? :app;
+        symbol [ currentWorkout %tmp.3 16 26 40 ];
+        %tmp.3 = getv %tmp.2 :currentWorkout;
+        lputv %session.1 %tmp.3;
+        symbol [ session %session.1 16 12 19 ];
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 18 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_18_8_20_8_if_stmt:
+        %tmp.4 = lgetv %session.1;
+        symbol [ session %tmp.4 18 12 19 ];
+        %tmp.5 = null;
+        %tmp.6 = eq %tmp.4 %tmp.5;
+        bf %tmp.6 @_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_18_8_20_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_18_8_20_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_18_29_20_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 19 12 ]
+        %tmp.7 = false;
+        ret %tmp.7;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_18_29_20_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_18_8_20_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_18_8_20_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 22 8 ]
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_22_8_42_8_if_stmt:
+        %tmp.8 = lgetv %key;
+        symbol [ key %tmp.8 22 12 15 ];
+        symbol [ getKey %tmp.9 22 16 22 ];
+        %tmp.9 = getv function %tmp.8 :getKey;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        symbol [ WatchUi %tmp.11 22 28 35 ];
+        %tmp.11 = getm $.Toybox.WatchUi;
+        symbol [ KEY_UP %tmp.12 22 36 42 ];
+        %tmp.12 = getv %tmp.11 :KEY_UP;
+        %tmp.13 = eq %tmp.10 %tmp.12;
+        bf %tmp.13 @_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_22_8_42_8_if_false;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_22_8_42_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_22_44_27_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 24 12 ]
+        %tmp.14 = lgetv %session.1;
+        symbol [ session %tmp.14 24 12 19 ];
+        symbol [ skipStep %tmp.15 24 20 28 ];
+        %tmp.15 = getv function %tmp.14 :skipStep;
+        invoke %tmp.14 %tmp.15();
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 25 12 ]
+        symbol [ WatchUi %tmp.16 25 12 19 ];
+        %tmp.16 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.17 25 20 33 ];
+        %tmp.17 = getv function %tmp.16 :requestUpdate;
+        invoke %tmp.16 %tmp.17();
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 26 12 ]
+        %tmp.18 = true;
+        ret %tmp.18;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_22_44_27_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_22_8_42_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_22_8_42_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 27 15 ]
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_27_15_42_8_if_stmt:
+        %tmp.19 = lgetv %key;
+        symbol [ key %tmp.19 27 19 22 ];
+        symbol [ getKey %tmp.20 27 23 29 ];
+        %tmp.20 = getv function %tmp.19 :getKey;
+        %tmp.21 = invoke %tmp.19 %tmp.20();
+        symbol [ WatchUi %tmp.22 27 35 42 ];
+        %tmp.22 = getm $.Toybox.WatchUi;
+        symbol [ KEY_DOWN %tmp.23 27 43 51 ];
+        %tmp.23 = getv %tmp.22 :KEY_DOWN;
+        %tmp.24 = eq %tmp.21 %tmp.23;
+        bf %tmp.24 @_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_27_15_42_8_if_false;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_27_15_42_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_27_53_32_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 29 12 ]
+        %tmp.25 = lgetv %session.1;
+        symbol [ session %tmp.25 29 12 19 ];
+        symbol [ togglePause %tmp.26 29 20 31 ];
+        %tmp.26 = getv function %tmp.25 :togglePause;
+        invoke %tmp.25 %tmp.26();
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 30 12 ]
+        symbol [ WatchUi %tmp.27 30 12 19 ];
+        %tmp.27 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.28 30 20 33 ];
+        %tmp.28 = getv function %tmp.27 :requestUpdate;
+        invoke %tmp.27 %tmp.28();
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 31 12 ]
+        %tmp.29 = true;
+        ret %tmp.29;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_27_53_32_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_27_15_42_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_27_15_42_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 32 15 ]
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_32_15_42_8_if_stmt:
+        %tmp.30 = lgetv %key;
+        symbol [ key %tmp.30 32 19 22 ];
+        symbol [ getKey %tmp.31 32 23 29 ];
+        %tmp.31 = getv function %tmp.30 :getKey;
+        %tmp.32 = invoke %tmp.30 %tmp.31();
+        symbol [ WatchUi %tmp.33 32 35 42 ];
+        %tmp.33 = getm $.Toybox.WatchUi;
+        symbol [ KEY_ENTER %tmp.34 32 43 52 ];
+        %tmp.34 = getv %tmp.33 :KEY_ENTER;
+        %tmp.35 = eq %tmp.32 %tmp.34;
+        bf %tmp.35 @_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_32_15_42_8_if_false;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_32_15_42_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_32_54_37_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 34 12 ]
+        %tmp.36 = lgetv %session.1;
+        symbol [ session %tmp.36 34 12 19 ];
+        symbol [ complete %tmp.37 34 20 28 ];
+        %tmp.37 = getv function %tmp.36 :complete;
+        %tmp.38 = true;
+        invoke %tmp.36 %tmp.37(%tmp.38);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 35 12 ]
+        symbol [ WatchUi %tmp.39 35 12 19 ];
+        %tmp.39 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.40 35 20 27 ];
+        %tmp.40 = getv function %tmp.39 :popView;
+        symbol [ WatchUi %tmp.41 35 28 35 ];
+        %tmp.41 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.42 35 36 47 ];
+        %tmp.42 = getv %tmp.41 :SLIDE_RIGHT;
+        invoke %tmp.39 %tmp.40(%tmp.42);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 36 12 ]
+        %tmp.43 = true;
+        ret %tmp.43;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_32_54_37_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_32_15_42_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_32_15_42_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 37 15 ]
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_37_15_42_8_if_stmt:
+        %tmp.44 = lgetv %key;
+        symbol [ key %tmp.44 37 19 22 ];
+        symbol [ getKey %tmp.45 37 23 29 ];
+        %tmp.45 = getv function %tmp.44 :getKey;
+        %tmp.46 = invoke %tmp.44 %tmp.45();
+        symbol [ WatchUi %tmp.47 37 35 42 ];
+        %tmp.47 = getm $.Toybox.WatchUi;
+        symbol [ KEY_ESC %tmp.48 37 43 50 ];
+        %tmp.48 = getv %tmp.47 :KEY_ESC;
+        %tmp.49 = eq %tmp.46 %tmp.48;
+        bf %tmp.49 @_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_37_15_42_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_37_15_42_8_if_true:
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_37_52_42_8_start:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 39 12 ]
+        %tmp.50 = lgetv %session.1;
+        symbol [ session %tmp.50 39 12 19 ];
+        symbol [ complete %tmp.51 39 20 28 ];
+        %tmp.51 = getv function %tmp.50 :complete;
+        %tmp.52 = false;
+        invoke %tmp.50 %tmp.51(%tmp.52);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 40 12 ]
+        symbol [ WatchUi %tmp.53 40 12 19 ];
+        %tmp.53 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.54 40 20 27 ];
+        %tmp.54 = getv function %tmp.53 :popView;
+        symbol [ WatchUi %tmp.55 40 28 35 ];
+        %tmp.55 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.56 40 36 47 ];
+        %tmp.56 = getv %tmp.55 :SLIDE_RIGHT;
+        invoke %tmp.53 %tmp.54(%tmp.56);
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 41 12 ]
+        %tmp.57 = true;
+        ret %tmp.57;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_37_52_42_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_37_15_42_8_if_end;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_37_15_42_8_if_end:
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_32_15_42_8_if_end:
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_27_15_42_8_if_end:
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_22_8_42_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" 44 8 ]
+        %tmp.58 = false;
+        ret %tmp.58;
+_home_cechinel_coachrox_garmin_source_WorkoutDelegate_mc_15_62_45_4_stop:
+    }
+}
+[ @file = "/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc"; @line = 1; ]
+<init> {
+}

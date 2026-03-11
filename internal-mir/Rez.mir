@@ -1,0 +1,67 @@
+[ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [WatchUi,2,13,20]; ]
+using Toybox.WatchUi;
+[ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 3; @symbol_usingdef<0> = [Toybox,3,6,12]; @symbol_usingdef<1> = [WatchUi,3,13,20]; @symbol_usingAlias = [Ui,3,24,26]; ]
+using Toybox.WatchUi as :Ui;
+[ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 4; @symbol_usingdef<0> = [Toybox,4,6,12]; @symbol_usingdef<1> = [Graphics,4,13,21]; ]
+using Toybox.Graphics;
+[ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 5; @symbol_usingdef<0> = [Toybox,5,6,12]; @symbol_usingdef<1> = [Graphics,5,13,21]; @symbol_usingAlias = [Gfx,5,25,28]; ]
+using Toybox.Graphics as :Gfx;
+[ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 7; @symbol_moduledef = [Rez,7,7,10]; ]
+module Rez {
+    [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 8; @symbol_moduledef = [Drawables,8,11,20]; ]
+    module Drawables {
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 8; ]
+        <init> {
+        }
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 9; @position = 27; initialized = true; @symbol_vardef = [LauncherIcon,9,27,39]; @symbol_type<0> = [ResourceId,9,43,53]; ]
+        var LauncherIcon as ResourceId;
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 12; @symbol_moduledef = [Strings,12,11,18]; ]
+    module Strings {
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 12; ]
+        <init> {
+        }
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 13; @position = 27; initialized = true; @symbol_vardef = [ActivityRun,13,27,38]; @symbol_type<0> = [ResourceId,13,42,52]; ]
+        var ActivityRun as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 14; @position = 27; initialized = true; @symbol_vardef = [Progress,14,27,35]; @symbol_type<0> = [ResourceId,14,39,49]; ]
+        var Progress as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 15; @position = 27; initialized = true; @symbol_vardef = [LevelAdvanced,15,27,40]; @symbol_type<0> = [ResourceId,15,44,54]; ]
+        var LevelAdvanced as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 16; @position = 27; initialized = true; @symbol_vardef = [AppNameLong,16,27,38]; @symbol_type<0> = [ResourceId,16,42,52]; ]
+        var AppNameLong as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 17; @position = 27; initialized = true; @symbol_vardef = [StartWorkout,17,27,39]; @symbol_type<0> = [ResourceId,17,43,53]; ]
+        var StartWorkout as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 18; @position = 27; initialized = true; @symbol_vardef = [LevelIntermediate,18,27,44]; @symbol_type<0> = [ResourceId,18,48,58]; ]
+        var LevelIntermediate as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 19; @position = 27; initialized = true; @symbol_vardef = [Coachrox,19,27,35]; @symbol_type<0> = [ResourceId,19,39,49]; ]
+        var Coachrox as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 20; @position = 27; initialized = true; @symbol_vardef = [AppName,20,27,34]; @symbol_type<0> = [ResourceId,20,38,48]; ]
+        var AppName as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 21; @position = 27; initialized = true; @symbol_vardef = [ViewPlan,21,27,35]; @symbol_type<0> = [ResourceId,21,39,49]; ]
+        var ViewPlan as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 22; @position = 27; initialized = true; @symbol_vardef = [LevelBeginner,22,27,40]; @symbol_type<0> = [ResourceId,22,44,54]; ]
+        var LevelBeginner as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 23; @position = 27; initialized = true; @symbol_vardef = [WorkoutActive,23,27,40]; @symbol_type<0> = [ResourceId,23,44,54]; ]
+        var WorkoutActive as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 24; @position = 27; initialized = true; @symbol_vardef = [Completed,24,27,36]; @symbol_type<0> = [ResourceId,24,40,50]; ]
+        var Completed as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 25; @position = 27; initialized = true; @symbol_vardef = [ActivityRest,25,27,39]; @symbol_type<0> = [ResourceId,25,43,53]; ]
+        var ActivityRest as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 26; @position = 27; initialized = true; @symbol_vardef = [ActivityBurpees,26,27,42]; @symbol_type<0> = [ResourceId,26,46,56]; ]
+        var ActivityBurpees as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 27; @position = 27; initialized = true; @symbol_vardef = [ActivityLunges,27,27,41]; @symbol_type<0> = [ResourceId,27,45,55]; ]
+        var ActivityLunges as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 28; @position = 27; initialized = true; @symbol_vardef = [Settings,28,27,35]; @symbol_type<0> = [ResourceId,28,39,49]; ]
+        var Settings as ResourceId;
+        [ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 29; @position = 27; initialized = true; @symbol_vardef = [Paused,29,27,33]; @symbol_type<0> = [ResourceId,29,37,47]; ]
+        var Paused as ResourceId;
+    }
+}
+[ @file = "/home/cechinel/coachrox-garmin/gen/no-device/source/Rez.mcgen"; @line = 1; ]
+<init> {
+}

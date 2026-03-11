@@ -1,6 +1,9 @@
-using Toybox.Timer;
-using Toybox.Activity;
-using Toybox.SensorHistory;
+import Toybox.Lang;
+import Toybox.Timer;
+import Toybox.Activity;
+import Toybox.SensorHistory;
+import Toybox.WatchUi;
+import Toybox.Graphics;
 
 //! Active workout session runtime
 class WorkoutSession extends WatchUi.View {
@@ -46,7 +49,7 @@ class WorkoutSession extends WatchUi.View {
     }
     
     function onLayout(dc as Dc) as Void {
-        setLayout(dc);
+        // Custom drawn view - no layout needed
     }
     
     function onShow() as Void {

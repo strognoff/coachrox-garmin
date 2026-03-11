@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<manifest xmlns="http://www.garmin.com/xml/connectiq" version="3">
-    <application id="CoachroxApp" entry="CoachroxApp" name="Coachrox" icon="AppIcon">
-        <usesApplication GarminApp="activity" />
-        <languages>
-            <language>eng</language>
-        </languages>
-    </application>
-</manifest>
+<?xml version="1.0"?>
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
+    <iq:application id="3b79cd35fc0a453ebacb8348902a8689" entry="CoachroxApp" name="@Strings.Coachrox" type="widget" launcherIcon="@Drawables.LauncherIcon" minSdkVersion="3.0.0">
+        <iq:products>
+            <iq:product id="fenix7x"/>
+        </iq:products>
+        <iq:languages>
+            <iq:language>eng</iq:language>
+        </iq:languages>
+    </iq:application>
+</iq:manifest>

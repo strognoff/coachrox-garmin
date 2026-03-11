@@ -1,5 +1,6 @@
-using Toybox.WatchUi;
-using Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.Graphics;
 
 //! View for displaying the current training plan
 class PlanView extends WatchUi.View {
@@ -55,7 +56,7 @@ class PlanView extends WatchUi.View {
         }
         
         // Back hint
-        dc.setColor(Graphics.COLOR_GRAY, Graphics.COLOR_BLACK);
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
         dc.drawText(dc.getWidth() / 2, dc.getHeight() - 20, Graphics.FONT_TINY, "ESC: Back", Graphics.TEXT_JUSTIFY_CENTER);
     }
 }
