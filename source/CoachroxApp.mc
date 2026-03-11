@@ -62,12 +62,12 @@ class CoachroxApp extends Application.AppBase {
     }
     
     //! Start a workout session
-    function startWorkout(workoutId as Number) as Void {
+    function startWorkout(workoutId as Number, workoutIndex as Number) as Void {
         var plan = getCurrentPlan();
         if (plan != null) {
             var workout = plan.getWorkout(workoutId);
             if (workout != null) {
-                currentWorkout = new WorkoutSession(workout, sessionStorage);
+                currentWorkout = new WorkoutSession(workout, sessionStorage, workoutIndex);
                 WatchUi.pushView(currentWorkout, new WorkoutDelegate(self), WatchUi.SLIDE_LEFT);
             }
         }

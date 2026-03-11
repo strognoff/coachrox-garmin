@@ -14,15 +14,18 @@ class WorkoutSession extends WatchUi.View {
     var timer as Timer.Timer?;
     var currentStepName as String = "";
     var nextStepName as String = "";
+    var workoutIndex as Number = 0;
     
     const COLOR_ORANGE = 0xFF6B00;
     const COLOR_BLUE = 0x00A3E0;
     const COLOR_GREEN = 0x00C853;
     
-    function initialize(workoutInstance as Workout, storage as SessionStorage) {
+    function initialize(workoutInstance as Workout, storage as SessionStorage, idx as Number) {
         WatchUi.View.initialize();
         workout = workoutInstance;
         sessionStorage = storage;
+        workoutIndex = idx;
+        
         if (workout.getStepCount() > 0) {
             updateStepInfo();
         }
@@ -41,94 +44,55 @@ class WorkoutSession extends WatchUi.View {
     }
     
     function onUpdate(dc as Dc) as Void {
-    var w = dc.getWidth();
-    var h = dc.getHeight();
-
-    // Background
-    dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
-    dc.clear();
-
-    // Fonts + measured heights (prevents "broken" spacing across devices)
-    var headerFont = Graphics.FONT_TINY;
-    var titleFont = Graphics.FONT_TINY;
-    var timerFont = Graphics.FONT_MEDIUM;
-    var smallFont = Graphics.FONT_TINY;
-
-    var headerFontH = dc.getFontHeight(headerFont);
-    var titleFontH = dc.getFontHeight(titleFont);
-    var timerFontH = dc.getFontHeight(timerFont);
-    var smallFontH = dc.getFontHeight(smallFont);
-
-    var topPad = 2;
-    var sidePad = 10;
-    var lineGap = 2;
-
-    // Reserve footer for controls text
-    var footerH = smallFontH + 4;
-    var contentTop = topPad;
-    var contentBottom = h - footerH;
-    var contentH = contentBottom - contentTop;
-
-    var y = contentTop;
-
-    // Line 1: Header
-    dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-    dc.drawText(w / 2, y, headerFont, "WORKOUT", Graphics.TEXT_JUSTIFY_CENTER);
-    y += headerFontH + lineGap;
-
-    // Line 2: Current step name (truncate if too long)
-    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-    var stepName = currentStepName;
-    dc.drawText(w / 2, y, titleFont, stepName, Graphics.TEXT_JUSTIFY_CENTER);
-    y += titleFontH + lineGap;
-
-    // Line 3: Timer (center in remaining vertical space above progress area)
-    // Keep timer prominent and centered-ish
-    var timerY = contentTop + (contentH * 0.30).toNumber();
-    dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-    dc.drawText(w / 2, timerY, timerFont, getElapsedTimeFormatted(), Graphics.TEXT_JUSTIFY_CENTER);
-
-    // Paused indicator (under timer) - do not show if completed
-    if (isPaused && !isCompleted) {
-        var pausedY = timerY + timerFontH + 2;
-        dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_BLACK);
-        dc.drawText(w / 2, pausedY, smallFont, "- PAUSED -", Graphics.TEXT_JUSTIFY_CENTER);
-    }
-
-    // Progress block anchored toward bottom of content area (so it doesn't overlap on small screens)
-    var barH = 6;
-    var barW = w - (sidePad * 2);
-    var barY = contentBottom - (barH + (smallFontH * 2) + 10);
-
-    // Line: Progress bar
-    var progress = getProgress();
-    dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-    dc.fillRectangle(sidePad, barY, barW, barH);
-    dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
-    dc.fillRectangle(sidePad, barY, (barW * progress / 100).toNumber(), barH);
-
-    // Line: Progress text
-    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-    dc.drawText(w / 2, barY + barH + 2, smallFont, progress + "%  " + (currentStepIndex + 1) + "/" + workout.getStepCount(), Graphics.TEXT_JUSTIFY_CENTER);
-
-    // Line: Next step
-    dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-    dc.drawText(w / 2, barY + barH + 2 + smallFontH + 2, smallFont, "NEXT: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
-
-    // Completed overlay (centered) - wins over paused indicator
-    var totalSteps = workout.getStepCount();
-    var isAtEnd = (totalSteps > 0) && ((currentStepIndex + 1) >= totalSteps);
-
-    if (isCompleted || isAtEnd) {
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+        
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+        dc.clear();
+        
+        // Header
+        dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, 2, Graphics.FONT_TINY, "WORKOUT", Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Current step
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, 18, Graphics.FONT_TINY, currentStepName, Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Timer
+        dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, 38, Graphics.FONT_MEDIUM, getElapsedTimeFormatted(), Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Paused
+        if (isPaused) {
+            dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_BLACK);
+            dc.drawText(w/2, 60, Graphics.FONT_TINY, "- PAUSED -", Graphics.TEXT_JUSTIFY_CENTER);
+        }
+        
+        // Progress
+        var progress = getProgress();
+        var barW = w - 20;
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+        dc.fillRectangle(10, 75, barW, 5);
         dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
-        dc.drawText(w / 2, (contentTop + (contentH / 2).toNumber()), Graphics.FONT_MEDIUM, "COMPLETED!", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.fillRectangle(10, 75, barW * progress / 100, 5);
+        
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, 85, Graphics.FONT_TINY, progress + "%  " + (currentStepIndex + 1) + "/" + workout.getStepCount(), Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Next
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, 100, Graphics.FONT_TINY, "NEXT: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Done
+        if (isCompleted) {
+            dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
+            dc.drawText(w/2, 130, Graphics.FONT_MEDIUM, "COMPLETED!", Graphics.TEXT_JUSTIFY_CENTER);
+        }
+        
+        // Controls
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, h - 8, Graphics.FONT_TINY, "DOWN: Pause | ENTER: End", Graphics.TEXT_JUSTIFY_CENTER);
     }
-
-    
-    // Footer: Controls
-    dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-    dc.drawText(w / 2, h - footerH + 1, Graphics.FONT_XTINY, "DOWN: Pause | ENTER: End", Graphics.TEXT_JUSTIFY_CENTER);
-}
     
     function onShow() as Void {
         timer = new Timer.Timer();
@@ -166,27 +130,24 @@ class WorkoutSession extends WatchUi.View {
         isCompleted = true;
         if (timer != null) { timer.stop(); timer = null; }
         workout.markComplete();
+        
+        // Mark workout as completed for this week
         var week = Application.getApp().completedWeeks;
+        sessionStorage.setValue("week_" + week + "_day_" + workoutIndex + "_done", 1);
+        
+        // Increment completed sessions for week
         var key = "week_" + week + "_completed";
         var curr = sessionStorage.getValue(key) != null ? sessionStorage.getValue(key) : 0;
         sessionStorage.setValue(key, curr + 1);
+        
+        // Increment total weeks
+        Application.getApp().completedWeeks = week + 1;
+        sessionStorage.setValue("completedWeeks", week + 1);
     }
     
     function getProgress() as Number {
         var total = workout.getStepCount();
-        if (total <= 0) { return 0; }
-
-        // Use 1-based step position so the last step shows 100%.
-        var completedOrCurrent = currentStepIndex + 1;
-
-        // Clamp to [1..total] (and thus [0..100]) so UI never exceeds 100%.
-        if (completedOrCurrent < 1) { completedOrCurrent = 1; }
-        if (completedOrCurrent > total) { completedOrCurrent = total; }
-
-        var pct = (completedOrCurrent * 100 / total).toNumber();
-        if (pct < 0) { pct = 0; }
-        if (pct > 100) { pct = 100; }
-        return pct;
+        return total > 0 ? (currentStepIndex * 100) / total : 0;
     }
     
     function getElapsedTimeFormatted() as String {

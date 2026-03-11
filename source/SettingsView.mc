@@ -25,97 +25,44 @@ class SettingsView extends WatchUi.View {
     }
     
     function onUpdate(dc as Dc) as Void {
-        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
-        dc.clear();
-
         var w = dc.getWidth();
         var h = dc.getHeight();
-
-        // Treat top/bottom as "unsafe" on many round faces
-        var safeTop = 10;
-        var safeBottom = 26;
-
-        var padX = 12;
-        var contentLeft = padX;
-        var contentRight = w - padX;
-        var contentWidth = contentRight - contentLeft;
-
-        var titleFont = Graphics.FONT_MEDIUM;
-        var subFont = Graphics.FONT_TINY;
-        var itemFont = Graphics.FONT_SMALL;
-        var footerFont = Graphics.FONT_TINY;
-
-        var titleH = dc.getFontHeight(titleFont);
-        var subH = dc.getFontHeight(subFont);
-        var itemHFont = dc.getFontHeight(itemFont);
-        var footerH = dc.getFontHeight(footerFont);
-
-        // Header block
-        var titleY = safeTop;
-        var subY = titleY + titleH + 2;
-
-        // Footer pinned using actual font height (more conservative)
-        var footerPadBottom = 10;
-        var footerY = h - safeBottom - footerPadBottom - footerH;
-
+        
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+        dc.clear();
+        
         // Header
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-        dc.drawText(w / 2, titleY, titleFont, "SETTINGS", Graphics.TEXT_JUSTIFY_CENTER);
-
-        var currentLevel = app.userLevel;
+        dc.drawText(w/2, 4, Graphics.FONT_TINY, "SETTINGS", Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Current level
         var levelName = "Beginner";
-        if (currentLevel == 1) { levelName = "Intermediate"; }
-        if (currentLevel == 2) { levelName = "Advanced"; }
-
-        // Brighter subtitle for readability
-        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(w / 2, subY, subFont, "Current: " + levelName, Graphics.TEXT_JUSTIFY_CENTER);
-
-        // List area between subtitle and footer, respecting safe areas
-        var listTop = subY + subH + 10;
-        var listBottom = footerY - 12;
-
-        if (listBottom < listTop) {
-            listBottom = listTop;
-        }
-
-        var available = listBottom - listTop;
-
-        var count = options.size();
-        var gap = 5;
-
-        var itemHeight = (available - (gap * (count - 1))) / count;
-        if (itemHeight > 32) { itemHeight = 32; }
-        if (itemHeight < (itemHFont + 8)) { itemHeight = itemHFont + 8; }
-
-        var listHeight = (itemHeight * count) + (gap * (count - 1));
-        var y = listTop + ((available - listHeight) / 2);
-        if (y < listTop) { y = listTop; }
-
+        if (app.userLevel == 1) { levelName = "Intermediate"; }
+        if (app.userLevel == 2) { levelName = "Advanced"; }
+        
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, 22, Graphics.FONT_TINY, "Current: " + levelName, Graphics.TEXT_JUSTIFY_CENTER);
+        
         // Options
-        for (var i = 0; i < count; i++) {
+        var y = 45;
+        var itemHeight = 22;
+        
+        for (var i = 0; i < options.size(); i++) {
             if (i == selectedOption) {
                 dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_WHITE);
-                dc.fillRectangle(contentLeft, y, contentWidth, itemHeight);
+                dc.fillRectangle(5, y, w - 10, itemHeight);
                 dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
             } else {
-                dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
             }
-
-            var textY = y + ((itemHeight - itemHFont) / 2) - 1;
-            dc.drawText(w / 2, textY, itemFont, options[i], Graphics.TEXT_JUSTIFY_CENTER);
-
-            y += itemHeight + gap;
+            
+            dc.drawText(w/2, y + 3, Graphics.FONT_TINY, options[i], Graphics.TEXT_JUSTIFY_CENTER);
+            y += itemHeight + 2;
         }
-
-        // True end of list (after loop)
-        var listEndY = y - gap;
-
-        // Footer only if it won't overlap list AND is fully inside safe area
-        if ((footerY >= listEndY + 4) && (footerY + footerH <= h - safeBottom)) {
-            dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-            dc.drawText(w / 2, footerY, footerFont, "UP/DOWN: Select | ENTER | ESC", Graphics.TEXT_JUSTIFY_CENTER);
-        }
+        
+        // Help text
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, h - 8, Graphics.FONT_TINY, "UP/DOWN | ENTER | ESC", Graphics.TEXT_JUSTIFY_CENTER);
     }
     
     function selectNext() as Void {
@@ -132,23 +79,29 @@ class SettingsView extends WatchUi.View {
         var storage = app.sessionStorage;
         
         if (selectedOption == 0) {
-            app.userLevel = 0;
+            // Beginner - reset progress too
             storage.setValue("userLevel", 0);
-        } else if (selectedOption == 1) {
-            app.userLevel = 1;
-            storage.setValue("userLevel", 1);
-        } else if (selectedOption == 2) {
-            app.userLevel = 2;
-            storage.setValue("userLevel", 2);
-        } else if (selectedOption == 3) {
-            // Reset overall progress markers
-            app.completedWeeks = 0;
             storage.setValue("completedWeeks", 0);
-
-            // Reset per-week completion used by PlanEngine.getPlan() -> Plan.completedSessions -> getCompletionRate()
-            for (var week = 0; week < 12; week++) {
-                storage.setValue("week_" + week + "_completed", 0);
-            }
+            app.userLevel = 0;
+            app.completedWeeks = 0;
+        } else if (selectedOption == 1) {
+            // Intermediate - reset progress
+            storage.setValue("userLevel", 1);
+            storage.setValue("completedWeeks", 0);
+            app.userLevel = 1;
+            app.completedWeeks = 0;
+        } else if (selectedOption == 2) {
+            // Advanced - reset progress
+            storage.setValue("userLevel", 2);
+            storage.setValue("completedWeeks", 0);
+            app.userLevel = 2;
+            app.completedWeeks = 0;
+        } else if (selectedOption == 3) {
+            // Reset everything
+            storage.setValue("userLevel", 0);
+            storage.setValue("completedWeeks", 0);
+            app.userLevel = 0;
+            app.completedWeeks = 0;
         }
         
         WatchUi.popView(WatchUi.SLIDE_RIGHT);

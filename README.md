@@ -1,67 +1,82 @@
-# COACHROX - Garmin Training App
+# COACHROX - Garmin HYROX Training App
 
-A workout training app for Garmin watches with 8-week training plans.
+A HYROX-specific training app for Garmin watches with 8-week training plans.
 
-## Features
+## What is HYROX?
 
-- **8-Week Training Plans** - Structured workouts progressing in difficulty
-- **3 Difficulty Levels** - Beginner, Intermediate, Advanced
-- **5 Workouts Per Week** - Intervals, Combo, Threshold, Recovery, Finale
-- **Progress Tracking** - See completion rate and weekly progress
-- **Persistent Storage** - Workouts and progress saved on device
+HYROX is a fitness race consisting of 8 stations performed in sequence:
+1. **Burpee Broad Jump** - 8 reps (50m)
+2. **Rowing** - 1000m
+3. **Farmer's Carry** - 200m (2x16kg men / 2x10kg women)
+4. **Sandbag Lunges** - 100m (10kg men / 6kg women)
+5. **Ski Erg** - 1000m
+6. **Wall Balls** - 20 reps (9kg men / 6kg women)
+7. **Pull-ups** - 10 reps
+8. **Run** - 1.6km
 
-## How It Works
+Each race = 8 stations + 1 run = 9 total. The entire course is then repeated.
+
+## App Structure
 
 ### Training Levels
 
-1. **Beginner** - 4 rounds intervals, easier workouts
-2. **Intermediate** - 5 rounds intervals, medium difficulty
-3. **Advanced** - 6 rounds intervals, harder workouts
+- **Beginner** - New to HYROX, lower volume
+- **Intermediate** - Some HYROX experience
+- **Advanced** - Competition-level training
 
-### Weekly Structure
+### Weekly Structure (5 workouts/week)
 
-Each week has 5 workouts:
-- **Intervals** - High intensity intervals (running + rest)
-- **Combo** - Mixed exercises (running + burpees + lunges)
-- **Recovery** - Easy pace workout
-- **Threshold** - Tempo/continuous running
-- **Finale** - Long combo workout
+Each week has 5 workouts designed to target all HYROX stations:
+
+| Day | Workout | Focus |
+|-----|---------|-------|
+| 1 | HYROX 1-4 | Stations 1-4 (Burpee Broad Jump, Rowing, Farmer's Carry, Lunges) |
+| 2 | HYROX 5-8 | Stations 5-8 (Ski Erg, Wall Balls, Pull-ups, Run) |
+| 3 | Endurance | Long run with functional movements |
+| 4 | Upper Body | Pull-ups & Wall Balls focus |
+| 5 | Lower Body | Lunges, Farmer's Carry, Rowing |
 
 ### Week Progression
 
-- Each week increases workout duration slightly
-- Progress is tracked per workout
-- After completing all 5 workouts in a week → advance to next week
+- Each week increases workout intensity by ~10%
+- More reps, longer distances, shorter rest times
+- Gradual progression to prepare for HYROX race
 
-### Menu Navigation
+## How It Works
 
-- **UP/DOWN** - Navigate menu items
-- **ENTER** - Select/start workout
+1. **Select Level** in Settings (Beginner/Intermediate/Advanced)
+2. **Start Workout** from the list
+3. **Follow Steps** displayed on screen (current exercise, timer, next exercise)
+4. **Complete All 5 Workouts** in a week to advance
+5. **Progress Through 8 Weeks** to build HYROX fitness
+
+### Controls
+
+- **UP/DOWN** - Navigate menu
+- **ENTER** - Select/start
 - **ESC** - Go back
-
-### Workout Controls
-
-- **DOWN** - Pause/Resume
-- **ENTER** - Finish workout early
+- **DOWN** - Pause workout
+- **ENTER** - Finish workout
 
 ## Settings
 
-- **Level Selection** - Changes difficulty (resets progress)
-- **Reset Progress** - Clears all data and starts fresh
+- **Level: Beginner** - Start fresh, easier workouts
+- **Level: Intermediate** - Moderate difficulty
+- **Level: Advanced** - Competition-level training
+- **Reset Progress** - Clear all data
+
+*Note: Changing level resets your progress.*
 
 ## Building
 
-The app is built for Garmin Connect IQ SDK 8.x.
-
 ```bash
-# Install SDK from Garmin Developer Portal
+# Install Garmin Connect IQ SDK 8.x
 # Build:
 monkeyc -y private.key -p projectInfo.xml -d fenix8solar51mm -o coachrox.prg -f monkey.jungle -w
 ```
 
 ## Compatible Devices
 
-- Fenix 7 series
-- Fenix 8 series (tested on fenix8solar51mm)
+- Fenix 7/8 series
 - Forerunner 955/965
-- And other Connect IQ 3.0+ devices
+- Other Connect IQ 3.0+ devices
