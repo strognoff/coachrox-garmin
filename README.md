@@ -1,58 +1,63 @@
 # COACHROX - Garmin HYROX Training App
 
-A HYROX-specific training app for Garmin watches with 12-week training plans.
+A production-ready HYROX training app for Garmin watches with 12-week structured plans.
 
-## What is HYROX?
+## Features
 
-HYROX is a fitness race consisting of 8 stations performed in sequence with running between each.
+- **12-Week Training Plan** with phased progression
+- **3 Difficulty Levels** - Beginner, Intermediate, Advanced
+- **5 Workouts Per Week** targeting all HYROX stations
+- **Visual Countdown Transitions** - 5/3/1 second countdown between exercises
+- **Compliance Tracking** - Step and workout-level completion tracking
+- **Adaptation Rules** - Auto-suggestions based on performance
 
-## Training Plan (12 Weeks)
-
-### Phases
+## Training Phases (12 Weeks)
 
 | Phase | Weeks | Focus |
 |-------|-------|-------|
-| **BASE** | 1-4 | Aerobic capacity, movement quality, station technique |
-| **BUILD** | 5-8 | Threshold work, heavier station volume, compromised runs |
-| **SPECIFIC** | 9-11 | Race simulation focus |
-| **TAPER** | 12 | Reduced volume for race day |
+| **BASE** | 1-4 | Aerobic capacity, technique |
+| **BUILD** | 5-8 | Threshold work, volume |
+| **SPECIFIC** | 9-11 | Race simulation |
+| **TAPER** | 12 | Reduced volume |
 
-### Training Levels
+## Adaptation Rules
 
-- **Beginner** - New to HYROX
-- **Intermediate** - Some HYROX experience  
-- **Advanced** - Competition level
+- **2 consecutive failed workouts** → Downshift suggestion
+- **2 consecutive weeks ≥85% adherence** → Progression suggestion
+- **Max +12% load jump** → Guardrail enforced
 
-## Workout Types
+## Supported Devices
 
-1. **Engine Intervals** - Run/erg threshold intervals
-2. **Station Strength-Endurance** - HYROX station focused
-3. **Race-Sim Brick** - Run + stations combination
-4. **Recovery** - Light movement
+### Forerunner
+- Forerunner 255
+- Forerunner 965
 
-## Controls
+### Fenix/Epix
+- Fenix 7
+- Fenix 7 Pro
+- Fenix 7X
+- Epix Pro
 
-- **UP/DOWN** - Navigate
-- **ENTER** - Select/Start
-- **ESC** - Back
-- **DOWN** - Pause
-- **ENTER** - Finish workout
+### Venu
+- Venu 3
 
 ## Building
 
 ```bash
-monkeyc -y private.key -p projectInfo.xml -d fenix8solar51mm -o coachrox.prg -f monkey.jungle -w
+# Generate a signing key
+openssl genrsa -out private.key 4096
+openssl rsa -in private.key -traditional -out private.der
+
+# Build
+monkeyc -y private.der -p projectInfo.xml -d fenix7x -o coachrox.prg -f monkey.jungle -w
 ```
 
-## Supported Devices
+## App Type
 
-### Fenix/Epix
-- Fenix 7, 7 Pro, 7X
-- Fenix 8, 8 Solar
-- Epix Pro
+Application (not watchface) - optimized for workout execution with UI controls.
 
-### Forerunner
-- Forerunner 255, 965, 985
+## Security
 
-### Venu
-- Venu 2, Venu 3
+- No keys/certs committed to repository
+- Offline-first design - no phone dependency during workouts
+- Local storage only
