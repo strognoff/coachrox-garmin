@@ -19,76 +19,85 @@ class ProgressView extends WatchUi.View {
     function onLayout(dc as Dc) as Void {
     }
     
-    function onUpdate(dc as Dc) as Void {
-        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
-        dc.clear();
-        
-        // Header
-        dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 8, Graphics.FONT_MEDIUM, "PROGRESS", Graphics.TEXT_JUSTIFY_CENTER);
-        
-        // Get completion
-        var plan = app.getCurrentPlan();
-        var completion = plan != null ? plan.getCompletionRate().toNumber() : 0;
-        
-        // Success message at top
-        if (completion >= 100) {
-            dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
-            dc.drawText(dc.getWidth() / 2, 40, Graphics.FONT_TINY, "ALL COMPLETED!", Graphics.TEXT_JUSTIFY_CENTER);
-        }
-        
-        // Progress bar (full width)
-        var barColor = completion >= 100 ? COLOR_GREEN : (completion >= 50 ? COLOR_YELLOW : COLOR_BLUE);
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.fillRectangle(15, 55, dc.getWidth() - 30, 12);
-        dc.setColor(barColor, Graphics.COLOR_BLACK);
-        dc.fillRectangle(15, 55, (dc.getWidth() - 30) * completion / 100, 12);
-        
-        // Percentage
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 72, Graphics.FONT_TINY, completion + "%", Graphics.TEXT_JUSTIFY_CENTER);
-        
-        // Stats section - simple 2 columns
-        var y = 100;
-        
-        // Workouts done
-        dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-        dc.drawText(20, y, Graphics.FONT_SMALL, "Done:", Graphics.TEXT_JUSTIFY_LEFT);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() - 20, y, Graphics.FONT_SMALL, "" + app.completedWeeks, Graphics.TEXT_JUSTIFY_RIGHT);
-        
-        // Level
-        var levelName = "Beginner";
-        if (app.userLevel == 1) { levelName = "Intermed"; }
-        else if (app.userLevel == 2) { levelName = "Advanced"; }
-        
-        y += 25;
-        dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-        dc.drawText(20, y, Graphics.FONT_SMALL, "Level:", Graphics.TEXT_JUSTIFY_LEFT);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() - 20, y, Graphics.FONT_SMALL, levelName, Graphics.TEXT_JUSTIFY_RIGHT);
-        
-        // Suggestion
-        y += 35;
-        var suggestionText = "Keep training!";
-        var suggestionColor = Graphics.COLOR_WHITE;
-        
-        if (completion >= 100) {
-            suggestionText = "Level up!";
-            suggestionColor = COLOR_GREEN;
-        } else if (completion < 30) {
-            suggestionText = "Easy does it";
-            suggestionColor = COLOR_YELLOW;
-        }
-        
-        dc.setColor(suggestionColor, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, y, Graphics.FONT_SMALL, suggestionText, Graphics.TEXT_JUSTIFY_CENTER);
-        
-        // Footer
-        y = dc.getHeight() - 15;
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, y, Graphics.FONT_TINY, "ESC to go back", Graphics.TEXT_JUSTIFY_CENTER);
+   function onUpdate(dc as Dc) as Void {
+    dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+    dc.clear();
+    
+    var width = dc.getWidth();
+    var height = dc.getHeight();
+    
+    // Calculate vertical spacing based on screen height
+    var lineHeight = height / 10; // Divide screen into sections
+    var y = lineHeight / 2;
+    
+    // Header
+    dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
+    dc.drawText(width / 2, y, Graphics.FONT_SMALL, "PROGRESS", Graphics.TEXT_JUSTIFY_CENTER);
+    y += lineHeight;
+    
+    // Get completion
+    var plan = app.getCurrentPlan();
+    var completion = plan != null ? plan.getCompletionRate().toNumber() : 0;
+    
+    // Success message at top
+    if (completion >= 100) {
+        dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
+        dc.drawText(width / 2, y, Graphics.FONT_XTINY, "ALL COMPLETED!", Graphics.TEXT_JUSTIFY_CENTER);
+        y += lineHeight * 0.7;
     }
+    
+    // Progress bar (full width)
+    var barColor = completion >= 100 ? COLOR_GREEN : (completion >= 50 ? COLOR_YELLOW : COLOR_BLUE);
+    dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+    dc.fillRectangle(15, y, width - 30, 10);
+    dc.setColor(barColor, Graphics.COLOR_BLACK);
+    dc.fillRectangle(15, y, (width - 30) * completion / 100, 10);
+    y += lineHeight * 0.6;
+    
+    // Percentage
+    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+    dc.drawText(width / 2, y, Graphics.FONT_XTINY, completion + "%", Graphics.TEXT_JUSTIFY_CENTER);
+    y += lineHeight;
+    
+    // Stats section - simple 2 columns
+    // Workouts done
+    dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
+    dc.drawText(20, y, Graphics.FONT_XTINY, "Done:", Graphics.TEXT_JUSTIFY_LEFT);
+    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+    dc.drawText(width - 20, y, Graphics.FONT_XTINY, "" + app.completedWeeks, Graphics.TEXT_JUSTIFY_RIGHT);
+    y += lineHeight * 0.8;
+    
+    // Level
+    var levelName = "Beginner";
+    if (app.userLevel == 1) { levelName = "Intermed"; }
+    else if (app.userLevel == 2) { levelName = "Advanced"; }
+    
+    dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
+    dc.drawText(20, y, Graphics.FONT_XTINY, "Level:", Graphics.TEXT_JUSTIFY_LEFT);
+    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+    dc.drawText(width - 20, y, Graphics.FONT_XTINY, levelName, Graphics.TEXT_JUSTIFY_RIGHT);
+    y += lineHeight * 1.2;
+    
+    // Suggestion
+    var suggestionText = "Keep training!";
+    var suggestionColor = Graphics.COLOR_WHITE;
+    
+    if (completion >= 100) {
+        suggestionText = "Level up!";
+        suggestionColor = COLOR_GREEN;
+    } else if (completion < 30) {
+        suggestionText = "Easy does it";
+        suggestionColor = COLOR_YELLOW;
+    }
+    
+    dc.setColor(suggestionColor, Graphics.COLOR_BLACK);
+    dc.drawText(width / 2, y, Graphics.FONT_TINY, suggestionText, Graphics.TEXT_JUSTIFY_CENTER);
+    
+    // Footer
+    y = height - lineHeight;
+    dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+    dc.drawText(width / 2, y, Graphics.FONT_XTINY, "ESC to go back", Graphics.TEXT_JUSTIFY_CENTER);
+}
 }
 
 class ProgressDelegate extends WatchUi.InputDelegate {
