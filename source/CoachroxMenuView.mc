@@ -56,9 +56,9 @@ class CoachroxMenuView extends WatchUi.View {
             
             // Highlight selected
             if (i == selectedItem) {
-                dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
+                dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_WHITE);  // gray bg, white text
                 dc.fillRectangle(5, y, dc.getWidth() - 10, itemHeight - 5);
-                dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+                dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
             } else {
                 dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
             }

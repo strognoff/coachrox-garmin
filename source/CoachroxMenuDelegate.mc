@@ -25,19 +25,18 @@ class CoachroxMenuDelegate extends WatchUi.InputDelegate {
         return false;
     }
     
-    // onTap was removed - tap handling API changed in SDK 8.x
-    // function onTap(event as WatchUi.TapEvent) as Boolean {
-    //     var x = event.getX();
-    //     var y = event.getY();
-    //     
-    //     // Simple tap zones
-    //     if (y < 90) {
-    //         view.selectPrevious();
-    //     } else if (y > 130) {
-    //         view.selectNext();
-    //     } else {
-    //         view.selectItem();
-    //     }
-    //     return true;
-    // }
+    function onTap(event as WatchUi.TapEvent) as Boolean {
+        var y = event.getY();
+        var screenHeight = WatchUi.View.getCurrentLayout().getHeight();
+        
+        // Top third = up, bottom third = down, middle = select
+        if (y < screenHeight / 3) {
+            view.selectPrevious();
+        } else if (y > screenHeight * 2 / 3) {
+            view.selectNext();
+        } else {
+            view.selectItem();
+        }
+        return true;
+    }
 }

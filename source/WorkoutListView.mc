@@ -36,9 +36,9 @@ class WorkoutListView extends WatchUi.View {
                 if (workout != null) {
                     // Highlight selected
                     if (i == selectedIndex) {
-                        dc.setColor(Graphics.COLOR_BLACK, Graphics.FONT_SMALL);
+                        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_WHITE);
                         dc.fillRectangle(5, y, dc.getWidth() - 10, 35);
-                        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+                        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
                     } else {
                         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
                     }
@@ -102,5 +102,10 @@ class WorkoutListDelegate extends WatchUi.InputDelegate {
             return true;
         }
         return false;
+    }
+    
+    function onSelect() as Boolean {
+        view.startSelected();
+        return true;
     }
 }
