@@ -1,0 +1,21 @@
+# Build outputs
+*.prg
+*.debug.xml
+*.mir
+
+# Keys
+*.key
+*.pem
+*.der
+*.pk8
+*.p12
+keystore.p12
+
+# IDE
+.idea/
+.vscode/
+
+# Generated
+gen/
+external-mir/
+internal-mir/
