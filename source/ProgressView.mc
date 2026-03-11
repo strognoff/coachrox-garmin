@@ -25,12 +25,27 @@ class ProgressView extends WatchUi.View {
         var totalSessions = sessionStorage.getSessionCount();
         var weeklyVolume = sessionStorage.getWeeklyVolume();
         
-        // Stats
-        dc.drawText(dc.getWidth() / 2, 50, Graphics.FONT_SMALL, "Total Sessions", Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(dc.getWidth() / 2, 75, Graphics.FONT_LARGE, totalSessions.toString(), Graphics.TEXT_JUSTIFY_CENTER);
+        // All workouts completed message at TOP (in green)
+        var plan = app.getCurrentPlan();
+        var allCompleted = false;
+        if (plan != null) {
+            allCompleted = plan.getCompletionRate() >= 100;
+        }
         
-        dc.drawText(dc.getWidth() / 2, 110, Graphics.FONT_SMALL, "Weekly Volume", Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(dc.getWidth() / 2, 135, Graphics.FONT_LARGE, weeklyVolume + " min", Graphics.TEXT_JUSTIFY_CENTER);
+        if (allCompleted) {
+            dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_BLACK);
+            dc.drawText(dc.getWidth() / 2, 40, Graphics.FONT_SMALL, "All workouts completed!", Graphics.TEXT_JUSTIFY_CENTER);
+        }
+        
+        // Stats with more spacing
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 70, Graphics.FONT_SMALL, "Total Sessions", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, 95, Graphics.FONT_LARGE, totalSessions.toString(), Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // More vertical spacing
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 135, Graphics.FONT_SMALL, "Weekly Volume", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, 160, Graphics.FONT_LARGE, weeklyVolume + " min", Graphics.TEXT_JUSTIFY_CENTER);
         
         // Adaptation suggestion
         var adaptation = app.planEngine.getAdaptationSuggestion();
@@ -41,8 +56,8 @@ class ProgressView extends WatchUi.View {
             suggestionText = "Ready to progress!";
         }
         
-        dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 170, Graphics.FONT_SMALL, suggestionText, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 195, Graphics.FONT_SMALL, suggestionText, Graphics.TEXT_JUSTIFY_CENTER);
         
         // Back hint
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);

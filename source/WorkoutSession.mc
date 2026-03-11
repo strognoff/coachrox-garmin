@@ -52,6 +52,58 @@ class WorkoutSession extends WatchUi.View {
         // Custom drawn view - no layout needed
     }
     
+    function onUpdate(dc as Dc) as Void {
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+        dc.clear();
+        
+        // Header
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 10, Graphics.FONT_MEDIUM, "Workout", Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Pause indicator
+        if (isPaused) {
+            dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_BLACK);
+            dc.drawText(dc.getWidth() / 2, 35, Graphics.FONT_SMALL, "PAUSED", Graphics.TEXT_JUSTIFY_CENTER);
+        }
+        
+        // Current step
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 60, Graphics.FONT_SMALL, "Current:", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, 80, Graphics.FONT_LARGE, currentStepName, Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Duration / Time
+        if (!isCompleted) {
+            var timeDisplay = isPaused ? currentStepDuration : getElapsedTimeFormatted();
+            dc.drawText(dc.getWidth() / 2, 115, Graphics.FONT_MEDIUM, timeDisplay, Graphics.TEXT_JUSTIFY_CENTER);
+        }
+        
+        // Progress bar
+        var barWidth = dc.getWidth() - 40;
+        var progress = getProgress();
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+        dc.fillRectangle(20, 140, barWidth, 10);
+        dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_BLACK);
+        dc.fillRectangle(20, 140, (barWidth * progress) / 100, 10);
+        
+        // Progress text
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 160, Graphics.FONT_TINY, progress + "% | Step " + (currentStepIndex + 1) + "/" + workout.getStepCount(), Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Next step
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 180, Graphics.FONT_TINY, "Next: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Completion message
+        if (isCompleted) {
+            dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_BLACK);
+            dc.drawText(dc.getWidth() / 2, dc.getHeight() / 2, Graphics.FONT_LARGE, "COMPLETED!", Graphics.TEXT_JUSTIFY_CENTER);
+        }
+        
+        // Instructions
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, dc.getHeight() - 25, Graphics.FONT_TINY, "UP: Skip | DOWN: Pause | ENTER: Finish", Graphics.TEXT_JUSTIFY_CENTER);
+    }
+    
     function onShow() as Void {
         // Start the workout timer
         timer = new Timer.Timer();

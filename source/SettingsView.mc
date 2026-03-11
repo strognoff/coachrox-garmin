@@ -118,4 +118,9 @@ class SettingsDelegate extends WatchUi.InputDelegate {
         }
         return false;
     }
+    
+    function onSelect() as Boolean {
+        view.applySetting();
+        return true;
+    }
 }
