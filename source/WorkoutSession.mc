@@ -124,9 +124,10 @@ class WorkoutSession extends WatchUi.View {
         dc.drawText(w / 2, (contentTop + (contentH / 2).toNumber()), Graphics.FONT_MEDIUM, "COMPLETED!", Graphics.TEXT_JUSTIFY_CENTER);
     }
 
+    
     // Footer: Controls
     dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-    dc.drawText(w / 2, h - footerH + 1, smallFont, "DOWN: Pause | ENTER: End", Graphics.TEXT_JUSTIFY_CENTER);
+    dc.drawText(w / 2, h - footerH + 1, Graphics.FONT_XTINY, "DOWN: Pause | ENTER: End", Graphics.TEXT_JUSTIFY_CENTER);
 }
     
     function onShow() as Void {
