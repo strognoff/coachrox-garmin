@@ -3,13 +3,21 @@ import Toybox.WatchUi;
 import Toybox.Graphics;
 
 //! View for displaying progress and stats
-class ProgressView extends WatchUi.View {
+class ProgressView extends WatchUi.Scrollable {
     
     var app as CoachroxApp;
     var sessionStorage as SessionStorage;
     
+    //! Color constants - vibrant palette
+    const COLOR_ORANGE = 0xFF6B00;
+    const COLOR_BLUE = 0x00A3E0;
+    const COLOR_GREEN = 0x00C853;
+    const COLOR_YELLOW = 0xFFD600;
+    
     function initialize(application as CoachroxApp) {
-        WatchUi.View.initialize();
+        WatchUi.Scrollable.initialize({
+            :scrollable => true
+        });
         app = application;
         sessionStorage = Application.getApp().sessionStorage;
     }
@@ -18,9 +26,13 @@ class ProgressView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
         
-        // Header
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 10, Graphics.FONT_MEDIUM, "Progress", Graphics.TEXT_JUSTIFY_CENTER);
+        // Header with orange accent
+        dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 8, Graphics.FONT_SMALL, "Progress", Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Decorative line
+        dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
+        dc.fillRectangle(20, 26, dc.getWidth() - 40, 2);
         
         var totalSessions = sessionStorage.getSessionCount();
         var weeklyVolume = sessionStorage.getWeeklyVolume();
@@ -33,35 +45,54 @@ class ProgressView extends WatchUi.View {
         }
         
         if (allCompleted) {
-            dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_BLACK);
-            dc.drawText(dc.getWidth() / 2, 40, Graphics.FONT_SMALL, "All workouts completed!", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
+            dc.drawText(dc.getWidth() / 2, 40, Graphics.FONT_TINY, "All workouts completed!", Graphics.TEXT_JUSTIFY_CENTER);
         }
         
-        // Stats with more spacing
+        // Stats with smaller fonts
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 70, Graphics.FONT_SMALL, "Total Sessions", Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(dc.getWidth() / 2, 95, Graphics.FONT_LARGE, totalSessions.toString(), Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, 60, Graphics.FONT_TINY, "Total Sessions", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 78, Graphics.FONT_MEDIUM, totalSessions.toString(), Graphics.TEXT_JUSTIFY_CENTER);
         
-        // More vertical spacing
+        // Weekly volume
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 135, Graphics.FONT_SMALL, "Weekly Volume", Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(dc.getWidth() / 2, 160, Graphics.FONT_LARGE, weeklyVolume + " min", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, 105, Graphics.FONT_TINY, "Weekly Volume", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 123, Graphics.FONT_MEDIUM, weeklyVolume + " min", Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Adaptation suggestion
+        // Adaptation suggestion with color coding
         var adaptation = app.planEngine.getAdaptationSuggestion();
         var suggestionText = "Keep going!";
+        var suggestionColor = Graphics.COLOR_WHITE;
+        
         if (adaptation < 0) {
             suggestionText = "Consider downshifting";
+            suggestionColor = COLOR_YELLOW;
         } else if (adaptation > 0) {
             suggestionText = "Ready to progress!";
+            suggestionColor = COLOR_GREEN;
         }
         
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 195, Graphics.FONT_SMALL, suggestionText, Graphics.TEXT_JUSTIFY_CENTER);
+        // Separator
+        dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
+        dc.fillRectangle(20, 150, dc.getWidth() - 40, 1);
+        
+        dc.setColor(suggestionColor, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 165, Graphics.FONT_TINY, suggestionText, Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Additional stats - total time
+        var totalTime = sessionStorage.getTotalTime();
+        if (totalTime > 0) {
+            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+            dc.drawText(dc.getWidth() / 2, 185, Graphics.FONT_TINY, "Total Time", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
+            dc.drawText(dc.getWidth() / 2, 203, Graphics.FONT_SMALL, totalTime + " min", Graphics.TEXT_JUSTIFY_CENTER);
+        }
         
         // Back hint
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, dc.getHeight() - 20, Graphics.FONT_TINY, "ESC: Back", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, dc.getHeight() - 18, Graphics.FONT_TINY, "UP/DOWN: Scroll | ESC: Back", Graphics.TEXT_JUSTIFY_CENTER);
     }
 }
 
