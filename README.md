@@ -5,7 +5,7 @@ A Garmin Connect IQ app for athletes training for fitness racing events such as 
 ## Features
 
 ### Plan Engine
-- 8-week and 12-week training templates
+- 8-week training templates
 - Three levels: Beginner, Intermediate, Advanced
 - 3-5 sessions per week
 - Session types: intervals, combo blocks, threshold/tempo, recovery
