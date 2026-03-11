@@ -2,118 +2,73 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 import Toybox.Graphics;
 
-//! View for displaying the current training plan
-class PlanView extends WatchUi.Scrollable {
+class PlanView extends WatchUi.View {
     
     var app as CoachroxApp;
-    var plan as Plan;
     
-    //! Scroll position
-    var scrollY as Number = 0;
-    
-    //! Color constants - vibrant palette
     const COLOR_ORANGE = 0xFF6B00;
     const COLOR_BLUE = 0x00A3E0;
     const COLOR_GREEN = 0x00C853;
     const COLOR_YELLOW = 0xFFD600;
     
     function initialize(application as CoachroxApp) {
-        WatchUi.Scrollable.initialize({
-            :scrollable => true
-        });
+        WatchUi.View.initialize();
         app = application;
-        plan = app.getCurrentPlan();
+    }
+    
+    function onLayout(dc as Dc) as Void {
     }
     
     function onUpdate(dc as Dc) as Void {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
         
-        // Header with orange accent
+        // Header
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 8, Graphics.FONT_SMALL, "Training Plan", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, 5, Graphics.FONT_SMALL, "TRAINING PLAN", Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Decorative line
-        dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-        dc.fillRectangle(20, 26, dc.getWidth() - 40, 2);
-        
+        var plan = app.getCurrentPlan();
         if (plan != null) {
-            var levelName = "Beginner";
-            if (plan.level >= 1) { levelName = "Intermediate"; }
-            if (plan.level >= 2) { levelName = "Advanced"; }
-            
-            // Week and level info - use tiny font
+            var info = "Week " + plan.getWeekNumber();
             dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-            dc.drawText(dc.getWidth() / 2, 38, Graphics.FONT_TINY, "Week " + plan.getWeekNumber() + " of 8 | " + levelName, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2, 25, Graphics.FONT_TINY, info, Graphics.TEXT_JUSTIFY_CENTER);
             
-            // Progress bar with colors
-            var barWidth = dc.getWidth() - 40;
-            var progress = plan.getCompletionRate();
-            
-            // Bar background
+            // Progress bar
+            var completion = plan.getCompletionRate().toNumber();
+            var barColor = completion >= 100 ? COLOR_GREEN : (completion >= 50 ? COLOR_YELLOW : COLOR_BLUE);
             dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-            dc.fillRectangle(20, 55, barWidth, 8);
+            dc.fillRectangle(20, 40, dc.getWidth() - 40, 8);
+            dc.setColor(barColor, Graphics.COLOR_BLACK);
+            dc.fillRectangle(20, 40, (dc.getWidth() - 40) * completion / 100, 8);
             
-            // Progress fill with gradient-like color based on progress
-            if (progress >= 100) {
-                dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
-            } else if (progress >= 50) {
-                dc.setColor(COLOR_YELLOW, Graphics.COLOR_BLACK);
-            } else {
-                dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-            }
-            dc.fillRectangle(20, 55, (barWidth * progress) / 100, 8);
-            
-            // Progress text
             dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-            dc.drawText(dc.getWidth() / 2, 70, Graphics.FONT_TINY, progress + "% Complete", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2, 52, Graphics.FONT_TINY, completion + "%", Graphics.TEXT_JUSTIFY_CENTER);
             
-            // Separator line
-            dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-            dc.fillRectangle(20, 88, dc.getWidth() - 40, 1);
+            // Workout list
+            var y = 70;
+            var workoutNames = ["Intervals 1", "Intervals 2", "Tempo Run", "Long Run", "Recovery"];
             
-            // Sessions header
-            dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-            dc.drawText(dc.getWidth() / 2, 98, Graphics.FONT_TINY, "This Week's Workouts:", Graphics.TEXT_JUSTIFY_CENTER);
-            
-            // Workouts with proper spacing for scrolling
-            var y = 118;
             for (var i = 0; i < 5; i++) {
-                var workout = plan.getWorkout(i);
-                if (workout != null) {
-                    var status = workout.isCompleted() ? "[✓]" : "[ ]";
-                    
-                    // Color code: green for completed, orange for pending
-                    if (workout.isCompleted()) {
-                        dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
-                    } else {
-                        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-                    }
-                    
-                    dc.drawText(20, y, Graphics.FONT_TINY, status + " " + workout.name, Graphics.TEXT_JUSTIFY_LEFT);
-                    
-                    // Duration below workout name - tiny font
-                    dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-                    dc.drawText(20, y + 14, Graphics.FONT_TINY, "    " + workout.durationMinutes + " min", Graphics.TEXT_JUSTIFY_LEFT);
-                    
-                    y += 32; // Compact spacing for scrollable content
-                }
+                if (y > dc.getHeight() - 25) { break; }
+                var done = (i < completion / 20);
+                dc.setColor(done ? COLOR_GREEN : Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+                dc.drawText(10, y, Graphics.FONT_SMALL, (i + 1) + ". " + workoutNames[i], Graphics.TEXT_JUSTIFY_LEFT);
+                y += 25;
             }
         }
         
-        // Scroll hint at bottom
+        // Footer
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, dc.getHeight() - 18, Graphics.FONT_TINY, "UP/DOWN: Scroll | ESC: Back", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, dc.getHeight() - 12, Graphics.FONT_TINY, "ESC: Back", Graphics.TEXT_JUSTIFY_CENTER);
     }
 }
 
 class PlanDelegate extends WatchUi.InputDelegate {
-    
     var view as PlanView;
     
-    function initialize(pView as PlanView) {
+    function initialize(planView as PlanView) {
         WatchUi.InputDelegate.initialize();
-        view = pView;
+        view = planView;
     }
     
     function onKeyPressed(key as WatchUi.KeyEvent) as Boolean {
@@ -122,9 +77,5 @@ class PlanDelegate extends WatchUi.InputDelegate {
             return true;
         }
         return false;
-    }
-    
-    function onSelect() as Boolean {
-        return true;
     }
 }

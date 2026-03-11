@@ -4,585 +4,600 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Graphics,3,14,22]; ]
 import Toybox.Graphics;
-//! View for displaying the current training plan
-[ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 6; @symbol_classdef = [PlanView,6,6,14]; @symbol_extends<0> = [WatchUi,6,23,30]; @symbol_extends<1> = [View,6,31,35]; ]
+[ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 5; @symbol_classdef = [PlanView,5,6,14]; @symbol_extends<0> = [WatchUi,5,23,30]; @symbol_extends<1> = [View,5,31,35]; ]
 class PlanView extends WatchUi.View {
-    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 6; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 5; ]
     <init> {
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 6; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 5; ]
     static
     <init> {
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 8; @position = 8; @symbol_vardef = [app,8,8,11]; @symbol_type<0> = [CoachroxApp,8,15,26]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 7; @position = 8; @symbol_vardef = [app,7,8,11]; @symbol_type<0> = [CoachroxApp,7,15,26]; ]
     var app as CoachroxApp;
-    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 9; @position = 8; @symbol_vardef = [plan,9,8,12]; @symbol_type<0> = [Plan,9,16,20]; ]
-    var plan as Plan;
-    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 11; @symbol_functiondef = [initialize,11,13,23]; @symbol_param<0> = [application,11,24,35]; @symbol_param<0>_type<0> = [CoachroxApp,11,39,50]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 9; @position = 10; @symbol_constdef = [COLOR_ORANGE,9,10,22]; ]
+    const COLOR_ORANGE = 0xFF6B00;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 10; @position = 10; @symbol_constdef = [COLOR_BLUE,10,10,20]; ]
+    const COLOR_BLUE = 0x00A3E0;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 11; @position = 10; @symbol_constdef = [COLOR_GREEN,11,10,21]; ]
+    const COLOR_GREEN = 0x00C853;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 12; @position = 10; @symbol_constdef = [COLOR_YELLOW,12,10,22]; ]
+    const COLOR_YELLOW = 0xFFD600;
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 14; @symbol_functiondef = [initialize,14,13,23]; @symbol_param<0> = [application,14,24,35]; @symbol_param<0>_type<0> = [CoachroxApp,14,39,50]; ]
     function initialize(application as CoachroxApp) as Void {
-_home_cechinel_coachrox_garmin_source_PlanView_mc_11_52_15_4_start:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 12 8 ]
-        symbol [ WatchUi %tmp.1 12 8 15 ];
+_home_cechinel_coachrox_garmin_source_PlanView_mc_14_52_17_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 15 8 ]
+        symbol [ WatchUi %tmp.1 15 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ View %tmp.2 12 16 20 ];
+        symbol [ View %tmp.2 15 16 20 ];
         %tmp.2 = getv %tmp.1 :View;
-        symbol [ initialize %tmp.3 12 21 31 ];
+        symbol [ initialize %tmp.3 15 21 31 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 13 8 ]
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 16 8 ]
         %tmp.4 = lgetv %application;
-        symbol [ application %tmp.4 13 14 25 ];
-        symbol [ app ? 13 8 11 ];
+        symbol [ application %tmp.4 16 14 25 ];
+        symbol [ app ? 16 8 11 ];
         putv self :app %tmp.4;
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 14 8 ]
-        symbol [ app %tmp.6 14 15 18 ];
-        %tmp.6 = getv ? :app;
-        symbol [ getCurrentPlan %tmp.7 14 19 33 ];
-        %tmp.7 = getv function %tmp.6 :getCurrentPlan;
-        %tmp.8 = invoke %tmp.6 %tmp.7();
-        symbol [ plan ? 14 8 12 ];
-        putv self :plan %tmp.8;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_11_52_15_4_stop:
+_home_cechinel_coachrox_garmin_source_PlanView_mc_14_52_17_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 17; @symbol_functiondef = [onUpdate,17,13,21]; @symbol_param<0> = [dc,17,22,24]; @symbol_param<0>_type<0> = [Dc,17,28,30]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 19; @symbol_functiondef = [onLayout,19,13,21]; @symbol_param<0> = [dc,19,22,24]; @symbol_param<0>_type<0> = [Dc,19,28,30]; ]
+    function onLayout(dc as Dc) as Void {
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 22; @symbol_functiondef = [onUpdate,22,13,21]; @symbol_param<0> = [dc,22,22,24]; @symbol_param<0>_type<0> = [Dc,22,28,30]; ]
     function onUpdate(dc as Dc) as Void {
-_home_cechinel_coachrox_garmin_source_PlanView_mc_17_40_61_4_start:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 18 8 ]
+_home_cechinel_coachrox_garmin_source_PlanView_mc_22_40_63_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 23 8 ]
         %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 18 8 10 ];
-        symbol [ setColor %tmp.2 18 11 19 ];
+        symbol [ dc %tmp.1 23 8 10 ];
+        symbol [ setColor %tmp.2 23 11 19 ];
         %tmp.2 = getv function %tmp.1 :setColor;
-        symbol [ Graphics %tmp.3 18 20 28 ];
+        symbol [ Graphics %tmp.3 23 20 28 ];
         %tmp.3 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.4 18 29 40 ];
+        symbol [ COLOR_BLACK %tmp.4 23 29 40 ];
         %tmp.4 = getv %tmp.3 :COLOR_BLACK;
-        symbol [ Graphics %tmp.5 18 42 50 ];
+        symbol [ Graphics %tmp.5 23 42 50 ];
         %tmp.5 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.6 18 51 62 ];
+        symbol [ COLOR_BLACK %tmp.6 23 51 62 ];
         %tmp.6 = getv %tmp.5 :COLOR_BLACK;
         invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 19 8 ]
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 24 8 ]
         %tmp.7 = lgetv %dc;
-        symbol [ dc %tmp.7 19 8 10 ];
-        symbol [ clear %tmp.8 19 11 16 ];
+        symbol [ dc %tmp.7 24 8 10 ];
+        symbol [ clear %tmp.8 24 11 16 ];
         %tmp.8 = getv function %tmp.7 :clear;
         invoke %tmp.7 %tmp.8();
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 22 8 ]
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 27 8 ]
         %tmp.9 = lgetv %dc;
-        symbol [ dc %tmp.9 22 8 10 ];
-        symbol [ setColor %tmp.10 22 11 19 ];
+        symbol [ dc %tmp.9 27 8 10 ];
+        symbol [ setColor %tmp.10 27 11 19 ];
         %tmp.10 = getv function %tmp.9 :setColor;
-        symbol [ Graphics %tmp.11 22 20 28 ];
-        %tmp.11 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.12 22 29 40 ];
-        %tmp.12 = getv %tmp.11 :COLOR_WHITE;
-        symbol [ Graphics %tmp.13 22 42 50 ];
+        symbol [ COLOR_ORANGE %tmp.12 27 20 32 ];
+        %tmp.12 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.13 27 34 42 ];
         %tmp.13 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.14 22 51 62 ];
+        symbol [ COLOR_BLACK %tmp.14 27 43 54 ];
         %tmp.14 = getv %tmp.13 :COLOR_BLACK;
         invoke %tmp.9 %tmp.10(%tmp.12, %tmp.14);
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 23 8 ]
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 28 8 ]
         %tmp.15 = lgetv %dc;
-        symbol [ dc %tmp.15 23 8 10 ];
-        symbol [ drawText %tmp.16 23 11 19 ];
+        symbol [ dc %tmp.15 28 8 10 ];
+        symbol [ drawText %tmp.16 28 11 19 ];
         %tmp.16 = getv function %tmp.15 :drawText;
         %tmp.17 = lgetv %dc;
-        symbol [ dc %tmp.17 23 20 22 ];
-        symbol [ getWidth %tmp.18 23 23 31 ];
+        symbol [ dc %tmp.17 28 20 22 ];
+        symbol [ getWidth %tmp.18 28 23 31 ];
         %tmp.18 = getv function %tmp.17 :getWidth;
         %tmp.19 = invoke %tmp.17 %tmp.18();
         %tmp.20 = 2;
         %tmp.21 = div %tmp.19 %tmp.20;
-        %tmp.22 = 10;
-        symbol [ Graphics %tmp.23 23 43 51 ];
+        %tmp.22 = 5;
+        symbol [ Graphics %tmp.23 28 42 50 ];
         %tmp.23 = getm $.Toybox.Graphics;
-        symbol [ FONT_MEDIUM %tmp.24 23 52 63 ];
-        %tmp.24 = getv %tmp.23 :FONT_MEDIUM;
-        %tmp.25 = "Training Plan";
-        symbol [ Graphics %tmp.26 23 82 90 ];
+        symbol [ FONT_SMALL %tmp.24 28 51 61 ];
+        %tmp.24 = getv %tmp.23 :FONT_SMALL;
+        %tmp.25 = "TRAINING PLAN";
+        symbol [ Graphics %tmp.26 28 80 88 ];
         %tmp.26 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.27 23 91 110 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.27 28 89 108 ];
         %tmp.27 = getv %tmp.26 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.15 %tmp.16(%tmp.21, %tmp.22, %tmp.24, %tmp.25, %tmp.27);
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 25 8 ]
-_home_cechinel_coachrox_garmin_source_PlanView_mc_25_8_56_8_if_stmt:
-        symbol [ plan %tmp.29 25 12 16 ];
-        %tmp.29 = getv ? :plan;
-        %tmp.30 = null;
-        %tmp.31 = ne %tmp.29 %tmp.30;
-        bf %tmp.31 @_home_cechinel_coachrox_garmin_source_PlanView_mc_25_8_56_8_if_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_25_8_56_8_if_true:
-_home_cechinel_coachrox_garmin_source_PlanView_mc_25_26_56_8_start:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 26 12 ]
-        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_25_26_56_8_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_25_26_56_8_stop" ]
-        %levelName.1 = local;
-        symbol [ levelName %levelName.1 26 16 25 ];
-        %tmp.32 = "Beginner";
-        lputv %levelName.1 %tmp.32;
-        symbol [ levelName %levelName.1 26 16 25 ];
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 27 12 ]
-_home_cechinel_coachrox_garmin_source_PlanView_mc_27_12_27_63_if_stmt:
-        symbol [ plan %tmp.34 27 16 20 ];
-        %tmp.34 = getv ? :plan;
-        %tmp.35 = as %tmp.34 { (!Null) };
-        symbol [ level %tmp.36 27 21 26 ];
-        %tmp.36 = getv %tmp.35 :level;
-        %tmp.37 = 1;
-        %tmp.38 = gte %tmp.36 %tmp.37;
-        bf %tmp.38 @_home_cechinel_coachrox_garmin_source_PlanView_mc_27_12_27_63_if_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_27_12_27_63_if_true:
-_home_cechinel_coachrox_garmin_source_PlanView_mc_27_33_27_63_start:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 27 35 ]
-        %tmp.39 = "Intermediate";
-        lputv %levelName.1 %tmp.39;
-        symbol [ levelName %levelName.1 27 35 44 ];
-_home_cechinel_coachrox_garmin_source_PlanView_mc_27_33_27_63_stop:
-        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_27_12_27_63_if_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_27_12_27_63_if_end:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 28 12 ]
-_home_cechinel_coachrox_garmin_source_PlanView_mc_28_12_28_59_if_stmt:
-        symbol [ plan %tmp.41 28 16 20 ];
-        %tmp.41 = getv ? :plan;
-        %tmp.42 = as %tmp.41 { (!Null) };
-        symbol [ level %tmp.43 28 21 26 ];
-        %tmp.43 = getv %tmp.42 :level;
-        %tmp.44 = 2;
-        %tmp.45 = gte %tmp.43 %tmp.44;
-        bf %tmp.45 @_home_cechinel_coachrox_garmin_source_PlanView_mc_28_12_28_59_if_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_28_12_28_59_if_true:
-_home_cechinel_coachrox_garmin_source_PlanView_mc_28_33_28_59_start:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 28 35 ]
-        %tmp.46 = "Advanced";
-        lputv %levelName.1 %tmp.46;
-        symbol [ levelName %levelName.1 28 35 44 ];
-_home_cechinel_coachrox_garmin_source_PlanView_mc_28_33_28_59_stop:
-        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_28_12_28_59_if_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_28_12_28_59_if_end:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 30 12 ]
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 30 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_22_40_63_4_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_22_40_63_4_stop" ]
+        %plan.1 = local;
+        symbol [ plan %plan.1 30 12 16 ];
+        symbol [ app %tmp.29 30 19 22 ];
+        %tmp.29 = getv ? :app;
+        symbol [ getCurrentPlan %tmp.30 30 23 37 ];
+        %tmp.30 = getv function %tmp.29 :getCurrentPlan;
+        %tmp.31 = invoke %tmp.29 %tmp.30();
+        lputv %plan.1 %tmp.31;
+        symbol [ plan %plan.1 30 12 16 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 31 8 ]
+_home_cechinel_coachrox_garmin_source_PlanView_mc_31_8_58_8_if_stmt:
+        %tmp.32 = lgetv %plan.1;
+        symbol [ plan %tmp.32 31 12 16 ];
+        %tmp.33 = null;
+        %tmp.34 = ne %tmp.32 %tmp.33;
+        bf %tmp.34 @_home_cechinel_coachrox_garmin_source_PlanView_mc_31_8_58_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_31_8_58_8_if_true:
+_home_cechinel_coachrox_garmin_source_PlanView_mc_31_26_58_8_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 32 12 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_31_26_58_8_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_31_26_58_8_stop" ]
+        %info.2 = local;
+        symbol [ info %info.2 32 16 20 ];
+        %tmp.35 = "Week ";
+        %tmp.36 = lgetv %plan.1;
+        symbol [ plan %tmp.36 32 33 37 ];
+        %tmp.37 = as %tmp.36 { (!Null) };
+        symbol [ getWeekNumber %tmp.38 32 38 51 ];
+        %tmp.38 = getv function %tmp.37 :getWeekNumber;
+        %tmp.39 = invoke %tmp.37 %tmp.38();
+        %tmp.40 = add %tmp.35 %tmp.39;
+        lputv %info.2 %tmp.40;
+        symbol [ info %info.2 32 16 20 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 33 12 ]
+        %tmp.41 = lgetv %dc;
+        symbol [ dc %tmp.41 33 12 14 ];
+        symbol [ setColor %tmp.42 33 15 23 ];
+        %tmp.42 = getv function %tmp.41 :setColor;
+        symbol [ Graphics %tmp.43 33 24 32 ];
+        %tmp.43 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.44 33 33 44 ];
+        %tmp.44 = getv %tmp.43 :COLOR_WHITE;
+        symbol [ Graphics %tmp.45 33 46 54 ];
+        %tmp.45 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.46 33 55 66 ];
+        %tmp.46 = getv %tmp.45 :COLOR_BLACK;
+        invoke %tmp.41 %tmp.42(%tmp.44, %tmp.46);
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 34 12 ]
         %tmp.47 = lgetv %dc;
-        symbol [ dc %tmp.47 30 12 14 ];
-        symbol [ drawText %tmp.48 30 15 23 ];
+        symbol [ dc %tmp.47 34 12 14 ];
+        symbol [ drawText %tmp.48 34 15 23 ];
         %tmp.48 = getv function %tmp.47 :drawText;
         %tmp.49 = lgetv %dc;
-        symbol [ dc %tmp.49 30 24 26 ];
-        symbol [ getWidth %tmp.50 30 27 35 ];
+        symbol [ dc %tmp.49 34 24 26 ];
+        symbol [ getWidth %tmp.50 34 27 35 ];
         %tmp.50 = getv function %tmp.49 :getWidth;
         %tmp.51 = invoke %tmp.49 %tmp.50();
         %tmp.52 = 2;
         %tmp.53 = div %tmp.51 %tmp.52;
-        %tmp.54 = 40;
-        symbol [ Graphics %tmp.55 30 47 55 ];
+        %tmp.54 = 25;
+        symbol [ Graphics %tmp.55 34 47 55 ];
         %tmp.55 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.56 30 56 66 ];
-        %tmp.56 = getv %tmp.55 :FONT_SMALL;
-        %tmp.57 = "Level: ";
-        %tmp.58 = lgetv %levelName.1;
-        symbol [ levelName %tmp.58 30 80 89 ];
-        %tmp.59 = add %tmp.57 %tmp.58;
-        symbol [ Graphics %tmp.60 30 91 99 ];
-        %tmp.60 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.61 30 100 119 ];
-        %tmp.61 = getv %tmp.60 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.47 %tmp.48(%tmp.53, %tmp.54, %tmp.56, %tmp.59, %tmp.61);
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 31 12 ]
-        %tmp.62 = lgetv %dc;
-        symbol [ dc %tmp.62 31 12 14 ];
-        symbol [ drawText %tmp.63 31 15 23 ];
-        %tmp.63 = getv function %tmp.62 :drawText;
-        %tmp.64 = lgetv %dc;
-        symbol [ dc %tmp.64 31 24 26 ];
-        symbol [ getWidth %tmp.65 31 27 35 ];
-        %tmp.65 = getv function %tmp.64 :getWidth;
-        %tmp.66 = invoke %tmp.64 %tmp.65();
-        %tmp.67 = 2;
-        %tmp.68 = div %tmp.66 %tmp.67;
-        %tmp.69 = 60;
-        symbol [ Graphics %tmp.70 31 47 55 ];
-        %tmp.70 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.71 31 56 66 ];
-        %tmp.71 = getv %tmp.70 :FONT_SMALL;
-        %tmp.72 = "Week: ";
-        symbol [ plan %tmp.74 31 79 83 ];
-        %tmp.74 = getv ? :plan;
-        symbol [ getWeekNumber %tmp.75 31 84 97 ];
-        %tmp.75 = getv function %tmp.74 :getWeekNumber;
-        %tmp.76 = invoke %tmp.74 %tmp.75();
-        %tmp.77 = add %tmp.72 %tmp.76;
-        %tmp.78 = " of 8";
-        %tmp.79 = add %tmp.77 %tmp.78;
-        symbol [ Graphics %tmp.80 31 111 119 ];
-        %tmp.80 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.81 31 120 139 ];
-        %tmp.81 = getv %tmp.80 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.62 %tmp.63(%tmp.68, %tmp.69, %tmp.71, %tmp.79, %tmp.81);
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 34 12 ]
-        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_25_26_56_8_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_25_26_56_8_stop" ]
-        %barWidth.2 = local;
-        symbol [ barWidth %barWidth.2 34 16 24 ];
-        %tmp.82 = lgetv %dc;
-        symbol [ dc %tmp.82 34 27 29 ];
-        symbol [ getWidth %tmp.83 34 30 38 ];
-        %tmp.83 = getv function %tmp.82 :getWidth;
-        %tmp.84 = invoke %tmp.82 %tmp.83();
-        %tmp.85 = 40;
-        %tmp.86 = sub %tmp.84 %tmp.85;
-        lputv %barWidth.2 %tmp.86;
-        symbol [ barWidth %barWidth.2 34 16 24 ];
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 35 12 ]
-        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_25_26_56_8_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_25_26_56_8_stop" ]
-        %progress.3 = local;
-        symbol [ progress %progress.3 35 16 24 ];
-        symbol [ plan %tmp.88 35 27 31 ];
-        %tmp.88 = getv ? :plan;
-        symbol [ getCompletionRate %tmp.89 35 32 49 ];
-        %tmp.89 = getv function %tmp.88 :getCompletionRate;
-        %tmp.90 = invoke %tmp.88 %tmp.89();
-        lputv %progress.3 %tmp.90;
-        symbol [ progress %progress.3 35 16 24 ];
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 36 12 ]
-        %tmp.91 = lgetv %dc;
-        symbol [ dc %tmp.91 36 12 14 ];
-        symbol [ setColor %tmp.92 36 15 23 ];
-        %tmp.92 = getv function %tmp.91 :setColor;
-        symbol [ Graphics %tmp.93 36 24 32 ];
-        %tmp.93 = getm $.Toybox.Graphics;
-        symbol [ COLOR_DK_GRAY %tmp.94 36 33 46 ];
-        %tmp.94 = getv %tmp.93 :COLOR_DK_GRAY;
-        symbol [ Graphics %tmp.95 36 48 56 ];
-        %tmp.95 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.96 36 57 68 ];
-        %tmp.96 = getv %tmp.95 :COLOR_BLACK;
-        invoke %tmp.91 %tmp.92(%tmp.94, %tmp.96);
+        symbol [ FONT_TINY %tmp.56 34 56 65 ];
+        %tmp.56 = getv %tmp.55 :FONT_TINY;
+        %tmp.57 = lgetv %info.2;
+        symbol [ info %tmp.57 34 67 71 ];
+        symbol [ Graphics %tmp.58 34 73 81 ];
+        %tmp.58 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.59 34 82 101 ];
+        %tmp.59 = getv %tmp.58 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.47 %tmp.48(%tmp.53, %tmp.54, %tmp.56, %tmp.57, %tmp.59);
 [ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 37 12 ]
-        %tmp.97 = lgetv %dc;
-        symbol [ dc %tmp.97 37 12 14 ];
-        symbol [ fillRectangle %tmp.98 37 15 28 ];
-        %tmp.98 = getv function %tmp.97 :fillRectangle;
-        %tmp.99 = 20;
-        %tmp.100 = 85;
-        %tmp.101 = lgetv %barWidth.2;
-        symbol [ barWidth %tmp.101 37 37 45 ];
-        %tmp.102 = 10;
-        invoke %tmp.97 %tmp.98(%tmp.99, %tmp.100, %tmp.101, %tmp.102);
+        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_31_26_58_8_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_31_26_58_8_stop" ]
+        %completion.3 = local;
+        symbol [ completion %completion.3 37 16 26 ];
+        %tmp.60 = lgetv %plan.1;
+        symbol [ plan %tmp.60 37 29 33 ];
+        %tmp.61 = as %tmp.60 { (!Null) };
+        symbol [ getCompletionRate %tmp.62 37 34 51 ];
+        %tmp.62 = getv function %tmp.61 :getCompletionRate;
+        %tmp.63 = invoke %tmp.61 %tmp.62();
+        symbol [ toNumber %tmp.64 37 54 62 ];
+        %tmp.64 = getv function %tmp.63 :toNumber;
+        %tmp.65 = invoke %tmp.63 %tmp.64();
+        lputv %completion.3 %tmp.65;
+        symbol [ completion %completion.3 37 16 26 ];
 [ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 38 12 ]
-        %tmp.103 = lgetv %dc;
-        symbol [ dc %tmp.103 38 12 14 ];
-        symbol [ setColor %tmp.104 38 15 23 ];
-        %tmp.104 = getv function %tmp.103 :setColor;
-        symbol [ Graphics %tmp.105 38 24 32 ];
-        %tmp.105 = getm $.Toybox.Graphics;
-        symbol [ COLOR_GREEN %tmp.106 38 33 44 ];
-        %tmp.106 = getv %tmp.105 :COLOR_GREEN;
-        symbol [ Graphics %tmp.107 38 46 54 ];
-        %tmp.107 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.108 38 55 66 ];
-        %tmp.108 = getv %tmp.107 :COLOR_BLACK;
-        invoke %tmp.103 %tmp.104(%tmp.106, %tmp.108);
+        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_31_26_58_8_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_31_26_58_8_stop" ]
+        %barColor.4 = local;
+        symbol [ barColor %barColor.4 38 16 24 ];
+_home_cechinel_coachrox_garmin_source_PlanView_mc_38_27_38_106_begin:
+        %tmp.66 = lgetv %completion.3;
+        symbol [ completion %tmp.66 38 27 37 ];
+        %tmp.67 = 100;
+        %tmp.68 = gte %tmp.66 %tmp.67;
+        bf %tmp.68 @_home_cechinel_coachrox_garmin_source_PlanView_mc_38_27_38_106_else_false;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_38_27_38_106_true:
+        symbol [ COLOR_GREEN %tmp.70 38 47 58 ];
+        %tmp.70 = getv ? :COLOR_GREEN;
+        push %tmp.70;
+        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_38_27_38_106_end;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_38_27_38_106_else_false:
+_home_cechinel_coachrox_garmin_source_PlanView_mc_38_62_38_96_begin:
+        %tmp.71 = lgetv %completion.3;
+        symbol [ completion %tmp.71 38 62 72 ];
+        %tmp.72 = 50;
+        %tmp.73 = gte %tmp.71 %tmp.72;
+        bf %tmp.73 @_home_cechinel_coachrox_garmin_source_PlanView_mc_38_62_38_96_else_false;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_38_62_38_96_true:
+        symbol [ COLOR_YELLOW %tmp.75 38 81 93 ];
+        %tmp.75 = getv ? :COLOR_YELLOW;
+        push %tmp.75;
+        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_38_62_38_96_end;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_38_62_38_96_else_false:
+        symbol [ COLOR_BLUE %tmp.77 38 96 106 ];
+        %tmp.77 = getv ? :COLOR_BLUE;
+        push %tmp.77;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_38_62_38_96_end:
+        %tmp.78 = phi [%tmp.73 @_home_cechinel_coachrox_garmin_source_PlanView_mc_38_62_38_96_begin] [%tmp.75 @_home_cechinel_coachrox_garmin_source_PlanView_mc_38_62_38_96_true] [%tmp.77 @_home_cechinel_coachrox_garmin_source_PlanView_mc_38_62_38_96_else_false] [%tmp.78 @_home_cechinel_coachrox_garmin_source_PlanView_mc_38_62_38_96_end];
+        push %tmp.78;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_38_27_38_106_end:
+        %tmp.79 = phi [%tmp.68 @_home_cechinel_coachrox_garmin_source_PlanView_mc_38_27_38_106_begin] [%tmp.70 @_home_cechinel_coachrox_garmin_source_PlanView_mc_38_27_38_106_true] [%tmp.78 @_home_cechinel_coachrox_garmin_source_PlanView_mc_38_27_38_106_else_false] [%tmp.79 @_home_cechinel_coachrox_garmin_source_PlanView_mc_38_27_38_106_end];
+        lputv %barColor.4 %tmp.79;
+        symbol [ barColor %barColor.4 38 16 24 ];
 [ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 39 12 ]
-        %tmp.109 = lgetv %dc;
-        symbol [ dc %tmp.109 39 12 14 ];
-        symbol [ fillRectangle %tmp.110 39 15 28 ];
-        %tmp.110 = getv function %tmp.109 :fillRectangle;
-        %tmp.111 = 20;
-        %tmp.112 = 85;
-        %tmp.113 = lgetv %barWidth.2;
-        symbol [ barWidth %tmp.113 39 38 46 ];
-        %tmp.114 = lgetv %progress.3;
-        symbol [ progress %tmp.114 39 49 57 ];
-        %tmp.115 = mul %tmp.113 %tmp.114;
-        %tmp.116 = 100;
-        %tmp.117 = div %tmp.115 %tmp.116;
-        %tmp.118 = 10;
-        invoke %tmp.109 %tmp.110(%tmp.111, %tmp.112, %tmp.117, %tmp.118);
+        %tmp.80 = lgetv %dc;
+        symbol [ dc %tmp.80 39 12 14 ];
+        symbol [ setColor %tmp.81 39 15 23 ];
+        %tmp.81 = getv function %tmp.80 :setColor;
+        symbol [ Graphics %tmp.82 39 24 32 ];
+        %tmp.82 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.83 39 33 46 ];
+        %tmp.83 = getv %tmp.82 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.84 39 48 56 ];
+        %tmp.84 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.85 39 57 68 ];
+        %tmp.85 = getv %tmp.84 :COLOR_BLACK;
+        invoke %tmp.80 %tmp.81(%tmp.83, %tmp.85);
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 40 12 ]
+        %tmp.86 = lgetv %dc;
+        symbol [ dc %tmp.86 40 12 14 ];
+        symbol [ fillRectangle %tmp.87 40 15 28 ];
+        %tmp.87 = getv function %tmp.86 :fillRectangle;
+        %tmp.88 = 20;
+        %tmp.89 = 40;
+        %tmp.90 = lgetv %dc;
+        symbol [ dc %tmp.90 40 37 39 ];
+        symbol [ getWidth %tmp.91 40 40 48 ];
+        %tmp.91 = getv function %tmp.90 :getWidth;
+        %tmp.92 = invoke %tmp.90 %tmp.91();
+        %tmp.93 = 40;
+        %tmp.94 = sub %tmp.92 %tmp.93;
+        %tmp.95 = 8;
+        invoke %tmp.86 %tmp.87(%tmp.88, %tmp.89, %tmp.94, %tmp.95);
 [ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 41 12 ]
-        %tmp.119 = lgetv %dc;
-        symbol [ dc %tmp.119 41 12 14 ];
-        symbol [ drawText %tmp.120 41 15 23 ];
-        %tmp.120 = getv function %tmp.119 :drawText;
-        %tmp.121 = lgetv %dc;
-        symbol [ dc %tmp.121 41 24 26 ];
-        symbol [ getWidth %tmp.122 41 27 35 ];
-        %tmp.122 = getv function %tmp.121 :getWidth;
-        %tmp.123 = invoke %tmp.121 %tmp.122();
-        %tmp.124 = 2;
-        %tmp.125 = div %tmp.123 %tmp.124;
-        %tmp.126 = 105;
-        symbol [ Graphics %tmp.127 41 48 56 ];
-        %tmp.127 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.128 41 57 66 ];
-        %tmp.128 = getv %tmp.127 :FONT_TINY;
-        %tmp.129 = lgetv %progress.3;
-        symbol [ progress %tmp.129 41 68 76 ];
-        %tmp.130 = "% Complete";
-        %tmp.131 = add %tmp.129 %tmp.130;
-        symbol [ Graphics %tmp.132 41 93 101 ];
-        %tmp.132 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.133 41 102 121 ];
-        %tmp.133 = getv %tmp.132 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.119 %tmp.120(%tmp.125, %tmp.126, %tmp.128, %tmp.131, %tmp.133);
+        %tmp.96 = lgetv %dc;
+        symbol [ dc %tmp.96 41 12 14 ];
+        symbol [ setColor %tmp.97 41 15 23 ];
+        %tmp.97 = getv function %tmp.96 :setColor;
+        %tmp.98 = lgetv %barColor.4;
+        symbol [ barColor %tmp.98 41 24 32 ];
+        symbol [ Graphics %tmp.99 41 34 42 ];
+        %tmp.99 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.100 41 43 54 ];
+        %tmp.100 = getv %tmp.99 :COLOR_BLACK;
+        invoke %tmp.96 %tmp.97(%tmp.98, %tmp.100);
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 42 12 ]
+        %tmp.101 = lgetv %dc;
+        symbol [ dc %tmp.101 42 12 14 ];
+        symbol [ fillRectangle %tmp.102 42 15 28 ];
+        %tmp.102 = getv function %tmp.101 :fillRectangle;
+        %tmp.103 = 20;
+        %tmp.104 = 40;
+        %tmp.105 = lgetv %dc;
+        symbol [ dc %tmp.105 42 38 40 ];
+        symbol [ getWidth %tmp.106 42 41 49 ];
+        %tmp.106 = getv function %tmp.105 :getWidth;
+        %tmp.107 = invoke %tmp.105 %tmp.106();
+        %tmp.108 = 40;
+        %tmp.109 = sub %tmp.107 %tmp.108;
+        %tmp.110 = lgetv %completion.3;
+        symbol [ completion %tmp.110 42 60 70 ];
+        %tmp.111 = mul %tmp.109 %tmp.110;
+        %tmp.112 = 100;
+        %tmp.113 = div %tmp.111 %tmp.112;
+        %tmp.114 = 8;
+        invoke %tmp.101 %tmp.102(%tmp.103, %tmp.104, %tmp.113, %tmp.114);
 [ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 44 12 ]
-        %tmp.134 = lgetv %dc;
-        symbol [ dc %tmp.134 44 12 14 ];
-        symbol [ setColor %tmp.135 44 15 23 ];
-        %tmp.135 = getv function %tmp.134 :setColor;
-        symbol [ Graphics %tmp.136 44 24 32 ];
-        %tmp.136 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.137 44 33 44 ];
-        %tmp.137 = getv %tmp.136 :COLOR_WHITE;
-        symbol [ Graphics %tmp.138 44 46 54 ];
-        %tmp.138 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.139 44 55 66 ];
-        %tmp.139 = getv %tmp.138 :COLOR_BLACK;
-        invoke %tmp.134 %tmp.135(%tmp.137, %tmp.139);
+        %tmp.115 = lgetv %dc;
+        symbol [ dc %tmp.115 44 12 14 ];
+        symbol [ setColor %tmp.116 44 15 23 ];
+        %tmp.116 = getv function %tmp.115 :setColor;
+        symbol [ Graphics %tmp.117 44 24 32 ];
+        %tmp.117 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.118 44 33 44 ];
+        %tmp.118 = getv %tmp.117 :COLOR_WHITE;
+        symbol [ Graphics %tmp.119 44 46 54 ];
+        %tmp.119 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.120 44 55 66 ];
+        %tmp.120 = getv %tmp.119 :COLOR_BLACK;
+        invoke %tmp.115 %tmp.116(%tmp.118, %tmp.120);
 [ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 45 12 ]
-        %tmp.140 = lgetv %dc;
-        symbol [ dc %tmp.140 45 12 14 ];
-        symbol [ drawText %tmp.141 45 15 23 ];
-        %tmp.141 = getv function %tmp.140 :drawText;
-        %tmp.142 = 20;
-        %tmp.143 = 130;
-        symbol [ Graphics %tmp.144 45 33 41 ];
-        %tmp.144 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.145 45 42 52 ];
-        %tmp.145 = getv %tmp.144 :FONT_SMALL;
-        %tmp.146 = "This Week:";
-        symbol [ Graphics %tmp.147 45 68 76 ];
-        %tmp.147 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_LEFT %tmp.148 45 77 94 ];
-        %tmp.148 = getv %tmp.147 :TEXT_JUSTIFY_LEFT;
-        invoke %tmp.140 %tmp.141(%tmp.142, %tmp.143, %tmp.145, %tmp.146, %tmp.148);
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 47 12 ]
-        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_25_26_56_8_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_25_26_56_8_stop" ]
-        %y.4 = local;
-        symbol [ y %y.4 47 16 17 ];
-        %tmp.149 = 150;
-        lputv %y.4 %tmp.149;
-        symbol [ y %y.4 47 16 17 ];
+        %tmp.121 = lgetv %dc;
+        symbol [ dc %tmp.121 45 12 14 ];
+        symbol [ drawText %tmp.122 45 15 23 ];
+        %tmp.122 = getv function %tmp.121 :drawText;
+        %tmp.123 = lgetv %dc;
+        symbol [ dc %tmp.123 45 24 26 ];
+        symbol [ getWidth %tmp.124 45 27 35 ];
+        %tmp.124 = getv function %tmp.123 :getWidth;
+        %tmp.125 = invoke %tmp.123 %tmp.124();
+        %tmp.126 = 2;
+        %tmp.127 = div %tmp.125 %tmp.126;
+        %tmp.128 = 52;
+        symbol [ Graphics %tmp.129 45 47 55 ];
+        %tmp.129 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.130 45 56 65 ];
+        %tmp.130 = getv %tmp.129 :FONT_TINY;
+        %tmp.131 = lgetv %completion.3;
+        symbol [ completion %tmp.131 45 67 77 ];
+        %tmp.132 = "%";
+        %tmp.133 = add %tmp.131 %tmp.132;
+        symbol [ Graphics %tmp.134 45 85 93 ];
+        %tmp.134 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.135 45 94 113 ];
+        %tmp.135 = getv %tmp.134 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.121 %tmp.122(%tmp.127, %tmp.128, %tmp.130, %tmp.133, %tmp.135);
 [ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 48 12 ]
-        for @_home_cechinel_coachrox_garmin_source_PlanView_mc_48_12_55_12_for_test @_home_cechinel_coachrox_garmin_source_PlanView_mc_48_12_55_12_for_incr @_home_cechinel_coachrox_garmin_source_PlanView_mc_48_12_55_12_for_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_48_12_55_12_for_init:
-        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_48_12_55_12_for_begin" "_home_cechinel_coachrox_garmin_source_PlanView_mc_48_12_55_12_for_end" ]
-        %i.5 = local;
-        symbol [ i %i.5 48 21 22 ];
-        %tmp.150 = 0;
-        lputv %i.5 %tmp.150;
-        symbol [ i %i.5 48 21 22 ];
-_home_cechinel_coachrox_garmin_source_PlanView_mc_48_12_55_12_for_test:
-        %tmp.151 = lgetv %i.5;
-        symbol [ i %tmp.151 48 28 29 ];
-        %tmp.152 = 5;
-        %tmp.153 = lt %tmp.151 %tmp.152;
-        bf %tmp.153 @_home_cechinel_coachrox_garmin_source_PlanView_mc_48_12_55_12_for_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_48_12_55_12_for_begin:
-_home_cechinel_coachrox_garmin_source_PlanView_mc_48_40_55_12_start:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 49 16 ]
-        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_48_40_55_12_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_48_40_55_12_stop" ]
-        %workout.6 = local;
-        symbol [ workout %workout.6 49 20 27 ];
-        symbol [ plan %tmp.155 49 30 34 ];
-        %tmp.155 = getv ? :plan;
-        symbol [ getWorkout %tmp.156 49 35 45 ];
-        %tmp.156 = getv function %tmp.155 :getWorkout;
-        %tmp.157 = lgetv %i.5;
-        symbol [ i %tmp.157 49 46 47 ];
-        %tmp.158 = invoke %tmp.155 %tmp.156(%tmp.157);
-        lputv %workout.6 %tmp.158;
-        symbol [ workout %workout.6 49 20 27 ];
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 50 16 ]
-_home_cechinel_coachrox_garmin_source_PlanView_mc_50_16_54_16_if_stmt:
-        %tmp.159 = lgetv %workout.6;
-        symbol [ workout %tmp.159 50 20 27 ];
-        %tmp.160 = null;
-        %tmp.161 = ne %tmp.159 %tmp.160;
-        bf %tmp.161 @_home_cechinel_coachrox_garmin_source_PlanView_mc_50_16_54_16_if_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_50_16_54_16_if_true:
-_home_cechinel_coachrox_garmin_source_PlanView_mc_50_37_54_16_start:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 51 20 ]
-        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_50_37_54_16_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_50_37_54_16_stop" ]
-        %status.7 = local;
-        symbol [ status %status.7 51 24 30 ];
-_home_cechinel_coachrox_garmin_source_PlanView_mc_51_33_51_65_begin:
-        %tmp.162 = lgetv %workout.6;
-        symbol [ workout %tmp.162 51 33 40 ];
-        %tmp.163 = as %tmp.162 { (!Null) };
-        symbol [ isCompleted %tmp.164 51 41 52 ];
-        %tmp.164 = getv function %tmp.163 :isCompleted;
-        %tmp.165 = invoke %tmp.163 %tmp.164();
-        bf %tmp.165 @_home_cechinel_coachrox_garmin_source_PlanView_mc_51_33_51_65_else_false;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_51_33_51_65_true:
-        %tmp.166 = "[✓]";
-        push %tmp.166;
-        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_51_33_51_65_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_51_33_51_65_else_false:
-        %tmp.167 = "[ ]";
-        push %tmp.167;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_51_33_51_65_end:
-        %tmp.168 = phi [%tmp.165 @_home_cechinel_coachrox_garmin_source_PlanView_mc_51_33_51_65_begin] [%tmp.166 @_home_cechinel_coachrox_garmin_source_PlanView_mc_51_33_51_65_true] [%tmp.167 @_home_cechinel_coachrox_garmin_source_PlanView_mc_51_33_51_65_else_false] [%tmp.168 @_home_cechinel_coachrox_garmin_source_PlanView_mc_51_33_51_65_end];
-        lputv %status.7 %tmp.168;
-        symbol [ status %status.7 51 24 30 ];
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 52 20 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_31_26_58_8_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_31_26_58_8_stop" ]
+        %y.5 = local;
+        symbol [ y %y.5 48 16 17 ];
+        %tmp.136 = 70;
+        lputv %y.5 %tmp.136;
+        symbol [ y %y.5 48 16 17 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 49 12 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_31_26_58_8_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_31_26_58_8_stop" ]
+        %workoutNames.6 = local;
+        symbol [ workoutNames %workoutNames.6 49 16 28 ];
+        %tmp.137 = newa 5;
+        %tmp.138 = "Intervals 1";
+        %tmp.139 = dup %tmp.137;
+        %tmp.140 = aputv %tmp.139 0 %tmp.138;
+        %tmp.141 = "Intervals 2";
+        %tmp.142 = dup %tmp.140;
+        %tmp.143 = aputv %tmp.142 1 %tmp.141;
+        %tmp.144 = "Tempo Run";
+        %tmp.145 = dup %tmp.143;
+        %tmp.146 = aputv %tmp.145 2 %tmp.144;
+        %tmp.147 = "Long Run";
+        %tmp.148 = dup %tmp.146;
+        %tmp.149 = aputv %tmp.148 3 %tmp.147;
+        %tmp.150 = "Recovery";
+        %tmp.151 = dup %tmp.149;
+        %tmp.152 = aputv %tmp.151 4 %tmp.150;
+        lputv %workoutNames.6 %tmp.152;
+        symbol [ workoutNames %workoutNames.6 49 16 28 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 51 12 ]
+        for @_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_test @_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_incr @_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_end;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_init:
+        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_begin" "_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_end" ]
+        %i.7 = local;
+        symbol [ i %i.7 51 21 22 ];
+        %tmp.153 = 0;
+        lputv %i.7 %tmp.153;
+        symbol [ i %i.7 51 21 22 ];
+_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_test:
+        %tmp.154 = lgetv %i.7;
+        symbol [ i %tmp.154 51 28 29 ];
+        %tmp.155 = 5;
+        %tmp.156 = lt %tmp.154 %tmp.155;
+        bf %tmp.156 @_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_end;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_begin:
+_home_cechinel_coachrox_garmin_source_PlanView_mc_51_40_57_12_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 52 16 ]
+_home_cechinel_coachrox_garmin_source_PlanView_mc_52_16_52_54_if_stmt:
+        %tmp.157 = lgetv %y.5;
+        symbol [ y %tmp.157 52 20 21 ];
+        %tmp.158 = lgetv %dc;
+        symbol [ dc %tmp.158 52 24 26 ];
+        symbol [ getHeight %tmp.159 52 27 36 ];
+        %tmp.159 = getv function %tmp.158 :getHeight;
+        %tmp.160 = invoke %tmp.158 %tmp.159();
+        %tmp.161 = 25;
+        %tmp.162 = sub %tmp.160 %tmp.161;
+        %tmp.163 = gt %tmp.157 %tmp.162;
+        bf %tmp.163 @_home_cechinel_coachrox_garmin_source_PlanView_mc_52_16_52_54_if_end;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_52_16_52_54_if_true:
+_home_cechinel_coachrox_garmin_source_PlanView_mc_52_45_52_54_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 52 47 ]
+        goto break @_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_end;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_52_45_52_54_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_52_16_52_54_if_end;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_52_16_52_54_if_end:
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 53 16 ]
+        [ "_home_cechinel_coachrox_garmin_source_PlanView_mc_51_40_57_12_start" "_home_cechinel_coachrox_garmin_source_PlanView_mc_51_40_57_12_stop" ]
+        %done.8 = local;
+        symbol [ done %done.8 53 20 24 ];
+        %tmp.164 = lgetv %i.7;
+        symbol [ i %tmp.164 53 28 29 ];
+        %tmp.165 = lgetv %completion.3;
+        symbol [ completion %tmp.165 53 32 42 ];
+        %tmp.166 = 20;
+        %tmp.167 = div %tmp.165 %tmp.166;
+        %tmp.168 = lt %tmp.164 %tmp.167;
+        lputv %done.8 %tmp.168;
+        symbol [ done %done.8 53 20 24 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 54 16 ]
         %tmp.169 = lgetv %dc;
-        symbol [ dc %tmp.169 52 20 22 ];
-        symbol [ drawText %tmp.170 52 23 31 ];
-        %tmp.170 = getv function %tmp.169 :drawText;
-        %tmp.171 = 20;
-        %tmp.172 = lgetv %y.4;
-        symbol [ y %tmp.172 52 36 37 ];
-        symbol [ Graphics %tmp.173 52 39 47 ];
-        %tmp.173 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.174 52 48 57 ];
-        %tmp.174 = getv %tmp.173 :FONT_TINY;
-        %tmp.175 = lgetv %status.7;
-        symbol [ status %tmp.175 52 59 65 ];
-        %tmp.176 = " ";
-        %tmp.177 = add %tmp.175 %tmp.176;
-        %tmp.178 = lgetv %workout.6;
-        symbol [ workout %tmp.178 52 74 81 ];
-        %tmp.179 = as %tmp.178 { (!Null) };
-        symbol [ name %tmp.180 52 82 86 ];
-        %tmp.180 = getv %tmp.179 :name;
-        %tmp.181 = add %tmp.177 %tmp.180;
-        symbol [ Graphics %tmp.182 52 88 96 ];
-        %tmp.182 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_LEFT %tmp.183 52 97 114 ];
-        %tmp.183 = getv %tmp.182 :TEXT_JUSTIFY_LEFT;
-        invoke %tmp.169 %tmp.170(%tmp.171, %tmp.172, %tmp.174, %tmp.181, %tmp.183);
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 53 20 ]
-        %tmp.184 = lgetv %y.4;
-        symbol [ y %tmp.184 53 20 21 ];
-        %tmp.185 = 18;
-        %tmp.186 = add %tmp.184 %tmp.185;
-        lputv %y.4 %tmp.186;
-        symbol [ y %y.4 53 20 21 ];
-_home_cechinel_coachrox_garmin_source_PlanView_mc_50_37_54_16_stop:
-        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_50_16_54_16_if_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_50_16_54_16_if_end:
-_home_cechinel_coachrox_garmin_source_PlanView_mc_48_40_55_12_stop:
-_home_cechinel_coachrox_garmin_source_PlanView_mc_48_12_55_12_for_incr:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 48 ]
-        %tmp.189 = lgetv %i.5;
-        symbol [ i %tmp.189 48 35 36 ];
-        %tmp.190 = add %tmp.189 1;
-        lputv %i.5 %tmp.190;
-        symbol [ i %i.5 48 35 36 ];
-        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_48_12_55_12_for_test;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_48_12_55_12_for_end:
-_home_cechinel_coachrox_garmin_source_PlanView_mc_25_26_56_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_25_8_56_8_if_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_25_8_56_8_if_end:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 59 8 ]
-        %tmp.191 = lgetv %dc;
-        symbol [ dc %tmp.191 59 8 10 ];
-        symbol [ setColor %tmp.192 59 11 19 ];
-        %tmp.192 = getv function %tmp.191 :setColor;
-        symbol [ Graphics %tmp.193 59 20 28 ];
-        %tmp.193 = getm $.Toybox.Graphics;
-        symbol [ COLOR_DK_GRAY %tmp.194 59 29 42 ];
-        %tmp.194 = getv %tmp.193 :COLOR_DK_GRAY;
-        symbol [ Graphics %tmp.195 59 44 52 ];
-        %tmp.195 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.196 59 53 64 ];
-        %tmp.196 = getv %tmp.195 :COLOR_BLACK;
-        invoke %tmp.191 %tmp.192(%tmp.194, %tmp.196);
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 60 8 ]
-        %tmp.197 = lgetv %dc;
-        symbol [ dc %tmp.197 60 8 10 ];
-        symbol [ drawText %tmp.198 60 11 19 ];
-        %tmp.198 = getv function %tmp.197 :drawText;
-        %tmp.199 = lgetv %dc;
-        symbol [ dc %tmp.199 60 20 22 ];
-        symbol [ getWidth %tmp.200 60 23 31 ];
-        %tmp.200 = getv function %tmp.199 :getWidth;
-        %tmp.201 = invoke %tmp.199 %tmp.200();
-        %tmp.202 = 2;
-        %tmp.203 = div %tmp.201 %tmp.202;
-        %tmp.204 = lgetv %dc;
-        symbol [ dc %tmp.204 60 39 41 ];
-        symbol [ getHeight %tmp.205 60 42 51 ];
-        %tmp.205 = getv function %tmp.204 :getHeight;
-        %tmp.206 = invoke %tmp.204 %tmp.205();
-        %tmp.207 = 20;
-        %tmp.208 = sub %tmp.206 %tmp.207;
-        symbol [ Graphics %tmp.209 60 60 68 ];
-        %tmp.209 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.210 60 69 78 ];
-        %tmp.210 = getv %tmp.209 :FONT_TINY;
-        %tmp.211 = "ESC: Back";
-        symbol [ Graphics %tmp.212 60 93 101 ];
-        %tmp.212 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.213 60 102 121 ];
-        %tmp.213 = getv %tmp.212 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.197 %tmp.198(%tmp.203, %tmp.208, %tmp.210, %tmp.211, %tmp.213);
-_home_cechinel_coachrox_garmin_source_PlanView_mc_17_40_61_4_stop:
+        symbol [ dc %tmp.169 54 16 18 ];
+        symbol [ setColor %tmp.170 54 19 27 ];
+        %tmp.170 = getv function %tmp.169 :setColor;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_54_28_54_58_begin:
+        %tmp.171 = lgetv %done.8;
+        symbol [ done %tmp.171 54 28 32 ];
+        bf %tmp.171 @_home_cechinel_coachrox_garmin_source_PlanView_mc_54_28_54_58_else_false;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_54_28_54_58_true:
+        symbol [ COLOR_GREEN %tmp.173 54 35 46 ];
+        %tmp.173 = getv ? :COLOR_GREEN;
+        push %tmp.173;
+        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_54_28_54_58_end;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_54_28_54_58_else_false:
+        symbol [ Graphics %tmp.174 54 49 57 ];
+        %tmp.174 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.175 54 58 69 ];
+        %tmp.175 = getv %tmp.174 :COLOR_WHITE;
+        push %tmp.175;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_54_28_54_58_end:
+        %tmp.176 = phi [%tmp.171 @_home_cechinel_coachrox_garmin_source_PlanView_mc_54_28_54_58_begin] [%tmp.173 @_home_cechinel_coachrox_garmin_source_PlanView_mc_54_28_54_58_true] [%tmp.175 @_home_cechinel_coachrox_garmin_source_PlanView_mc_54_28_54_58_else_false] [%tmp.176 @_home_cechinel_coachrox_garmin_source_PlanView_mc_54_28_54_58_end];
+        symbol [ Graphics %tmp.177 54 71 79 ];
+        %tmp.177 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.178 54 80 91 ];
+        %tmp.178 = getv %tmp.177 :COLOR_BLACK;
+        invoke %tmp.169 %tmp.170(%tmp.176, %tmp.178);
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 55 16 ]
+        %tmp.179 = lgetv %dc;
+        symbol [ dc %tmp.179 55 16 18 ];
+        symbol [ drawText %tmp.180 55 19 27 ];
+        %tmp.180 = getv function %tmp.179 :drawText;
+        %tmp.181 = 10;
+        %tmp.182 = lgetv %y.5;
+        symbol [ y %tmp.182 55 32 33 ];
+        symbol [ Graphics %tmp.183 55 35 43 ];
+        %tmp.183 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.184 55 44 54 ];
+        %tmp.184 = getv %tmp.183 :FONT_SMALL;
+        %tmp.185 = lgetv %i.7;
+        symbol [ i %tmp.185 55 57 58 ];
+        %tmp.186 = 1;
+        %tmp.187 = add %tmp.185 %tmp.186;
+        %tmp.188 = ". ";
+        %tmp.189 = add %tmp.187 %tmp.188;
+        %tmp.190 = lgetv %workoutNames.6;
+        symbol [ workoutNames %tmp.190 55 73 85 ];
+        %tmp.191 = lgetv %i.7;
+        symbol [ i %tmp.191 55 86 87 ];
+        %tmp.192 = agetv %tmp.190 %tmp.191;
+        %tmp.193 = add %tmp.189 %tmp.192;
+        symbol [ Graphics %tmp.194 55 90 98 ];
+        %tmp.194 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.195 55 99 116 ];
+        %tmp.195 = getv %tmp.194 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.179 %tmp.180(%tmp.181, %tmp.182, %tmp.184, %tmp.193, %tmp.195);
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 56 16 ]
+        %tmp.196 = lgetv %y.5;
+        symbol [ y %tmp.196 56 16 17 ];
+        %tmp.197 = 25;
+        %tmp.198 = add %tmp.196 %tmp.197;
+        lputv %y.5 %tmp.198;
+        symbol [ y %y.5 56 16 17 ];
+_home_cechinel_coachrox_garmin_source_PlanView_mc_51_40_57_12_stop:
+_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_incr:
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 51 ]
+        %tmp.201 = lgetv %i.7;
+        symbol [ i %tmp.201 51 35 36 ];
+        %tmp.202 = add %tmp.201 1;
+        lputv %i.7 %tmp.202;
+        symbol [ i %i.7 51 35 36 ];
+        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_test;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_51_12_57_12_for_end:
+_home_cechinel_coachrox_garmin_source_PlanView_mc_31_26_58_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_31_8_58_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_31_8_58_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 61 8 ]
+        %tmp.203 = lgetv %dc;
+        symbol [ dc %tmp.203 61 8 10 ];
+        symbol [ setColor %tmp.204 61 11 19 ];
+        %tmp.204 = getv function %tmp.203 :setColor;
+        symbol [ Graphics %tmp.205 61 20 28 ];
+        %tmp.205 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.206 61 29 42 ];
+        %tmp.206 = getv %tmp.205 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.207 61 44 52 ];
+        %tmp.207 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.208 61 53 64 ];
+        %tmp.208 = getv %tmp.207 :COLOR_BLACK;
+        invoke %tmp.203 %tmp.204(%tmp.206, %tmp.208);
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 62 8 ]
+        %tmp.209 = lgetv %dc;
+        symbol [ dc %tmp.209 62 8 10 ];
+        symbol [ drawText %tmp.210 62 11 19 ];
+        %tmp.210 = getv function %tmp.209 :drawText;
+        %tmp.211 = lgetv %dc;
+        symbol [ dc %tmp.211 62 20 22 ];
+        symbol [ getWidth %tmp.212 62 23 31 ];
+        %tmp.212 = getv function %tmp.211 :getWidth;
+        %tmp.213 = invoke %tmp.211 %tmp.212();
+        %tmp.214 = 2;
+        %tmp.215 = div %tmp.213 %tmp.214;
+        %tmp.216 = lgetv %dc;
+        symbol [ dc %tmp.216 62 39 41 ];
+        symbol [ getHeight %tmp.217 62 42 51 ];
+        %tmp.217 = getv function %tmp.216 :getHeight;
+        %tmp.218 = invoke %tmp.216 %tmp.217();
+        %tmp.219 = 12;
+        %tmp.220 = sub %tmp.218 %tmp.219;
+        symbol [ Graphics %tmp.221 62 60 68 ];
+        %tmp.221 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.222 62 69 78 ];
+        %tmp.222 = getv %tmp.221 :FONT_TINY;
+        %tmp.223 = "ESC: Back";
+        symbol [ Graphics %tmp.224 62 93 101 ];
+        %tmp.224 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.225 62 102 121 ];
+        %tmp.225 = getv %tmp.224 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.209 %tmp.210(%tmp.215, %tmp.220, %tmp.222, %tmp.223, %tmp.225);
+_home_cechinel_coachrox_garmin_source_PlanView_mc_22_40_63_4_stop:
     }
 }
-[ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 64; @symbol_classdef = [PlanDelegate,64,6,18]; @symbol_extends<0> = [WatchUi,64,27,34]; @symbol_extends<1> = [InputDelegate,64,35,48]; ]
+[ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 66; @symbol_classdef = [PlanDelegate,66,6,18]; @symbol_extends<0> = [WatchUi,66,27,34]; @symbol_extends<1> = [InputDelegate,66,35,48]; ]
 class PlanDelegate extends WatchUi.InputDelegate {
-    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 64; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 66; ]
     <init> {
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 64; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 66; ]
     static
     <init> {
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 66; @position = 8; @symbol_vardef = [view,66,8,12]; @symbol_type<0> = [PlanView,66,16,24]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 67; @position = 8; @symbol_vardef = [view,67,8,12]; @symbol_type<0> = [PlanView,67,16,24]; ]
     var view as PlanView;
-    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 68; @symbol_functiondef = [initialize,68,13,23]; @symbol_param<0> = [pView,68,24,29]; @symbol_param<0>_type<0> = [PlanView,68,33,41]; ]
-    function initialize(pView as PlanView) as Void {
-_home_cechinel_coachrox_garmin_source_PlanView_mc_68_43_71_4_start:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 69 8 ]
-        symbol [ WatchUi %tmp.1 69 8 15 ];
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 69; @symbol_functiondef = [initialize,69,13,23]; @symbol_param<0> = [planView,69,24,32]; @symbol_param<0>_type<0> = [PlanView,69,36,44]; ]
+    function initialize(planView as PlanView) as Void {
+_home_cechinel_coachrox_garmin_source_PlanView_mc_69_46_72_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 70 8 ]
+        symbol [ WatchUi %tmp.1 70 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ InputDelegate %tmp.2 69 16 29 ];
+        symbol [ InputDelegate %tmp.2 70 16 29 ];
         %tmp.2 = getv %tmp.1 :InputDelegate;
-        symbol [ initialize %tmp.3 69 30 40 ];
+        symbol [ initialize %tmp.3 70 30 40 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 70 8 ]
-        %tmp.4 = lgetv %pView;
-        symbol [ pView %tmp.4 70 15 20 ];
-        symbol [ view ? 70 8 12 ];
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 71 8 ]
+        %tmp.4 = lgetv %planView;
+        symbol [ planView %tmp.4 71 15 23 ];
+        symbol [ view ? 71 8 12 ];
         putv self :view %tmp.4;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_68_43_71_4_stop:
+_home_cechinel_coachrox_garmin_source_PlanView_mc_69_46_72_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 73; @symbol_functiondef = [onKeyPressed,73,13,25]; @symbol_param<0> = [key,73,26,29]; @symbol_param<0>_type<0> = [WatchUi,73,33,40]; @symbol_param<0>_type<1> = [KeyEvent,73,41,49]; @symbol_return<0> = [Boolean,73,54,61]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 74; @symbol_functiondef = [onKeyPressed,74,13,25]; @symbol_param<0> = [key,74,26,29]; @symbol_param<0>_type<0> = [WatchUi,74,33,40]; @symbol_param<0>_type<1> = [KeyEvent,74,41,49]; @symbol_return<0> = [Boolean,74,54,61]; ]
     function onKeyPressed(key as WatchUi.KeyEvent) as Boolean {
-_home_cechinel_coachrox_garmin_source_PlanView_mc_73_62_79_4_start:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 74 8 ]
-_home_cechinel_coachrox_garmin_source_PlanView_mc_74_8_77_8_if_stmt:
+_home_cechinel_coachrox_garmin_source_PlanView_mc_74_62_80_4_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 75 8 ]
+_home_cechinel_coachrox_garmin_source_PlanView_mc_75_8_78_8_if_stmt:
         %tmp.1 = lgetv %key;
-        symbol [ key %tmp.1 74 12 15 ];
-        symbol [ getKey %tmp.2 74 16 22 ];
+        symbol [ key %tmp.1 75 12 15 ];
+        symbol [ getKey %tmp.2 75 16 22 ];
         %tmp.2 = getv function %tmp.1 :getKey;
         %tmp.3 = invoke %tmp.1 %tmp.2();
-        symbol [ WatchUi %tmp.4 74 28 35 ];
+        symbol [ WatchUi %tmp.4 75 28 35 ];
         %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ KEY_ESC %tmp.5 74 36 43 ];
+        symbol [ KEY_ESC %tmp.5 75 36 43 ];
         %tmp.5 = getv %tmp.4 :KEY_ESC;
         %tmp.6 = eq %tmp.3 %tmp.5;
-        bf %tmp.6 @_home_cechinel_coachrox_garmin_source_PlanView_mc_74_8_77_8_if_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_74_8_77_8_if_true:
-_home_cechinel_coachrox_garmin_source_PlanView_mc_74_45_77_8_start:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 75 12 ]
-        symbol [ WatchUi %tmp.7 75 12 19 ];
+        bf %tmp.6 @_home_cechinel_coachrox_garmin_source_PlanView_mc_75_8_78_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_75_8_78_8_if_true:
+_home_cechinel_coachrox_garmin_source_PlanView_mc_75_45_78_8_start:
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 76 12 ]
+        symbol [ WatchUi %tmp.7 76 12 19 ];
         %tmp.7 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.8 75 20 27 ];
+        symbol [ popView %tmp.8 76 20 27 ];
         %tmp.8 = getv function %tmp.7 :popView;
-        symbol [ WatchUi %tmp.9 75 28 35 ];
+        symbol [ WatchUi %tmp.9 76 28 35 ];
         %tmp.9 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.10 75 36 47 ];
+        symbol [ SLIDE_RIGHT %tmp.10 76 36 47 ];
         %tmp.10 = getv %tmp.9 :SLIDE_RIGHT;
         invoke %tmp.7 %tmp.8(%tmp.10);
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 76 12 ]
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 77 12 ]
         %tmp.11 = true;
         ret %tmp.11;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_74_45_77_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_74_8_77_8_if_end;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_74_8_77_8_if_end:
-[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 78 8 ]
+_home_cechinel_coachrox_garmin_source_PlanView_mc_75_45_78_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_PlanView_mc_75_8_78_8_if_end;
+_home_cechinel_coachrox_garmin_source_PlanView_mc_75_8_78_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/PlanView.mc" 79 8 ]
         %tmp.12 = false;
         ret %tmp.12;
-_home_cechinel_coachrox_garmin_source_PlanView_mc_73_62_79_4_stop:
+_home_cechinel_coachrox_garmin_source_PlanView_mc_74_62_80_4_stop:
     }
 }
 [ @file = "/home/cechinel/coachrox-garmin/source/PlanView.mc"; @line = 1; ]

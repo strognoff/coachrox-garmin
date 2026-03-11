@@ -57,4 +57,16 @@ class SessionStorage {
         // Storage.clear() was removed in newer SDKs
         // Individual keys need to be set to null to be removed
     }
+    
+    //! Get total time in minutes
+    function getTotalTime() as Number {
+        var total = Storage.getValue("total_time_minutes");
+        return total != null ? total : 0;
+    }
+    
+    //! Add to total time
+    function addTotalTime(minutes as Number) as Void {
+        var current = getTotalTime();
+        Storage.setValue("total_time_minutes", current + minutes);
+    }
 }

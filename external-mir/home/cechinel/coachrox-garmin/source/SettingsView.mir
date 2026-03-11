@@ -770,6 +770,20 @@ _home_cechinel_coachrox_garmin_source_SettingsView_mc_106_8_118_8_if_end:
         ret %tmp.42;
 _home_cechinel_coachrox_garmin_source_SettingsView_mc_105_62_120_4_stop:
     }
+    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 122; @symbol_functiondef = [onSelect,122,13,21]; @symbol_return<0> = [Boolean,122,27,34]; ]
+    function onSelect() as Boolean {
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_122_35_125_4_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 123 8 ]
+        symbol [ view %tmp.2 123 8 12 ];
+        %tmp.2 = getv ? :view;
+        symbol [ applySetting %tmp.3 123 13 25 ];
+        %tmp.3 = getv function %tmp.2 :applySetting;
+        invoke %tmp.2 %tmp.3();
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 124 8 ]
+        %tmp.4 = true;
+        ret %tmp.4;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_122_35_125_4_stop:
+    }
 }
 [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 1; ]
 <init> {

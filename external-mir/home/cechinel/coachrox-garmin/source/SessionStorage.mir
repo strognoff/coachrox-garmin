@@ -225,6 +225,71 @@ _home_cechinel_coachrox_garmin_source_SessionStorage_mc_45_53_51_4_stop:
     [ @file = "/home/cechinel/coachrox-garmin/source/SessionStorage.mc"; @line = 56; @symbol_functiondef = [clearAll,56,13,21]; ]
     function clearAll() as Void {
     }
+    //! Get total time in minutes
+    [ @file = "/home/cechinel/coachrox-garmin/source/SessionStorage.mc"; @line = 62; @symbol_functiondef = [getTotalTime,62,13,25]; @symbol_return<0> = [Number,62,31,37]; ]
+    function getTotalTime() as Number {
+_home_cechinel_coachrox_garmin_source_SessionStorage_mc_62_38_65_4_start:
+[ "/home/cechinel/coachrox-garmin/source/SessionStorage.mc" 63 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_SessionStorage_mc_62_38_65_4_start" "_home_cechinel_coachrox_garmin_source_SessionStorage_mc_62_38_65_4_stop" ]
+        %total.1 = local;
+        symbol [ total %total.1 63 12 17 ];
+        symbol [ Storage %tmp.1 63 20 27 ];
+        %tmp.1 = getm $.Toybox.Application.Storage;
+        symbol [ getValue %tmp.2 63 28 36 ];
+        %tmp.2 = getv function %tmp.1 :getValue;
+        %tmp.3 = "total_time_minutes";
+        %tmp.4 = invoke %tmp.1 %tmp.2(%tmp.3);
+        lputv %total.1 %tmp.4;
+        symbol [ total %total.1 63 12 17 ];
+[ "/home/cechinel/coachrox-garmin/source/SessionStorage.mc" 64 8 ]
+_home_cechinel_coachrox_garmin_source_SessionStorage_mc_64_15_64_39_begin:
+        %tmp.5 = lgetv %total.1;
+        symbol [ total %tmp.5 64 15 20 ];
+        %tmp.6 = null;
+        %tmp.7 = ne %tmp.5 %tmp.6;
+        bf %tmp.7 @_home_cechinel_coachrox_garmin_source_SessionStorage_mc_64_15_64_39_else_false;
+_home_cechinel_coachrox_garmin_source_SessionStorage_mc_64_15_64_39_true:
+        %tmp.8 = lgetv %total.1;
+        symbol [ total %tmp.8 64 31 36 ];
+        %tmp.9 = as %tmp.8 { (!Null) };
+        push %tmp.9;
+        goto @_home_cechinel_coachrox_garmin_source_SessionStorage_mc_64_15_64_39_end;
+_home_cechinel_coachrox_garmin_source_SessionStorage_mc_64_15_64_39_else_false:
+        %tmp.10 = 0;
+        push %tmp.10;
+_home_cechinel_coachrox_garmin_source_SessionStorage_mc_64_15_64_39_end:
+        %tmp.11 = phi [%tmp.7 @_home_cechinel_coachrox_garmin_source_SessionStorage_mc_64_15_64_39_begin] [%tmp.9 @_home_cechinel_coachrox_garmin_source_SessionStorage_mc_64_15_64_39_true] [%tmp.10 @_home_cechinel_coachrox_garmin_source_SessionStorage_mc_64_15_64_39_else_false] [%tmp.11 @_home_cechinel_coachrox_garmin_source_SessionStorage_mc_64_15_64_39_end];
+        ret %tmp.11;
+_home_cechinel_coachrox_garmin_source_SessionStorage_mc_62_38_65_4_stop:
+    }
+    //! Add to total time
+    [ @file = "/home/cechinel/coachrox-garmin/source/SessionStorage.mc"; @line = 68; @symbol_functiondef = [addTotalTime,68,13,25]; @symbol_param<0> = [minutes,68,26,33]; @symbol_param<0>_type<0> = [Number,68,37,43]; ]
+    function addTotalTime(minutes as Number) as Void {
+_home_cechinel_coachrox_garmin_source_SessionStorage_mc_68_53_71_4_start:
+[ "/home/cechinel/coachrox-garmin/source/SessionStorage.mc" 69 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_SessionStorage_mc_68_53_71_4_start" "_home_cechinel_coachrox_garmin_source_SessionStorage_mc_68_53_71_4_stop" ]
+        %current.1 = local;
+        symbol [ current %current.1 69 12 19 ];
+        %tmp.1 = self;
+        symbol [ getTotalTime %tmp.2 69 22 34 ];
+        %tmp.2 = getv function %tmp.1 :getTotalTime;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %current.1 %tmp.3;
+        symbol [ current %current.1 69 12 19 ];
+[ "/home/cechinel/coachrox-garmin/source/SessionStorage.mc" 70 8 ]
+        symbol [ Storage %tmp.4 70 8 15 ];
+        %tmp.4 = getm $.Toybox.Application.Storage;
+        symbol [ setValue %tmp.5 70 16 24 ];
+        %tmp.5 = getv function %tmp.4 :setValue;
+        %tmp.6 = "total_time_minutes";
+        %tmp.7 = lgetv %current.1;
+        symbol [ current %tmp.7 70 47 54 ];
+        %tmp.8 = lgetv %minutes;
+        symbol [ minutes %tmp.8 70 57 64 ];
+        %tmp.9 = add %tmp.7 %tmp.8;
+        invoke %tmp.4 %tmp.5(%tmp.6, %tmp.9);
+_home_cechinel_coachrox_garmin_source_SessionStorage_mc_68_53_71_4_stop:
+    }
 }
 [ @file = "/home/cechinel/coachrox-garmin/source/SessionStorage.mc"; @line = 1; ]
 <init> {

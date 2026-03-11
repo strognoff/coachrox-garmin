@@ -4,433 +4,804 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Graphics,3,14,22]; ]
 import Toybox.Graphics;
-//! View for displaying progress and stats
-[ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 6; @symbol_classdef = [ProgressView,6,6,18]; @symbol_extends<0> = [WatchUi,6,27,34]; @symbol_extends<1> = [View,6,35,39]; ]
+[ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 5; @symbol_classdef = [ProgressView,5,6,18]; @symbol_extends<0> = [WatchUi,5,27,34]; @symbol_extends<1> = [View,5,35,39]; ]
 class ProgressView extends WatchUi.View {
-    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 6; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 5; ]
     <init> {
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 6; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 5; ]
     static
     <init> {
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 8; @position = 8; @symbol_vardef = [app,8,8,11]; @symbol_type<0> = [CoachroxApp,8,15,26]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 7; @position = 8; @symbol_vardef = [app,7,8,11]; @symbol_type<0> = [CoachroxApp,7,15,26]; ]
     var app as CoachroxApp;
-    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 9; @position = 8; @symbol_vardef = [sessionStorage,9,8,22]; @symbol_type<0> = [SessionStorage,9,26,40]; ]
-    var sessionStorage as SessionStorage;
-    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 11; @symbol_functiondef = [initialize,11,13,23]; @symbol_param<0> = [application,11,24,35]; @symbol_param<0>_type<0> = [CoachroxApp,11,39,50]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 8; @position = 8; @symbol_vardef = [sessionStorage,8,8,22]; @symbol_type<0> = [SessionStorage,8,26,40]; ]
+    var sessionStorage as SessionStorage or Null;
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 10; @position = 10; @symbol_constdef = [COLOR_ORANGE,10,10,22]; ]
+    const COLOR_ORANGE = 0xFF6B00;
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 11; @position = 10; @symbol_constdef = [COLOR_BLUE,11,10,20]; ]
+    const COLOR_BLUE = 0x00A3E0;
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 12; @position = 10; @symbol_constdef = [COLOR_GREEN,12,10,21]; ]
+    const COLOR_GREEN = 0x00C853;
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 13; @position = 10; @symbol_constdef = [COLOR_YELLOW,13,10,22]; ]
+    const COLOR_YELLOW = 0xFFD600;
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 15; @symbol_functiondef = [initialize,15,13,23]; @symbol_param<0> = [application,15,24,35]; @symbol_param<0>_type<0> = [CoachroxApp,15,39,50]; ]
     function initialize(application as CoachroxApp) as Void {
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_11_52_15_4_start:
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 12 8 ]
-        symbol [ WatchUi %tmp.1 12 8 15 ];
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_15_52_19_4_start:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 16 8 ]
+        symbol [ WatchUi %tmp.1 16 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ View %tmp.2 12 16 20 ];
+        symbol [ View %tmp.2 16 16 20 ];
         %tmp.2 = getv %tmp.1 :View;
-        symbol [ initialize %tmp.3 12 21 31 ];
+        symbol [ initialize %tmp.3 16 21 31 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 13 8 ]
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 17 8 ]
         %tmp.4 = lgetv %application;
-        symbol [ application %tmp.4 13 14 25 ];
-        symbol [ app ? 13 8 11 ];
+        symbol [ application %tmp.4 17 14 25 ];
+        symbol [ app ? 17 8 11 ];
         putv self :app %tmp.4;
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 14 8 ]
-        symbol [ Application %tmp.6 14 25 36 ];
-        %tmp.6 = getv ? :Application;
-        symbol [ getApp %tmp.7 14 37 43 ];
-        %tmp.7 = getv function %tmp.6 :getApp;
-        %tmp.8 = invoke %tmp.6 %tmp.7();
-        symbol [ sessionStorage %tmp.9 14 46 60 ];
-        %tmp.9 = getv %tmp.8 :sessionStorage;
-        symbol [ sessionStorage ? 14 8 22 ];
-        putv self :sessionStorage %tmp.9;
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_11_52_15_4_stop:
-    }
-    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 17; @symbol_functiondef = [onUpdate,17,13,21]; @symbol_param<0> = [dc,17,22,24]; @symbol_param<0>_type<0> = [Dc,17,28,30]; ]
-    function onUpdate(dc as Dc) as Void {
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_17_40_50_4_start:
 [ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 18 8 ]
+        symbol [ app %tmp.6 18 25 28 ];
+        %tmp.6 = getv ? :app;
+        symbol [ sessionStorage %tmp.7 18 29 43 ];
+        %tmp.7 = getv %tmp.6 :sessionStorage;
+        symbol [ sessionStorage ? 18 8 22 ];
+        putv self :sessionStorage %tmp.7;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_15_52_19_4_stop:
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 21; @symbol_functiondef = [onLayout,21,13,21]; @symbol_param<0> = [dc,21,22,24]; @symbol_param<0>_type<0> = [Dc,21,28,30]; ]
+    function onLayout(dc as Dc) as Void {
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 24; @symbol_functiondef = [onUpdate,24,13,21]; @symbol_param<0> = [dc,24,22,24]; @symbol_param<0>_type<0> = [Dc,24,28,30]; ]
+    function onUpdate(dc as Dc) as Void {
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_start:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 25 8 ]
         %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 18 8 10 ];
-        symbol [ setColor %tmp.2 18 11 19 ];
+        symbol [ dc %tmp.1 25 8 10 ];
+        symbol [ setColor %tmp.2 25 11 19 ];
         %tmp.2 = getv function %tmp.1 :setColor;
-        symbol [ Graphics %tmp.3 18 20 28 ];
+        symbol [ Graphics %tmp.3 25 20 28 ];
         %tmp.3 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.4 18 29 40 ];
+        symbol [ COLOR_BLACK %tmp.4 25 29 40 ];
         %tmp.4 = getv %tmp.3 :COLOR_BLACK;
-        symbol [ Graphics %tmp.5 18 42 50 ];
+        symbol [ Graphics %tmp.5 25 42 50 ];
         %tmp.5 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.6 18 51 62 ];
+        symbol [ COLOR_BLACK %tmp.6 25 51 62 ];
         %tmp.6 = getv %tmp.5 :COLOR_BLACK;
         invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 19 8 ]
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 26 8 ]
         %tmp.7 = lgetv %dc;
-        symbol [ dc %tmp.7 19 8 10 ];
-        symbol [ clear %tmp.8 19 11 16 ];
+        symbol [ dc %tmp.7 26 8 10 ];
+        symbol [ clear %tmp.8 26 11 16 ];
         %tmp.8 = getv function %tmp.7 :clear;
         invoke %tmp.7 %tmp.8();
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 22 8 ]
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 29 8 ]
         %tmp.9 = lgetv %dc;
-        symbol [ dc %tmp.9 22 8 10 ];
-        symbol [ setColor %tmp.10 22 11 19 ];
+        symbol [ dc %tmp.9 29 8 10 ];
+        symbol [ setColor %tmp.10 29 11 19 ];
         %tmp.10 = getv function %tmp.9 :setColor;
-        symbol [ Graphics %tmp.11 22 20 28 ];
-        %tmp.11 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.12 22 29 40 ];
-        %tmp.12 = getv %tmp.11 :COLOR_WHITE;
-        symbol [ Graphics %tmp.13 22 42 50 ];
+        symbol [ COLOR_ORANGE %tmp.12 29 20 32 ];
+        %tmp.12 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.13 29 34 42 ];
         %tmp.13 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.14 22 51 62 ];
+        symbol [ COLOR_BLACK %tmp.14 29 43 54 ];
         %tmp.14 = getv %tmp.13 :COLOR_BLACK;
         invoke %tmp.9 %tmp.10(%tmp.12, %tmp.14);
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 23 8 ]
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 30 8 ]
         %tmp.15 = lgetv %dc;
-        symbol [ dc %tmp.15 23 8 10 ];
-        symbol [ drawText %tmp.16 23 11 19 ];
+        symbol [ dc %tmp.15 30 8 10 ];
+        symbol [ drawText %tmp.16 30 11 19 ];
         %tmp.16 = getv function %tmp.15 :drawText;
         %tmp.17 = lgetv %dc;
-        symbol [ dc %tmp.17 23 20 22 ];
-        symbol [ getWidth %tmp.18 23 23 31 ];
+        symbol [ dc %tmp.17 30 20 22 ];
+        symbol [ getWidth %tmp.18 30 23 31 ];
         %tmp.18 = getv function %tmp.17 :getWidth;
         %tmp.19 = invoke %tmp.17 %tmp.18();
         %tmp.20 = 2;
         %tmp.21 = div %tmp.19 %tmp.20;
-        %tmp.22 = 10;
-        symbol [ Graphics %tmp.23 23 43 51 ];
+        %tmp.22 = 5;
+        symbol [ Graphics %tmp.23 30 42 50 ];
         %tmp.23 = getm $.Toybox.Graphics;
-        symbol [ FONT_MEDIUM %tmp.24 23 52 63 ];
-        %tmp.24 = getv %tmp.23 :FONT_MEDIUM;
-        %tmp.25 = "Progress";
-        symbol [ Graphics %tmp.26 23 77 85 ];
+        symbol [ FONT_SMALL %tmp.24 30 51 61 ];
+        %tmp.24 = getv %tmp.23 :FONT_SMALL;
+        %tmp.25 = "PROGRESS";
+        symbol [ Graphics %tmp.26 30 75 83 ];
         %tmp.26 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.27 23 86 105 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.27 30 84 103 ];
         %tmp.27 = getv %tmp.26 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.15 %tmp.16(%tmp.21, %tmp.22, %tmp.24, %tmp.25, %tmp.27);
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 25 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_ProgressView_mc_17_40_50_4_start" "_home_cechinel_coachrox_garmin_source_ProgressView_mc_17_40_50_4_stop" ]
-        %totalSessions.1 = local;
-        symbol [ totalSessions %totalSessions.1 25 12 25 ];
-        symbol [ sessionStorage %tmp.29 25 28 42 ];
-        %tmp.29 = getv ? :sessionStorage;
-        symbol [ getSessionCount %tmp.30 25 43 58 ];
-        %tmp.30 = getv function %tmp.29 :getSessionCount;
-        %tmp.31 = invoke %tmp.29 %tmp.30();
-        lputv %totalSessions.1 %tmp.31;
-        symbol [ totalSessions %totalSessions.1 25 12 25 ];
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 26 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_ProgressView_mc_17_40_50_4_start" "_home_cechinel_coachrox_garmin_source_ProgressView_mc_17_40_50_4_stop" ]
-        %weeklyVolume.2 = local;
-        symbol [ weeklyVolume %weeklyVolume.2 26 12 24 ];
-        symbol [ sessionStorage %tmp.33 26 27 41 ];
-        %tmp.33 = getv ? :sessionStorage;
-        symbol [ getWeeklyVolume %tmp.34 26 42 57 ];
-        %tmp.34 = getv function %tmp.33 :getWeeklyVolume;
-        %tmp.35 = invoke %tmp.33 %tmp.34();
-        lputv %weeklyVolume.2 %tmp.35;
-        symbol [ weeklyVolume %weeklyVolume.2 26 12 24 ];
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 29 8 ]
-        %tmp.36 = lgetv %dc;
-        symbol [ dc %tmp.36 29 8 10 ];
-        symbol [ drawText %tmp.37 29 11 19 ];
-        %tmp.37 = getv function %tmp.36 :drawText;
-        %tmp.38 = lgetv %dc;
-        symbol [ dc %tmp.38 29 20 22 ];
-        symbol [ getWidth %tmp.39 29 23 31 ];
-        %tmp.39 = getv function %tmp.38 :getWidth;
-        %tmp.40 = invoke %tmp.38 %tmp.39();
-        %tmp.41 = 2;
-        %tmp.42 = div %tmp.40 %tmp.41;
-        %tmp.43 = 50;
-        symbol [ Graphics %tmp.44 29 43 51 ];
-        %tmp.44 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.45 29 52 62 ];
-        %tmp.45 = getv %tmp.44 :FONT_SMALL;
-        %tmp.46 = "Total Sessions";
-        symbol [ Graphics %tmp.47 29 82 90 ];
-        %tmp.47 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.48 29 91 110 ];
-        %tmp.48 = getv %tmp.47 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.36 %tmp.37(%tmp.42, %tmp.43, %tmp.45, %tmp.46, %tmp.48);
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 30 8 ]
-        %tmp.49 = lgetv %dc;
-        symbol [ dc %tmp.49 30 8 10 ];
-        symbol [ drawText %tmp.50 30 11 19 ];
-        %tmp.50 = getv function %tmp.49 :drawText;
-        %tmp.51 = lgetv %dc;
-        symbol [ dc %tmp.51 30 20 22 ];
-        symbol [ getWidth %tmp.52 30 23 31 ];
-        %tmp.52 = getv function %tmp.51 :getWidth;
-        %tmp.53 = invoke %tmp.51 %tmp.52();
-        %tmp.54 = 2;
-        %tmp.55 = div %tmp.53 %tmp.54;
-        %tmp.56 = 75;
-        symbol [ Graphics %tmp.57 30 43 51 ];
-        %tmp.57 = getm $.Toybox.Graphics;
-        symbol [ FONT_LARGE %tmp.58 30 52 62 ];
-        %tmp.58 = getv %tmp.57 :FONT_LARGE;
-        %tmp.59 = lgetv %totalSessions.1;
-        symbol [ totalSessions %tmp.59 30 64 77 ];
-        symbol [ toString %tmp.60 30 78 86 ];
-        %tmp.60 = getv function %tmp.59 :toString;
-        %tmp.61 = invoke %tmp.59 %tmp.60();
-        symbol [ Graphics %tmp.62 30 90 98 ];
-        %tmp.62 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.63 30 99 118 ];
-        %tmp.63 = getv %tmp.62 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.49 %tmp.50(%tmp.55, %tmp.56, %tmp.58, %tmp.61, %tmp.63);
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 32 8 ]
-        %tmp.64 = lgetv %dc;
-        symbol [ dc %tmp.64 32 8 10 ];
-        symbol [ drawText %tmp.65 32 11 19 ];
-        %tmp.65 = getv function %tmp.64 :drawText;
-        %tmp.66 = lgetv %dc;
-        symbol [ dc %tmp.66 32 20 22 ];
-        symbol [ getWidth %tmp.67 32 23 31 ];
-        %tmp.67 = getv function %tmp.66 :getWidth;
-        %tmp.68 = invoke %tmp.66 %tmp.67();
-        %tmp.69 = 2;
-        %tmp.70 = div %tmp.68 %tmp.69;
-        %tmp.71 = 110;
-        symbol [ Graphics %tmp.72 32 44 52 ];
-        %tmp.72 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.73 32 53 63 ];
-        %tmp.73 = getv %tmp.72 :FONT_SMALL;
-        %tmp.74 = "Weekly Volume";
-        symbol [ Graphics %tmp.75 32 82 90 ];
-        %tmp.75 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.76 32 91 110 ];
-        %tmp.76 = getv %tmp.75 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.64 %tmp.65(%tmp.70, %tmp.71, %tmp.73, %tmp.74, %tmp.76);
 [ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 33 8 ]
-        %tmp.77 = lgetv %dc;
-        symbol [ dc %tmp.77 33 8 10 ];
-        symbol [ drawText %tmp.78 33 11 19 ];
-        %tmp.78 = getv function %tmp.77 :drawText;
-        %tmp.79 = lgetv %dc;
-        symbol [ dc %tmp.79 33 20 22 ];
-        symbol [ getWidth %tmp.80 33 23 31 ];
-        %tmp.80 = getv function %tmp.79 :getWidth;
-        %tmp.81 = invoke %tmp.79 %tmp.80();
-        %tmp.82 = 2;
-        %tmp.83 = div %tmp.81 %tmp.82;
-        %tmp.84 = 135;
-        symbol [ Graphics %tmp.85 33 44 52 ];
-        %tmp.85 = getm $.Toybox.Graphics;
-        symbol [ FONT_LARGE %tmp.86 33 53 63 ];
-        %tmp.86 = getv %tmp.85 :FONT_LARGE;
-        %tmp.87 = lgetv %weeklyVolume.2;
-        symbol [ weeklyVolume %tmp.87 33 65 77 ];
-        %tmp.88 = " min";
-        %tmp.89 = add %tmp.87 %tmp.88;
-        symbol [ Graphics %tmp.90 33 88 96 ];
-        %tmp.90 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.91 33 97 116 ];
-        %tmp.91 = getv %tmp.90 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.77 %tmp.78(%tmp.83, %tmp.84, %tmp.86, %tmp.89, %tmp.91);
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 36 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_ProgressView_mc_17_40_50_4_start" "_home_cechinel_coachrox_garmin_source_ProgressView_mc_17_40_50_4_stop" ]
-        %adaptation.3 = local;
-        symbol [ adaptation %adaptation.3 36 12 22 ];
-        symbol [ app %tmp.93 36 25 28 ];
-        %tmp.93 = getv ? :app;
-        symbol [ planEngine %tmp.94 36 29 39 ];
-        %tmp.94 = getv %tmp.93 :planEngine;
-        symbol [ getAdaptationSuggestion %tmp.95 36 40 63 ];
-        %tmp.95 = getv function %tmp.94 :getAdaptationSuggestion;
-        %tmp.96 = invoke %tmp.94 %tmp.95();
-        lputv %adaptation.3 %tmp.96;
-        symbol [ adaptation %adaptation.3 36 12 22 ];
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 37 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_ProgressView_mc_17_40_50_4_start" "_home_cechinel_coachrox_garmin_source_ProgressView_mc_17_40_50_4_stop" ]
-        %suggestionText.4 = local;
-        symbol [ suggestionText %suggestionText.4 37 12 26 ];
-        %tmp.97 = "Keep going!";
-        lputv %suggestionText.4 %tmp.97;
-        symbol [ suggestionText %suggestionText.4 37 12 26 ];
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 38 8 ]
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_38_8_42_8_if_stmt:
-        %tmp.98 = lgetv %adaptation.3;
-        symbol [ adaptation %tmp.98 38 12 22 ];
-        %tmp.99 = 0;
-        %tmp.100 = lt %tmp.98 %tmp.99;
-        bf %tmp.100 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_38_8_42_8_if_false;
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_38_8_42_8_if_true:
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_38_28_40_8_start:
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 39 12 ]
-        %tmp.101 = "Consider downshifting";
-        lputv %suggestionText.4 %tmp.101;
-        symbol [ suggestionText %suggestionText.4 39 12 26 ];
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_38_28_40_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_ProgressView_mc_38_8_42_8_if_end;
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_38_8_42_8_if_false:
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 40 15 ]
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_15_42_8_if_stmt:
-        %tmp.102 = lgetv %adaptation.3;
-        symbol [ adaptation %tmp.102 40 19 29 ];
-        %tmp.103 = 0;
-        %tmp.104 = gt %tmp.102 %tmp.103;
-        bf %tmp.104 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_15_42_8_if_end;
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_15_42_8_if_true:
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_35_42_8_start:
+        [ "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_start" "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_stop" ]
+        %plan.1 = local;
+        symbol [ plan %plan.1 33 12 16 ];
+        symbol [ app %tmp.29 33 19 22 ];
+        %tmp.29 = getv ? :app;
+        symbol [ getCurrentPlan %tmp.30 33 23 37 ];
+        %tmp.30 = getv function %tmp.29 :getCurrentPlan;
+        %tmp.31 = invoke %tmp.29 %tmp.30();
+        lputv %plan.1 %tmp.31;
+        symbol [ plan %plan.1 33 12 16 ];
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 34 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_start" "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_stop" ]
+        %completion.2 = local;
+        symbol [ completion %completion.2 34 12 22 ];
+        %tmp.32 = 0;
+        lputv %completion.2 %tmp.32;
+        symbol [ completion %completion.2 34 12 22 ];
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 35 8 ]
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_35_8_37_8_if_stmt:
+        %tmp.33 = lgetv %plan.1;
+        symbol [ plan %tmp.33 35 12 16 ];
+        %tmp.34 = null;
+        %tmp.35 = ne %tmp.33 %tmp.34;
+        bf %tmp.35 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_35_8_37_8_if_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_35_8_37_8_if_true:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_35_26_37_8_start:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 36 12 ]
+        %tmp.36 = lgetv %plan.1;
+        symbol [ plan %tmp.36 36 25 29 ];
+        %tmp.37 = as %tmp.36 { (!Null) };
+        symbol [ getCompletionRate %tmp.38 36 30 47 ];
+        %tmp.38 = getv function %tmp.37 :getCompletionRate;
+        %tmp.39 = invoke %tmp.37 %tmp.38();
+        symbol [ toNumber %tmp.40 36 50 58 ];
+        %tmp.40 = getv function %tmp.39 :toNumber;
+        %tmp.41 = invoke %tmp.39 %tmp.40();
+        lputv %completion.2 %tmp.41;
+        symbol [ completion %completion.2 36 12 22 ];
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_35_26_37_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_ProgressView_mc_35_8_37_8_if_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_35_8_37_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 40 8 ]
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_8_43_8_if_stmt:
+        %tmp.42 = lgetv %completion.2;
+        symbol [ completion %tmp.42 40 12 22 ];
+        %tmp.43 = 100;
+        %tmp.44 = gte %tmp.42 %tmp.43;
+        bf %tmp.44 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_8_43_8_if_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_8_43_8_if_true:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_31_43_8_start:
 [ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 41 12 ]
-        %tmp.105 = "Ready to progress!";
-        lputv %suggestionText.4 %tmp.105;
-        symbol [ suggestionText %suggestionText.4 41 12 26 ];
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_35_42_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_15_42_8_if_end;
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_15_42_8_if_end:
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_38_8_42_8_if_end:
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 44 8 ]
-        %tmp.106 = lgetv %dc;
-        symbol [ dc %tmp.106 44 8 10 ];
-        symbol [ setColor %tmp.107 44 11 19 ];
-        %tmp.107 = getv function %tmp.106 :setColor;
-        symbol [ Graphics %tmp.108 44 20 28 ];
-        %tmp.108 = getm $.Toybox.Graphics;
-        symbol [ COLOR_GREEN %tmp.109 44 29 40 ];
-        %tmp.109 = getv %tmp.108 :COLOR_GREEN;
-        symbol [ Graphics %tmp.110 44 42 50 ];
-        %tmp.110 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.111 44 51 62 ];
-        %tmp.111 = getv %tmp.110 :COLOR_BLACK;
-        invoke %tmp.106 %tmp.107(%tmp.109, %tmp.111);
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 45 8 ]
-        %tmp.112 = lgetv %dc;
-        symbol [ dc %tmp.112 45 8 10 ];
-        symbol [ drawText %tmp.113 45 11 19 ];
-        %tmp.113 = getv function %tmp.112 :drawText;
-        %tmp.114 = lgetv %dc;
-        symbol [ dc %tmp.114 45 20 22 ];
-        symbol [ getWidth %tmp.115 45 23 31 ];
-        %tmp.115 = getv function %tmp.114 :getWidth;
-        %tmp.116 = invoke %tmp.114 %tmp.115();
-        %tmp.117 = 2;
-        %tmp.118 = div %tmp.116 %tmp.117;
-        %tmp.119 = 170;
-        symbol [ Graphics %tmp.120 45 44 52 ];
-        %tmp.120 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.121 45 53 63 ];
-        %tmp.121 = getv %tmp.120 :FONT_SMALL;
-        %tmp.122 = lgetv %suggestionText.4;
-        symbol [ suggestionText %tmp.122 45 65 79 ];
-        symbol [ Graphics %tmp.123 45 81 89 ];
-        %tmp.123 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.124 45 90 109 ];
-        %tmp.124 = getv %tmp.123 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.112 %tmp.113(%tmp.118, %tmp.119, %tmp.121, %tmp.122, %tmp.124);
+        %tmp.45 = lgetv %dc;
+        symbol [ dc %tmp.45 41 12 14 ];
+        symbol [ setColor %tmp.46 41 15 23 ];
+        %tmp.46 = getv function %tmp.45 :setColor;
+        symbol [ COLOR_GREEN %tmp.48 41 24 35 ];
+        %tmp.48 = getv ? :COLOR_GREEN;
+        symbol [ Graphics %tmp.49 41 37 45 ];
+        %tmp.49 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.50 41 46 57 ];
+        %tmp.50 = getv %tmp.49 :COLOR_BLACK;
+        invoke %tmp.45 %tmp.46(%tmp.48, %tmp.50);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 42 12 ]
+        %tmp.51 = lgetv %dc;
+        symbol [ dc %tmp.51 42 12 14 ];
+        symbol [ drawText %tmp.52 42 15 23 ];
+        %tmp.52 = getv function %tmp.51 :drawText;
+        %tmp.53 = lgetv %dc;
+        symbol [ dc %tmp.53 42 24 26 ];
+        symbol [ getWidth %tmp.54 42 27 35 ];
+        %tmp.54 = getv function %tmp.53 :getWidth;
+        %tmp.55 = invoke %tmp.53 %tmp.54();
+        %tmp.56 = 2;
+        %tmp.57 = div %tmp.55 %tmp.56;
+        %tmp.58 = 30;
+        symbol [ Graphics %tmp.59 42 47 55 ];
+        %tmp.59 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.60 42 56 66 ];
+        %tmp.60 = getv %tmp.59 :FONT_SMALL;
+        %tmp.61 = "All workouts completed!";
+        symbol [ Graphics %tmp.62 42 95 103 ];
+        %tmp.62 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.63 42 104 123 ];
+        %tmp.63 = getv %tmp.62 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.51 %tmp.52(%tmp.57, %tmp.58, %tmp.60, %tmp.61, %tmp.63);
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_31_43_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_8_43_8_if_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_40_8_43_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 46 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_start" "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_stop" ]
+        %barColor.3 = local;
+        symbol [ barColor %barColor.3 46 12 20 ];
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_23_46_102_begin:
+        %tmp.64 = lgetv %completion.2;
+        symbol [ completion %tmp.64 46 23 33 ];
+        %tmp.65 = 100;
+        %tmp.66 = gte %tmp.64 %tmp.65;
+        bf %tmp.66 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_23_46_102_else_false;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_23_46_102_true:
+        symbol [ COLOR_GREEN %tmp.68 46 43 54 ];
+        %tmp.68 = getv ? :COLOR_GREEN;
+        push %tmp.68;
+        goto @_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_23_46_102_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_23_46_102_else_false:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_58_46_92_begin:
+        %tmp.69 = lgetv %completion.2;
+        symbol [ completion %tmp.69 46 58 68 ];
+        %tmp.70 = 50;
+        %tmp.71 = gte %tmp.69 %tmp.70;
+        bf %tmp.71 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_58_46_92_else_false;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_58_46_92_true:
+        symbol [ COLOR_YELLOW %tmp.73 46 77 89 ];
+        %tmp.73 = getv ? :COLOR_YELLOW;
+        push %tmp.73;
+        goto @_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_58_46_92_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_58_46_92_else_false:
+        symbol [ COLOR_BLUE %tmp.75 46 92 102 ];
+        %tmp.75 = getv ? :COLOR_BLUE;
+        push %tmp.75;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_58_46_92_end:
+        %tmp.76 = phi [%tmp.71 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_58_46_92_begin] [%tmp.73 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_58_46_92_true] [%tmp.75 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_58_46_92_else_false] [%tmp.76 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_58_46_92_end];
+        push %tmp.76;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_23_46_102_end:
+        %tmp.77 = phi [%tmp.66 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_23_46_102_begin] [%tmp.68 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_23_46_102_true] [%tmp.76 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_23_46_102_else_false] [%tmp.77 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_46_23_46_102_end];
+        lputv %barColor.3 %tmp.77;
+        symbol [ barColor %barColor.3 46 12 20 ];
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 47 8 ]
+        %tmp.78 = lgetv %dc;
+        symbol [ dc %tmp.78 47 8 10 ];
+        symbol [ setColor %tmp.79 47 11 19 ];
+        %tmp.79 = getv function %tmp.78 :setColor;
+        symbol [ Graphics %tmp.80 47 20 28 ];
+        %tmp.80 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.81 47 29 42 ];
+        %tmp.81 = getv %tmp.80 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.82 47 44 52 ];
+        %tmp.82 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.83 47 53 64 ];
+        %tmp.83 = getv %tmp.82 :COLOR_BLACK;
+        invoke %tmp.78 %tmp.79(%tmp.81, %tmp.83);
 [ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 48 8 ]
-        %tmp.125 = lgetv %dc;
-        symbol [ dc %tmp.125 48 8 10 ];
-        symbol [ setColor %tmp.126 48 11 19 ];
-        %tmp.126 = getv function %tmp.125 :setColor;
-        symbol [ Graphics %tmp.127 48 20 28 ];
-        %tmp.127 = getm $.Toybox.Graphics;
-        symbol [ COLOR_DK_GRAY %tmp.128 48 29 42 ];
-        %tmp.128 = getv %tmp.127 :COLOR_DK_GRAY;
-        symbol [ Graphics %tmp.129 48 44 52 ];
-        %tmp.129 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.130 48 53 64 ];
-        %tmp.130 = getv %tmp.129 :COLOR_BLACK;
-        invoke %tmp.125 %tmp.126(%tmp.128, %tmp.130);
+        %tmp.84 = lgetv %dc;
+        symbol [ dc %tmp.84 48 8 10 ];
+        symbol [ fillRectangle %tmp.85 48 11 24 ];
+        %tmp.85 = getv function %tmp.84 :fillRectangle;
+        %tmp.86 = 20;
+        %tmp.87 = 50;
+        %tmp.88 = lgetv %dc;
+        symbol [ dc %tmp.88 48 33 35 ];
+        symbol [ getWidth %tmp.89 48 36 44 ];
+        %tmp.89 = getv function %tmp.88 :getWidth;
+        %tmp.90 = invoke %tmp.88 %tmp.89();
+        %tmp.91 = 40;
+        %tmp.92 = sub %tmp.90 %tmp.91;
+        %tmp.93 = 10;
+        invoke %tmp.84 %tmp.85(%tmp.86, %tmp.87, %tmp.92, %tmp.93);
 [ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 49 8 ]
-        %tmp.131 = lgetv %dc;
-        symbol [ dc %tmp.131 49 8 10 ];
-        symbol [ drawText %tmp.132 49 11 19 ];
-        %tmp.132 = getv function %tmp.131 :drawText;
-        %tmp.133 = lgetv %dc;
-        symbol [ dc %tmp.133 49 20 22 ];
-        symbol [ getWidth %tmp.134 49 23 31 ];
-        %tmp.134 = getv function %tmp.133 :getWidth;
-        %tmp.135 = invoke %tmp.133 %tmp.134();
-        %tmp.136 = 2;
-        %tmp.137 = div %tmp.135 %tmp.136;
-        %tmp.138 = lgetv %dc;
-        symbol [ dc %tmp.138 49 39 41 ];
-        symbol [ getHeight %tmp.139 49 42 51 ];
-        %tmp.139 = getv function %tmp.138 :getHeight;
-        %tmp.140 = invoke %tmp.138 %tmp.139();
-        %tmp.141 = 20;
-        %tmp.142 = sub %tmp.140 %tmp.141;
-        symbol [ Graphics %tmp.143 49 60 68 ];
-        %tmp.143 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.144 49 69 78 ];
-        %tmp.144 = getv %tmp.143 :FONT_TINY;
-        %tmp.145 = "ESC: Back";
-        symbol [ Graphics %tmp.146 49 93 101 ];
-        %tmp.146 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.147 49 102 121 ];
-        %tmp.147 = getv %tmp.146 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.131 %tmp.132(%tmp.137, %tmp.142, %tmp.144, %tmp.145, %tmp.147);
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_17_40_50_4_stop:
+        %tmp.94 = lgetv %dc;
+        symbol [ dc %tmp.94 49 8 10 ];
+        symbol [ setColor %tmp.95 49 11 19 ];
+        %tmp.95 = getv function %tmp.94 :setColor;
+        %tmp.96 = lgetv %barColor.3;
+        symbol [ barColor %tmp.96 49 20 28 ];
+        symbol [ Graphics %tmp.97 49 30 38 ];
+        %tmp.97 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.98 49 39 50 ];
+        %tmp.98 = getv %tmp.97 :COLOR_BLACK;
+        invoke %tmp.94 %tmp.95(%tmp.96, %tmp.98);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 50 8 ]
+        %tmp.99 = lgetv %dc;
+        symbol [ dc %tmp.99 50 8 10 ];
+        symbol [ fillRectangle %tmp.100 50 11 24 ];
+        %tmp.100 = getv function %tmp.99 :fillRectangle;
+        %tmp.101 = 20;
+        %tmp.102 = 50;
+        %tmp.103 = lgetv %dc;
+        symbol [ dc %tmp.103 50 34 36 ];
+        symbol [ getWidth %tmp.104 50 37 45 ];
+        %tmp.104 = getv function %tmp.103 :getWidth;
+        %tmp.105 = invoke %tmp.103 %tmp.104();
+        %tmp.106 = 40;
+        %tmp.107 = sub %tmp.105 %tmp.106;
+        %tmp.108 = lgetv %completion.2;
+        symbol [ completion %tmp.108 50 56 66 ];
+        %tmp.109 = mul %tmp.107 %tmp.108;
+        %tmp.110 = 100;
+        %tmp.111 = div %tmp.109 %tmp.110;
+        %tmp.112 = 10;
+        invoke %tmp.99 %tmp.100(%tmp.101, %tmp.102, %tmp.111, %tmp.112);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 52 8 ]
+        %tmp.113 = lgetv %dc;
+        symbol [ dc %tmp.113 52 8 10 ];
+        symbol [ setColor %tmp.114 52 11 19 ];
+        %tmp.114 = getv function %tmp.113 :setColor;
+        symbol [ Graphics %tmp.115 52 20 28 ];
+        %tmp.115 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.116 52 29 40 ];
+        %tmp.116 = getv %tmp.115 :COLOR_WHITE;
+        symbol [ Graphics %tmp.117 52 42 50 ];
+        %tmp.117 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.118 52 51 62 ];
+        %tmp.118 = getv %tmp.117 :COLOR_BLACK;
+        invoke %tmp.113 %tmp.114(%tmp.116, %tmp.118);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 53 8 ]
+        %tmp.119 = lgetv %dc;
+        symbol [ dc %tmp.119 53 8 10 ];
+        symbol [ drawText %tmp.120 53 11 19 ];
+        %tmp.120 = getv function %tmp.119 :drawText;
+        %tmp.121 = lgetv %dc;
+        symbol [ dc %tmp.121 53 20 22 ];
+        symbol [ getWidth %tmp.122 53 23 31 ];
+        %tmp.122 = getv function %tmp.121 :getWidth;
+        %tmp.123 = invoke %tmp.121 %tmp.122();
+        %tmp.124 = 2;
+        %tmp.125 = div %tmp.123 %tmp.124;
+        %tmp.126 = 65;
+        symbol [ Graphics %tmp.127 53 43 51 ];
+        %tmp.127 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.128 53 52 61 ];
+        %tmp.128 = getv %tmp.127 :FONT_TINY;
+        %tmp.129 = lgetv %completion.2;
+        symbol [ completion %tmp.129 53 63 73 ];
+        %tmp.130 = "% Complete";
+        %tmp.131 = add %tmp.129 %tmp.130;
+        symbol [ Graphics %tmp.132 53 90 98 ];
+        %tmp.132 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.133 53 99 118 ];
+        %tmp.133 = getv %tmp.132 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.119 %tmp.120(%tmp.125, %tmp.126, %tmp.128, %tmp.131, %tmp.133);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 56 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_start" "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_stop" ]
+        %startY.4 = local;
+        symbol [ startY %startY.4 56 12 18 ];
+        %tmp.134 = 90;
+        lputv %startY.4 %tmp.134;
+        symbol [ startY %startY.4 56 12 18 ];
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 59 8 ]
+        %tmp.135 = lgetv %dc;
+        symbol [ dc %tmp.135 59 8 10 ];
+        symbol [ setColor %tmp.136 59 11 19 ];
+        %tmp.136 = getv function %tmp.135 :setColor;
+        symbol [ COLOR_BLUE %tmp.138 59 20 30 ];
+        %tmp.138 = getv ? :COLOR_BLUE;
+        symbol [ Graphics %tmp.139 59 32 40 ];
+        %tmp.139 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.140 59 41 52 ];
+        %tmp.140 = getv %tmp.139 :COLOR_BLACK;
+        invoke %tmp.135 %tmp.136(%tmp.138, %tmp.140);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 60 8 ]
+        %tmp.141 = lgetv %dc;
+        symbol [ dc %tmp.141 60 8 10 ];
+        symbol [ drawText %tmp.142 60 11 19 ];
+        %tmp.142 = getv function %tmp.141 :drawText;
+        %tmp.143 = 20;
+        %tmp.144 = lgetv %startY.4;
+        symbol [ startY %tmp.144 60 24 30 ];
+        symbol [ Graphics %tmp.145 60 32 40 ];
+        %tmp.145 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.146 60 41 51 ];
+        %tmp.146 = getv %tmp.145 :FONT_SMALL;
+        %tmp.147 = "Workouts:";
+        symbol [ Graphics %tmp.148 60 66 74 ];
+        %tmp.148 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.149 60 75 92 ];
+        %tmp.149 = getv %tmp.148 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.141 %tmp.142(%tmp.143, %tmp.144, %tmp.146, %tmp.147, %tmp.149);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 61 8 ]
+        %tmp.150 = lgetv %dc;
+        symbol [ dc %tmp.150 61 8 10 ];
+        symbol [ setColor %tmp.151 61 11 19 ];
+        %tmp.151 = getv function %tmp.150 :setColor;
+        symbol [ Graphics %tmp.152 61 20 28 ];
+        %tmp.152 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.153 61 29 40 ];
+        %tmp.153 = getv %tmp.152 :COLOR_WHITE;
+        symbol [ Graphics %tmp.154 61 42 50 ];
+        %tmp.154 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.155 61 51 62 ];
+        %tmp.155 = getv %tmp.154 :COLOR_BLACK;
+        invoke %tmp.150 %tmp.151(%tmp.153, %tmp.155);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 62 8 ]
+        %tmp.156 = lgetv %dc;
+        symbol [ dc %tmp.156 62 8 10 ];
+        symbol [ drawText %tmp.157 62 11 19 ];
+        %tmp.157 = getv function %tmp.156 :drawText;
+        %tmp.158 = lgetv %dc;
+        symbol [ dc %tmp.158 62 20 22 ];
+        symbol [ getWidth %tmp.159 62 23 31 ];
+        %tmp.159 = getv function %tmp.158 :getWidth;
+        %tmp.160 = invoke %tmp.158 %tmp.159();
+        %tmp.161 = 20;
+        %tmp.162 = sub %tmp.160 %tmp.161;
+        %tmp.163 = lgetv %startY.4;
+        symbol [ startY %tmp.163 62 40 46 ];
+        symbol [ Graphics %tmp.164 62 48 56 ];
+        %tmp.164 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.165 62 57 67 ];
+        %tmp.165 = getv %tmp.164 :FONT_SMALL;
+        %tmp.166 = "";
+        symbol [ app %tmp.168 62 74 77 ];
+        %tmp.168 = getv ? :app;
+        symbol [ completedWeeks %tmp.169 62 78 92 ];
+        %tmp.169 = getv %tmp.168 :completedWeeks;
+        %tmp.170 = add %tmp.166 %tmp.169;
+        symbol [ Graphics %tmp.171 62 94 102 ];
+        %tmp.171 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.172 62 103 121 ];
+        %tmp.172 = getv %tmp.171 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.156 %tmp.157(%tmp.162, %tmp.163, %tmp.165, %tmp.170, %tmp.172);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 65 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_start" "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_stop" ]
+        %levelName.5 = local;
+        symbol [ levelName %levelName.5 65 12 21 ];
+        %tmp.173 = "Beginner";
+        lputv %levelName.5 %tmp.173;
+        symbol [ levelName %levelName.5 65 12 21 ];
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 66 8 ]
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_66_8_67_63_if_stmt:
+        symbol [ app %tmp.175 66 12 15 ];
+        %tmp.175 = getv ? :app;
+        symbol [ userLevel %tmp.176 66 16 25 ];
+        %tmp.176 = getv %tmp.175 :userLevel;
+        %tmp.177 = 1;
+        %tmp.178 = eq %tmp.176 %tmp.177;
+        bf %tmp.178 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_66_8_67_63_if_false;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_66_8_67_63_if_true:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_66_32_66_62_start:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 66 34 ]
+        %tmp.179 = "Intermediate";
+        lputv %levelName.5 %tmp.179;
+        symbol [ levelName %levelName.5 66 34 43 ];
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_66_32_66_62_stop:
+        goto @_home_cechinel_coachrox_garmin_source_ProgressView_mc_66_8_67_63_if_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_66_8_67_63_if_false:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 67 13 ]
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_67_13_67_63_if_stmt:
+        symbol [ app %tmp.181 67 17 20 ];
+        %tmp.181 = getv ? :app;
+        symbol [ userLevel %tmp.182 67 21 30 ];
+        %tmp.182 = getv %tmp.181 :userLevel;
+        %tmp.183 = 2;
+        %tmp.184 = eq %tmp.182 %tmp.183;
+        bf %tmp.184 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_67_13_67_63_if_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_67_13_67_63_if_true:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_67_37_67_63_start:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 67 39 ]
+        %tmp.185 = "Advanced";
+        lputv %levelName.5 %tmp.185;
+        symbol [ levelName %levelName.5 67 39 48 ];
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_67_37_67_63_stop:
+        goto @_home_cechinel_coachrox_garmin_source_ProgressView_mc_67_13_67_63_if_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_67_13_67_63_if_end:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_66_8_67_63_if_end:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 69 8 ]
+        %tmp.186 = lgetv %dc;
+        symbol [ dc %tmp.186 69 8 10 ];
+        symbol [ setColor %tmp.187 69 11 19 ];
+        %tmp.187 = getv function %tmp.186 :setColor;
+        symbol [ COLOR_BLUE %tmp.189 69 20 30 ];
+        %tmp.189 = getv ? :COLOR_BLUE;
+        symbol [ Graphics %tmp.190 69 32 40 ];
+        %tmp.190 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.191 69 41 52 ];
+        %tmp.191 = getv %tmp.190 :COLOR_BLACK;
+        invoke %tmp.186 %tmp.187(%tmp.189, %tmp.191);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 70 8 ]
+        %tmp.192 = lgetv %dc;
+        symbol [ dc %tmp.192 70 8 10 ];
+        symbol [ drawText %tmp.193 70 11 19 ];
+        %tmp.193 = getv function %tmp.192 :drawText;
+        %tmp.194 = 20;
+        %tmp.195 = lgetv %startY.4;
+        symbol [ startY %tmp.195 70 24 30 ];
+        %tmp.196 = 20;
+        %tmp.197 = add %tmp.195 %tmp.196;
+        symbol [ Graphics %tmp.198 70 37 45 ];
+        %tmp.198 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.199 70 46 56 ];
+        %tmp.199 = getv %tmp.198 :FONT_SMALL;
+        %tmp.200 = "Level:";
+        symbol [ Graphics %tmp.201 70 68 76 ];
+        %tmp.201 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.202 70 77 94 ];
+        %tmp.202 = getv %tmp.201 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.192 %tmp.193(%tmp.194, %tmp.197, %tmp.199, %tmp.200, %tmp.202);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 71 8 ]
+        %tmp.203 = lgetv %dc;
+        symbol [ dc %tmp.203 71 8 10 ];
+        symbol [ setColor %tmp.204 71 11 19 ];
+        %tmp.204 = getv function %tmp.203 :setColor;
+        symbol [ Graphics %tmp.205 71 20 28 ];
+        %tmp.205 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.206 71 29 40 ];
+        %tmp.206 = getv %tmp.205 :COLOR_WHITE;
+        symbol [ Graphics %tmp.207 71 42 50 ];
+        %tmp.207 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.208 71 51 62 ];
+        %tmp.208 = getv %tmp.207 :COLOR_BLACK;
+        invoke %tmp.203 %tmp.204(%tmp.206, %tmp.208);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 72 8 ]
+        %tmp.209 = lgetv %dc;
+        symbol [ dc %tmp.209 72 8 10 ];
+        symbol [ drawText %tmp.210 72 11 19 ];
+        %tmp.210 = getv function %tmp.209 :drawText;
+        %tmp.211 = lgetv %dc;
+        symbol [ dc %tmp.211 72 20 22 ];
+        symbol [ getWidth %tmp.212 72 23 31 ];
+        %tmp.212 = getv function %tmp.211 :getWidth;
+        %tmp.213 = invoke %tmp.211 %tmp.212();
+        %tmp.214 = 20;
+        %tmp.215 = sub %tmp.213 %tmp.214;
+        %tmp.216 = lgetv %startY.4;
+        symbol [ startY %tmp.216 72 40 46 ];
+        %tmp.217 = 20;
+        %tmp.218 = add %tmp.216 %tmp.217;
+        symbol [ Graphics %tmp.219 72 53 61 ];
+        %tmp.219 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.220 72 62 72 ];
+        %tmp.220 = getv %tmp.219 :FONT_SMALL;
+        %tmp.221 = lgetv %levelName.5;
+        symbol [ levelName %tmp.221 72 74 83 ];
+        symbol [ Graphics %tmp.222 72 85 93 ];
+        %tmp.222 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.223 72 94 112 ];
+        %tmp.223 = getv %tmp.222 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.209 %tmp.210(%tmp.215, %tmp.218, %tmp.220, %tmp.221, %tmp.223);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 75 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_start" "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_stop" ]
+        %adaptation.6 = local;
+        symbol [ adaptation %adaptation.6 75 12 22 ];
+        %tmp.224 = lgetv %completion.2;
+        symbol [ completion %tmp.224 75 25 35 ];
+        %tmp.225 = 50;
+        %tmp.226 = sub %tmp.224 %tmp.225;
+        lputv %adaptation.6 %tmp.226;
+        symbol [ adaptation %adaptation.6 75 12 22 ];
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 76 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_start" "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_stop" ]
+        %suggestionText.7 = local;
+        symbol [ suggestionText %suggestionText.7 76 12 26 ];
+        %tmp.227 = "Keep going!";
+        lputv %suggestionText.7 %tmp.227;
+        symbol [ suggestionText %suggestionText.7 76 12 26 ];
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 77 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_start" "_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_stop" ]
+        %suggestionColor.8 = local;
+        symbol [ suggestionColor %suggestionColor.8 77 12 27 ];
+        symbol [ Graphics %tmp.228 77 30 38 ];
+        %tmp.228 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.229 77 39 50 ];
+        %tmp.229 = getv %tmp.228 :COLOR_WHITE;
+        lputv %suggestionColor.8 %tmp.229;
+        symbol [ suggestionColor %suggestionColor.8 77 12 27 ];
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 79 8 ]
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_79_8_85_8_if_stmt:
+        %tmp.230 = lgetv %completion.2;
+        symbol [ completion %tmp.230 79 12 22 ];
+        %tmp.231 = 100;
+        %tmp.232 = gte %tmp.230 %tmp.231;
+        bf %tmp.232 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_79_8_85_8_if_false;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_79_8_85_8_if_true:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_79_31_82_8_start:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 80 12 ]
+        %tmp.233 = "Ready to progress!";
+        lputv %suggestionText.7 %tmp.233;
+        symbol [ suggestionText %suggestionText.7 80 12 26 ];
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 81 12 ]
+        symbol [ COLOR_GREEN %tmp.235 81 30 41 ];
+        %tmp.235 = getv ? :COLOR_GREEN;
+        lputv %suggestionColor.8 %tmp.235;
+        symbol [ suggestionColor %suggestionColor.8 81 12 27 ];
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_79_31_82_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_ProgressView_mc_79_8_85_8_if_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_79_8_85_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 82 15 ]
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_82_15_85_8_if_stmt:
+        %tmp.236 = lgetv %completion.2;
+        symbol [ completion %tmp.236 82 19 29 ];
+        %tmp.237 = 30;
+        %tmp.238 = lt %tmp.236 %tmp.237;
+        bf %tmp.238 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_82_15_85_8_if_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_82_15_85_8_if_true:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_82_36_85_8_start:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 83 12 ]
+        %tmp.239 = "Start with easier workouts";
+        lputv %suggestionText.7 %tmp.239;
+        symbol [ suggestionText %suggestionText.7 83 12 26 ];
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 84 12 ]
+        symbol [ COLOR_YELLOW %tmp.241 84 30 42 ];
+        %tmp.241 = getv ? :COLOR_YELLOW;
+        lputv %suggestionColor.8 %tmp.241;
+        symbol [ suggestionColor %suggestionColor.8 84 12 27 ];
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_82_36_85_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_ProgressView_mc_82_15_85_8_if_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_82_15_85_8_if_end:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_79_8_85_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 88 8 ]
+        %tmp.242 = lgetv %dc;
+        symbol [ dc %tmp.242 88 8 10 ];
+        symbol [ setColor %tmp.243 88 11 19 ];
+        %tmp.243 = getv function %tmp.242 :setColor;
+        symbol [ COLOR_BLUE %tmp.245 88 20 30 ];
+        %tmp.245 = getv ? :COLOR_BLUE;
+        symbol [ Graphics %tmp.246 88 32 40 ];
+        %tmp.246 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.247 88 41 52 ];
+        %tmp.247 = getv %tmp.246 :COLOR_BLACK;
+        invoke %tmp.242 %tmp.243(%tmp.245, %tmp.247);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 89 8 ]
+        %tmp.248 = lgetv %dc;
+        symbol [ dc %tmp.248 89 8 10 ];
+        symbol [ fillRectangle %tmp.249 89 11 24 ];
+        %tmp.249 = getv function %tmp.248 :fillRectangle;
+        %tmp.250 = 20;
+        %tmp.251 = 140;
+        %tmp.252 = lgetv %dc;
+        symbol [ dc %tmp.252 89 34 36 ];
+        symbol [ getWidth %tmp.253 89 37 45 ];
+        %tmp.253 = getv function %tmp.252 :getWidth;
+        %tmp.254 = invoke %tmp.252 %tmp.253();
+        %tmp.255 = 40;
+        %tmp.256 = sub %tmp.254 %tmp.255;
+        %tmp.257 = 1;
+        invoke %tmp.248 %tmp.249(%tmp.250, %tmp.251, %tmp.256, %tmp.257);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 91 8 ]
+        %tmp.258 = lgetv %dc;
+        symbol [ dc %tmp.258 91 8 10 ];
+        symbol [ setColor %tmp.259 91 11 19 ];
+        %tmp.259 = getv function %tmp.258 :setColor;
+        %tmp.260 = lgetv %suggestionColor.8;
+        symbol [ suggestionColor %tmp.260 91 20 35 ];
+        symbol [ Graphics %tmp.261 91 37 45 ];
+        %tmp.261 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.262 91 46 57 ];
+        %tmp.262 = getv %tmp.261 :COLOR_BLACK;
+        invoke %tmp.258 %tmp.259(%tmp.260, %tmp.262);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 92 8 ]
+        %tmp.263 = lgetv %dc;
+        symbol [ dc %tmp.263 92 8 10 ];
+        symbol [ drawText %tmp.264 92 11 19 ];
+        %tmp.264 = getv function %tmp.263 :drawText;
+        %tmp.265 = lgetv %dc;
+        symbol [ dc %tmp.265 92 20 22 ];
+        symbol [ getWidth %tmp.266 92 23 31 ];
+        %tmp.266 = getv function %tmp.265 :getWidth;
+        %tmp.267 = invoke %tmp.265 %tmp.266();
+        %tmp.268 = 2;
+        %tmp.269 = div %tmp.267 %tmp.268;
+        %tmp.270 = 155;
+        symbol [ Graphics %tmp.271 92 44 52 ];
+        %tmp.271 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.272 92 53 63 ];
+        %tmp.272 = getv %tmp.271 :FONT_SMALL;
+        %tmp.273 = lgetv %suggestionText.7;
+        symbol [ suggestionText %tmp.273 92 65 79 ];
+        symbol [ Graphics %tmp.274 92 81 89 ];
+        %tmp.274 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.275 92 90 109 ];
+        %tmp.275 = getv %tmp.274 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.263 %tmp.264(%tmp.269, %tmp.270, %tmp.272, %tmp.273, %tmp.275);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 95 8 ]
+        %tmp.276 = lgetv %dc;
+        symbol [ dc %tmp.276 95 8 10 ];
+        symbol [ setColor %tmp.277 95 11 19 ];
+        %tmp.277 = getv function %tmp.276 :setColor;
+        symbol [ Graphics %tmp.278 95 20 28 ];
+        %tmp.278 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.279 95 29 42 ];
+        %tmp.279 = getv %tmp.278 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.280 95 44 52 ];
+        %tmp.280 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.281 95 53 64 ];
+        %tmp.281 = getv %tmp.280 :COLOR_BLACK;
+        invoke %tmp.276 %tmp.277(%tmp.279, %tmp.281);
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 96 8 ]
+        %tmp.282 = lgetv %dc;
+        symbol [ dc %tmp.282 96 8 10 ];
+        symbol [ drawText %tmp.283 96 11 19 ];
+        %tmp.283 = getv function %tmp.282 :drawText;
+        %tmp.284 = lgetv %dc;
+        symbol [ dc %tmp.284 96 20 22 ];
+        symbol [ getWidth %tmp.285 96 23 31 ];
+        %tmp.285 = getv function %tmp.284 :getWidth;
+        %tmp.286 = invoke %tmp.284 %tmp.285();
+        %tmp.287 = 2;
+        %tmp.288 = div %tmp.286 %tmp.287;
+        %tmp.289 = lgetv %dc;
+        symbol [ dc %tmp.289 96 39 41 ];
+        symbol [ getHeight %tmp.290 96 42 51 ];
+        %tmp.290 = getv function %tmp.289 :getHeight;
+        %tmp.291 = invoke %tmp.289 %tmp.290();
+        %tmp.292 = 12;
+        %tmp.293 = sub %tmp.291 %tmp.292;
+        symbol [ Graphics %tmp.294 96 60 68 ];
+        %tmp.294 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.295 96 69 78 ];
+        %tmp.295 = getv %tmp.294 :FONT_TINY;
+        %tmp.296 = "ESC: Back";
+        symbol [ Graphics %tmp.297 96 93 101 ];
+        %tmp.297 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.298 96 102 121 ];
+        %tmp.298 = getv %tmp.297 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.282 %tmp.283(%tmp.288, %tmp.293, %tmp.295, %tmp.296, %tmp.298);
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_24_40_97_4_stop:
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 99; @symbol_functiondef = [selectItem,99,13,23]; ]
+    function selectItem() as Void {
     }
 }
-[ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 53; @symbol_classdef = [ProgressDelegate,53,6,22]; @symbol_extends<0> = [WatchUi,53,31,38]; @symbol_extends<1> = [InputDelegate,53,39,52]; ]
+[ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 103; @symbol_classdef = [ProgressDelegate,103,6,22]; @symbol_extends<0> = [WatchUi,103,31,38]; @symbol_extends<1> = [InputDelegate,103,39,52]; ]
 class ProgressDelegate extends WatchUi.InputDelegate {
-    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 53; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 103; ]
     <init> {
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 53; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 103; ]
     static
     <init> {
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 55; @position = 8; @symbol_vardef = [view,55,8,12]; @symbol_type<0> = [ProgressView,55,16,28]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 104; @position = 8; @symbol_vardef = [view,104,8,12]; @symbol_type<0> = [ProgressView,104,16,28]; ]
     var view as ProgressView;
-    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 57; @symbol_functiondef = [initialize,57,13,23]; @symbol_param<0> = [pView,57,24,29]; @symbol_param<0>_type<0> = [ProgressView,57,33,45]; ]
-    function initialize(pView as ProgressView) as Void {
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_57_47_60_4_start:
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 58 8 ]
-        symbol [ WatchUi %tmp.1 58 8 15 ];
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 106; @symbol_functiondef = [initialize,106,13,23]; @symbol_param<0> = [progressView,106,24,36]; @symbol_param<0>_type<0> = [ProgressView,106,40,52]; ]
+    function initialize(progressView as ProgressView) as Void {
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_106_54_109_4_start:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 107 8 ]
+        symbol [ WatchUi %tmp.1 107 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ InputDelegate %tmp.2 58 16 29 ];
+        symbol [ InputDelegate %tmp.2 107 16 29 ];
         %tmp.2 = getv %tmp.1 :InputDelegate;
-        symbol [ initialize %tmp.3 58 30 40 ];
+        symbol [ initialize %tmp.3 107 30 40 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 59 8 ]
-        %tmp.4 = lgetv %pView;
-        symbol [ pView %tmp.4 59 15 20 ];
-        symbol [ view ? 59 8 12 ];
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 108 8 ]
+        %tmp.4 = lgetv %progressView;
+        symbol [ progressView %tmp.4 108 15 27 ];
+        symbol [ view ? 108 8 12 ];
         putv self :view %tmp.4;
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_57_47_60_4_stop:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_106_54_109_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 62; @symbol_functiondef = [onKeyPressed,62,13,25]; @symbol_param<0> = [key,62,26,29]; @symbol_param<0>_type<0> = [WatchUi,62,33,40]; @symbol_param<0>_type<1> = [KeyEvent,62,41,49]; @symbol_return<0> = [Boolean,62,54,61]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 111; @symbol_functiondef = [onKeyPressed,111,13,25]; @symbol_param<0> = [key,111,26,29]; @symbol_param<0>_type<0> = [WatchUi,111,33,40]; @symbol_param<0>_type<1> = [KeyEvent,111,41,49]; @symbol_return<0> = [Boolean,111,54,61]; ]
     function onKeyPressed(key as WatchUi.KeyEvent) as Boolean {
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_62_62_68_4_start:
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 63 8 ]
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_63_8_66_8_if_stmt:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_111_62_117_4_start:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 112 8 ]
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_112_8_115_8_if_stmt:
         %tmp.1 = lgetv %key;
-        symbol [ key %tmp.1 63 12 15 ];
-        symbol [ getKey %tmp.2 63 16 22 ];
+        symbol [ key %tmp.1 112 12 15 ];
+        symbol [ getKey %tmp.2 112 16 22 ];
         %tmp.2 = getv function %tmp.1 :getKey;
         %tmp.3 = invoke %tmp.1 %tmp.2();
-        symbol [ WatchUi %tmp.4 63 28 35 ];
+        symbol [ WatchUi %tmp.4 112 28 35 ];
         %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ KEY_ESC %tmp.5 63 36 43 ];
+        symbol [ KEY_ESC %tmp.5 112 36 43 ];
         %tmp.5 = getv %tmp.4 :KEY_ESC;
         %tmp.6 = eq %tmp.3 %tmp.5;
-        bf %tmp.6 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_63_8_66_8_if_end;
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_63_8_66_8_if_true:
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_63_45_66_8_start:
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 64 12 ]
-        symbol [ WatchUi %tmp.7 64 12 19 ];
+        bf %tmp.6 @_home_cechinel_coachrox_garmin_source_ProgressView_mc_112_8_115_8_if_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_112_8_115_8_if_true:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_112_45_115_8_start:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 113 12 ]
+        symbol [ WatchUi %tmp.7 113 12 19 ];
         %tmp.7 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.8 64 20 27 ];
+        symbol [ popView %tmp.8 113 20 27 ];
         %tmp.8 = getv function %tmp.7 :popView;
-        symbol [ WatchUi %tmp.9 64 28 35 ];
+        symbol [ WatchUi %tmp.9 113 28 35 ];
         %tmp.9 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.10 64 36 47 ];
+        symbol [ SLIDE_RIGHT %tmp.10 113 36 47 ];
         %tmp.10 = getv %tmp.9 :SLIDE_RIGHT;
         invoke %tmp.7 %tmp.8(%tmp.10);
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 65 12 ]
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 114 12 ]
         %tmp.11 = true;
         ret %tmp.11;
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_63_45_66_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_ProgressView_mc_63_8_66_8_if_end;
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_63_8_66_8_if_end:
-[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 67 8 ]
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_112_45_115_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_ProgressView_mc_112_8_115_8_if_end;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_112_8_115_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 116 8 ]
         %tmp.12 = false;
         ret %tmp.12;
-_home_cechinel_coachrox_garmin_source_ProgressView_mc_62_62_68_4_stop:
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_111_62_117_4_stop:
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 119; @symbol_functiondef = [onSelect,119,13,21]; @symbol_return<0> = [Boolean,119,27,34]; ]
+    function onSelect() as Boolean {
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_119_35_122_4_start:
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 120 8 ]
+        symbol [ view %tmp.2 120 8 12 ];
+        %tmp.2 = getv ? :view;
+        symbol [ selectItem %tmp.3 120 13 23 ];
+        %tmp.3 = getv function %tmp.2 :selectItem;
+        invoke %tmp.2 %tmp.3();
+[ "/home/cechinel/coachrox-garmin/source/ProgressView.mc" 121 8 ]
+        %tmp.4 = true;
+        ret %tmp.4;
+_home_cechinel_coachrox_garmin_source_ProgressView_mc_119_35_122_4_stop:
     }
 }
 [ @file = "/home/cechinel/coachrox-garmin/source/ProgressView.mc"; @line = 1; ]
