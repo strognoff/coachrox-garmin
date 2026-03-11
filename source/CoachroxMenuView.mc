@@ -2,12 +2,10 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 import Toybox.Graphics;
 
-//! Main menu view for COACHROX app
 class CoachroxMenuView extends WatchUi.View {
     
     var app as CoachroxApp;
     
-    //! Menu items
     enum {
         ITEM_START_WORKOUT,
         ITEM_VIEW_PLAN,
@@ -18,11 +16,9 @@ class CoachroxMenuView extends WatchUi.View {
     var selectedItem as Number = 0;
     var menuItems as Array<String>;
     
-    //! Color constants - vibrant palette
     const COLOR_ORANGE = 0xFF6B00;
     const COLOR_BLUE = 0x00A3E0;
     const COLOR_GREEN = 0x00C853;
-    const COLOR_YELLOW = 0xFFD600;
     
     function initialize(application as CoachroxApp) {
         WatchUi.View.initialize();
@@ -43,43 +39,41 @@ class CoachroxMenuView extends WatchUi.View {
     }
     
     function onUpdate(dc as Dc) as Void {
-        // Clear screen
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
         
-        // Draw header with orange
+        // Header - smaller
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 5, Graphics.FONT_MEDIUM, "COACHROX", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, 3, Graphics.FONT_TINY, "COACHROX", Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Draw decorative line
+        // Decorative line
         dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-        dc.fillRectangle(20, 32, dc.getWidth() - 40, 2);
+        dc.fillRectangle(20, 18, dc.getWidth() - 40, 1);
         
-        // Draw menu items
-        var startY = 45;
-        var itemHeight = 35;
+        // Menu items - smaller fonts, more spacing
+        var startY = 28;
+        var itemHeight = 28;
         
         for (var i = 0; i < menuItems.size(); i++) {
             var y = startY + (i * itemHeight);
             
-            // Highlight selected with blue
             if (i == selectedItem) {
                 dc.setColor(COLOR_BLUE, Graphics.COLOR_WHITE);
-                dc.fillRectangle(5, y, dc.getWidth() - 10, itemHeight - 3);
+                dc.fillRectangle(3, y, dc.getWidth() - 6, itemHeight - 2);
                 dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
             } else {
                 dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
             }
             
-            dc.drawText(dc.getWidth() / 2, y + 8, Graphics.FONT_SMALL, menuItems[i], Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2, y + 5, Graphics.FONT_TINY, menuItems[i], Graphics.TEXT_JUSTIFY_CENTER);
         }
         
-        // Draw footer with week info
+        // Footer
         var plan = app.getCurrentPlan();
         if (plan != null) {
-            var weekText = "Week " + plan.getWeekNumber() + " | " + plan.getCompletionRate() + "%";
+            var weekText = "W" + plan.getWeekNumber() + " | " + plan.getCompletionRate() + "%";
             dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-            dc.drawText(dc.getWidth() / 2, dc.getHeight() - 18, Graphics.FONT_TINY, weekText, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2, dc.getHeight() - 10, Graphics.FONT_TINY, weekText, Graphics.TEXT_JUSTIFY_CENTER);
         }
     }
     

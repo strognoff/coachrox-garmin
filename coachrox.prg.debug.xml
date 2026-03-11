@@ -12,7 +12,7 @@
         <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="8" lineNum="130" parent="globals/Plan" pc="268435552" symbol="&lt;init&gt;"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="9" lineNum="5" parent="globals/SettingsView" pc="268435562" symbol="&lt;init&gt;"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="10" lineNum="5" parent="globals/PlanView" pc="268435574" symbol="&lt;init&gt;"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="11" lineNum="6" parent="globals/CoachroxMenuView" pc="268435586" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="11" lineNum="5" parent="globals/CoachroxMenuView" pc="268435586" symbol="&lt;init&gt;"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="12" lineNum="7" parent="globals/CoachroxApp" pc="268435598" symbol="&lt;init&gt;"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/ProgressView.mc" id="13" lineNum="94" parent="globals/ProgressDelegate" pc="268435610" symbol="&lt;init&gt;"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/SettingsView.mc" id="14" lineNum="99" parent="globals/SettingsDelegate" pc="268435622" symbol="&lt;init&gt;"/>
@@ -407,56 +407,56 @@
         <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="65" lineNum="56" parent="globals/PlanView" pc="268441389" symbol="onUpdate"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="65" lineNum="61" parent="globals/PlanView" pc="268441409" symbol="onUpdate"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="65" lineNum="62" parent="globals/PlanView" pc="268441424" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="91" parent="globals/CoachroxMenuView" pc="268441464" symbol="selectPrevious"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="92" parent="globals/CoachroxMenuView" pc="268441466" symbol="selectPrevious"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="93" parent="globals/CoachroxMenuView" pc="268441505" symbol="selectPrevious"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="68" lineNum="39" parent="globals/CoachroxMenuView" pc="268441517" symbol="onLayout"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="86" parent="globals/CoachroxMenuView" pc="268441520" symbol="selectNext"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="87" parent="globals/CoachroxMenuView" pc="268441522" symbol="selectNext"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="88" parent="globals/CoachroxMenuView" pc="268441549" symbol="selectNext"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="96" parent="globals/CoachroxMenuView" pc="268441561" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="97" parent="globals/CoachroxMenuView" pc="268441564" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="98" parent="globals/CoachroxMenuView" pc="268441574" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="99" parent="globals/CoachroxMenuView" pc="268441599" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="100" parent="globals/CoachroxMenuView" pc="268441621" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="101" parent="globals/CoachroxMenuView" pc="268441643" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="102" parent="globals/CoachroxMenuView" pc="268441654" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="103" parent="globals/CoachroxMenuView" pc="268441679" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="104" parent="globals/CoachroxMenuView" pc="268441701" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="105" parent="globals/CoachroxMenuView" pc="268441723" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="106" parent="globals/CoachroxMenuView" pc="268441734" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="107" parent="globals/CoachroxMenuView" pc="268441759" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="108" parent="globals/CoachroxMenuView" pc="268441781" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="109" parent="globals/CoachroxMenuView" pc="268441803" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="110" parent="globals/CoachroxMenuView" pc="268441814" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="111" parent="globals/CoachroxMenuView" pc="268441839" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="112" parent="globals/CoachroxMenuView" pc="268441861" symbol="selectItem"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="71" lineNum="27" parent="globals/CoachroxMenuView" pc="268441884" symbol="initialize"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="71" lineNum="28" parent="globals/CoachroxMenuView" pc="268441886" symbol="initialize"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="71" lineNum="29" parent="globals/CoachroxMenuView" pc="268441902" symbol="initialize"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="71" lineNum="31" parent="globals/CoachroxMenuView" pc="268441911" symbol="initialize"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="45" parent="globals/CoachroxMenuView" pc="268441924" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="47" parent="globals/CoachroxMenuView" pc="268441927" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="48" parent="globals/CoachroxMenuView" pc="268441939" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="51" parent="globals/CoachroxMenuView" pc="268441947" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="52" parent="globals/CoachroxMenuView" pc="268441963" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="55" parent="globals/CoachroxMenuView" pc="268441994" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="56" parent="globals/CoachroxMenuView" pc="268442009" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="59" parent="globals/CoachroxMenuView" pc="268442035" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="60" parent="globals/CoachroxMenuView" pc="268442039" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="62" parent="globals/CoachroxMenuView" pc="268442043" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="63" parent="globals/CoachroxMenuView" pc="268442063" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="66" parent="globals/CoachroxMenuView" pc="268442073" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="67" parent="globals/CoachroxMenuView" pc="268442084" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="68" parent="globals/CoachroxMenuView" pc="268442103" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="69" parent="globals/CoachroxMenuView" pc="268442132" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="71" parent="globals/CoachroxMenuView" pc="268442152" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="74" parent="globals/CoachroxMenuView" pc="268442168" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="78" parent="globals/CoachroxMenuView" pc="268442215" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="79" parent="globals/CoachroxMenuView" pc="268442228" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="80" parent="globals/CoachroxMenuView" pc="268442234" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="81" parent="globals/CoachroxMenuView" pc="268442271" symbol="onUpdate"/>
-        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="82" parent="globals/CoachroxMenuView" pc="268442287" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="85" parent="globals/CoachroxMenuView" pc="268441464" symbol="selectPrevious"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="86" parent="globals/CoachroxMenuView" pc="268441466" symbol="selectPrevious"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="67" lineNum="87" parent="globals/CoachroxMenuView" pc="268441505" symbol="selectPrevious"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="68" lineNum="35" parent="globals/CoachroxMenuView" pc="268441517" symbol="onLayout"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="80" parent="globals/CoachroxMenuView" pc="268441520" symbol="selectNext"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="81" parent="globals/CoachroxMenuView" pc="268441522" symbol="selectNext"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="69" lineNum="82" parent="globals/CoachroxMenuView" pc="268441549" symbol="selectNext"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="90" parent="globals/CoachroxMenuView" pc="268441561" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="91" parent="globals/CoachroxMenuView" pc="268441564" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="92" parent="globals/CoachroxMenuView" pc="268441574" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="93" parent="globals/CoachroxMenuView" pc="268441599" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="94" parent="globals/CoachroxMenuView" pc="268441621" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="95" parent="globals/CoachroxMenuView" pc="268441643" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="96" parent="globals/CoachroxMenuView" pc="268441654" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="97" parent="globals/CoachroxMenuView" pc="268441679" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="98" parent="globals/CoachroxMenuView" pc="268441701" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="99" parent="globals/CoachroxMenuView" pc="268441723" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="100" parent="globals/CoachroxMenuView" pc="268441734" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="101" parent="globals/CoachroxMenuView" pc="268441759" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="102" parent="globals/CoachroxMenuView" pc="268441781" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="103" parent="globals/CoachroxMenuView" pc="268441803" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="104" parent="globals/CoachroxMenuView" pc="268441814" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="105" parent="globals/CoachroxMenuView" pc="268441839" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="70" lineNum="106" parent="globals/CoachroxMenuView" pc="268441861" symbol="selectItem"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="71" lineNum="23" parent="globals/CoachroxMenuView" pc="268441884" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="71" lineNum="24" parent="globals/CoachroxMenuView" pc="268441886" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="71" lineNum="25" parent="globals/CoachroxMenuView" pc="268441902" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="71" lineNum="27" parent="globals/CoachroxMenuView" pc="268441911" symbol="initialize"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="41" parent="globals/CoachroxMenuView" pc="268441924" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="42" parent="globals/CoachroxMenuView" pc="268441927" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="43" parent="globals/CoachroxMenuView" pc="268441939" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="46" parent="globals/CoachroxMenuView" pc="268441947" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="47" parent="globals/CoachroxMenuView" pc="268441963" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="50" parent="globals/CoachroxMenuView" pc="268441994" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="51" parent="globals/CoachroxMenuView" pc="268442009" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="54" parent="globals/CoachroxMenuView" pc="268442035" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="55" parent="globals/CoachroxMenuView" pc="268442039" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="57" parent="globals/CoachroxMenuView" pc="268442043" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="58" parent="globals/CoachroxMenuView" pc="268442063" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="60" parent="globals/CoachroxMenuView" pc="268442073" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="61" parent="globals/CoachroxMenuView" pc="268442084" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="62" parent="globals/CoachroxMenuView" pc="268442103" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="63" parent="globals/CoachroxMenuView" pc="268442132" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="65" parent="globals/CoachroxMenuView" pc="268442152" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="68" parent="globals/CoachroxMenuView" pc="268442168" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="72" parent="globals/CoachroxMenuView" pc="268442215" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="73" parent="globals/CoachroxMenuView" pc="268442228" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="74" parent="globals/CoachroxMenuView" pc="268442234" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="75" parent="globals/CoachroxMenuView" pc="268442271" symbol="onUpdate"/>
+        <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuView.mc" id="72" lineNum="76" parent="globals/CoachroxMenuView" pc="268442287" symbol="onUpdate"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="73" lineNum="77" parent="globals/CoachroxApp" pc="268442327" symbol="completeWorkout"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="73" lineNum="78" parent="globals/CoachroxApp" pc="268442329" symbol="completeWorkout"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxApp.mc" id="73" lineNum="79" parent="globals/CoachroxApp" pc="268442338" symbol="completeWorkout"/>
