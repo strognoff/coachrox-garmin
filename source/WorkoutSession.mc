@@ -41,57 +41,90 @@ class WorkoutSession extends WatchUi.View {
     }
     
     function onUpdate(dc as Dc) as Void {
-        var w = dc.getWidth();
-        var h = dc.getHeight();
-        
-        // Background
-        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
-        dc.clear();
-        
-        // Line 1: Header
-        dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 2, Graphics.FONT_TINY, "WORKOUT", Graphics.TEXT_JUSTIFY_CENTER);
-        
-        // Line 2: Current step name
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 18, Graphics.FONT_TINY, currentStepName, Graphics.TEXT_JUSTIFY_CENTER);
-        
-        // Line 3: Timer
-        dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 38, Graphics.FONT_MEDIUM, getElapsedTimeFormatted(), Graphics.TEXT_JUSTIFY_CENTER);
-        
-        // Line 4: Paused
-        if (isPaused) {
-            dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_BLACK);
-            dc.drawText(w/2, 60, Graphics.FONT_TINY, "- PAUSED -", Graphics.TEXT_JUSTIFY_CENTER);
-        }
-        
-        // Line 5: Progress bar
-        var progress = getProgress();
-        var barW = w - 20;
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.fillRectangle(10, 75, barW, 5);
-        dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
-        dc.fillRectangle(10, 75, barW * progress / 100, 5);
-        
-        // Line 6: Progress text
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 85, Graphics.FONT_TINY, progress + "%  " + (currentStepIndex + 1) + "/" + workout.getStepCount(), Graphics.TEXT_JUSTIFY_CENTER);
-        
-        // Line 7: Next step
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 100, Graphics.FONT_TINY, "NEXT: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
-        
-        // Line 8: Done
-        if (isCompleted) {
-            dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
-            dc.drawText(w/2, 130, Graphics.FONT_MEDIUM, "COMPLETED!", Graphics.TEXT_JUSTIFY_CENTER);
-        }
-        
-        // Line 9: Controls
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, h - 8, Graphics.FONT_TINY, "DOWN: Pause | ENTER: End", Graphics.TEXT_JUSTIFY_CENTER);
+    var w = dc.getWidth();
+    var h = dc.getHeight();
+
+    // Background
+    dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+    dc.clear();
+
+    // Fonts + measured heights (prevents "broken" spacing across devices)
+    var headerFont = Graphics.FONT_TINY;
+    var titleFont = Graphics.FONT_TINY;
+    var timerFont = Graphics.FONT_MEDIUM;
+    var smallFont = Graphics.FONT_TINY;
+
+    var headerFontH = dc.getFontHeight(headerFont);
+    var titleFontH = dc.getFontHeight(titleFont);
+    var timerFontH = dc.getFontHeight(timerFont);
+    var smallFontH = dc.getFontHeight(smallFont);
+
+    var topPad = 2;
+    var sidePad = 10;
+    var lineGap = 2;
+
+    // Reserve footer for controls text
+    var footerH = smallFontH + 4;
+    var contentTop = topPad;
+    var contentBottom = h - footerH;
+    var contentH = contentBottom - contentTop;
+
+    var y = contentTop;
+
+    // Line 1: Header
+    dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
+    dc.drawText(w / 2, y, headerFont, "WORKOUT", Graphics.TEXT_JUSTIFY_CENTER);
+    y += headerFontH + lineGap;
+
+    // Line 2: Current step name (truncate if too long)
+    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+    var stepName = currentStepName;
+    dc.drawText(w / 2, y, titleFont, stepName, Graphics.TEXT_JUSTIFY_CENTER);
+    y += titleFontH + lineGap;
+
+    // Line 3: Timer (center in remaining vertical space above progress area)
+    // Keep timer prominent and centered-ish
+    var timerY = contentTop + (contentH * 0.30).toNumber();
+    dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
+    dc.drawText(w / 2, timerY, timerFont, getElapsedTimeFormatted(), Graphics.TEXT_JUSTIFY_CENTER);
+
+    // Paused indicator (under timer)
+    if (isPaused) {
+        var pausedY = timerY + timerFontH + 2;
+        dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_BLACK);
+        dc.drawText(w / 2, pausedY, smallFont, "- PAUSED -", Graphics.TEXT_JUSTIFY_CENTER);
     }
+
+    // Progress block anchored toward bottom of content area (so it doesn't overlap on small screens)
+    var barH = 6;
+    var barW = w - (sidePad * 2);
+    var barY = contentBottom - (barH + (smallFontH * 2) + 10);
+
+    // Line: Progress bar
+    var progress = getProgress();
+    dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+    dc.fillRectangle(sidePad, barY, barW, barH);
+    dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
+    dc.fillRectangle(sidePad, barY, (barW * progress / 100).toNumber(), barH);
+
+    // Line: Progress text
+    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+    dc.drawText(w / 2, barY + barH + 2, smallFont, progress + "%  " + (currentStepIndex + 1) + "/" + workout.getStepCount(), Graphics.TEXT_JUSTIFY_CENTER);
+
+    // Line: Next step
+    dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+    dc.drawText(w / 2, barY + barH + 2 + smallFontH + 2, smallFont, "NEXT: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
+
+    // Completed overlay (centered)
+    if (isCompleted) {
+        dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
+        dc.drawText(w / 2, (contentTop + (contentH / 2).toNumber()), Graphics.FONT_MEDIUM, "COMPLETED!", Graphics.TEXT_JUSTIFY_CENTER);
+    }
+
+    // Footer: Controls
+    dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+    dc.drawText(w / 2, h - footerH + 1, smallFont, "DOWN: Pause | ENTER: End", Graphics.TEXT_JUSTIFY_CENTER);
+}
     
     function onShow() as Void {
         timer = new Timer.Timer();
