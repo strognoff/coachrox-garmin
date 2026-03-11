@@ -5,7 +5,6 @@ import Toybox.Graphics;
 class ProgressView extends WatchUi.View {
     
     var app as CoachroxApp;
-    var sessionStorage as SessionStorage?;
     
     const COLOR_ORANGE = 0xFF6B00;
     const COLOR_BLUE = 0x00A3E0;
@@ -15,7 +14,6 @@ class ProgressView extends WatchUi.View {
     function initialize(application as CoachroxApp) {
         WatchUi.View.initialize();
         app = application;
-        sessionStorage = app.sessionStorage;
     }
     
     function onLayout(dc as Dc) as Void {
@@ -27,76 +25,69 @@ class ProgressView extends WatchUi.View {
         
         // Header
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 5, Graphics.FONT_SMALL, "PROGRESS", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, 8, Graphics.FONT_MEDIUM, "PROGRESS", Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Completion rate
+        // Get completion
         var plan = app.getCurrentPlan();
-        var completion = 0;
-        if (plan != null) {
-            completion = plan.getCompletionRate().toNumber();
-        }
+        var completion = plan != null ? plan.getCompletionRate().toNumber() : 0;
         
-        // Completion message at top
+        // Success message at top
         if (completion >= 100) {
             dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
-            dc.drawText(dc.getWidth() / 2, 30, Graphics.FONT_SMALL, "All workouts completed!", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2, 40, Graphics.FONT_TINY, "ALL COMPLETED!", Graphics.TEXT_JUSTIFY_CENTER);
         }
         
-        // Progress bar
+        // Progress bar (full width)
         var barColor = completion >= 100 ? COLOR_GREEN : (completion >= 50 ? COLOR_YELLOW : COLOR_BLUE);
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.fillRectangle(20, 50, dc.getWidth() - 40, 10);
+        dc.fillRectangle(15, 55, dc.getWidth() - 30, 12);
         dc.setColor(barColor, Graphics.COLOR_BLACK);
-        dc.fillRectangle(20, 50, (dc.getWidth() - 40) * completion / 100, 10);
+        dc.fillRectangle(15, 55, (dc.getWidth() - 30) * completion / 100, 12);
         
+        // Percentage
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 65, Graphics.FONT_TINY, completion + "% Complete", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, 72, Graphics.FONT_TINY, completion + "%", Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Stats
-        var startY = 90;
+        // Stats section - simple 2 columns
+        var y = 100;
         
-        // Workouts completed
+        // Workouts done
         dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-        dc.drawText(20, startY, Graphics.FONT_SMALL, "Workouts:", Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(20, y, Graphics.FONT_SMALL, "Done:", Graphics.TEXT_JUSTIFY_LEFT);
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() - 20, startY, Graphics.FONT_SMALL, "" + app.completedWeeks, Graphics.TEXT_JUSTIFY_RIGHT);
+        dc.drawText(dc.getWidth() - 20, y, Graphics.FONT_SMALL, "" + app.completedWeeks, Graphics.TEXT_JUSTIFY_RIGHT);
         
         // Level
         var levelName = "Beginner";
-        if (app.userLevel == 1) { levelName = "Intermediate"; }
+        if (app.userLevel == 1) { levelName = "Intermed"; }
         else if (app.userLevel == 2) { levelName = "Advanced"; }
         
+        y += 25;
         dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-        dc.drawText(20, startY + 20, Graphics.FONT_SMALL, "Level:", Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(20, y, Graphics.FONT_SMALL, "Level:", Graphics.TEXT_JUSTIFY_LEFT);
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() - 20, startY + 20, Graphics.FONT_SMALL, levelName, Graphics.TEXT_JUSTIFY_RIGHT);
+        dc.drawText(dc.getWidth() - 20, y, Graphics.FONT_SMALL, levelName, Graphics.TEXT_JUSTIFY_RIGHT);
         
-        // Adaptation suggestion
-        var adaptation = completion - 50;
-        var suggestionText = "Keep going!";
+        // Suggestion
+        y += 35;
+        var suggestionText = "Keep training!";
         var suggestionColor = Graphics.COLOR_WHITE;
         
         if (completion >= 100) {
-            suggestionText = "Ready to progress!";
+            suggestionText = "Level up!";
             suggestionColor = COLOR_GREEN;
         } else if (completion < 30) {
-            suggestionText = "Start with easier workouts";
+            suggestionText = "Easy does it";
             suggestionColor = COLOR_YELLOW;
         }
         
-        // Separator
-        dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-        dc.fillRectangle(20, 140, dc.getWidth() - 40, 1);
-        
         dc.setColor(suggestionColor, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 155, Graphics.FONT_SMALL, suggestionText, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, y, Graphics.FONT_SMALL, suggestionText, Graphics.TEXT_JUSTIFY_CENTER);
         
         // Footer
+        y = dc.getHeight() - 15;
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, dc.getHeight() - 12, Graphics.FONT_TINY, "ESC: Back", Graphics.TEXT_JUSTIFY_CENTER);
-    }
-    
-    function selectItem() as Void {
+        dc.drawText(dc.getWidth() / 2, y, Graphics.FONT_TINY, "ESC to go back", Graphics.TEXT_JUSTIFY_CENTER);
     }
 }
 
@@ -114,10 +105,5 @@ class ProgressDelegate extends WatchUi.InputDelegate {
             return true;
         }
         return false;
-    }
-    
-    function onSelect() as Boolean {
-        view.selectItem();
-        return true;
     }
 }
