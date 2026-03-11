@@ -36,7 +36,7 @@ class CoachroxMenuView extends WatchUi.View {
         app = application;
 
         // Consider swapping these to Rez.Strings.* later for localization
-        menuItems = ["Start Workout", "View Plan", "Progress", "Settings"];
+        menuItems = ["View Plan", "Start Workout", "Progress", "Settings"];
     }
 
     function onLayout(dc as Dc) as Void {
@@ -61,7 +61,7 @@ class CoachroxMenuView extends WatchUi.View {
     // Header
     // -------------------------
     function drawHeader(dc as Dc, w as Number) as Number {
-        var headerHeight = 44;
+        var headerHeight = 40;
 
         // Subtle header panel
         dc.setColor(COLOR_SURFACE, Graphics.COLOR_TRANSPARENT);
@@ -71,12 +71,13 @@ class CoachroxMenuView extends WatchUi.View {
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_TRANSPARENT);
         dc.fillRectangle(0, 0, w, 3);
 
-        // Title + subtitle
+        // Title (positioned closer to the bottom divider)
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(w/2, 16, Graphics.FONT_TINY, "COACHROX", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        var titleY = headerHeight - 14;
+        dc.drawText(w/2, titleY, Graphics.FONT_TINY, "COACHROX", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        dc.setColor(COLOR_TEXT_MUTED, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(w/2, 32, Graphics.FONT_XTINY, "Training", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        //dc.setColor(COLOR_TEXT_MUTED, Graphics.COLOR_TRANSPARENT);
+        //dc.drawText(w/2, 32, Graphics.FONT_XTINY, "Training", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // Divider
         dc.setColor(COLOR_DIVIDER, Graphics.COLOR_TRANSPARENT);
@@ -90,11 +91,11 @@ class CoachroxMenuView extends WatchUi.View {
     // -------------------------
     function drawMenu(dc as Dc, w as Number, h as Number, headerHeight as Number, footerHeight as Number) as Void {
         var sidePad = 10;
-        var cardWidth = w - (sidePad * 2);
+        var cardWidth = w - (sidePad * 3);
         var cardX = sidePad;
 
         var topPad = 8;
-        var bottomPad = 8;
+        var bottomPad = 14; // was 8; add breathing room above footer
 
         var availableTop = headerHeight + topPad;
         var availableBottom = (h - footerHeight) - bottomPad;
@@ -104,7 +105,7 @@ class CoachroxMenuView extends WatchUi.View {
         }
 
         // Clip menu drawing to its viewport so it can't overdraw header/footer
-        dc.setClip(0, availableTop, w, availableHeight);
+        dc.setClip(0, availableTop + 1, w, availableHeight - 2); // inset clip slightly for round screens
 
         var cardSpacing = 8;
         var itemCount = menuItems.size();
@@ -155,11 +156,8 @@ class CoachroxMenuView extends WatchUi.View {
             drawMenuIcon(dc, i, cardX + 16, y + (cardHeight / 2), i == selectedItem);
 
             // Text
-            var textColor = (i == selectedItem) ? Graphics.COLOR_WHITE : COLOR_TEXT_MUTED;
-            dc.setColor(textColor, Graphics.COLOR_TRANSPARENT);
-
             var textY = y + (cardHeight / 2);
-            dc.drawText(cardX + 34, textY, Graphics.FONT_XTINY, menuItems[i], Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+            drawMenuItemText(dc, menuItems[i], cardX + 34, textY, cardWidth - 34 - 18, i == selectedItem);
 
             // Chevron
             if (i == selectedItem) {
@@ -168,18 +166,18 @@ class CoachroxMenuView extends WatchUi.View {
             }
         }
 
-        // Scroll indicators (subtle)
+        dc.clearClip();
+
+        // Scroll indicators (draw INSIDE the viewport edges so they don't collide with header/footer)
         if (maxScroll > 0) {
             dc.setColor(COLOR_TEXT_MUTED, Graphics.COLOR_TRANSPARENT);
             if (scrollOffsetY > 0) {
-                dc.drawText(w/2, availableTop - 2, Graphics.FONT_XTINY, "˄", Graphics.TEXT_JUSTIFY_CENTER);
+                dc.drawText(w/2, availableTop + 2, Graphics.FONT_XTINY, "^", Graphics.TEXT_JUSTIFY_CENTER);
             }
             if (scrollOffsetY < maxScroll) {
-                dc.drawText(w/2, availableBottom + 2, Graphics.FONT_XTINY, "˅", Graphics.TEXT_JUSTIFY_CENTER);
+                dc.drawText(w/2, availableBottom - 10, Graphics.FONT_XTINY, "v", Graphics.TEXT_JUSTIFY_CENTER);
             }
         }
-
-        dc.clearClip();
     }
 
     function drawSelectedMenuCard(dc as Dc, x as Number, y as Number, w as Number, h as Number) as Void {
@@ -235,6 +233,34 @@ class CoachroxMenuView extends WatchUi.View {
         }
     }
 
+    function drawMenuItemText(dc as Dc, label as String, x as Number, y as Number, maxWidth as Number, isSelected as Boolean) as Void {
+        var textColor = isSelected ? Graphics.COLOR_WHITE : COLOR_TEXT_MUTED;
+        dc.setColor(textColor, Graphics.COLOR_TRANSPARENT);
+
+        // Try larger font first, then fall back
+        var font = Graphics.FONT_TINY;
+        var dims = dc.getTextDimensions(label, font);
+
+        if (dims[0] > maxWidth) {
+            font = Graphics.FONT_XTINY;
+            dims = dc.getTextDimensions(label, font);
+        }
+
+        // If it still doesn't fit, truncate and add "..."
+        if (dims[0] > maxWidth) {
+            var ellipsis = "...";
+            var ellW = dc.getTextDimensions(ellipsis, font)[0];
+
+            var s = label;
+            while (s.length() > 0 && (dc.getTextDimensions(s, font)[0] + ellW) > maxWidth) {
+                s = s.substring(0, s.length() - 1);
+            }
+            label = s + ellipsis;
+        }
+
+        dc.drawText(x, y, font, label, Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+    }
+
     // -------------------------
     // Footer
     // -------------------------
@@ -252,31 +278,24 @@ class CoachroxMenuView extends WatchUi.View {
 
         var plan = app.getCurrentPlan();
 
-        if (plan == null) {
-            dc.setColor(COLOR_TEXT_MUTED, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(w/2, footerTopY + 20, Graphics.FONT_XTINY, "No active plan", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-            return footerHeight;
-        }
-
-        var completion = plan.getCompletionRate();
-        var weekText = "Week " + plan.getWeekNumber();
-
-        // Left: week
-        dc.setColor(COLOR_TEXT_MUTED, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(12, footerTopY + 18, Graphics.FONT_XTINY, weekText, Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
-
-        // Right: percent
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(w - 12, footerTopY + 18, Graphics.FONT_XTINY, completion + "%", Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
-
-        // Progress bar
-        var barX = 12;
-        var barY = footerTopY + 34;
-        var barWidth = w - 24;
+        // Progress bar only (centered + clamped for round screens)
         var barHeight = 6;
+
+        // Use the smaller dimension so the bar never exceeds the round watch safe area
+        var maxBarWidth = (w < h) ? (w - 40) : (h - 40);
+        if (maxBarWidth < 40) { maxBarWidth = 40; } // safety clamp
+
+        var barWidth = maxBarWidth;
+        var barX = (w - barWidth) / 2;
+        var barY = footerTopY + ((footerHeight - barHeight) / 2);
 
         dc.setColor(COLOR_SURFACE_2, Graphics.COLOR_TRANSPARENT);
         dc.fillRoundedRectangle(barX, barY, barWidth, barHeight, 3);
+
+        var completion = 0;
+        if (plan != null) {
+            completion = plan.getCompletionRate();
+        }
 
         var fillWidth = (barWidth * completion) / 100;
         if (fillWidth < 0) { fillWidth = 0; }
