@@ -1,93 +1,67 @@
 # COACHROX - Garmin Training App
 
-A Garmin Connect IQ app for athletes training for fitness racing events such as HYROX.
+A workout training app for Garmin watches with 8-week training plans.
 
 ## Features
 
-### Plan Engine
-- 8-week and 12-week training templates
-- Three levels: Beginner, Intermediate, Advanced
-- 3-5 sessions per week
-- Session types: intervals, combo blocks, threshold/tempo, recovery
+- **8-Week Training Plans** - Structured workouts progressing in difficulty
+- **3 Difficulty Levels** - Beginner, Intermediate, Advanced
+- **5 Workouts Per Week** - Intervals, Combo, Threshold, Recovery, Finale
+- **Progress Tracking** - See completion rate and weekly progress
+- **Persistent Storage** - Workouts and progress saved on device
 
-### Workout Execution
-- Step-based workout model supporting:
-  - Running
-  - Rest periods
-  - Burpee broad jumps
-  - Lunges
-  - Farmer carry
-  - Wall balls simulation
-- Duration and rep-based targets
-- Vibration cues on transitions
-- Controls: start, pause, resume, skip step
+## How It Works
 
-### Tracking
-- Session completion tracking
-- Weekly volume tracking
-- Target compliance monitoring
+### Training Levels
 
-### Adaptation Rules
-- Automatic suggestions based on performance:
-  - 2 failed weeks → suggest downshift
-  - 2 successful weeks (>85%) → suggest progression
+1. **Beginner** - 4 rounds intervals, easier workouts
+2. **Intermediate** - 5 rounds intervals, medium difficulty
+3. **Advanced** - 6 rounds intervals, harder workouts
 
-## Supported Devices
+### Weekly Structure
 
-- Forerunner series
-- Fenix/Epix series
-- Venu series (where supported)
+Each week has 5 workouts:
+- **Intervals** - High intensity intervals (running + rest)
+- **Combo** - Mixed exercises (running + burpees + lunges)
+- **Recovery** - Easy pace workout
+- **Threshold** - Tempo/continuous running
+- **Finale** - Long combo workout
 
-## Installation
+### Week Progression
 
-### Prerequisites
-- Garmin Connect IQ SDK
-- Monkey C development environment
+- Each week increases workout duration slightly
+- Progress is tracked per workout
+- After completing all 5 workouts in a week → advance to next week
 
-### Build
+### Menu Navigation
+
+- **UP/DOWN** - Navigate menu items
+- **ENTER** - Select/start workout
+- **ESC** - Go back
+
+### Workout Controls
+
+- **DOWN** - Pause/Resume
+- **ENTER** - Finish workout early
+
+## Settings
+
+- **Level Selection** - Changes difficulty (resets progress)
+- **Reset Progress** - Clears all data and starts fresh
+
+## Building
+
+The app is built for Garmin Connect IQ SDK 8.x.
+
 ```bash
-# Using Connect IQ SDK
-ciq build
+# Install SDK from Garmin Developer Portal
+# Build:
+monkeyc -y private.key -p projectInfo.xml -d fenix8solar51mm -o coachrox.prg -f monkey.jungle -w
 ```
 
-### Install on Simulator
-```bash
-# Start Garmin Express or Connect IQ Simulator
-# Deploy the .prg file
-```
+## Compatible Devices
 
-### Install on Device
-1. Copy the .prg file to your Garmin device via Garmin Connect
-2. Or use Garmin Express to sync the app
-
-## Development
-
-### Project Structure
-```
-coachrox-garmin/
-├── source/              # Monkey C source code
-│   ├── CoachroxApp.mc   # Main application
-│   ├── PlanEngine.mc    # Training plan logic
-│   ├── Workout.mc      # Workout/step definitions
-│   ├── WorkoutSession.mc # Active session runtime
-│   ├── SessionStorage.mc # Data persistence
-│   └── *.mc             # UI views and delegates
-├── resources/           # App resources
-│   └── strings.xml      # Localized strings
-├── manifest.xml         # App manifest
-└── README.md
-```
-
-### Architecture
-- **Plan Engine**: Generates and manages training plans
-- **Workout Runtime**: Executes workout sessions
-- **Storage Adapter**: Handles local persistence
-- **UI Layer**: Watch UI views and delegates
-
-## Version
-
-v0.1.0-MVP - Initial release
-
-## License
-
-Private - All rights reserved
+- Fenix 7 series
+- Fenix 8 series (tested on fenix8solar51mm)
+- Forerunner 955/965
+- And other Connect IQ 3.0+ devices
