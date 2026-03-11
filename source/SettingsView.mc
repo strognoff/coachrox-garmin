@@ -27,41 +27,95 @@ class SettingsView extends WatchUi.View {
     function onUpdate(dc as Dc) as Void {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
-        
-        // Header with orange
+
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+
+        // Treat top/bottom as "unsafe" on many round faces
+        var safeTop = 10;
+        var safeBottom = 26;
+
+        var padX = 12;
+        var contentLeft = padX;
+        var contentRight = w - padX;
+        var contentWidth = contentRight - contentLeft;
+
+        var titleFont = Graphics.FONT_MEDIUM;
+        var subFont = Graphics.FONT_TINY;
+        var itemFont = Graphics.FONT_SMALL;
+        var footerFont = Graphics.FONT_TINY;
+
+        var titleH = dc.getFontHeight(titleFont);
+        var subH = dc.getFontHeight(subFont);
+        var itemHFont = dc.getFontHeight(itemFont);
+        var footerH = dc.getFontHeight(footerFont);
+
+        // Header block
+        var titleY = safeTop;
+        var subY = titleY + titleH + 2;
+
+        // Footer pinned using actual font height (more conservative)
+        var footerPadBottom = 10;
+        var footerY = h - safeBottom - footerPadBottom - footerH;
+
+        // Header
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 8, Graphics.FONT_MEDIUM, "SETTINGS", Graphics.TEXT_JUSTIFY_CENTER);
-        
-        // Current level
+        dc.drawText(w / 2, titleY, titleFont, "SETTINGS", Graphics.TEXT_JUSTIFY_CENTER);
+
         var currentLevel = app.userLevel;
         var levelName = "Beginner";
         if (currentLevel == 1) { levelName = "Intermediate"; }
         if (currentLevel == 2) { levelName = "Advanced"; }
-        
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, 38, Graphics.FONT_TINY, "Current: " + levelName, Graphics.TEXT_JUSTIFY_CENTER);
-        
+
+        // Brighter subtitle for readability
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(w / 2, subY, subFont, "Current: " + levelName, Graphics.TEXT_JUSTIFY_CENTER);
+
+        // List area between subtitle and footer, respecting safe areas
+        var listTop = subY + subH + 10;
+        var listBottom = footerY - 12;
+
+        if (listBottom < listTop) {
+            listBottom = listTop;
+        }
+
+        var available = listBottom - listTop;
+
+        var count = options.size();
+        var gap = 5;
+
+        var itemHeight = (available - (gap * (count - 1))) / count;
+        if (itemHeight > 32) { itemHeight = 32; }
+        if (itemHeight < (itemHFont + 8)) { itemHeight = itemHFont + 8; }
+
+        var listHeight = (itemHeight * count) + (gap * (count - 1));
+        var y = listTop + ((available - listHeight) / 2);
+        if (y < listTop) { y = listTop; }
+
         // Options
-        var y = 60;
-        var itemHeight = 28;
-        
-        for (var i = 0; i < options.size(); i++) {
+        for (var i = 0; i < count; i++) {
             if (i == selectedOption) {
-                // Gray background with white text
                 dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_WHITE);
-                dc.fillRectangle(5, y, dc.getWidth() - 10, itemHeight);
+                dc.fillRectangle(contentLeft, y, contentWidth, itemHeight);
                 dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
             } else {
-                dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
+                dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
             }
-            
-            dc.drawText(dc.getWidth() / 2, y + 5, Graphics.FONT_SMALL, options[i], Graphics.TEXT_JUSTIFY_CENTER);
-            y += itemHeight + 3;
+
+            var textY = y + ((itemHeight - itemHFont) / 2) - 1;
+            dc.drawText(w / 2, textY, itemFont, options[i], Graphics.TEXT_JUSTIFY_CENTER);
+
+            y += itemHeight + gap;
         }
-        
-        // Instructions
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth() / 2, dc.getHeight() - 15, Graphics.FONT_TINY, "UP/DOWN: Select | ENTER | ESC", Graphics.TEXT_JUSTIFY_CENTER);
+
+        // True end of list (after loop)
+        var listEndY = y - gap;
+
+        // Footer only if it won't overlap list AND is fully inside safe area
+        if ((footerY >= listEndY + 4) && (footerY + footerH <= h - safeBottom)) {
+            dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+            dc.drawText(w / 2, footerY, footerFont, "UP/DOWN: Select | ENTER | ESC", Graphics.TEXT_JUSTIFY_CENTER);
+        }
     }
     
     function selectNext() as Void {
