@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest xmlns="http://www.garmin.com/xml/connectiq" version="3">
+    <application id="CoachroxApp" entry="CoachroxApp" name="Coachrox" icon="AppIcon">
+        <usesApplication GarminApp="activity" />
+        <languages>
+            <language>eng</language>
+        </languages>
+    </application>
+</manifest>
