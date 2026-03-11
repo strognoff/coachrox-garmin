@@ -88,8 +88,8 @@ class WorkoutSession extends WatchUi.View {
     dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
     dc.drawText(w / 2, timerY, timerFont, getElapsedTimeFormatted(), Graphics.TEXT_JUSTIFY_CENTER);
 
-    // Paused indicator (under timer)
-    if (isPaused) {
+    // Paused indicator (under timer) - do not show if completed
+    if (isPaused && !isCompleted) {
         var pausedY = timerY + timerFontH + 2;
         dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_BLACK);
         dc.drawText(w / 2, pausedY, smallFont, "- PAUSED -", Graphics.TEXT_JUSTIFY_CENTER);
@@ -115,7 +115,7 @@ class WorkoutSession extends WatchUi.View {
     dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
     dc.drawText(w / 2, barY + barH + 2 + smallFontH + 2, smallFont, "NEXT: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
 
-    // Completed overlay (centered)
+    // Completed overlay (centered) - wins over paused indicator
     var totalSteps = workout.getStepCount();
     var isAtEnd = (totalSteps > 0) && ((currentStepIndex + 1) >= totalSteps);
 
@@ -178,10 +178,14 @@ class WorkoutSession extends WatchUi.View {
         // Use 1-based step position so the last step shows 100%.
         var completedOrCurrent = currentStepIndex + 1;
 
-        // If we've advanced past the end (completed), clamp to total.
+        // Clamp to [1..total] (and thus [0..100]) so UI never exceeds 100%.
+        if (completedOrCurrent < 1) { completedOrCurrent = 1; }
         if (completedOrCurrent > total) { completedOrCurrent = total; }
 
-        return (completedOrCurrent * 100 / total).toNumber();
+        var pct = (completedOrCurrent * 100 / total).toNumber();
+        if (pct < 0) { pct = 0; }
+        if (pct > 100) { pct = 100; }
+        return pct;
     }
     
     function getElapsedTimeFormatted() as String {

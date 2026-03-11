@@ -7,8 +7,8 @@ class CoachroxMenuView extends WatchUi.View {
     var app as CoachroxApp;
 
     enum {
-        ITEM_START_WORKOUT,
         ITEM_VIEW_PLAN,
+        ITEM_START_WORKOUT,
         ITEM_PROGRESS,
         ITEM_SETTINGS
     }
@@ -328,12 +328,12 @@ class CoachroxMenuView extends WatchUi.View {
     }
 
     function selectItem() as Void {
-        if (selectedItem == ITEM_START_WORKOUT) {
+        if (selectedItem == ITEM_VIEW_PLAN) {
+           var v2 = new PlanView(app);
+            WatchUi.pushView(v2, new PlanDelegate(v2), WatchUi.SLIDE_LEFT);
+        } else if (selectedItem == ITEM_START_WORKOUT) {
             var v = new WorkoutListView(app);
             WatchUi.pushView(v, new WorkoutListDelegate(v), WatchUi.SLIDE_LEFT);
-        } else if (selectedItem == ITEM_VIEW_PLAN) {
-            var v2 = new PlanView(app);
-            WatchUi.pushView(v2, new PlanDelegate(v2), WatchUi.SLIDE_LEFT);
         } else if (selectedItem == ITEM_PROGRESS) {
             var v3 = new Progress.ProgressView(app);
             WatchUi.pushView(v3, new Progress.ProgressDelegate(v3), WatchUi.SLIDE_LEFT);
