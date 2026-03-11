@@ -5,7 +5,7 @@
         <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutListView.mc" id="1" lineNum="5" parent="globals/WorkoutListView" pc="268435460" symbol="&lt;init&gt;"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutDelegate.mc" id="2" lineNum="6" parent="globals/WorkoutDelegate" pc="268435472" symbol="&lt;init&gt;"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/PlanView.mc" id="3" lineNum="70" parent="globals/PlanDelegate" pc="268435484" symbol="&lt;init&gt;"/>
-        <entry filename="/home/cechinel/coachrox-garmin/gen/006-B4533-00/source/Rez.mcgen" id="4" lineNum="7" parent="globals/Rez" pc="268435496" symbol="&lt;init&gt;"/>
+        <entry filename="/home/cechinel/coachrox-garmin/gen/006-B3907-00/source/Rez.mcgen" id="4" lineNum="7" parent="globals/Rez" pc="268435496" symbol="&lt;init&gt;"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/WorkoutSession.mc" id="5" lineNum="6" parent="globals/WorkoutSession" pc="268435516" symbol="&lt;init&gt;"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/CoachroxMenuDelegate.mc" id="6" lineNum="5" parent="globals/CoachroxMenuDelegate" pc="268435528" symbol="&lt;init&gt;"/>
         <entry filename="/home/cechinel/coachrox-garmin/source/PlanEngine.mc" id="7" lineNum="436" parent="globals/Plan" pc="268435540" symbol="&lt;init&gt;"/>
@@ -966,13 +966,10 @@
         <entry field="true" id="72" symbol="showSummary"/>
         <entry id="28" object="true" symbol="ProgressDelegate"/>
         <entry field="true" id="103" symbol="completedWeeks"/>
-        <entry field="true" id="139" symbol="StartWorkout"/>
         <entry id="46" method="true" symbol="getPlanWeeks"/>
         <entry field="true" id="78" symbol="workout"/>
-        <entry field="true" id="134" symbol="Completed"/>
         <entry id="8390424" module="true" symbol="Storage"/>
         <entry field="true" id="68" symbol="isPaused"/>
-        <entry field="true" id="136" symbol="LevelBeginner"/>
         <entry id="113" method="true" symbol="getSessionCount"/>
         <entry field="true" id="51" symbol="distanceMeters"/>
         <entry id="20" object="true" symbol="WorkoutListView"/>
@@ -986,15 +983,12 @@
         <entry id="61" method="true" symbol="drawSummary"/>
         <entry id="42" method="true" symbol="getAdaptationStatus"/>
         <entry id="114" method="true" symbol="getTotalTime"/>
-        <entry field="true" id="131" symbol="AppName"/>
         <entry id="5" module="true" symbol="globals/Rez/Strings"/>
-        <entry field="true" id="135" symbol="LevelAdvanced"/>
         <entry field="true" id="8388912" symbol="steps"/>
         <entry id="8388631" module="true" symbol="Activity"/>
         <entry id="63" method="true" symbol="finishAndExit"/>
         <entry field="true" id="70" symbol="nextStepName"/>
         <entry id="8388648" module="true" symbol="WatchUi"/>
-        <entry field="true" id="127" symbol="ActivityBurpees"/>
         <entry id="107" method="true" symbol="startWorkout"/>
         <entry id="32" method="true" symbol="createEngineIntervals"/>
         <entry id="3" module="true" symbol="globals/Rez"/>
@@ -1006,6 +1000,7 @@
         <entry field="true" id="118" symbol="durationMinutes"/>
         <entry field="true" id="67" method="true" symbol="isCompleted"/>
         <entry id="13" object="true" symbol="PlanView"/>
+        <entry field="true" id="127" symbol="COACHROX"/>
         <entry field="true" id="8389161" symbol="COLOR_RED"/>
         <entry id="8389553" method="true" symbol="onKeyPressed"/>
         <entry id="34" method="true" symbol="createHYROXDay2"/>
@@ -1035,14 +1030,11 @@
         <entry id="121" method="true" symbol="getStepCount"/>
         <entry id="47" method="true" symbol="recordWorkoutResult"/>
         <entry field="true" id="98" symbol="menuItems"/>
-        <entry field="true" id="138" symbol="Paused"/>
         <entry field="true" id="90" symbol="selectedOption"/>
         <entry field="true" id="108" symbol="userLevel"/>
         <entry id="4" module="true" symbol="globals/Rez/Drawables"/>
         <entry id="111" method="true" symbol="clearAll"/>
-        <entry field="true" id="133" symbol="Coachrox"/>
         <entry id="96" method="true" symbol="drawNormalMenuCard"/>
-        <entry field="true" id="8392335" object="true" symbol="Settings"/>
         <entry id="58" method="true" symbol="complete"/>
         <entry id="40" method="true" symbol="createUpperBodyWorkout"/>
         <entry id="45" method="true" symbol="getPlan"/>
@@ -1062,7 +1054,6 @@
         <entry field="true" id="117" symbol="completedAt"/>
         <entry field="true" id="50" symbol="completed"/>
         <entry id="27" method="true" symbol="startSelected"/>
-        <entry field="true" id="141" symbol="WorkoutActive"/>
         <entry id="8388640" module="true" symbol="Lang"/>
         <entry id="37" method="true" symbol="createRaceSimBrick"/>
         <entry id="29" object="true" symbol="ProgressView"/>
@@ -1073,9 +1064,7 @@
         <entry id="8388610" symbol="statics"/>
         <entry id="8389123" method="true" symbol="onShow"/>
         <entry field="true" id="8389167" symbol="COLOR_BLUE"/>
-        <entry field="true" id="128" symbol="ActivityLunges"/>
         <entry id="8389350" module="true" symbol="globals"/>
-        <entry field="true" id="130" symbol="ActivityRun"/>
         <entry id="56" method="true" symbol="isTimeBased"/>
         <entry id="116" method="true" symbol="incrementSessionCount"/>
         <entry field="true" id="101" symbol="selectedItem"/>
@@ -1084,20 +1073,17 @@
         <entry id="8389279" method="true" symbol="onStart"/>
         <entry id="83" method="true" symbol="getWeekNumber"/>
         <entry id="120" method="true" symbol="getStep"/>
-        <entry field="true" id="140" symbol="ViewPlan"/>
         <entry field="true" id="30" symbol="view"/>
         <entry field="true" id="85" symbol="level"/>
         <entry field="true" id="80" symbol="completedSessions"/>
         <entry id="92" method="true" symbol="drawHeader"/>
         <entry field="true" id="59" symbol="currentStepIndex"/>
-        <entry field="true" id="137" symbol="LevelIntermediate"/>
         <entry field="true" id="8388892" symbol="name"/>
         <entry id="54" method="true" symbol="isDistanceBased"/>
         <entry id="93" method="true" symbol="drawMenu"/>
         <entry id="102" method="true" symbol="completeWorkout"/>
         <entry id="8389280" method="true" symbol="getInitialView"/>
         <entry id="8389281" method="true" symbol="onStop"/>
-        <entry field="true" id="129" symbol="ActivityRest"/>
         <entry id="105" method="true" symbol="getCurrentPlan"/>
         <entry id="94" method="true" symbol="drawMenuIcon"/>
         <entry field="true" id="8389164" symbol="COLOR_YELLOW"/>
@@ -1111,7 +1097,6 @@
         <entry id="8390741" method="true" symbol="drawFooter"/>
         <entry id="124" method="true" symbol="markComplete"/>
         <entry id="89" symbol="options"/>
-        <entry field="true" id="132" symbol="AppNameLong"/>
         <entry field="true" id="8389846" symbol="type"/>
         <entry field="true" id="79" symbol="workoutIndex"/>
         <entry id="8389125" method="true" symbol="onHide"/>
@@ -1120,7 +1105,7 @@
         <entry id="8390426" method="true" symbol="setValue"/>
         <entry id="8388635" module="true" symbol="Application"/>
         <entry id="71" method="true" symbol="onTimer"/>
-        <entry field="true" id="14" module="true" symbol="Progress"/>
+        <entry id="14" module="true" symbol="Progress"/>
         <entry id="15" object="true" symbol="SessionStorage"/>
     </symbolTable>
     <localVars>
@@ -1459,26 +1444,10 @@
         <entry arg="true" endPc="268449842" name="progressView" stackId="1" startPc="268449815"/>
         <entry arg="true" endPc="268449879" name="key" stackId="1" startPc="268449843"/>
     </localVars>
-    <deviceInfo deviceVersion="5c7ae9cf907f88c116a91dc4ffd75be9b5b7d2e9" partNumber="006-B4533-00"/>
+    <deviceInfo deviceVersion="5c7ae9cf907f88c116a91dc4ffd75be9b5b7d2e9" partNumber="006-B3907-00"/>
     <annotations>
         <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ActivityBurpees"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="Paused"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="Progress"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="WorkoutActive"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="LevelAdvanced"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ViewPlan"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppName"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="Completed"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="Coachrox"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ActivityRun"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppNameLong"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ActivityRest"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="LevelBeginner"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="LevelIntermediate"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ActivityLunges"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="Settings"/>
-        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="StartWorkout"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="COACHROX"/>
     </annotations>
     <dataEntryOffsetMappings>
         <dataEntry label="globals" offset="67" parentId="" symbolId="globals" type="module"/>
