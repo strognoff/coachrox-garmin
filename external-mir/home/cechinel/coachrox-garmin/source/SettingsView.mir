@@ -8,6 +8,21 @@ import Toybox.Graphics;
 class SettingsView extends WatchUi.View {
     [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 5; ]
     <init> {
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 10 8 ]
+        %tmp.1 = newa 4;
+        %tmp.2 = "Level: Beginner";
+        %tmp.3 = dup %tmp.1;
+        %tmp.4 = aputv %tmp.3 0 %tmp.2;
+        %tmp.5 = "Level: Intermediate";
+        %tmp.6 = dup %tmp.4;
+        %tmp.7 = aputv %tmp.6 1 %tmp.5;
+        %tmp.8 = "Level: Advanced";
+        %tmp.9 = dup %tmp.7;
+        %tmp.10 = aputv %tmp.9 2 %tmp.8;
+        %tmp.11 = "Reset Progress";
+        %tmp.12 = dup %tmp.10;
+        %tmp.13 = aputv %tmp.12 3 %tmp.11;
+        putv self :options %tmp.13;
     }
     [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 5; ]
     static
@@ -25,7 +40,7 @@ class SettingsView extends WatchUi.View {
     const COLOR_BLUE = 0x00A3E0;
     [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 15; @symbol_functiondef = [initialize,15,13,23]; @symbol_param<0> = [application,15,24,35]; @symbol_param<0>_type<0> = [CoachroxApp,15,39,50]; ]
     function initialize(application as CoachroxApp) as Void {
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_15_52_25_4_start:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_15_52_20_4_start:
 [ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 16 8 ]
         symbol [ WatchUi %tmp.1 16 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
@@ -40,768 +55,933 @@ _home_cechinel_coachrox_garmin_source_SettingsView_mc_15_52_25_4_start:
         symbol [ app ? 17 8 11 ];
         putv self :app %tmp.4;
 [ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 19 8 ]
-        %tmp.5 = newa 4;
-        %tmp.6 = "Level: Beginner";
-        %tmp.7 = dup %tmp.5;
-        %tmp.8 = aputv %tmp.7 0 %tmp.6;
-        %tmp.9 = "Level: Intermediate";
-        %tmp.10 = dup %tmp.8;
-        %tmp.11 = aputv %tmp.10 1 %tmp.9;
-        %tmp.12 = "Level: Advanced";
-        %tmp.13 = dup %tmp.11;
-        %tmp.14 = aputv %tmp.13 2 %tmp.12;
-        %tmp.15 = "Reset Progress";
-        %tmp.16 = dup %tmp.14;
-        %tmp.17 = aputv %tmp.16 3 %tmp.15;
-        symbol [ options ? 19 8 15 ];
-        putv self :options %tmp.17;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_15_52_25_4_stop:
+        %tmp.5 = self;
+        symbol [ updateOptions %tmp.6 19 8 21 ];
+        %tmp.6 = getv function %tmp.5 :updateOptions;
+        invoke %tmp.5 %tmp.6();
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_15_52_20_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 27; @symbol_functiondef = [onUpdate,27,13,21]; @symbol_param<0> = [dc,27,22,24]; @symbol_param<0>_type<0> = [Dc,27,28,30]; ]
-    function onUpdate(dc as Dc) as Void {
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_27_40_66_4_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 28 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_27_40_66_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_27_40_66_4_stop" ]
-        %w.1 = local;
-        symbol [ w %w.1 28 12 13 ];
-        %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 28 16 18 ];
-        symbol [ getWidth %tmp.2 28 19 27 ];
-        %tmp.2 = getv function %tmp.1 :getWidth;
-        %tmp.3 = invoke %tmp.1 %tmp.2();
-        lputv %w.1 %tmp.3;
-        symbol [ w %w.1 28 12 13 ];
+    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 22; @symbol_functiondef = [updateOptions,22,13,26]; ]
+    function updateOptions() as Void {
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_22_37_34_4_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 23 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_22_37_34_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_22_37_34_4_stop" ]
+        %planWeeks.1 = local;
+        symbol [ planWeeks %planWeeks.1 23 12 21 ];
+        %tmp.1 = 8;
+        lputv %planWeeks.1 %tmp.1;
+        symbol [ planWeeks %planWeeks.1 23 12 21 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 24 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_22_37_34_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_22_37_34_4_stop" ]
+        %planStored.2 = local;
+        symbol [ planStored %planStored.2 24 12 22 ];
+        symbol [ app %tmp.3 24 25 28 ];
+        %tmp.3 = getv ? :app;
+        symbol [ sessionStorage %tmp.4 24 29 43 ];
+        %tmp.4 = getv %tmp.3 :sessionStorage;
+        symbol [ getValue %tmp.5 24 44 52 ];
+        %tmp.5 = getv function %tmp.4 :getValue;
+        %tmp.6 = "planType";
+        %tmp.7 = invoke %tmp.4 %tmp.5(%tmp.6);
+        lputv %planStored.2 %tmp.7;
+        symbol [ planStored %planStored.2 24 12 22 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 25 8 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_8_27_8_if_stmt:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_12_25_48_begin:
+        %tmp.8 = lgetv %planStored.2;
+        symbol [ planStored %tmp.8 25 12 22 ];
+        %tmp.9 = null;
+        %tmp.10 = ne %tmp.8 %tmp.9;
+        bf %tmp.10 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_8_27_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_34_25_48_true:
+        %tmp.11 = lgetv %planStored.2;
+        symbol [ planStored %tmp.11 25 34 44 ];
+        %tmp.12 = as %tmp.11 { (!Null) };
+        %tmp.13 = 12;
+        %tmp.14 = eq %tmp.12 %tmp.13;
+        push %tmp.14;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_34_25_48_end:
+        %tmp.15 = phi [%tmp.10 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_12_25_48_begin] [%tmp.14 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_34_25_48_true] [%tmp.15 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_34_25_48_end];
+        bf %tmp.15 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_8_27_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_8_27_8_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_52_27_8_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 26 12 ]
+        %tmp.16 = 12;
+        lputv %planWeeks.1 %tmp.16;
+        symbol [ planWeeks %planWeeks.1 26 12 21 ];
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_52_27_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_8_27_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_25_8_27_8_if_end:
 [ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 29 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_27_40_66_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_27_40_66_4_stop" ]
-        %h.2 = local;
-        symbol [ h %h.2 29 12 13 ];
-        %tmp.4 = lgetv %dc;
-        symbol [ dc %tmp.4 29 16 18 ];
-        symbol [ getHeight %tmp.5 29 19 28 ];
-        %tmp.5 = getv function %tmp.4 :getHeight;
-        %tmp.6 = invoke %tmp.4 %tmp.5();
-        lputv %h.2 %tmp.6;
-        symbol [ h %h.2 29 12 13 ];
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 31 8 ]
-        %tmp.7 = lgetv %dc;
-        symbol [ dc %tmp.7 31 8 10 ];
-        symbol [ setColor %tmp.8 31 11 19 ];
-        %tmp.8 = getv function %tmp.7 :setColor;
-        symbol [ Graphics %tmp.9 31 20 28 ];
-        %tmp.9 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.10 31 29 40 ];
-        %tmp.10 = getv %tmp.9 :COLOR_BLACK;
-        symbol [ Graphics %tmp.11 31 42 50 ];
-        %tmp.11 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.12 31 51 62 ];
-        %tmp.12 = getv %tmp.11 :COLOR_BLACK;
-        invoke %tmp.7 %tmp.8(%tmp.10, %tmp.12);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 32 8 ]
-        %tmp.13 = lgetv %dc;
-        symbol [ dc %tmp.13 32 8 10 ];
-        symbol [ clear %tmp.14 32 11 16 ];
-        %tmp.14 = getv function %tmp.13 :clear;
-        invoke %tmp.13 %tmp.14();
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 35 8 ]
-        %tmp.15 = lgetv %dc;
-        symbol [ dc %tmp.15 35 8 10 ];
-        symbol [ setColor %tmp.16 35 11 19 ];
-        %tmp.16 = getv function %tmp.15 :setColor;
-        symbol [ COLOR_ORANGE %tmp.18 35 20 32 ];
-        %tmp.18 = getv ? :COLOR_ORANGE;
-        symbol [ Graphics %tmp.19 35 34 42 ];
-        %tmp.19 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.20 35 43 54 ];
-        %tmp.20 = getv %tmp.19 :COLOR_BLACK;
-        invoke %tmp.15 %tmp.16(%tmp.18, %tmp.20);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 36 8 ]
-        %tmp.21 = lgetv %dc;
-        symbol [ dc %tmp.21 36 8 10 ];
-        symbol [ drawText %tmp.22 36 11 19 ];
-        %tmp.22 = getv function %tmp.21 :drawText;
-        %tmp.23 = lgetv %w.1;
-        symbol [ w %tmp.23 36 20 21 ];
-        %tmp.24 = 2;
-        %tmp.25 = div %tmp.23 %tmp.24;
-        %tmp.26 = 4;
-        symbol [ Graphics %tmp.27 36 28 36 ];
-        %tmp.27 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.28 36 37 46 ];
-        %tmp.28 = getv %tmp.27 :FONT_TINY;
-        %tmp.29 = "SETTINGS";
-        symbol [ Graphics %tmp.30 36 60 68 ];
-        %tmp.30 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.31 36 69 88 ];
-        %tmp.31 = getv %tmp.30 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.21 %tmp.22(%tmp.25, %tmp.26, %tmp.28, %tmp.29, %tmp.31);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 39 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_27_40_66_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_27_40_66_4_stop" ]
-        %levelName.3 = local;
-        symbol [ levelName %levelName.3 39 12 21 ];
-        %tmp.32 = "Beginner";
-        lputv %levelName.3 %tmp.32;
-        symbol [ levelName %levelName.3 39 12 21 ];
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 40 8 ]
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_40_8_40_62_if_stmt:
-        symbol [ app %tmp.34 40 12 15 ];
-        %tmp.34 = getv ? :app;
-        symbol [ userLevel %tmp.35 40 16 25 ];
-        %tmp.35 = getv %tmp.34 :userLevel;
-        %tmp.36 = 1;
-        %tmp.37 = eq %tmp.35 %tmp.36;
-        bf %tmp.37 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_40_8_40_62_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_40_8_40_62_if_true:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_40_32_40_62_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 40 34 ]
-        %tmp.38 = "Intermediate";
-        lputv %levelName.3 %tmp.38;
-        symbol [ levelName %levelName.3 40 34 43 ];
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_40_32_40_62_stop:
-        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_40_8_40_62_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_40_8_40_62_if_end:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 41 8 ]
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_41_8_41_58_if_stmt:
-        symbol [ app %tmp.40 41 12 15 ];
-        %tmp.40 = getv ? :app;
-        symbol [ userLevel %tmp.41 41 16 25 ];
-        %tmp.41 = getv %tmp.40 :userLevel;
-        %tmp.42 = 2;
-        %tmp.43 = eq %tmp.41 %tmp.42;
-        bf %tmp.43 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_41_8_41_58_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_41_8_41_58_if_true:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_41_32_41_58_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 41 34 ]
-        %tmp.44 = "Advanced";
-        lputv %levelName.3 %tmp.44;
-        symbol [ levelName %levelName.3 41 34 43 ];
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_41_32_41_58_stop:
-        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_41_8_41_58_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_41_8_41_58_if_end:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 43 8 ]
-        %tmp.45 = lgetv %dc;
-        symbol [ dc %tmp.45 43 8 10 ];
-        symbol [ setColor %tmp.46 43 11 19 ];
-        %tmp.46 = getv function %tmp.45 :setColor;
-        symbol [ Graphics %tmp.47 43 20 28 ];
-        %tmp.47 = getm $.Toybox.Graphics;
-        symbol [ COLOR_DK_GRAY %tmp.48 43 29 42 ];
-        %tmp.48 = getv %tmp.47 :COLOR_DK_GRAY;
-        symbol [ Graphics %tmp.49 43 44 52 ];
-        %tmp.49 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.50 43 53 64 ];
-        %tmp.50 = getv %tmp.49 :COLOR_BLACK;
-        invoke %tmp.45 %tmp.46(%tmp.48, %tmp.50);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 44 8 ]
-        %tmp.51 = lgetv %dc;
-        symbol [ dc %tmp.51 44 8 10 ];
-        symbol [ drawText %tmp.52 44 11 19 ];
-        %tmp.52 = getv function %tmp.51 :drawText;
-        %tmp.53 = lgetv %w.1;
-        symbol [ w %tmp.53 44 20 21 ];
-        %tmp.54 = 2;
-        %tmp.55 = div %tmp.53 %tmp.54;
-        %tmp.56 = 22;
-        symbol [ Graphics %tmp.57 44 29 37 ];
-        %tmp.57 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.58 44 38 47 ];
-        %tmp.58 = getv %tmp.57 :FONT_TINY;
-        %tmp.59 = "Current: ";
-        %tmp.60 = lgetv %levelName.3;
-        symbol [ levelName %tmp.60 44 63 72 ];
-        %tmp.61 = add %tmp.59 %tmp.60;
-        symbol [ Graphics %tmp.62 44 74 82 ];
-        %tmp.62 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.63 44 83 102 ];
-        %tmp.63 = getv %tmp.62 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.51 %tmp.52(%tmp.55, %tmp.56, %tmp.58, %tmp.61, %tmp.63);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 47 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_27_40_66_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_27_40_66_4_stop" ]
-        %y.4 = local;
-        symbol [ y %y.4 47 12 13 ];
-        %tmp.64 = 45;
-        lputv %y.4 %tmp.64;
-        symbol [ y %y.4 47 12 13 ];
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 48 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_27_40_66_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_27_40_66_4_stop" ]
-        %itemHeight.5 = local;
-        symbol [ itemHeight %itemHeight.5 48 12 22 ];
-        %tmp.65 = 22;
-        lputv %itemHeight.5 %tmp.65;
-        symbol [ itemHeight %itemHeight.5 48 12 22 ];
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 50 8 ]
-        for @_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_8_61_8_for_test @_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_8_61_8_for_incr @_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_8_61_8_for_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_8_61_8_for_init:
-        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_8_61_8_for_begin" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_8_61_8_for_end" ]
-        %i.6 = local;
-        symbol [ i %i.6 50 17 18 ];
-        %tmp.66 = 0;
-        lputv %i.6 %tmp.66;
-        symbol [ i %i.6 50 17 18 ];
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_8_61_8_for_test:
-        %tmp.67 = lgetv %i.6;
-        symbol [ i %tmp.67 50 24 25 ];
-        symbol [ options %tmp.69 50 28 35 ];
-        %tmp.69 = getv ? :options;
-        symbol [ size %tmp.70 50 36 40 ];
-        %tmp.70 = getv function %tmp.69 :size;
-        %tmp.71 = invoke %tmp.69 %tmp.70();
-        %tmp.72 = lt %tmp.67 %tmp.71;
-        bf %tmp.72 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_8_61_8_for_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_8_61_8_for_begin:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_49_61_8_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 51 12 ]
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_51_12_57_12_if_stmt:
-        %tmp.73 = lgetv %i.6;
-        symbol [ i %tmp.73 51 16 17 ];
-        symbol [ selectedOption %tmp.75 51 21 35 ];
-        %tmp.75 = getv ? :selectedOption;
-        %tmp.76 = eq %tmp.73 %tmp.75;
-        bf %tmp.76 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_51_12_57_12_if_else_false;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_51_12_57_12_if_true:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_51_37_55_12_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 52 16 ]
-        %tmp.77 = lgetv %dc;
-        symbol [ dc %tmp.77 52 16 18 ];
-        symbol [ setColor %tmp.78 52 19 27 ];
-        %tmp.78 = getv function %tmp.77 :setColor;
-        symbol [ Graphics %tmp.79 52 28 36 ];
-        %tmp.79 = getm $.Toybox.Graphics;
-        symbol [ COLOR_DK_GRAY %tmp.80 52 37 50 ];
-        %tmp.80 = getv %tmp.79 :COLOR_DK_GRAY;
-        symbol [ Graphics %tmp.81 52 52 60 ];
-        %tmp.81 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.82 52 61 72 ];
-        %tmp.82 = getv %tmp.81 :COLOR_WHITE;
-        invoke %tmp.77 %tmp.78(%tmp.80, %tmp.82);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 53 16 ]
-        %tmp.83 = lgetv %dc;
-        symbol [ dc %tmp.83 53 16 18 ];
-        symbol [ fillRectangle %tmp.84 53 19 32 ];
-        %tmp.84 = getv function %tmp.83 :fillRectangle;
-        %tmp.85 = 5;
-        %tmp.86 = lgetv %y.4;
-        symbol [ y %tmp.86 53 36 37 ];
-        %tmp.87 = lgetv %w.1;
-        symbol [ w %tmp.87 53 39 40 ];
-        %tmp.88 = 10;
-        %tmp.89 = sub %tmp.87 %tmp.88;
-        %tmp.90 = lgetv %itemHeight.5;
-        symbol [ itemHeight %tmp.90 53 47 57 ];
-        invoke %tmp.83 %tmp.84(%tmp.85, %tmp.86, %tmp.89, %tmp.90);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 54 16 ]
-        %tmp.91 = lgetv %dc;
-        symbol [ dc %tmp.91 54 16 18 ];
-        symbol [ setColor %tmp.92 54 19 27 ];
-        %tmp.92 = getv function %tmp.91 :setColor;
-        symbol [ Graphics %tmp.93 54 28 36 ];
-        %tmp.93 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.94 54 37 48 ];
-        %tmp.94 = getv %tmp.93 :COLOR_WHITE;
-        symbol [ Graphics %tmp.95 54 50 58 ];
-        %tmp.95 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.96 54 59 76 ];
-        %tmp.96 = getv %tmp.95 :COLOR_TRANSPARENT;
-        invoke %tmp.91 %tmp.92(%tmp.94, %tmp.96);
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_51_37_55_12_stop:
-        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_51_12_57_12_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_51_12_57_12_if_else_false:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_55_19_57_12_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 56 16 ]
-        %tmp.97 = lgetv %dc;
-        symbol [ dc %tmp.97 56 16 18 ];
-        symbol [ setColor %tmp.98 56 19 27 ];
-        %tmp.98 = getv function %tmp.97 :setColor;
-        symbol [ Graphics %tmp.99 56 28 36 ];
-        %tmp.99 = getm $.Toybox.Graphics;
-        symbol [ COLOR_LT_GRAY %tmp.100 56 37 50 ];
-        %tmp.100 = getv %tmp.99 :COLOR_LT_GRAY;
-        symbol [ Graphics %tmp.101 56 52 60 ];
-        %tmp.101 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.102 56 61 72 ];
-        %tmp.102 = getv %tmp.101 :COLOR_BLACK;
-        invoke %tmp.97 %tmp.98(%tmp.100, %tmp.102);
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_55_19_57_12_stop:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_51_12_57_12_if_end:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 59 12 ]
-        %tmp.103 = lgetv %dc;
-        symbol [ dc %tmp.103 59 12 14 ];
-        symbol [ drawText %tmp.104 59 15 23 ];
-        %tmp.104 = getv function %tmp.103 :drawText;
-        %tmp.105 = lgetv %w.1;
-        symbol [ w %tmp.105 59 24 25 ];
-        %tmp.106 = 2;
-        %tmp.107 = div %tmp.105 %tmp.106;
-        %tmp.108 = lgetv %y.4;
-        symbol [ y %tmp.108 59 29 30 ];
-        %tmp.109 = 3;
-        %tmp.110 = add %tmp.108 %tmp.109;
-        symbol [ Graphics %tmp.111 59 36 44 ];
-        %tmp.111 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.112 59 45 54 ];
-        %tmp.112 = getv %tmp.111 :FONT_TINY;
-        symbol [ options %tmp.114 59 56 63 ];
-        %tmp.114 = getv ? :options;
-        %tmp.115 = lgetv %i.6;
-        symbol [ i %tmp.115 59 64 65 ];
-        %tmp.116 = agetv %tmp.114 %tmp.115;
-        symbol [ Graphics %tmp.117 59 68 76 ];
-        %tmp.117 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.118 59 77 96 ];
-        %tmp.118 = getv %tmp.117 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.103 %tmp.104(%tmp.107, %tmp.110, %tmp.112, %tmp.116, %tmp.118);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 60 12 ]
-        %tmp.119 = lgetv %y.4;
-        symbol [ y %tmp.119 60 12 13 ];
-        %tmp.120 = lgetv %itemHeight.5;
-        symbol [ itemHeight %tmp.120 60 17 27 ];
-        %tmp.121 = 2;
-        %tmp.122 = add %tmp.120 %tmp.121;
-        %tmp.123 = add %tmp.119 %tmp.122;
-        lputv %y.4 %tmp.123;
-        symbol [ y %y.4 60 12 13 ];
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_49_61_8_stop:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_8_61_8_for_incr:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 50 ]
-        %tmp.126 = lgetv %i.6;
-        symbol [ i %tmp.126 50 44 45 ];
-        %tmp.127 = add %tmp.126 1;
-        lputv %i.6 %tmp.127;
-        symbol [ i %i.6 50 44 45 ];
-        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_8_61_8_for_test;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_50_8_61_8_for_end:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 64 8 ]
-        %tmp.128 = lgetv %dc;
-        symbol [ dc %tmp.128 64 8 10 ];
-        symbol [ setColor %tmp.129 64 11 19 ];
-        %tmp.129 = getv function %tmp.128 :setColor;
-        symbol [ Graphics %tmp.130 64 20 28 ];
-        %tmp.130 = getm $.Toybox.Graphics;
-        symbol [ COLOR_DK_GRAY %tmp.131 64 29 42 ];
-        %tmp.131 = getv %tmp.130 :COLOR_DK_GRAY;
-        symbol [ Graphics %tmp.132 64 44 52 ];
-        %tmp.132 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.133 64 53 64 ];
-        %tmp.133 = getv %tmp.132 :COLOR_BLACK;
-        invoke %tmp.128 %tmp.129(%tmp.131, %tmp.133);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 65 8 ]
-        %tmp.134 = lgetv %dc;
-        symbol [ dc %tmp.134 65 8 10 ];
-        symbol [ drawText %tmp.135 65 11 19 ];
-        %tmp.135 = getv function %tmp.134 :drawText;
-        %tmp.136 = lgetv %w.1;
-        symbol [ w %tmp.136 65 20 21 ];
-        %tmp.137 = 2;
-        %tmp.138 = div %tmp.136 %tmp.137;
-        %tmp.139 = lgetv %h.2;
-        symbol [ h %tmp.139 65 25 26 ];
-        %tmp.140 = 8;
-        %tmp.141 = sub %tmp.139 %tmp.140;
-        symbol [ Graphics %tmp.142 65 32 40 ];
-        %tmp.142 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.143 65 41 50 ];
-        %tmp.143 = getv %tmp.142 :FONT_TINY;
-        %tmp.144 = "UP/DOWN | ENTER | ESC";
-        symbol [ Graphics %tmp.145 65 77 85 ];
-        %tmp.145 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.146 65 86 105 ];
-        %tmp.146 = getv %tmp.145 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.134 %tmp.135(%tmp.138, %tmp.141, %tmp.143, %tmp.144, %tmp.146);
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_27_40_66_4_stop:
+        %tmp.17 = newa 3;
+        %tmp.18 = "Plan: ";
+        %tmp.19 = lgetv %planWeeks.1;
+        symbol [ planWeeks %tmp.19 30 23 32 ];
+        %tmp.20 = add %tmp.18 %tmp.19;
+        %tmp.21 = " Week";
+        %tmp.22 = add %tmp.20 %tmp.21;
+        %tmp.23 = dup %tmp.17;
+        %tmp.24 = aputv %tmp.23 0 %tmp.22;
+        %tmp.25 = "Level: ";
+        %tmp.26 = self;
+        symbol [ getLevelName %tmp.27 31 24 36 ];
+        %tmp.27 = getv function %tmp.26 :getLevelName;
+        symbol [ app %tmp.29 31 37 40 ];
+        %tmp.29 = getv ? :app;
+        symbol [ userLevel %tmp.30 31 41 50 ];
+        %tmp.30 = getv %tmp.29 :userLevel;
+        %tmp.31 = invoke %tmp.26 %tmp.27(%tmp.30);
+        %tmp.32 = add %tmp.25 %tmp.31;
+        %tmp.33 = dup %tmp.24;
+        %tmp.34 = aputv %tmp.33 1 %tmp.32;
+        %tmp.35 = "Reset Progress";
+        %tmp.36 = dup %tmp.34;
+        %tmp.37 = aputv %tmp.36 2 %tmp.35;
+        symbol [ options ? 29 8 15 ];
+        putv self :options %tmp.37;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_22_37_34_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 68; @symbol_functiondef = [selectNext,68,13,23]; ]
-    function selectNext() as Void {
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_68_34_71_4_start:
+    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 36; @symbol_functiondef = [getLevelName,36,13,25]; @symbol_param<0> = [level,36,26,31]; @symbol_param<0>_type<0> = [Number,36,35,41]; @symbol_return<0> = [String,36,46,52]; ]
+    function getLevelName(level as Number) as String {
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_36_53_40_4_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 37 8 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_37_8_39_34_if_stmt:
+        %tmp.1 = lgetv %level;
+        symbol [ level %tmp.1 37 12 17 ];
+        %tmp.2 = 0;
+        %tmp.3 = eq %tmp.1 %tmp.2;
+        bf %tmp.3 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_37_8_39_34_if_false;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_37_8_39_34_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_37_24_37_45_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 37 26 ]
+        %tmp.4 = "Beginner";
+        ret %tmp.4;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_37_24_37_45_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_37_8_39_34_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_37_8_39_34_if_false:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 38 13 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_38_13_39_34_if_stmt:
+        %tmp.5 = lgetv %level;
+        symbol [ level %tmp.5 38 17 22 ];
+        %tmp.6 = 1;
+        %tmp.7 = eq %tmp.5 %tmp.6;
+        bf %tmp.7 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_38_13_39_34_if_else_false;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_38_13_39_34_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_38_29_38_54_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 38 31 ]
+        %tmp.8 = "Intermediate";
+        ret %tmp.8;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_38_29_38_54_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_38_13_39_34_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_38_13_39_34_if_else_false:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_39_13_39_34_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 39 15 ]
+        %tmp.9 = "Advanced";
+        ret %tmp.9;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_39_13_39_34_stop:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_38_13_39_34_if_end:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_37_8_39_34_if_end:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_36_53_40_4_stop:
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 42; @symbol_functiondef = [onUpdate,42,13,21]; @symbol_param<0> = [dc,42,22,24]; @symbol_param<0>_type<0> = [Dc,42,28,30]; ]
+    function onUpdate(dc as Dc) as Void {
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 43 8 ]
+        %tmp.1 = self;
+        symbol [ updateOptions %tmp.2 43 8 21 ];
+        %tmp.2 = getv function %tmp.1 :updateOptions;
+        invoke %tmp.1 %tmp.2();
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 45 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_stop" ]
+        %w.1 = local;
+        symbol [ w %w.1 45 12 13 ];
+        %tmp.3 = lgetv %dc;
+        symbol [ dc %tmp.3 45 16 18 ];
+        symbol [ getWidth %tmp.4 45 19 27 ];
+        %tmp.4 = getv function %tmp.3 :getWidth;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        lputv %w.1 %tmp.5;
+        symbol [ w %w.1 45 12 13 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 46 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_stop" ]
+        %h.2 = local;
+        symbol [ h %h.2 46 12 13 ];
+        %tmp.6 = lgetv %dc;
+        symbol [ dc %tmp.6 46 16 18 ];
+        symbol [ getHeight %tmp.7 46 19 28 ];
+        %tmp.7 = getv function %tmp.6 :getHeight;
+        %tmp.8 = invoke %tmp.6 %tmp.7();
+        lputv %h.2 %tmp.8;
+        symbol [ h %h.2 46 12 13 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 48 8 ]
+        %tmp.9 = lgetv %dc;
+        symbol [ dc %tmp.9 48 8 10 ];
+        symbol [ setColor %tmp.10 48 11 19 ];
+        %tmp.10 = getv function %tmp.9 :setColor;
+        symbol [ Graphics %tmp.11 48 20 28 ];
+        %tmp.11 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.12 48 29 40 ];
+        %tmp.12 = getv %tmp.11 :COLOR_BLACK;
+        symbol [ Graphics %tmp.13 48 42 50 ];
+        %tmp.13 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.14 48 51 62 ];
+        %tmp.14 = getv %tmp.13 :COLOR_BLACK;
+        invoke %tmp.9 %tmp.10(%tmp.12, %tmp.14);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 49 8 ]
+        %tmp.15 = lgetv %dc;
+        symbol [ dc %tmp.15 49 8 10 ];
+        symbol [ clear %tmp.16 49 11 16 ];
+        %tmp.16 = getv function %tmp.15 :clear;
+        invoke %tmp.15 %tmp.16();
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 52 8 ]
+        %tmp.17 = lgetv %dc;
+        symbol [ dc %tmp.17 52 8 10 ];
+        symbol [ setColor %tmp.18 52 11 19 ];
+        %tmp.18 = getv function %tmp.17 :setColor;
+        symbol [ COLOR_ORANGE %tmp.20 52 20 32 ];
+        %tmp.20 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.21 52 34 42 ];
+        %tmp.21 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.22 52 43 54 ];
+        %tmp.22 = getv %tmp.21 :COLOR_BLACK;
+        invoke %tmp.17 %tmp.18(%tmp.20, %tmp.22);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 53 8 ]
+        %tmp.23 = lgetv %dc;
+        symbol [ dc %tmp.23 53 8 10 ];
+        symbol [ drawText %tmp.24 53 11 19 ];
+        %tmp.24 = getv function %tmp.23 :drawText;
+        %tmp.25 = lgetv %w.1;
+        symbol [ w %tmp.25 53 20 21 ];
+        %tmp.26 = 2;
+        %tmp.27 = div %tmp.25 %tmp.26;
+        %tmp.28 = 4;
+        symbol [ Graphics %tmp.29 53 28 36 ];
+        %tmp.29 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.30 53 37 46 ];
+        %tmp.30 = getv %tmp.29 :FONT_TINY;
+        %tmp.31 = "SETTINGS";
+        symbol [ Graphics %tmp.32 53 60 68 ];
+        %tmp.32 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.33 53 69 88 ];
+        %tmp.33 = getv %tmp.32 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.23 %tmp.24(%tmp.27, %tmp.28, %tmp.30, %tmp.31, %tmp.33);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 56 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_stop" ]
+        %planWeeks.3 = local;
+        symbol [ planWeeks %planWeeks.3 56 12 21 ];
+        %tmp.34 = 8;
+        lputv %planWeeks.3 %tmp.34;
+        symbol [ planWeeks %planWeeks.3 56 12 21 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 57 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_stop" ]
+        %planStored.4 = local;
+        symbol [ planStored %planStored.4 57 12 22 ];
+        symbol [ app %tmp.36 57 25 28 ];
+        %tmp.36 = getv ? :app;
+        symbol [ sessionStorage %tmp.37 57 29 43 ];
+        %tmp.37 = getv %tmp.36 :sessionStorage;
+        symbol [ getValue %tmp.38 57 44 52 ];
+        %tmp.38 = getv function %tmp.37 :getValue;
+        %tmp.39 = "planType";
+        %tmp.40 = invoke %tmp.37 %tmp.38(%tmp.39);
+        lputv %planStored.4 %tmp.40;
+        symbol [ planStored %planStored.4 57 12 22 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 58 8 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_8_60_8_if_stmt:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_12_58_48_begin:
+        %tmp.41 = lgetv %planStored.4;
+        symbol [ planStored %tmp.41 58 12 22 ];
+        %tmp.42 = null;
+        %tmp.43 = ne %tmp.41 %tmp.42;
+        bf %tmp.43 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_8_60_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_34_58_48_true:
+        %tmp.44 = lgetv %planStored.4;
+        symbol [ planStored %tmp.44 58 34 44 ];
+        %tmp.45 = as %tmp.44 { (!Null) };
+        %tmp.46 = 12;
+        %tmp.47 = eq %tmp.45 %tmp.46;
+        push %tmp.47;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_34_58_48_end:
+        %tmp.48 = phi [%tmp.43 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_12_58_48_begin] [%tmp.47 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_34_58_48_true] [%tmp.48 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_34_58_48_end];
+        bf %tmp.48 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_8_60_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_8_60_8_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_52_60_8_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 59 12 ]
+        %tmp.49 = 12;
+        lputv %planWeeks.3 %tmp.49;
+        symbol [ planWeeks %planWeeks.3 59 12 21 ];
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_52_60_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_8_60_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_58_8_60_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 62 8 ]
+        %tmp.50 = lgetv %dc;
+        symbol [ dc %tmp.50 62 8 10 ];
+        symbol [ setColor %tmp.51 62 11 19 ];
+        %tmp.51 = getv function %tmp.50 :setColor;
+        symbol [ Graphics %tmp.52 62 20 28 ];
+        %tmp.52 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.53 62 29 42 ];
+        %tmp.53 = getv %tmp.52 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.54 62 44 52 ];
+        %tmp.54 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.55 62 53 64 ];
+        %tmp.55 = getv %tmp.54 :COLOR_BLACK;
+        invoke %tmp.50 %tmp.51(%tmp.53, %tmp.55);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 63 8 ]
+        %tmp.56 = lgetv %dc;
+        symbol [ dc %tmp.56 63 8 10 ];
+        symbol [ drawText %tmp.57 63 11 19 ];
+        %tmp.57 = getv function %tmp.56 :drawText;
+        %tmp.58 = lgetv %w.1;
+        symbol [ w %tmp.58 63 20 21 ];
+        %tmp.59 = 2;
+        %tmp.60 = div %tmp.58 %tmp.59;
+        %tmp.61 = 22;
+        symbol [ Graphics %tmp.62 63 29 37 ];
+        %tmp.62 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.63 63 38 47 ];
+        %tmp.63 = getv %tmp.62 :FONT_TINY;
+        %tmp.64 = lgetv %planWeeks.3;
+        symbol [ planWeeks %tmp.64 63 49 58 ];
+        %tmp.65 = "w | ";
+        %tmp.66 = add %tmp.64 %tmp.65;
+        %tmp.67 = self;
+        symbol [ getLevelName %tmp.68 63 70 82 ];
+        %tmp.68 = getv function %tmp.67 :getLevelName;
+        symbol [ app %tmp.70 63 83 86 ];
+        %tmp.70 = getv ? :app;
+        symbol [ userLevel %tmp.71 63 87 96 ];
+        %tmp.71 = getv %tmp.70 :userLevel;
+        %tmp.72 = invoke %tmp.67 %tmp.68(%tmp.71);
+        %tmp.73 = add %tmp.66 %tmp.72;
+        symbol [ Graphics %tmp.74 63 99 107 ];
+        %tmp.74 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.75 63 108 127 ];
+        %tmp.75 = getv %tmp.74 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.56 %tmp.57(%tmp.60, %tmp.61, %tmp.63, %tmp.73, %tmp.75);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 66 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_stop" ]
+        %y.5 = local;
+        symbol [ y %y.5 66 12 13 ];
+        %tmp.76 = 45;
+        lputv %y.5 %tmp.76;
+        symbol [ y %y.5 66 12 13 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 67 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_stop" ]
+        %itemHeight.6 = local;
+        symbol [ itemHeight %itemHeight.6 67 12 22 ];
+        %tmp.77 = 25;
+        lputv %itemHeight.6 %tmp.77;
+        symbol [ itemHeight %itemHeight.6 67 12 22 ];
 [ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 69 8 ]
-        symbol [ selectedOption %tmp.2 69 26 40 ];
+        for @_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_8_80_8_for_test @_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_8_80_8_for_incr @_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_8_80_8_for_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_8_80_8_for_init:
+        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_8_80_8_for_begin" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_8_80_8_for_end" ]
+        %i.7 = local;
+        symbol [ i %i.7 69 17 18 ];
+        %tmp.78 = 0;
+        lputv %i.7 %tmp.78;
+        symbol [ i %i.7 69 17 18 ];
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_8_80_8_for_test:
+        %tmp.79 = lgetv %i.7;
+        symbol [ i %tmp.79 69 24 25 ];
+        symbol [ options %tmp.81 69 28 35 ];
+        %tmp.81 = getv ? :options;
+        symbol [ size %tmp.82 69 36 40 ];
+        %tmp.82 = getv function %tmp.81 :size;
+        %tmp.83 = invoke %tmp.81 %tmp.82();
+        %tmp.84 = lt %tmp.79 %tmp.83;
+        bf %tmp.84 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_8_80_8_for_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_8_80_8_for_begin:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_49_80_8_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 70 12 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_70_12_76_12_if_stmt:
+        %tmp.85 = lgetv %i.7;
+        symbol [ i %tmp.85 70 16 17 ];
+        symbol [ selectedOption %tmp.87 70 21 35 ];
+        %tmp.87 = getv ? :selectedOption;
+        %tmp.88 = eq %tmp.85 %tmp.87;
+        bf %tmp.88 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_70_12_76_12_if_else_false;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_70_12_76_12_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_70_37_74_12_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 71 16 ]
+        %tmp.89 = lgetv %dc;
+        symbol [ dc %tmp.89 71 16 18 ];
+        symbol [ setColor %tmp.90 71 19 27 ];
+        %tmp.90 = getv function %tmp.89 :setColor;
+        symbol [ Graphics %tmp.91 71 28 36 ];
+        %tmp.91 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.92 71 37 50 ];
+        %tmp.92 = getv %tmp.91 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.93 71 52 60 ];
+        %tmp.93 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.94 71 61 72 ];
+        %tmp.94 = getv %tmp.93 :COLOR_WHITE;
+        invoke %tmp.89 %tmp.90(%tmp.92, %tmp.94);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 72 16 ]
+        %tmp.95 = lgetv %dc;
+        symbol [ dc %tmp.95 72 16 18 ];
+        symbol [ fillRectangle %tmp.96 72 19 32 ];
+        %tmp.96 = getv function %tmp.95 :fillRectangle;
+        %tmp.97 = 5;
+        %tmp.98 = lgetv %y.5;
+        symbol [ y %tmp.98 72 36 37 ];
+        %tmp.99 = lgetv %w.1;
+        symbol [ w %tmp.99 72 39 40 ];
+        %tmp.100 = 10;
+        %tmp.101 = sub %tmp.99 %tmp.100;
+        %tmp.102 = lgetv %itemHeight.6;
+        symbol [ itemHeight %tmp.102 72 47 57 ];
+        invoke %tmp.95 %tmp.96(%tmp.97, %tmp.98, %tmp.101, %tmp.102);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 73 16 ]
+        %tmp.103 = lgetv %dc;
+        symbol [ dc %tmp.103 73 16 18 ];
+        symbol [ setColor %tmp.104 73 19 27 ];
+        %tmp.104 = getv function %tmp.103 :setColor;
+        symbol [ Graphics %tmp.105 73 28 36 ];
+        %tmp.105 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.106 73 37 48 ];
+        %tmp.106 = getv %tmp.105 :COLOR_WHITE;
+        symbol [ Graphics %tmp.107 73 50 58 ];
+        %tmp.107 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.108 73 59 76 ];
+        %tmp.108 = getv %tmp.107 :COLOR_TRANSPARENT;
+        invoke %tmp.103 %tmp.104(%tmp.106, %tmp.108);
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_70_37_74_12_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_70_12_76_12_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_70_12_76_12_if_else_false:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_74_19_76_12_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 75 16 ]
+        %tmp.109 = lgetv %dc;
+        symbol [ dc %tmp.109 75 16 18 ];
+        symbol [ setColor %tmp.110 75 19 27 ];
+        %tmp.110 = getv function %tmp.109 :setColor;
+        symbol [ Graphics %tmp.111 75 28 36 ];
+        %tmp.111 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.112 75 37 50 ];
+        %tmp.112 = getv %tmp.111 :COLOR_LT_GRAY;
+        symbol [ Graphics %tmp.113 75 52 60 ];
+        %tmp.113 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.114 75 61 72 ];
+        %tmp.114 = getv %tmp.113 :COLOR_BLACK;
+        invoke %tmp.109 %tmp.110(%tmp.112, %tmp.114);
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_74_19_76_12_stop:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_70_12_76_12_if_end:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 78 12 ]
+        %tmp.115 = lgetv %dc;
+        symbol [ dc %tmp.115 78 12 14 ];
+        symbol [ drawText %tmp.116 78 15 23 ];
+        %tmp.116 = getv function %tmp.115 :drawText;
+        %tmp.117 = lgetv %w.1;
+        symbol [ w %tmp.117 78 24 25 ];
+        %tmp.118 = 2;
+        %tmp.119 = div %tmp.117 %tmp.118;
+        %tmp.120 = lgetv %y.5;
+        symbol [ y %tmp.120 78 29 30 ];
+        %tmp.121 = 4;
+        %tmp.122 = add %tmp.120 %tmp.121;
+        symbol [ Graphics %tmp.123 78 36 44 ];
+        %tmp.123 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.124 78 45 54 ];
+        %tmp.124 = getv %tmp.123 :FONT_TINY;
+        symbol [ options %tmp.126 78 56 63 ];
+        %tmp.126 = getv ? :options;
+        %tmp.127 = lgetv %i.7;
+        symbol [ i %tmp.127 78 64 65 ];
+        %tmp.128 = agetv %tmp.126 %tmp.127;
+        symbol [ Graphics %tmp.129 78 68 76 ];
+        %tmp.129 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.130 78 77 96 ];
+        %tmp.130 = getv %tmp.129 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.115 %tmp.116(%tmp.119, %tmp.122, %tmp.124, %tmp.128, %tmp.130);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 79 12 ]
+        %tmp.131 = lgetv %y.5;
+        symbol [ y %tmp.131 79 12 13 ];
+        %tmp.132 = lgetv %itemHeight.6;
+        symbol [ itemHeight %tmp.132 79 17 27 ];
+        %tmp.133 = 2;
+        %tmp.134 = add %tmp.132 %tmp.133;
+        %tmp.135 = add %tmp.131 %tmp.134;
+        lputv %y.5 %tmp.135;
+        symbol [ y %y.5 79 12 13 ];
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_49_80_8_stop:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_8_80_8_for_incr:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 69 ]
+        %tmp.138 = lgetv %i.7;
+        symbol [ i %tmp.138 69 44 45 ];
+        %tmp.139 = add %tmp.138 1;
+        lputv %i.7 %tmp.139;
+        symbol [ i %i.7 69 44 45 ];
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_8_80_8_for_test;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_69_8_80_8_for_end:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 83 8 ]
+        %tmp.140 = lgetv %dc;
+        symbol [ dc %tmp.140 83 8 10 ];
+        symbol [ setColor %tmp.141 83 11 19 ];
+        %tmp.141 = getv function %tmp.140 :setColor;
+        symbol [ Graphics %tmp.142 83 20 28 ];
+        %tmp.142 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.143 83 29 42 ];
+        %tmp.143 = getv %tmp.142 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.144 83 44 52 ];
+        %tmp.144 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.145 83 53 64 ];
+        %tmp.145 = getv %tmp.144 :COLOR_BLACK;
+        invoke %tmp.140 %tmp.141(%tmp.143, %tmp.145);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 84 8 ]
+        %tmp.146 = lgetv %dc;
+        symbol [ dc %tmp.146 84 8 10 ];
+        symbol [ drawText %tmp.147 84 11 19 ];
+        %tmp.147 = getv function %tmp.146 :drawText;
+        %tmp.148 = lgetv %w.1;
+        symbol [ w %tmp.148 84 20 21 ];
+        %tmp.149 = 2;
+        %tmp.150 = div %tmp.148 %tmp.149;
+        %tmp.151 = lgetv %h.2;
+        symbol [ h %tmp.151 84 25 26 ];
+        %tmp.152 = 8;
+        %tmp.153 = sub %tmp.151 %tmp.152;
+        symbol [ Graphics %tmp.154 84 32 40 ];
+        %tmp.154 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.155 84 41 50 ];
+        %tmp.155 = getv %tmp.154 :FONT_TINY;
+        %tmp.156 = "UP/DOWN | ENTER | ESC";
+        symbol [ Graphics %tmp.157 84 77 85 ];
+        %tmp.157 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.158 84 86 105 ];
+        %tmp.158 = getv %tmp.157 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.146 %tmp.147(%tmp.150, %tmp.153, %tmp.155, %tmp.156, %tmp.158);
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_42_40_85_4_stop:
+    }
+    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 87; @symbol_functiondef = [selectNext,87,13,23]; ]
+    function selectNext() as Void {
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_87_34_90_4_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 88 8 ]
+        symbol [ selectedOption %tmp.2 88 26 40 ];
         %tmp.2 = getv ? :selectedOption;
         %tmp.3 = 1;
         %tmp.4 = add %tmp.2 %tmp.3;
-        symbol [ options %tmp.6 69 48 55 ];
+        symbol [ options %tmp.6 88 48 55 ];
         %tmp.6 = getv ? :options;
-        symbol [ size %tmp.7 69 56 60 ];
+        symbol [ size %tmp.7 88 56 60 ];
         %tmp.7 = getv function %tmp.6 :size;
         %tmp.8 = invoke %tmp.6 %tmp.7();
         %tmp.9 = mod %tmp.4 %tmp.8;
-        symbol [ selectedOption ? 69 8 22 ];
+        symbol [ selectedOption ? 88 8 22 ];
         putv self :selectedOption %tmp.9;
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 70 8 ]
-        symbol [ WatchUi %tmp.10 70 8 15 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 89 8 ]
+        symbol [ WatchUi %tmp.10 89 8 15 ];
         %tmp.10 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.11 70 16 29 ];
+        symbol [ requestUpdate %tmp.11 89 16 29 ];
         %tmp.11 = getv function %tmp.10 :requestUpdate;
         invoke %tmp.10 %tmp.11();
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_68_34_71_4_stop:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_87_34_90_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 73; @symbol_functiondef = [selectPrevious,73,13,27]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 92; @symbol_functiondef = [selectPrevious,92,13,27]; ]
     function selectPrevious() as Void {
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_73_38_76_4_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 74 8 ]
-        symbol [ selectedOption %tmp.2 74 26 40 ];
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_92_38_95_4_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 93 8 ]
+        symbol [ selectedOption %tmp.2 93 26 40 ];
         %tmp.2 = getv ? :selectedOption;
         %tmp.3 = 1;
         %tmp.4 = sub %tmp.2 %tmp.3;
-        symbol [ options %tmp.6 74 47 54 ];
+        symbol [ options %tmp.6 93 47 54 ];
         %tmp.6 = getv ? :options;
-        symbol [ size %tmp.7 74 55 59 ];
+        symbol [ size %tmp.7 93 55 59 ];
         %tmp.7 = getv function %tmp.6 :size;
         %tmp.8 = invoke %tmp.6 %tmp.7();
         %tmp.9 = add %tmp.4 %tmp.8;
-        symbol [ options %tmp.11 74 65 72 ];
+        symbol [ options %tmp.11 93 65 72 ];
         %tmp.11 = getv ? :options;
-        symbol [ size %tmp.12 74 73 77 ];
+        symbol [ size %tmp.12 93 73 77 ];
         %tmp.12 = getv function %tmp.11 :size;
         %tmp.13 = invoke %tmp.11 %tmp.12();
         %tmp.14 = mod %tmp.9 %tmp.13;
-        symbol [ selectedOption ? 74 8 22 ];
+        symbol [ selectedOption ? 93 8 22 ];
         putv self :selectedOption %tmp.14;
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 75 8 ]
-        symbol [ WatchUi %tmp.15 75 8 15 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 94 8 ]
+        symbol [ WatchUi %tmp.15 94 8 15 ];
         %tmp.15 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.16 75 16 29 ];
+        symbol [ requestUpdate %tmp.16 94 16 29 ];
         %tmp.16 = getv function %tmp.15 :requestUpdate;
         invoke %tmp.15 %tmp.16();
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_73_38_76_4_stop:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_92_38_95_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 78; @symbol_functiondef = [applySetting,78,13,25]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 97; @symbol_functiondef = [applySetting,97,13,25]; ]
     function applySetting() as Void {
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_78_36_108_4_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 79 8 ]
-        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_78_36_108_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_78_36_108_4_stop" ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_97_36_130_4_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 98 8 ]
+        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_97_36_130_4_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_97_36_130_4_stop" ]
         %storage.1 = local;
-        symbol [ storage %storage.1 79 12 19 ];
-        symbol [ app %tmp.2 79 22 25 ];
+        symbol [ storage %storage.1 98 12 19 ];
+        symbol [ app %tmp.2 98 22 25 ];
         %tmp.2 = getv ? :app;
-        symbol [ sessionStorage %tmp.3 79 26 40 ];
+        symbol [ sessionStorage %tmp.3 98 26 40 ];
         %tmp.3 = getv %tmp.2 :sessionStorage;
         lputv %storage.1 %tmp.3;
-        symbol [ storage %storage.1 79 12 19 ];
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 81 8 ]
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_81_8_105_8_if_stmt:
-        symbol [ selectedOption %tmp.5 81 12 26 ];
+        symbol [ storage %storage.1 98 12 19 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 100 8 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_100_8_127_8_if_stmt:
+        symbol [ selectedOption %tmp.5 100 12 26 ];
         %tmp.5 = getv ? :selectedOption;
         %tmp.6 = 0;
         %tmp.7 = eq %tmp.5 %tmp.6;
-        bf %tmp.7 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_81_8_105_8_if_false;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_81_8_105_8_if_true:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_81_33_87_8_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 83 12 ]
+        bf %tmp.7 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_100_8_127_8_if_false;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_100_8_127_8_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_100_33_111_8_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 102 12 ]
+        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_100_33_111_8_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_100_33_111_8_stop" ]
+        %currentPlan.2 = local;
+        symbol [ currentPlan %currentPlan.2 102 16 27 ];
         %tmp.8 = lgetv %storage.1;
-        symbol [ storage %tmp.8 83 12 19 ];
-        symbol [ setValue %tmp.9 83 20 28 ];
-        %tmp.9 = getv function %tmp.8 :setValue;
-        %tmp.10 = "userLevel";
-        %tmp.11 = 0;
-        invoke %tmp.8 %tmp.9(%tmp.10, %tmp.11);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 84 12 ]
-        %tmp.12 = lgetv %storage.1;
-        symbol [ storage %tmp.12 84 12 19 ];
-        symbol [ setValue %tmp.13 84 20 28 ];
-        %tmp.13 = getv function %tmp.12 :setValue;
-        %tmp.14 = "completedWeeks";
-        %tmp.15 = 0;
-        invoke %tmp.12 %tmp.13(%tmp.14, %tmp.15);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 85 12 ]
-        symbol [ app %tmp.16 85 12 15 ];
-        %tmp.16 = getv self :app;
-        %tmp.17 = 0;
-        symbol [ userLevel ? 85 16 25 ];
-        putv %tmp.16 :userLevel %tmp.17;
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 86 12 ]
-        symbol [ app %tmp.18 86 12 15 ];
-        %tmp.18 = getv self :app;
-        %tmp.19 = 0;
-        symbol [ completedWeeks ? 86 16 30 ];
-        putv %tmp.18 :completedWeeks %tmp.19;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_81_33_87_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_81_8_105_8_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_81_8_105_8_if_false:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 87 15 ]
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_87_15_105_8_if_stmt:
-        symbol [ selectedOption %tmp.21 87 19 33 ];
-        %tmp.21 = getv ? :selectedOption;
-        %tmp.22 = 1;
-        %tmp.23 = eq %tmp.21 %tmp.22;
-        bf %tmp.23 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_87_15_105_8_if_false;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_87_15_105_8_if_true:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_87_40_93_8_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 89 12 ]
+        symbol [ storage %tmp.8 102 30 37 ];
+        symbol [ getValue %tmp.9 102 38 46 ];
+        %tmp.9 = getv function %tmp.8 :getValue;
+        %tmp.10 = "planType";
+        %tmp.11 = invoke %tmp.8 %tmp.9(%tmp.10);
+        lputv %currentPlan.2 %tmp.11;
+        symbol [ currentPlan %currentPlan.2 102 16 27 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 103 12 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_12_107_12_if_stmt:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_16_103_54_begin:
+        %tmp.12 = lgetv %currentPlan.2;
+        symbol [ currentPlan %tmp.12 103 16 27 ];
+        %tmp.13 = null;
+        %tmp.14 = ne %tmp.12 %tmp.13;
+        bf %tmp.14 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_12_107_12_if_else_false;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_39_103_54_true:
+        %tmp.15 = lgetv %currentPlan.2;
+        symbol [ currentPlan %tmp.15 103 39 50 ];
+        %tmp.16 = as %tmp.15 { (!Null) };
+        %tmp.17 = 12;
+        %tmp.18 = eq %tmp.16 %tmp.17;
+        push %tmp.18;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_39_103_54_end:
+        %tmp.19 = phi [%tmp.14 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_16_103_54_begin] [%tmp.18 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_39_103_54_true] [%tmp.19 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_39_103_54_end];
+        bf %tmp.19 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_12_107_12_if_else_false;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_12_107_12_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_58_105_12_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 104 16 ]
+        %tmp.20 = lgetv %storage.1;
+        symbol [ storage %tmp.20 104 16 23 ];
+        symbol [ setValue %tmp.21 104 24 32 ];
+        %tmp.21 = getv function %tmp.20 :setValue;
+        %tmp.22 = "planType";
+        %tmp.23 = 8;
+        invoke %tmp.20 %tmp.21(%tmp.22, %tmp.23);
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_58_105_12_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_12_107_12_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_12_107_12_if_else_false:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_105_19_107_12_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 106 16 ]
         %tmp.24 = lgetv %storage.1;
-        symbol [ storage %tmp.24 89 12 19 ];
-        symbol [ setValue %tmp.25 89 20 28 ];
+        symbol [ storage %tmp.24 106 16 23 ];
+        symbol [ setValue %tmp.25 106 24 32 ];
         %tmp.25 = getv function %tmp.24 :setValue;
-        %tmp.26 = "userLevel";
-        %tmp.27 = 1;
+        %tmp.26 = "planType";
+        %tmp.27 = 12;
         invoke %tmp.24 %tmp.25(%tmp.26, %tmp.27);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 90 12 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_105_19_107_12_stop:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_103_12_107_12_if_end:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 109 12 ]
         %tmp.28 = lgetv %storage.1;
-        symbol [ storage %tmp.28 90 12 19 ];
-        symbol [ setValue %tmp.29 90 20 28 ];
+        symbol [ storage %tmp.28 109 12 19 ];
+        symbol [ setValue %tmp.29 109 20 28 ];
         %tmp.29 = getv function %tmp.28 :setValue;
         %tmp.30 = "completedWeeks";
         %tmp.31 = 0;
         invoke %tmp.28 %tmp.29(%tmp.30, %tmp.31);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 91 12 ]
-        symbol [ app %tmp.32 91 12 15 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 110 12 ]
+        symbol [ app %tmp.32 110 12 15 ];
         %tmp.32 = getv self :app;
-        %tmp.33 = 1;
-        symbol [ userLevel ? 91 16 25 ];
-        putv %tmp.32 :userLevel %tmp.33;
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 92 12 ]
-        symbol [ app %tmp.34 92 12 15 ];
-        %tmp.34 = getv self :app;
-        %tmp.35 = 0;
-        symbol [ completedWeeks ? 92 16 30 ];
-        putv %tmp.34 :completedWeeks %tmp.35;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_87_40_93_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_87_15_105_8_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_87_15_105_8_if_false:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 93 15 ]
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_93_15_105_8_if_stmt:
-        symbol [ selectedOption %tmp.37 93 19 33 ];
-        %tmp.37 = getv ? :selectedOption;
-        %tmp.38 = 2;
-        %tmp.39 = eq %tmp.37 %tmp.38;
-        bf %tmp.39 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_93_15_105_8_if_false;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_93_15_105_8_if_true:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_93_40_99_8_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 95 12 ]
-        %tmp.40 = lgetv %storage.1;
-        symbol [ storage %tmp.40 95 12 19 ];
-        symbol [ setValue %tmp.41 95 20 28 ];
-        %tmp.41 = getv function %tmp.40 :setValue;
-        %tmp.42 = "userLevel";
-        %tmp.43 = 2;
-        invoke %tmp.40 %tmp.41(%tmp.42, %tmp.43);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 96 12 ]
-        %tmp.44 = lgetv %storage.1;
-        symbol [ storage %tmp.44 96 12 19 ];
-        symbol [ setValue %tmp.45 96 20 28 ];
-        %tmp.45 = getv function %tmp.44 :setValue;
-        %tmp.46 = "completedWeeks";
-        %tmp.47 = 0;
-        invoke %tmp.44 %tmp.45(%tmp.46, %tmp.47);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 97 12 ]
-        symbol [ app %tmp.48 97 12 15 ];
-        %tmp.48 = getv self :app;
-        %tmp.49 = 2;
-        symbol [ userLevel ? 97 16 25 ];
-        putv %tmp.48 :userLevel %tmp.49;
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 98 12 ]
-        symbol [ app %tmp.50 98 12 15 ];
-        %tmp.50 = getv self :app;
-        %tmp.51 = 0;
-        symbol [ completedWeeks ? 98 16 30 ];
-        putv %tmp.50 :completedWeeks %tmp.51;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_93_40_99_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_93_15_105_8_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_93_15_105_8_if_false:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 99 15 ]
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_99_15_105_8_if_stmt:
-        symbol [ selectedOption %tmp.53 99 19 33 ];
-        %tmp.53 = getv ? :selectedOption;
-        %tmp.54 = 3;
-        %tmp.55 = eq %tmp.53 %tmp.54;
-        bf %tmp.55 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_99_15_105_8_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_99_15_105_8_if_true:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_99_40_105_8_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 101 12 ]
-        %tmp.56 = lgetv %storage.1;
-        symbol [ storage %tmp.56 101 12 19 ];
-        symbol [ setValue %tmp.57 101 20 28 ];
-        %tmp.57 = getv function %tmp.56 :setValue;
-        %tmp.58 = "userLevel";
-        %tmp.59 = 0;
-        invoke %tmp.56 %tmp.57(%tmp.58, %tmp.59);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 102 12 ]
-        %tmp.60 = lgetv %storage.1;
-        symbol [ storage %tmp.60 102 12 19 ];
-        symbol [ setValue %tmp.61 102 20 28 ];
-        %tmp.61 = getv function %tmp.60 :setValue;
-        %tmp.62 = "completedWeeks";
-        %tmp.63 = 0;
-        invoke %tmp.60 %tmp.61(%tmp.62, %tmp.63);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 103 12 ]
-        symbol [ app %tmp.64 103 12 15 ];
-        %tmp.64 = getv self :app;
-        %tmp.65 = 0;
-        symbol [ userLevel ? 103 16 25 ];
-        putv %tmp.64 :userLevel %tmp.65;
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 104 12 ]
-        symbol [ app %tmp.66 104 12 15 ];
-        %tmp.66 = getv self :app;
-        %tmp.67 = 0;
-        symbol [ completedWeeks ? 104 16 30 ];
-        putv %tmp.66 :completedWeeks %tmp.67;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_99_40_105_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_99_15_105_8_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_99_15_105_8_if_end:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_93_15_105_8_if_end:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_87_15_105_8_if_end:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_81_8_105_8_if_end:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 107 8 ]
-        symbol [ WatchUi %tmp.68 107 8 15 ];
-        %tmp.68 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.69 107 16 23 ];
-        %tmp.69 = getv function %tmp.68 :popView;
-        symbol [ WatchUi %tmp.70 107 24 31 ];
-        %tmp.70 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.71 107 32 43 ];
-        %tmp.71 = getv %tmp.70 :SLIDE_RIGHT;
-        invoke %tmp.68 %tmp.69(%tmp.71);
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_78_36_108_4_stop:
+        %tmp.33 = 0;
+        symbol [ completedWeeks ? 110 16 30 ];
+        putv %tmp.32 :completedWeeks %tmp.33;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_100_33_111_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_100_8_127_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_100_8_127_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 111 15 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_111_15_127_8_if_stmt:
+        symbol [ selectedOption %tmp.35 111 19 33 ];
+        %tmp.35 = getv ? :selectedOption;
+        %tmp.36 = 1;
+        %tmp.37 = eq %tmp.35 %tmp.36;
+        bf %tmp.37 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_111_15_127_8_if_false;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_111_15_127_8_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_111_40_118_8_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 113 12 ]
+        [ "_home_cechinel_coachrox_garmin_source_SettingsView_mc_111_40_118_8_start" "_home_cechinel_coachrox_garmin_source_SettingsView_mc_111_40_118_8_stop" ]
+        %newLevel.3 = local;
+        symbol [ newLevel %newLevel.3 113 16 24 ];
+        symbol [ app %tmp.39 113 28 31 ];
+        %tmp.39 = getv ? :app;
+        symbol [ userLevel %tmp.40 113 32 41 ];
+        %tmp.40 = getv %tmp.39 :userLevel;
+        %tmp.41 = 1;
+        %tmp.42 = add %tmp.40 %tmp.41;
+        %tmp.43 = 3;
+        %tmp.44 = mod %tmp.42 %tmp.43;
+        lputv %newLevel.3 %tmp.44;
+        symbol [ newLevel %newLevel.3 113 16 24 ];
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 114 12 ]
+        %tmp.45 = lgetv %storage.1;
+        symbol [ storage %tmp.45 114 12 19 ];
+        symbol [ setValue %tmp.46 114 20 28 ];
+        %tmp.46 = getv function %tmp.45 :setValue;
+        %tmp.47 = "userLevel";
+        %tmp.48 = lgetv %newLevel.3;
+        symbol [ newLevel %tmp.48 114 42 50 ];
+        invoke %tmp.45 %tmp.46(%tmp.47, %tmp.48);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 115 12 ]
+        %tmp.49 = lgetv %storage.1;
+        symbol [ storage %tmp.49 115 12 19 ];
+        symbol [ setValue %tmp.50 115 20 28 ];
+        %tmp.50 = getv function %tmp.49 :setValue;
+        %tmp.51 = "completedWeeks";
+        %tmp.52 = 0;
+        invoke %tmp.49 %tmp.50(%tmp.51, %tmp.52);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 116 12 ]
+        symbol [ app %tmp.53 116 12 15 ];
+        %tmp.53 = getv self :app;
+        %tmp.54 = lgetv %newLevel.3;
+        symbol [ newLevel %tmp.54 116 28 36 ];
+        symbol [ userLevel ? 116 16 25 ];
+        putv %tmp.53 :userLevel %tmp.54;
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 117 12 ]
+        symbol [ app %tmp.55 117 12 15 ];
+        %tmp.55 = getv self :app;
+        %tmp.56 = 0;
+        symbol [ completedWeeks ? 117 16 30 ];
+        putv %tmp.55 :completedWeeks %tmp.56;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_111_40_118_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_111_15_127_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_111_15_127_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 118 15 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_118_15_127_8_if_stmt:
+        symbol [ selectedOption %tmp.58 118 19 33 ];
+        %tmp.58 = getv ? :selectedOption;
+        %tmp.59 = 2;
+        %tmp.60 = eq %tmp.58 %tmp.59;
+        bf %tmp.60 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_118_15_127_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_118_15_127_8_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_118_40_127_8_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 120 12 ]
+        %tmp.61 = lgetv %storage.1;
+        symbol [ storage %tmp.61 120 12 19 ];
+        symbol [ setValue %tmp.62 120 20 28 ];
+        %tmp.62 = getv function %tmp.61 :setValue;
+        %tmp.63 = "userLevel";
+        %tmp.64 = 0;
+        invoke %tmp.61 %tmp.62(%tmp.63, %tmp.64);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 121 12 ]
+        %tmp.65 = lgetv %storage.1;
+        symbol [ storage %tmp.65 121 12 19 ];
+        symbol [ setValue %tmp.66 121 20 28 ];
+        %tmp.66 = getv function %tmp.65 :setValue;
+        %tmp.67 = "planType";
+        %tmp.68 = 8;
+        invoke %tmp.65 %tmp.66(%tmp.67, %tmp.68);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 122 12 ]
+        %tmp.69 = lgetv %storage.1;
+        symbol [ storage %tmp.69 122 12 19 ];
+        symbol [ setValue %tmp.70 122 20 28 ];
+        %tmp.70 = getv function %tmp.69 :setValue;
+        %tmp.71 = "completedWeeks";
+        %tmp.72 = 0;
+        invoke %tmp.69 %tmp.70(%tmp.71, %tmp.72);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 123 12 ]
+        %tmp.73 = lgetv %storage.1;
+        symbol [ storage %tmp.73 123 12 19 ];
+        symbol [ setValue %tmp.74 123 20 28 ];
+        %tmp.74 = getv function %tmp.73 :setValue;
+        %tmp.75 = "adapt_success";
+        %tmp.76 = 0;
+        invoke %tmp.73 %tmp.74(%tmp.75, %tmp.76);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 124 12 ]
+        %tmp.77 = lgetv %storage.1;
+        symbol [ storage %tmp.77 124 12 19 ];
+        symbol [ setValue %tmp.78 124 20 28 ];
+        %tmp.78 = getv function %tmp.77 :setValue;
+        %tmp.79 = "adapt_fail";
+        %tmp.80 = 0;
+        invoke %tmp.77 %tmp.78(%tmp.79, %tmp.80);
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 125 12 ]
+        symbol [ app %tmp.81 125 12 15 ];
+        %tmp.81 = getv self :app;
+        %tmp.82 = 0;
+        symbol [ userLevel ? 125 16 25 ];
+        putv %tmp.81 :userLevel %tmp.82;
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 126 12 ]
+        symbol [ app %tmp.83 126 12 15 ];
+        %tmp.83 = getv self :app;
+        %tmp.84 = 0;
+        symbol [ completedWeeks ? 126 16 30 ];
+        putv %tmp.83 :completedWeeks %tmp.84;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_118_40_127_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_118_15_127_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_118_15_127_8_if_end:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_111_15_127_8_if_end:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_100_8_127_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 129 8 ]
+        symbol [ WatchUi %tmp.85 129 8 15 ];
+        %tmp.85 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.86 129 16 29 ];
+        %tmp.86 = getv function %tmp.85 :requestUpdate;
+        invoke %tmp.85 %tmp.86();
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_97_36_130_4_stop:
     }
 }
-[ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 111; @symbol_classdef = [SettingsDelegate,111,6,22]; @symbol_extends<0> = [WatchUi,111,31,38]; @symbol_extends<1> = [InputDelegate,111,39,52]; ]
+[ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 133; @symbol_classdef = [SettingsDelegate,133,6,22]; @symbol_extends<0> = [WatchUi,133,31,38]; @symbol_extends<1> = [InputDelegate,133,39,52]; ]
 class SettingsDelegate extends WatchUi.InputDelegate {
-    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 111; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 133; ]
     <init> {
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 111; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 133; ]
     static
     <init> {
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 113; @position = 8; @symbol_vardef = [view,113,8,12]; @symbol_type<0> = [SettingsView,113,16,28]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 135; @position = 8; @symbol_vardef = [view,135,8,12]; @symbol_type<0> = [SettingsView,135,16,28]; ]
     var view as SettingsView;
-    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 115; @symbol_functiondef = [initialize,115,13,23]; @symbol_param<0> = [sView,115,24,29]; @symbol_param<0>_type<0> = [SettingsView,115,33,45]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 137; @symbol_functiondef = [initialize,137,13,23]; @symbol_param<0> = [sView,137,24,29]; @symbol_param<0>_type<0> = [SettingsView,137,33,45]; ]
     function initialize(sView as SettingsView) as Void {
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_115_47_118_4_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 116 8 ]
-        symbol [ WatchUi %tmp.1 116 8 15 ];
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_137_47_140_4_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 138 8 ]
+        symbol [ WatchUi %tmp.1 138 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ InputDelegate %tmp.2 116 16 29 ];
+        symbol [ InputDelegate %tmp.2 138 16 29 ];
         %tmp.2 = getv %tmp.1 :InputDelegate;
-        symbol [ initialize %tmp.3 116 30 40 ];
+        symbol [ initialize %tmp.3 138 30 40 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 117 8 ]
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 139 8 ]
         %tmp.4 = lgetv %sView;
-        symbol [ sView %tmp.4 117 15 20 ];
-        symbol [ view ? 117 8 12 ];
+        symbol [ sView %tmp.4 139 15 20 ];
+        symbol [ view ? 139 8 12 ];
         putv self :view %tmp.4;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_115_47_118_4_stop:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_137_47_140_4_stop:
     }
-    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 120; @symbol_functiondef = [onKeyPressed,120,13,25]; @symbol_param<0> = [key,120,26,29]; @symbol_param<0>_type<0> = [WatchUi,120,33,40]; @symbol_param<0>_type<1> = [KeyEvent,120,41,49]; @symbol_return<0> = [Boolean,120,54,61]; ]
+    [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 142; @symbol_functiondef = [onKeyPressed,142,13,25]; @symbol_param<0> = [key,142,26,29]; @symbol_param<0>_type<0> = [WatchUi,142,33,40]; @symbol_param<0>_type<1> = [KeyEvent,142,41,49]; @symbol_return<0> = [Boolean,142,54,61]; ]
     function onKeyPressed(key as WatchUi.KeyEvent) as Boolean {
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_120_62_135_4_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 121 8 ]
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_121_8_133_8_if_stmt:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_142_62_157_4_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 143 8 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_143_8_155_8_if_stmt:
         %tmp.1 = lgetv %key;
-        symbol [ key %tmp.1 121 12 15 ];
-        symbol [ getKey %tmp.2 121 16 22 ];
+        symbol [ key %tmp.1 143 12 15 ];
+        symbol [ getKey %tmp.2 143 16 22 ];
         %tmp.2 = getv function %tmp.1 :getKey;
         %tmp.3 = invoke %tmp.1 %tmp.2();
-        symbol [ WatchUi %tmp.4 121 28 35 ];
+        symbol [ WatchUi %tmp.4 143 28 35 ];
         %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ KEY_UP %tmp.5 121 36 42 ];
+        symbol [ KEY_UP %tmp.5 143 36 42 ];
         %tmp.5 = getv %tmp.4 :KEY_UP;
         %tmp.6 = eq %tmp.3 %tmp.5;
-        bf %tmp.6 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_121_8_133_8_if_false;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_121_8_133_8_if_true:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_121_44_124_8_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 122 12 ]
-        symbol [ view %tmp.8 122 12 16 ];
+        bf %tmp.6 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_143_8_155_8_if_false;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_143_8_155_8_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_143_44_146_8_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 144 12 ]
+        symbol [ view %tmp.8 144 12 16 ];
         %tmp.8 = getv ? :view;
-        symbol [ selectPrevious %tmp.9 122 17 31 ];
+        symbol [ selectPrevious %tmp.9 144 17 31 ];
         %tmp.9 = getv function %tmp.8 :selectPrevious;
         invoke %tmp.8 %tmp.9();
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 123 12 ]
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 145 12 ]
         %tmp.10 = true;
         ret %tmp.10;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_121_44_124_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_121_8_133_8_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_121_8_133_8_if_false:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 124 15 ]
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_124_15_133_8_if_stmt:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_143_44_146_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_143_8_155_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_143_8_155_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 146 15 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_146_15_155_8_if_stmt:
         %tmp.11 = lgetv %key;
-        symbol [ key %tmp.11 124 19 22 ];
-        symbol [ getKey %tmp.12 124 23 29 ];
+        symbol [ key %tmp.11 146 19 22 ];
+        symbol [ getKey %tmp.12 146 23 29 ];
         %tmp.12 = getv function %tmp.11 :getKey;
         %tmp.13 = invoke %tmp.11 %tmp.12();
-        symbol [ WatchUi %tmp.14 124 35 42 ];
+        symbol [ WatchUi %tmp.14 146 35 42 ];
         %tmp.14 = getm $.Toybox.WatchUi;
-        symbol [ KEY_DOWN %tmp.15 124 43 51 ];
+        symbol [ KEY_DOWN %tmp.15 146 43 51 ];
         %tmp.15 = getv %tmp.14 :KEY_DOWN;
         %tmp.16 = eq %tmp.13 %tmp.15;
-        bf %tmp.16 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_124_15_133_8_if_false;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_124_15_133_8_if_true:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_124_53_127_8_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 125 12 ]
-        symbol [ view %tmp.18 125 12 16 ];
+        bf %tmp.16 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_146_15_155_8_if_false;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_146_15_155_8_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_146_53_149_8_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 147 12 ]
+        symbol [ view %tmp.18 147 12 16 ];
         %tmp.18 = getv ? :view;
-        symbol [ selectNext %tmp.19 125 17 27 ];
+        symbol [ selectNext %tmp.19 147 17 27 ];
         %tmp.19 = getv function %tmp.18 :selectNext;
         invoke %tmp.18 %tmp.19();
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 126 12 ]
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 148 12 ]
         %tmp.20 = true;
         ret %tmp.20;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_124_53_127_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_124_15_133_8_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_124_15_133_8_if_false:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 127 15 ]
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_127_15_133_8_if_stmt:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_146_53_149_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_146_15_155_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_146_15_155_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 149 15 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_149_15_155_8_if_stmt:
         %tmp.21 = lgetv %key;
-        symbol [ key %tmp.21 127 19 22 ];
-        symbol [ getKey %tmp.22 127 23 29 ];
+        symbol [ key %tmp.21 149 19 22 ];
+        symbol [ getKey %tmp.22 149 23 29 ];
         %tmp.22 = getv function %tmp.21 :getKey;
         %tmp.23 = invoke %tmp.21 %tmp.22();
-        symbol [ WatchUi %tmp.24 127 35 42 ];
+        symbol [ WatchUi %tmp.24 149 35 42 ];
         %tmp.24 = getm $.Toybox.WatchUi;
-        symbol [ KEY_ENTER %tmp.25 127 43 52 ];
+        symbol [ KEY_ENTER %tmp.25 149 43 52 ];
         %tmp.25 = getv %tmp.24 :KEY_ENTER;
         %tmp.26 = eq %tmp.23 %tmp.25;
-        bf %tmp.26 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_127_15_133_8_if_false;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_127_15_133_8_if_true:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_127_54_130_8_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 128 12 ]
-        symbol [ view %tmp.28 128 12 16 ];
+        bf %tmp.26 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_149_15_155_8_if_false;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_149_15_155_8_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_149_54_152_8_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 150 12 ]
+        symbol [ view %tmp.28 150 12 16 ];
         %tmp.28 = getv ? :view;
-        symbol [ applySetting %tmp.29 128 17 29 ];
+        symbol [ applySetting %tmp.29 150 17 29 ];
         %tmp.29 = getv function %tmp.28 :applySetting;
         invoke %tmp.28 %tmp.29();
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 129 12 ]
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 151 12 ]
         %tmp.30 = true;
         ret %tmp.30;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_127_54_130_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_127_15_133_8_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_127_15_133_8_if_false:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 130 15 ]
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_130_15_133_8_if_stmt:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_149_54_152_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_149_15_155_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_149_15_155_8_if_false:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 152 15 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_152_15_155_8_if_stmt:
         %tmp.31 = lgetv %key;
-        symbol [ key %tmp.31 130 19 22 ];
-        symbol [ getKey %tmp.32 130 23 29 ];
+        symbol [ key %tmp.31 152 19 22 ];
+        symbol [ getKey %tmp.32 152 23 29 ];
         %tmp.32 = getv function %tmp.31 :getKey;
         %tmp.33 = invoke %tmp.31 %tmp.32();
-        symbol [ WatchUi %tmp.34 130 35 42 ];
+        symbol [ WatchUi %tmp.34 152 35 42 ];
         %tmp.34 = getm $.Toybox.WatchUi;
-        symbol [ KEY_ESC %tmp.35 130 43 50 ];
+        symbol [ KEY_ESC %tmp.35 152 43 50 ];
         %tmp.35 = getv %tmp.34 :KEY_ESC;
         %tmp.36 = eq %tmp.33 %tmp.35;
-        bf %tmp.36 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_130_15_133_8_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_130_15_133_8_if_true:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_130_52_133_8_start:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 131 12 ]
-        symbol [ WatchUi %tmp.37 131 12 19 ];
+        bf %tmp.36 @_home_cechinel_coachrox_garmin_source_SettingsView_mc_152_15_155_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_152_15_155_8_if_true:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_152_52_155_8_start:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 153 12 ]
+        symbol [ WatchUi %tmp.37 153 12 19 ];
         %tmp.37 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.38 131 20 27 ];
+        symbol [ popView %tmp.38 153 20 27 ];
         %tmp.38 = getv function %tmp.37 :popView;
-        symbol [ WatchUi %tmp.39 131 28 35 ];
+        symbol [ WatchUi %tmp.39 153 28 35 ];
         %tmp.39 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.40 131 36 47 ];
+        symbol [ SLIDE_RIGHT %tmp.40 153 36 47 ];
         %tmp.40 = getv %tmp.39 :SLIDE_RIGHT;
         invoke %tmp.37 %tmp.38(%tmp.40);
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 132 12 ]
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 154 12 ]
         %tmp.41 = true;
         ret %tmp.41;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_130_52_133_8_stop:
-        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_130_15_133_8_if_end;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_130_15_133_8_if_end:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_127_15_133_8_if_end:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_124_15_133_8_if_end:
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_121_8_133_8_if_end:
-[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 134 8 ]
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_152_52_155_8_stop:
+        goto @_home_cechinel_coachrox_garmin_source_SettingsView_mc_152_15_155_8_if_end;
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_152_15_155_8_if_end:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_149_15_155_8_if_end:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_146_15_155_8_if_end:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_143_8_155_8_if_end:
+[ "/home/cechinel/coachrox-garmin/source/SettingsView.mc" 156 8 ]
         %tmp.42 = false;
         ret %tmp.42;
-_home_cechinel_coachrox_garmin_source_SettingsView_mc_120_62_135_4_stop:
+_home_cechinel_coachrox_garmin_source_SettingsView_mc_142_62_157_4_stop:
     }
 }
 [ @file = "/home/cechinel/coachrox-garmin/source/SettingsView.mc"; @line = 1; ]

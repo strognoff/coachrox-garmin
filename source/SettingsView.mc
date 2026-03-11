@@ -7,7 +7,7 @@ class SettingsView extends WatchUi.View {
     var app as CoachroxApp;
     var selectedOption as Number = 0;
     
-    var options as Array<String>;
+    var options as Array<String> = ["Level: Beginner", "Level: Intermediate", "Level: Advanced", "Reset Progress"];
     
     const COLOR_ORANGE = 0xFF6B00;
     const COLOR_BLUE = 0x00A3E0;
@@ -16,15 +16,32 @@ class SettingsView extends WatchUi.View {
         WatchUi.View.initialize();
         app = application;
         
+        updateOptions();
+    }
+    
+    function updateOptions() as Void {
+        var planWeeks = 8;
+        var planStored = app.sessionStorage.getValue("planType");
+        if (planStored != null && planStored == 12) {
+            planWeeks = 12;
+        }
+        
         options = [
-            "Level: Beginner",
-            "Level: Intermediate", 
-            "Level: Advanced",
+            "Plan: " + planWeeks + " Week",
+            "Level: " + getLevelName(app.userLevel),
             "Reset Progress"
         ];
     }
     
+    function getLevelName(level as Number) as String {
+        if (level == 0) { return "Beginner"; }
+        else if (level == 1) { return "Intermediate"; }
+        else { return "Advanced"; }
+    }
+    
     function onUpdate(dc as Dc) as Void {
+        updateOptions();
+        
         var w = dc.getWidth();
         var h = dc.getHeight();
         
@@ -35,17 +52,19 @@ class SettingsView extends WatchUi.View {
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
         dc.drawText(w/2, 4, Graphics.FONT_TINY, "SETTINGS", Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Current level
-        var levelName = "Beginner";
-        if (app.userLevel == 1) { levelName = "Intermediate"; }
-        if (app.userLevel == 2) { levelName = "Advanced"; }
+        // Current settings
+        var planWeeks = 8;
+        var planStored = app.sessionStorage.getValue("planType");
+        if (planStored != null && planStored == 12) {
+            planWeeks = 12;
+        }
         
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 22, Graphics.FONT_TINY, "Current: " + levelName, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w/2, 22, Graphics.FONT_TINY, planWeeks + "w | " + getLevelName(app.userLevel), Graphics.TEXT_JUSTIFY_CENTER);
         
         // Options
         var y = 45;
-        var itemHeight = 22;
+        var itemHeight = 25;
         
         for (var i = 0; i < options.size(); i++) {
             if (i == selectedOption) {
@@ -56,7 +75,7 @@ class SettingsView extends WatchUi.View {
                 dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
             }
             
-            dc.drawText(w/2, y + 3, Graphics.FONT_TINY, options[i], Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(w/2, y + 4, Graphics.FONT_TINY, options[i], Graphics.TEXT_JUSTIFY_CENTER);
             y += itemHeight + 2;
         }
         
@@ -79,32 +98,35 @@ class SettingsView extends WatchUi.View {
         var storage = app.sessionStorage;
         
         if (selectedOption == 0) {
-            // Beginner - reset progress too
-            storage.setValue("userLevel", 0);
+            // Toggle plan type
+            var currentPlan = storage.getValue("planType");
+            if (currentPlan != null && currentPlan == 12) {
+                storage.setValue("planType", 8);
+            } else {
+                storage.setValue("planType", 12);
+            }
+            // Reset progress when changing plan
             storage.setValue("completedWeeks", 0);
-            app.userLevel = 0;
             app.completedWeeks = 0;
         } else if (selectedOption == 1) {
-            // Intermediate - reset progress
-            storage.setValue("userLevel", 1);
+            // Cycle through levels
+            var newLevel = (app.userLevel + 1) % 3;
+            storage.setValue("userLevel", newLevel);
             storage.setValue("completedWeeks", 0);
-            app.userLevel = 1;
+            app.userLevel = newLevel;
             app.completedWeeks = 0;
         } else if (selectedOption == 2) {
-            // Advanced - reset progress
-            storage.setValue("userLevel", 2);
-            storage.setValue("completedWeeks", 0);
-            app.userLevel = 2;
-            app.completedWeeks = 0;
-        } else if (selectedOption == 3) {
             // Reset everything
             storage.setValue("userLevel", 0);
+            storage.setValue("planType", 8);
             storage.setValue("completedWeeks", 0);
+            storage.setValue("adapt_success", 0);
+            storage.setValue("adapt_fail", 0);
             app.userLevel = 0;
             app.completedWeeks = 0;
         }
         
-        WatchUi.popView(WatchUi.SLIDE_RIGHT);
+        WatchUi.requestUpdate();
     }
 }
 

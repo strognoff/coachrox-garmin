@@ -7,11 +7,23 @@ class PlanEngine {
     var sessionStorage as SessionStorage;
     
     const PLAN_8_WEEK = 8;
+    const PLAN_12_WEEK = 12;
+    
+    // Week types for 12-week plan
+    const PHASE_BASE = 0;      // Weeks 1-4: Foundation
+    const PHASE_BUILD = 1;     // Weeks 5-8: Building intensity
+    const PHASE_SPECIFIC = 2;  // Weeks 9-11: Race-specific
+    const PHASE_TAPER = 3;     // Week 12: Taper for race
     
     // HYROX Levels
     const LEVEL_BEGINNER = 0;    // New to HYROX
     const LEVEL_INTERMEDIATE = 1; // Some HYROX experience
     const LEVEL_ADVANCED = 2;   // Competition level
+    
+    // Adaptation tracking keys
+    const ADAPTATION_SUCCESS = "adapt_success";
+    const ADAPTATION_FAIL = "adapt_fail";
+    const ADAPTATION_THRESHOLD = 2;
     
     function initialize(storage as SessionStorage) {
         sessionStorage = storage;
@@ -29,33 +41,197 @@ class PlanEngine {
         return new Plan(planType, week, completedThisWeek, sessionStorage);
     }
     
+    //! Get the current phase for a given week (1-indexed)
+    function getPhaseForWeek(week as Number) as Number {
+        if (week <= 4) { return PHASE_BASE; }
+        else if (week <= 8) { return PHASE_BUILD; }
+        else if (week <= 11) { return PHASE_SPECIFIC; }
+        else { return PHASE_TAPER; }
+    }
+    
+    //! Get phase name for display
+    function getPhaseName(phase as Number) as String {
+        if (phase == PHASE_BASE) { return "BASE"; }
+        else if (phase == PHASE_BUILD) { return "BUILD"; }
+        else if (phase == PHASE_SPECIFIC) { return "SPECIFIC"; }
+        else { return "TAPER"; }
+    }
+    
+    //! Get the total weeks in the plan
+    function getPlanWeeks() as Number {
+        var planType = sessionStorage.getValue("planType");
+        if (planType != null && planType == 12) {
+            return PLAN_12_WEEK;
+        }
+        return PLAN_8_WEEK;
+    }
+    
     //! Generate 5 HYROX-specific workouts per week
     function generateWeeklyWorkouts(week as Number, level as Number, storage as SessionStorage) as Array<Workout> {
         var workouts = new [5] as Array<Workout>;
+        var planWeeks = getPlanWeeks();
         
-        // Week progression multiplier (workouts get harder each week)
-        var weekMultiplier = 1.0 + (week * 0.1); // 1.0, 1.1, 1.2, etc.
+        // Determine phase for this week
+        var phase = getPhaseForWeek(week);
+        
+        // Week progression multiplier (workouts get harder each week, but taper in final week)
+        var weekMultiplier = 1.0 + (week * 0.1);
+        if (phase == PHASE_TAPER) {
+            weekMultiplier = 0.7; // Reduce intensity for taper
+        } else if (phase == PHASE_SPECIFIC) {
+            weekMultiplier = 1.0 + ((week - 1) * 0.08); // Slower build in specific
+        }
         
         // Day 1: HYROX 1-4 (Burpee Broad Jump, Rowing, Farmer's Carry, Lunges)
-        workouts[0] = createHYROXDay1(level, week, weekMultiplier, 0, storage);
+        workouts[0] = createHYROXDay1(level, week, weekMultiplier, phase, 0, storage);
         
         // Day 2: HYROX 5-8 (Ski Erg, Wall Balls, Pull-ups, Run)
-        workouts[1] = createHYROXDay2(level, week, weekMultiplier, 1, storage);
+        workouts[1] = createHYROXDay2(level, week, weekMultiplier, phase, 1, storage);
         
-        // Day 3: Endurance (Long run + functional)
-        workouts[2] = createEnduranceWorkout(level, week, weekMultiplier, 2, storage);
+        // Day 3: Varies by phase
+        workouts[2] = createPhaseSpecificWorkout(level, week, weekMultiplier, phase, 2, storage);
         
         // Day 4: Upper Body + Core (Pull-ups, Wall Balls focus)
-        workouts[3] = createUpperBodyWorkout(level, week, weekMultiplier, 3, storage);
+        workouts[3] = createUpperBodyWorkout(level, week, weekMultiplier, phase, 3, storage);
         
         // Day 5: Lower Body + Cardio (Lunges, Farmer's Carry, Rowing)
-        workouts[4] = createLowerBodyWorkout(level, week, weekMultiplier, 4, storage);
+        workouts[4] = createLowerBodyWorkout(level, week, weekMultiplier, phase, 4, storage);
         
         return workouts;
     }
     
+    //! Create phase-specific workout for Day 3
+    function createPhaseSpecificWorkout(level as Number, week as Number, mult as Float, phase as Number, dayIndex as Number, storage as SessionStorage) as Workout {
+        if (phase == PHASE_BASE) {
+            // Base phase: Engine Intervals - focus on cardio base
+            return createEngineIntervals(level, week, mult, dayIndex, storage);
+        } else if (phase == PHASE_BUILD) {
+            // Build phase: Station Strength-Endurance
+            return createStationStrengthEndurance(level, week, mult, dayIndex, storage);
+        } else if (phase == PHASE_SPECIFIC) {
+            // Specific phase: Race-Sim Brick
+            return createRaceSimBrick(level, week, mult, dayIndex, storage);
+        } else {
+            // Taper: Light active recovery
+            return createRecoveryWorkout(level, week, mult, dayIndex, storage);
+        }
+    }
+    
+    //! Engine Intervals - High intensity cardio intervals (NEW)
+    function createEngineIntervals(level as Number, week as Number, mult as Float, dayIndex as Number, storage as SessionStorage) as Workout {
+        var steps = new [0] as Array<WorkoutStep>;
+        
+        // Warm up
+        steps.add(new WorkoutStep("Warm Up", "run", 300, 0, 0));
+        
+        // Engine intervals: 4 x 4 min hard, 3 min easy
+        var hardTime = 240 + (week * 10);
+        var easyTime = 180;
+        var intervals = 4 + level; // Beginner: 4, Int: 5, Adv: 6
+        
+        for (var i = 0; i < intervals; i++) {
+            // Hard interval
+            steps.add(new WorkoutStep("Engine " + (i + 1), "rowing", hardTime, 0, 0));
+            // Easy recovery
+            if (i < intervals - 1) {
+                steps.add(new WorkoutStep("Recover", "run", easyTime, 0, 0));
+            }
+        }
+        
+        // Cool down
+        steps.add(new WorkoutStep("Cool Down", "run", 300, 0, 0));
+        
+        var duration = (300 + (intervals * (hardTime + easyTime)) + 300) / 60;
+        
+        return new Workout("Engine Intervals", 5, duration.toNumber(), steps);
+    }
+    
+    //! Station Strength-Endurance - Compound movements (NEW)
+    function createStationStrengthEndurance(level as Number, week as Number, mult as Float, dayIndex as Number, storage as SessionStorage) as Workout {
+        var steps = new [0] as Array<WorkoutStep>;
+        
+        steps.add(new WorkoutStep("Warm Up", "run", 300, 0, 0));
+        
+        // 5 stations, 3 rounds
+        var rounds = 3 + level; // Beginner: 3, Int: 4, Adv: 5
+        var stationTime = 60 + (week * 5);
+        
+        for (var r = 0; r < rounds; r++) {
+            // Station 1: Burpees
+            steps.add(new WorkoutStep("Burpees", "burpee_broad_jump", stationTime, 0, 10 + level * 2));
+            
+            // Station 2: KB Swings
+            steps.add(new WorkoutStep("KB Swings", "kettlebell_swing", stationTime, 0, 15 + level * 3));
+            
+            // Station 3: Push-ups
+            steps.add(new WorkoutStep("Push-ups", "push_up", stationTime, 0, 15 + level * 2));
+            
+            // Station 4: Box Step-ups
+            steps.add(new WorkoutStep("Box Step-up", "box_step_up", stationTime, 0, 12 + level * 2));
+            
+            // Station 5: Plank Hold
+            steps.add(new WorkoutStep("Plank", "plank", stationTime, 0, 0));
+        }
+        
+        steps.add(new WorkoutStep("Cool Down", "run", 300, 0, 0));
+        
+        var duration = (300 + (rounds * 5 * stationTime) + 300) / 60;
+        
+        return new Workout("Station S&E", 6, duration.toNumber(), steps);
+    }
+    
+    //! Race-Sim Brick - Run after other stations (NEW)
+    function createRaceSimBrick(level as Number, week as Number, mult as Float, dayIndex as Number, storage as SessionStorage) as Workout {
+        var steps = new [0] as Array<WorkoutStep>;
+        
+        steps.add(new WorkoutStep("Warm Up", "run", 300, 0, 0));
+        
+        // Simulate HYROX race: stations then run
+        // Station 1-2: Burpee Broad + Rowing
+        steps.add(new WorkoutStep("BBJ + Row", "burpee_broad_jump", 180, 0, 8));
+        steps.add(new WorkoutStep("Rowing", "rowing", 180, 0, 0));
+        
+        // Station 3-4: Farmer's Carry + Lunges
+        steps.add(new WorkoutStep("Farmer Carry", "farmers_carry", 60, 0, 0));
+        steps.add(new WorkoutStep("Lunges", "sandbag_lunge", 90, 0, 10));
+        
+        // Station 5-6: Ski + Wall Balls
+        steps.add(new WorkoutStep("Ski Erg", "ski_erg", 180, 0, 0));
+        steps.add(new WorkoutStep("Wall Balls", "wall_ball", 120, 0, 15));
+        
+        // Station 7: Pull-ups
+        steps.add(new WorkoutStep("Pull-ups", "pull_up", 90, 0, 8));
+        
+        // Final Run (800m - half race distance)
+        var runTime = 240 + (week * 10) - (level * 20);
+        steps.add(new WorkoutStep("Final Run", "run", runTime, 800, 0));
+        
+        steps.add(new WorkoutStep("Cool Down", "run", 300, 0, 0));
+        
+        var duration = (300 + 180 + 180 + 60 + 90 + 180 + 120 + 90 + runTime + 300) / 60;
+        
+        return new Workout("Race-Sim Brick", 7, duration.toNumber(), steps);
+    }
+    
+    //! Recovery workout for taper week
+    function createRecoveryWorkout(level as Number, week as Number, mult as Float, dayIndex as Number, storage as SessionStorage) as Workout {
+        var steps = new [0] as Array<WorkoutStep>;
+        
+        steps.add(new WorkoutStep("Easy Warm Up", "run", 300, 0, 0));
+        
+        // Light movements
+        steps.add(new WorkoutStep("Light Row", "rowing", 300, 0, 0));
+        steps.add(new WorkoutStep("Dynamic Stretch", "stretch", 300, 0, 0));
+        
+        steps.add(new WorkoutStep("Easy Cool Down", "run", 300, 0, 0));
+        
+        var duration = (300 + 300 + 300 + 300) / 60;
+        
+        return new Workout("Recovery", 8, duration.toNumber(), steps);
+    }
+    
     //! HYROX Stations 1-4: Burpee Broad Jump, Rowing, Farmer's Carry, Lunges
-    function createHYROXDay1(level as Number, week as Number, mult as Float, dayIndex as Number, storage as SessionStorage) as Workout {
+    function createHYROXDay1(level as Number, week as Number, mult as Float, phase as Number, dayIndex as Number, storage as SessionStorage) as Workout {
         var steps = new [0] as Array<WorkoutStep>;
         
         // Warm up - 5 min
@@ -86,7 +262,7 @@ class PlanEngine {
     }
     
     //! HYROX Stations 5-8: Ski Erg, Wall Balls, Pull-ups, Running
-    function createHYROXDay2(level as Number, week as Number, mult as Float, dayIndex as Number, storage as SessionStorage) as Workout {
+    function createHYROXDay2(level as Number, week as Number, mult as Float, phase as Number, dayIndex as Number, storage as SessionStorage) as Workout {
         var steps = new [0] as Array<WorkoutStep>;
         
         // Warm up
@@ -117,7 +293,7 @@ class PlanEngine {
     }
     
     //! Endurance: Long functional run
-    function createEnduranceWorkout(level as Number, week as Number, mult as Float, dayIndex as Number, storage as SessionStorage) as Workout {
+    function createEnduranceWorkout(level as Number, week as Number, mult as Float, phase as Number, dayIndex as Number, storage as SessionStorage) as Workout {
         var steps = new [0] as Array<WorkoutStep>;
         
         steps.add(new WorkoutStep("Warm Up", "run", 300, 0, 0));
@@ -139,7 +315,7 @@ class PlanEngine {
     }
     
     //! Upper body: Pull-ups and Wall Balls focus
-    function createUpperBodyWorkout(level as Number, week as Number, mult as Float, dayIndex as Number, storage as SessionStorage) as Workout {
+    function createUpperBodyWorkout(level as Number, week as Number, mult as Float, phase as Number, dayIndex as Number, storage as SessionStorage) as Workout {
         var steps = new [0] as Array<WorkoutStep>;
         
         steps.add(new WorkoutStep("Warm Up", "run", 180, 0, 0));
@@ -166,7 +342,7 @@ class PlanEngine {
     }
     
     //! Lower body: Lunges, Farmer's Carry, Rowing
-    function createLowerBodyWorkout(level as Number, week as Number, mult as Float, dayIndex as Number, storage as SessionStorage) as Workout {
+    function createLowerBodyWorkout(level as Number, week as Number, mult as Float, phase as Number, dayIndex as Number, storage as SessionStorage) as Workout {
         var steps = new [0] as Array<WorkoutStep>;
         
         steps.add(new WorkoutStep("Warm Up", "run", 180, 0, 0));
@@ -188,6 +364,67 @@ class PlanEngine {
         var duration = (180 + lungeReps*5 + carryTime + rowTime + 180) / 60;
         
         return new Workout("Lower Body", 4, duration.toNumber(), steps);
+    }
+    
+    //! Adaptation: Called when workout is completed
+    function recordWorkoutResult(success as Boolean) as Void {
+        var currentLevel = sessionStorage.getValue("userLevel") != null 
+            ? sessionStorage.getValue("userLevel") 
+            : 0;
+        
+        if (success) {
+            // Increment success counter
+            var successes = sessionStorage.getValue(ADAPTATION_SUCCESS) != null 
+                ? sessionStorage.getValue(ADAPTATION_SUCCESS) 
+                : 0;
+            successes = successes + 1;
+            sessionStorage.setValue(ADAPTATION_SUCCESS, successes);
+            
+            // Reset fail counter
+            sessionStorage.setValue(ADAPTATION_FAIL, 0);
+            
+            // Check if should progress (2 successful = progress)
+            if (successes >= ADAPTATION_THRESHOLD && currentLevel < LEVEL_ADVANCED) {
+                var newLevel = currentLevel + 1;
+                sessionStorage.setValue("userLevel", newLevel);
+                sessionStorage.setValue(ADAPTATION_SUCCESS, 0); // Reset counter
+            }
+        } else {
+            // Increment fail counter
+            var fails = sessionStorage.getValue(ADAPTATION_FAIL) != null 
+                ? sessionStorage.getValue(ADAPTATION_FAIL) 
+                : 0;
+            fails = fails + 1;
+            sessionStorage.setValue(ADAPTATION_FAIL, fails);
+            
+            // Reset success counter
+            sessionStorage.setValue(ADAPTATION_SUCCESS, 0);
+            
+            // Check if should downshift (2 failed = downshift)
+            if (fails >= ADAPTATION_THRESHOLD && currentLevel > LEVEL_BEGINNER) {
+                var newLevel = currentLevel - 1;
+                sessionStorage.setValue("userLevel", newLevel);
+                sessionStorage.setValue(ADAPTATION_FAIL, 0); // Reset counter
+            }
+        }
+    }
+    
+    //! Get adaptation status for display
+    function getAdaptationStatus() as String {
+        var successes = sessionStorage.getValue(ADAPTATION_SUCCESS) != null 
+            ? sessionStorage.getValue(ADAPTATION_SUCCESS) 
+            : 0;
+        var fails = sessionStorage.getValue(ADAPTATION_FAIL) != null 
+            ? sessionStorage.getValue(ADAPTATION_FAIL) 
+            : 0;
+            
+        if (successes >= ADAPTATION_THRESHOLD) {
+            return "READY TO LEVEL UP!";
+        } else if (fails >= ADAPTATION_THRESHOLD) {
+            return "CONSIDER DOWNGRADING";
+        }
+        
+        return "Progress: " + successes + "/" + ADAPTATION_THRESHOLD + " OK, " + fails + "/" + ADAPTATION_THRESHOLD + " FAIL";
     }
 }
 

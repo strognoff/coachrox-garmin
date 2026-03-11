@@ -9,8 +9,10 @@ class WorkoutSession extends WatchUi.View {
     var sessionStorage as SessionStorage;
     var currentStepIndex as Number = 0;
     var elapsedSeconds as Number = 0;
+    var totalElapsedSeconds as Number = 0;
     var isPaused as Boolean = false;
     var isCompleted as Boolean = false;
+    var showSummary as Boolean = false;
     var timer as Timer.Timer?;
     var currentStepName as String = "";
     var nextStepName as String = "";
@@ -19,6 +21,7 @@ class WorkoutSession extends WatchUi.View {
     const COLOR_ORANGE = 0xFF6B00;
     const COLOR_BLUE = 0x00A3E0;
     const COLOR_GREEN = 0x00C853;
+    const COLOR_RED = 0xFF3B30;
     
     function initialize(workoutInstance as Workout, storage as SessionStorage, idx as Number) {
         WatchUi.View.initialize();
@@ -49,6 +52,11 @@ class WorkoutSession extends WatchUi.View {
         
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
+        
+        if (showSummary) {
+            drawSummary(dc, w, h);
+            return;
+        }
         
         // Header
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
@@ -94,6 +102,50 @@ class WorkoutSession extends WatchUi.View {
         dc.drawText(w/2, h - 8, Graphics.FONT_TINY, "DOWN: Pause | ENTER: End", Graphics.TEXT_JUSTIFY_CENTER);
     }
     
+    //! Draw the post-workout summary screen
+    function drawSummary(dc as Dc, w as Number, h as Number) as Void {
+        // Header
+        dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, 2, Graphics.FONT_TINY, "WORKOUT COMPLETE", Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Workout name
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, 20, Graphics.FONT_TINY, workout.name, Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Total time
+        dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, 40, Graphics.FONT_MEDIUM, getTotalElapsedTimeFormatted(), Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Stats
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+        var statsY = 65;
+        
+        // Steps completed
+        dc.drawText(10, statsY, Graphics.FONT_TINY, "Steps: " + workout.getStepCount(), Graphics.TEXT_JUSTIFY_LEFT);
+        
+        // Duration
+        dc.drawText(10, statsY + 15, Graphics.FONT_TINY, "Est. Time: " + workout.durationMinutes + " min", Graphics.TEXT_JUSTIFY_LEFT);
+        
+        // Intensity
+        dc.drawText(10, statsY + 30, Graphics.FONT_TINY, "Intensity: " + workout.getIntensityLabel(), Graphics.TEXT_JUSTIFY_LEFT);
+        
+        // Week info
+        var week = Application.getApp().completedWeeks;
+        dc.drawText(10, statsY + 45, Graphics.FONT_TINY, "Week: " + (week + 1), Graphics.TEXT_JUSTIFY_LEFT);
+        
+        // Adaptation status
+        var app = Application.getApp();
+        if (app.planEngine != null) {
+            var adaptStatus = app.planEngine.getAdaptationStatus();
+            dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_BLACK);
+            dc.drawText(w/2, statsY + 65, Graphics.FONT_TINY, adaptStatus, Graphics.TEXT_JUSTIFY_CENTER);
+        }
+        
+        // Exit hint
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, h - 8, Graphics.FONT_TINY, "ENTER/ESC to exit", Graphics.TEXT_JUSTIFY_CENTER);
+    }
+    
     function onShow() as Void {
         timer = new Timer.Timer();
         timer.start(method(:onTimer), 1000, true);
@@ -102,6 +154,7 @@ class WorkoutSession extends WatchUi.View {
     function onTimer() as Void {
         if (!isPaused && !isCompleted) {
             elapsedSeconds++;
+            totalElapsedSeconds++;
             var step = workout.getStep(currentStepIndex);
             if (step != null && step.durationSec > 0 && elapsedSeconds >= step.durationSec) {
                 nextStep();
@@ -128,6 +181,7 @@ class WorkoutSession extends WatchUi.View {
     
     function complete(success as Boolean) as Void {
         isCompleted = true;
+        showSummary = true;
         if (timer != null) { timer.stop(); timer = null; }
         workout.markComplete();
         
@@ -140,9 +194,28 @@ class WorkoutSession extends WatchUi.View {
         var curr = sessionStorage.getValue(key) != null ? sessionStorage.getValue(key) : 0;
         sessionStorage.setValue(key, curr + 1);
         
-        // Increment total weeks
-        Application.getApp().completedWeeks = week + 1;
-        sessionStorage.setValue("completedWeeks", week + 1);
+        // Record the workout result for adaptation
+        var app = Application.getApp();
+        if (app.planEngine != null) {
+            app.planEngine.recordWorkoutResult(success);
+        }
+        
+        WatchUi.requestUpdate();
+    }
+    
+    function finishAndExit() as Void {
+        // Increment total weeks after completing all 5 workouts for the week
+        var week = Application.getApp().completedWeeks;
+        var completedThisWeek = sessionStorage.getValue("week_" + week + "_completed") != null 
+            ? sessionStorage.getValue("week_" + week + "_completed") 
+            : 0;
+        
+        if (completedThisWeek >= 5) {
+            Application.getApp().completedWeeks = week + 1;
+            sessionStorage.setValue("completedWeeks", week + 1);
+        }
+        
+        WatchUi.popView(WatchUi.SLIDE_LEFT);
     }
     
     function getProgress() as Number {
@@ -152,6 +225,10 @@ class WorkoutSession extends WatchUi.View {
     
     function getElapsedTimeFormatted() as String {
         return (elapsedSeconds / 60) + ":" + (elapsedSeconds % 60).format("%02d");
+    }
+    
+    function getTotalElapsedTimeFormatted() as String {
+        return (totalElapsedSeconds / 60) + ":" + (totalElapsedSeconds % 60).format("%02d");
     }
     
     function onHide() as Void {

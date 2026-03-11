@@ -19,6 +19,12 @@ class WorkoutDelegate extends WatchUi.InputDelegate {
             return false;
         }
         
+        // If showing summary, any key exits
+        if (session.showSummary) {
+            session.finishAndExit();
+            return true;
+        }
+        
         if (key.getKey() == WatchUi.KEY_UP) {
             // Skip step
             session.skipStep();
@@ -30,14 +36,14 @@ class WorkoutDelegate extends WatchUi.InputDelegate {
             WatchUi.requestUpdate();
             return true;
         } else if (key.getKey() == WatchUi.KEY_ENTER) {
-            // Complete workout
+            // Complete workout and show summary
             session.complete(true);
-            WatchUi.popView(WatchUi.SLIDE_RIGHT);
+            WatchUi.requestUpdate();
             return true;
         } else if (key.getKey() == WatchUi.KEY_ESC) {
-            // Exit (mark as incomplete)
+            // Exit (mark as incomplete) and show summary
             session.complete(false);
-            WatchUi.popView(WatchUi.SLIDE_RIGHT);
+            WatchUi.requestUpdate();
             return true;
         }
         
