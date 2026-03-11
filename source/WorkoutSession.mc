@@ -11,6 +11,8 @@ class WorkoutSession extends WatchUi.View {
     var elapsedSeconds as Number = 0;
     var totalElapsedSeconds as Number = 0;
     var isPaused as Boolean = false;
+    var showCountdown as Boolean = false;
+    var countdownSeconds as Number = 0;
     var isCompleted as Boolean = false;
     var showSummary as Boolean = false;
     var timer as Timer.Timer?;
@@ -178,6 +180,22 @@ class WorkoutSession extends WatchUi.View {
     function skipStep() as Void { nextStep(); }
     
     function togglePause() as Void { isPaused = !isPaused; }
+    
+    function startCountdown() as Void {
+        showCountdown = true;
+        countdownSeconds = 5;
+    }
+    
+    function updateCountdown() as Boolean {
+        if (showCountdown && countdownSeconds > 0) {
+            countdownSeconds--;
+            if (countdownSeconds == 0) {
+                showCountdown = false;
+                return true; // Trigger step change
+            }
+        }
+        return false;
+    }
     
     function complete(success as Boolean) as Void {
         isCompleted = true;
