@@ -17,6 +17,7 @@ class SettingsView extends WatchUi.View {
             "Level: Beginner",
             "Level: Intermediate", 
             "Level: Advanced",
+            "Start from Phase",
             "Reset Progress"
         ];
     }
@@ -82,6 +83,10 @@ class SettingsView extends WatchUi.View {
             app.userLevel = 2;
             storage.setValue("userLevel", 2);
         } else if (selectedOption == 3) {
+            // Start from Phase - show phase selector
+            WatchUi.pushView(new PhaseSelectorView(app), new PhaseSelectorDelegate(app), WatchUi.SLIDE_LEFT);
+            return;
+        } else if (selectedOption == 4) {
             // Reset progress
             storage.clearAll();
             app.completedWeeks = 0;
@@ -110,6 +115,104 @@ class SettingsDelegate extends WatchUi.InputDelegate {
             return true;
         } else if (key.getKey() == WatchUi.KEY_ENTER) {
             view.applySetting();
+            return true;
+        } else if (key.getKey() == WatchUi.KEY_ESC) {
+            WatchUi.popView(WatchUi.SLIDE_RIGHT);
+            return true;
+        }
+        return false;
+    }
+}
+
+//! Phase selector view for choosing starting phase
+class PhaseSelectorView extends WatchUi.View {
+    
+    var app as CoachroxApp;
+    var selectedPhase as Number = 1; // Default to Phase 1
+    const MAX_PHASE = 8; // 8-week plan
+    
+    function initialize(application as CoachroxApp) {
+        WatchUi.View.initialize();
+        app = application;
+        // Start from current phase or 1
+        selectedPhase = app.completedWeeks + 1;
+        if (selectedPhase < 1) { selectedPhase = 1; }
+        if (selectedPhase > MAX_PHASE) { selectedPhase = MAX_PHASE; }
+    }
+    
+    function onUpdate(dc as Dc) as Void {
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+        dc.clear();
+        
+        // Header
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 10, Graphics.FONT_MEDIUM, "Start from Phase", Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Current phase info
+        dc.setColor(Graphics.COLOR_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 40, Graphics.FONT_SMALL, "Current: Week " + (app.completedWeeks + 1), Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Selected phase display
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 80, Graphics.FONT_LARGE, "Phase " + selectedPhase, Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Instructions
+        dc.setColor(Graphics.COLOR_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, 120, Graphics.FONT_TINY, "UP/DOWN: Change", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, 140, Graphics.FONT_TINY, "ENTER: Confirm | ESC: Back", Graphics.TEXT_JUSTIFY_CENTER);
+        
+        // Warning
+        dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_BLACK);
+        dc.drawText(dc.getWidth() / 2, dc.getHeight() - 25, Graphics.FONT_TINY, "This will reset all progress!", Graphics.TEXT_JUSTIFY_CENTER);
+    }
+    
+    function selectNext() as Void {
+        if (selectedPhase < MAX_PHASE) {
+            selectedPhase++;
+            WatchUi.requestUpdate();
+        }
+    }
+    
+    function selectPrevious() as Void {
+        if (selectedPhase > 1) {
+            selectedPhase--;
+            WatchUi.requestUpdate();
+        }
+    }
+    
+    function confirmSelection() as Void {
+        var storage = app.sessionStorage;
+        
+        // Reset all progress
+        storage.clearAll();
+        
+        // Set the starting phase (week - 1 because completedWeeks is 0-indexed)
+        app.completedWeeks = selectedPhase - 1;
+        storage.setValue("completedWeeks", app.completedWeeks);
+        
+        // Pop back to settings
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);
+    }
+}
+
+class PhaseSelectorDelegate extends WatchUi.InputDelegate {
+    
+    var view as PhaseSelectorView;
+    
+    function initialize(pView as PhaseSelectorView) {
+        WatchUi.InputDelegate.initialize();
+        view = pView;
+    }
+    
+    function onKeyPressed(key as WatchUi.KeyEvent) as Boolean {
+        if (key.getKey() == WatchUi.KEY_UP) {
+            view.selectPrevious();
+            return true;
+        } else if (key.getKey() == WatchUi.KEY_DOWN) {
+            view.selectNext();
+            return true;
+        } else if (key.getKey() == WatchUi.KEY_ENTER) {
+            view.confirmSelection();
             return true;
         } else if (key.getKey() == WatchUi.KEY_ESC) {
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
