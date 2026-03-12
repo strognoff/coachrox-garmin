@@ -50,7 +50,28 @@ Each workout step includes:
 - Fenix 7
 - Fenix 7 Pro
 - Fenix 7X
+- Fenix 8 43mm
+- Fenix 8 47mm
+- Fenix 8 Pro 47mm
+- Fenix 8 Solar 47mm
+- Fenix 8 Solar 51mm
 - Epix Pro
+- Epix 2
+- Epix 2 Pro 42mm
+- Epix 2 Pro 47mm
+- Epix 2 Pro 51mm
+
+### MARQ
+- MARQ 2
+- MARQ 2 Aviator
+- MARQ Adventurer
+- MARQ Athlete
+- MARQ Aviator
+- MARQ Captain
+- MARQ Commander
+- MARQ Driver
+- MARQ Expedition
+- MARQ Golfer
 
 ### Venu
 - Venu 3
