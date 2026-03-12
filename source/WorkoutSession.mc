@@ -2,6 +2,9 @@ import Toybox.Lang;
 import Toybox.Timer;
 import Toybox.WatchUi;
 import Toybox.Graphics;
+import Toybox.Activity;
+import Toybox.System;
+import Toybox.ActivityRecording;
 
 class WorkoutSession extends WatchUi.View {
     
@@ -19,6 +22,8 @@ class WorkoutSession extends WatchUi.View {
     var currentStepName as String = "";
     var nextStepName as String = "";
     var workoutIndex as Number = 0;
+    var currentHeartRate as Number = 0;
+    var session; // ActivityRecording session (kept untyped for device/API compatibility)
     
     const COLOR_ORANGE = 0xFF6B00;
     const COLOR_BLUE = 0x00A3E0;
@@ -33,6 +38,31 @@ class WorkoutSession extends WatchUi.View {
         
         if (workout.getStepCount() > 0) {
             updateStepInfo();
+        }
+        
+        // Start activity recording session for HR tracking
+        startActivitySession();
+    }
+    
+    function startActivitySession() as Void {
+        // Create and start an activity recording session
+        if (Toybox has :ActivityRecording) {
+            session = ActivityRecording.createSession({
+                :name => "COACHROX",
+                :sport => Activity.SPORT_TRAINING,
+                :subSport => Activity.SUB_SPORT_GENERIC
+            });
+            
+            if (session != null) {
+                session.start();
+            }
+        }
+    }
+    
+    function onSensor(sensorInfo) as Void {
+        // Update heart rate from sensor callback
+        if (sensorInfo != null && sensorInfo has :heartRate && sensorInfo.heartRate != null) {
+            currentHeartRate = sensorInfo.heartRate;
         }
     }
     
@@ -129,7 +159,7 @@ class WorkoutSession extends WatchUi.View {
         }
         
         // ===== Next step or completion message =====
-        currentY += 8; // Increased from 6
+        currentY += 14; // Increased from 6
         if (isCompleted) {
             dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
             dc.drawText(cx, currentY, Graphics.FONT_SMALL, "COMPLETE!", Graphics.TEXT_JUSTIFY_CENTER);
@@ -138,11 +168,30 @@ class WorkoutSession extends WatchUi.View {
             dc.drawText(cx, currentY, Graphics.FONT_XTINY, "NEXT: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
         }
         
+        // ===== Current Heart Rate =====
+        currentY += 18;
+        updateHeartRate();
+        if (currentHeartRate > 0) {
+            dc.setColor(COLOR_RED, Graphics.COLOR_BLACK);
+            dc.drawText(cx, currentY, Graphics.FONT_XTINY, "HR: " + currentHeartRate + " bpm", Graphics.TEXT_JUSTIFY_CENTER);
+        } else {
+            dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+            dc.drawText(cx, currentY, Graphics.FONT_XTINY, "HR: --", Graphics.TEXT_JUSTIFY_CENTER);
+        }
+
         // ===== Controls hint at bottom (fixed position) =====
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
         dc.drawText(cx, h - 20, Graphics.FONT_XTINY, "DOWN=Pause ENTER=End", Graphics.TEXT_JUSTIFY_CENTER);
     }
-    
+
+    function updateHeartRate() as Void {
+        // Get latest heart rate from Activity Info
+        var activityInfo = Activity.getActivityInfo();
+        if (activityInfo != null && activityInfo has :currentHeartRate && activityInfo.currentHeartRate != null) {
+            currentHeartRate = activityInfo.currentHeartRate;
+        }
+    }
+
     //! Draw the post-workout summary screen
     function drawSummary(dc as Dc, w as Number, h as Number) as Void {
         var cx = w / 2;
@@ -277,6 +326,13 @@ class WorkoutSession extends WatchUi.View {
         if (timer != null) { timer.stop(); timer = null; }
         workout.markComplete();
         
+        // Stop and save the activity recording
+        if (session != null && session.isRecording()) {
+            session.stop();
+            session.save();
+            session = null;
+        }
+        
         // Mark workout as completed for this week
         var week = Application.getApp().completedWeeks;
         sessionStorage.setValue("week_" + week + "_day_" + workoutIndex + "_done", 1);
@@ -331,5 +387,12 @@ class WorkoutSession extends WatchUi.View {
     
     function onHide() as Void {
         if (timer != null) { timer.stop(); }
+        
+        // Clean up activity session if still running
+        if (session != null && session.isRecording()) {
+            session.stop();
+            session.save();
+            session = null;
+        }
     }
 }

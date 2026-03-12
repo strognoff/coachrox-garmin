@@ -53,10 +53,10 @@ class ProgressView extends WatchUi.View {
     var barHeight = 6;
     var barColor = completion >= 100 ? COLOR_GREEN : (completion >= 50 ? COLOR_YELLOW : COLOR_BLUE);
     dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-    dc.fillRectangle(15, y, width - 30, barHeight);
+    dc.fillRectangle(15, y+6, width - 30, barHeight);
     dc.setColor(barColor, Graphics.COLOR_BLACK);
-    dc.fillRectangle(15, y, (width - 30) * completion / 100, barHeight);
-    y += lineHeight * 0.6;
+    dc.fillRectangle(15, y+6, (width - 30) * completion / 100, barHeight);
+    y += lineHeight * 0.8;  // Increased from 0.6 to 0.8
     
     // Percentage (1x bigger font)
     dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
