@@ -7,10 +7,22 @@ class SettingsView extends WatchUi.View {
     var app as CoachroxApp;
     var selectedOption as Number = 0;
     
-    var options as Array<String> = ["Level: Beginner", "Level: Intermediate", "Level: Advanced", "Reset Progress"];
+    var options as Array<String> = ["Plan: 8 Week", "Level: Beginner", "Start from Phase", "Reset Progress"];
+    
+    // Start from phase option (index 2)
+    var startFromPhase as Number = 1;
     
     const COLOR_ORANGE = 0xFF6B00;
     const COLOR_BLUE = 0x00A3E0;
+    
+    // Phase constants (matching PlanEngine)
+    const PHASE_BASE = 0;
+    const PHASE_BUILD = 1;
+    const PHASE_SPECIFIC = 2;
+    const PHASE_TAPER = 3;
+    
+    var phaseOptions as Array<String> = ["Base (Wks 1-4)", "Build (Wks 5-8)", "Specific (Wks 9-11)", "Taper (Wk 12)"];
+    var selectedPhase as Number = 0;
     
     function initialize(application as CoachroxApp) {
         WatchUi.View.initialize();
@@ -26,9 +38,14 @@ class SettingsView extends WatchUi.View {
             planWeeks = 12;
         }
         
+        // Load selectedPhase from storage or default to 0 (Base)
+        var storedPhase = app.sessionStorage.getValue("startFromPhase");
+        selectedPhase = (storedPhase != null) ? storedPhase : 0;
+        
         options = [
             "Plan: " + planWeeks + " Week",
             "Level: " + getLevelName(app.userLevel),
+            "Start from: " + phaseOptions[selectedPhase],
             "Reset Progress"
         ];
     }
@@ -121,6 +138,13 @@ class SettingsView extends WatchUi.View {
     function applySetting() as Void {
         var storage = app.sessionStorage;
         
+        // Get current plan weeks for phase limit
+        var planWeeks = 8;
+        var planStored = storage.getValue("planType");
+        if (planStored != null && planStored == 12) {
+            planWeeks = 12;
+        }
+        
         if (selectedOption == 0) {
             var currentPlan = storage.getValue("planType");
             if (currentPlan != null && currentPlan == 12) {
@@ -137,37 +161,58 @@ class SettingsView extends WatchUi.View {
             app.userLevel = newLevel;
             app.completedWeeks = 0;
         } else if (selectedOption == 2) {
+            // Start from Phase - cycle through phases 1 to planWeeks
+            var newStartPhase = (startFromPhase % planWeeks) + 1;
+            storage.setValue("startFromPhase", newStartPhase);
+            startFromPhase = newStartPhase;
+            
+            // Reset all workout data and progress, then start from selected phase
+            resetAllProgress(storage);
+            
+            // Set completedWeeks to (selected phase - 1) so next workout is that phase
+            // e.g., if starting from phase 3, completedWeeks = 2 means week 3 is next
+            storage.setValue("completedWeeks", newStartPhase - 1);
+            app.completedWeeks = newStartPhase - 1;
+        } else if (selectedOption == 3) {
             // Reset all workout completion history
-            var maxWeeks = 12; // Cover both 8-week and 12-week plans
-            var maxSessions = 5; // Maximum sessions per week
+            resetAllProgress(storage);
             
-            // Clear individual workout completion keys
-            for (var week = 0; week < maxWeeks; week++) {
-                for (var session = 0; session < maxSessions; session++) {
-                    var key = "w" + week + "s" + session;
-                    storage.setValue(key, 0);
-                }
-                // Clear weekly completion counter (THIS IS THE KEY!)
-                storage.setValue("week_" + week + "_completed", 0);
-                // Clear weekly adherence tracking
-                storage.setValue("week_" + week + "_adherence", 0);
-            }
-            
-            // Reset all user progress values
+            // Reset to defaults
             storage.setValue("userLevel", 0);
             storage.setValue("planType", 8);
             storage.setValue("completedWeeks", 0);
-            storage.setValue("adapt_success", 0);
-            storage.setValue("adapt_fail", 0);
-            storage.setValue("progression_suggested", 0);
-            storage.setValue("prev_week_load", 0);
+            storage.setValue("startFromPhase", 1);
             
             // Reset app state
             app.userLevel = 0;
             app.completedWeeks = 0;
+            startFromPhase = 1;
         }
         
         WatchUi.requestUpdate();
+    }
+    
+    function resetAllProgress(storage as SessionStorage) as Void {
+        var maxWeeks = 12; // Cover both 8-week and 12-week plans
+        var maxSessions = 5; // Maximum sessions per week
+        
+        // Clear individual workout completion keys
+        for (var week = 0; week < maxWeeks; week++) {
+            for (var session = 0; session < maxSessions; session++) {
+                var key = "w" + week + "s" + session;
+                storage.setValue(key, 0);
+            }
+            // Clear weekly completion counter
+            storage.setValue("week_" + week + "_completed", 0);
+            // Clear weekly adherence tracking
+            storage.setValue("week_" + week + "_adherence", 0);
+        }
+        
+        // Reset all user progress values
+        storage.setValue("adapt_success", 0);
+        storage.setValue("adapt_fail", 0);
+        storage.setValue("progression_suggested", 0);
+        storage.setValue("prev_week_load", 0);
     }
 }
 
