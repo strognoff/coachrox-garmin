@@ -3,14 +3,20 @@
     <iq:application entry="CoachroxApp" id="D396D710A5D5448BA5E9325242B9C10B" name="@Strings.COACHROX" type="watch-app" minSdkVersion="3.2.0" launcherIcon="@Drawables.LauncherIcon">
         <iq:products>
             <!-- Forerunner -->
+            <!-- Fenix/Epix -->
+            <!-- Venu -->
+            <iq:product id="epixpro"/>
+            <iq:product id="fenix7"/>
+            <iq:product id="fenix7pro"/>
+            <iq:product id="fenix7pronowifi"/>
+            <iq:product id="fenix7x"/>
+            <iq:product id="fenix843mm"/>
+            <iq:product id="fenix847mm"/>
+            <iq:product id="fenix8pro47mm"/>
+            <iq:product id="fenix8solar47mm"/>
+            <iq:product id="fenix8solar51mm"/>
             <iq:product id="forerunner255"/>
             <iq:product id="forerunner965"/>
-            <!-- Fenix/Epix -->
-            <iq:product id="fenix7"/>
-            <iq:product id="fenix7x"/>
-            <iq:product id="fenix7pro"/>
-            <iq:product id="epixpro"/>
-            <!-- Venu -->
             <iq:product id="venu3"/>
         </iq:products>
         <iq:languages>
@@ -19,5 +25,6 @@
         <iq:permissions>
             <iq:uses-permission id="Notifications"/>
         </iq:permissions>
+        <iq:barrels/>
     </iq:application>
 </iq:manifest>
