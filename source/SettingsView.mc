@@ -48,9 +48,14 @@ class SettingsView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
         
+        // Safer vertical positions for round/bezel screens
+        var headerY = 24;       // SETTINGS
+        var subHeaderY = 56;    // move "8w | Beginner" down so it doesn't overlap visually
+        var helpY = h - 26;
+        
         // Header
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 4, Graphics.FONT_TINY, "SETTINGS", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w/2, headerY, Graphics.FONT_TINY, "SETTINGS", Graphics.TEXT_JUSTIFY_CENTER);
         
         // Current settings
         var planWeeks = 8;
@@ -59,29 +64,48 @@ class SettingsView extends WatchUi.View {
             planWeeks = 12;
         }
         
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 22, Graphics.FONT_TINY, planWeeks + "w | " + getLevelName(app.userLevel), Graphics.TEXT_JUSTIFY_CENTER);
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(w/2, subHeaderY, Graphics.FONT_TINY, planWeeks + "w | " + getLevelName(app.userLevel), Graphics.TEXT_JUSTIFY_CENTER);
         
-        // Options
-        var y = 45;
-        var itemHeight = 25;
+        // Options layout
+        var itemHeight = 30; // taller so the highlight frames the text
+        var itemGap = 6;
+        var listHeight = (options.size() * itemHeight) + ((options.size() - 1) * itemGap);
+        
+        var topY = 74;              // push list down a bit to preserve spacing under subheader
+        var bottomY = helpY - 14;
+        var available = bottomY - topY;
+        
+        var y = topY + ((available - listHeight) / 2);
+        if (y < topY) { y = topY; }
+        
+        // Keep inside round safe area horizontally
+        var insetX = 24;
+        var rowW = w - (insetX * 2);
+        
+        // Vertically center text inside row
+        var textOffsetY = (itemHeight / 2) - 10; // tuned for FONT_TINY on round Garmin screens
+        if (textOffsetY < 4) { textOffsetY = 4; }
         
         for (var i = 0; i < options.size(); i++) {
             if (i == selectedOption) {
-                dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_WHITE);
-                dc.fillRectangle(5, y, w - 10, itemHeight);
-                dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-            } else {
+                // Clear selected state: light fill + dark text
                 dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
+                dc.fillRectangle(insetX, y, rowW, itemHeight);
+                
+                dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
+            } else {
+                // Dim non-selected to reduce glare / improve contrast with selection
+                dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
             }
             
-            dc.drawText(w/2, y + 4, Graphics.FONT_TINY, options[i], Graphics.TEXT_JUSTIFY_CENTER);
-            y += itemHeight + 2;
+            dc.drawText(w/2, y + textOffsetY, Graphics.FONT_TINY, options[i], Graphics.TEXT_JUSTIFY_CENTER);
+            y += itemHeight + itemGap;
         }
         
-        // Help text
+        // Help text: smaller font so it fits on round/bezel screens
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, h - 8, Graphics.FONT_TINY, "UP/DOWN | ENTER | ESC", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w/2, helpY, Graphics.FONT_XTINY, "UP/DOWN | ENTER | ESC", Graphics.TEXT_JUSTIFY_CENTER);
     }
     
     function selectNext() as Void {
@@ -98,25 +122,21 @@ class SettingsView extends WatchUi.View {
         var storage = app.sessionStorage;
         
         if (selectedOption == 0) {
-            // Toggle plan type
             var currentPlan = storage.getValue("planType");
             if (currentPlan != null && currentPlan == 12) {
                 storage.setValue("planType", 8);
             } else {
                 storage.setValue("planType", 12);
             }
-            // Reset progress when changing plan
             storage.setValue("completedWeeks", 0);
             app.completedWeeks = 0;
         } else if (selectedOption == 1) {
-            // Cycle through levels
             var newLevel = (app.userLevel + 1) % 3;
             storage.setValue("userLevel", newLevel);
             storage.setValue("completedWeeks", 0);
             app.userLevel = newLevel;
             app.completedWeeks = 0;
         } else if (selectedOption == 2) {
-            // Reset everything
             storage.setValue("userLevel", 0);
             storage.setValue("planType", 8);
             storage.setValue("completedWeeks", 0);
