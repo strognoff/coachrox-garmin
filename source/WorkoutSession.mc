@@ -60,86 +60,114 @@ class WorkoutSession extends WatchUi.View {
             return;
         }
         
-        // Header
+            // ===== Layout constants - start from top with proper spacing =====
+        var cx = w / 2;
+        var startY = 20; // Start much higher near the top
+        var currentY = startY;
+    
+    // ===== Header =====
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 2, Graphics.FONT_TINY, "WORKOUT", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, currentY, Graphics.FONT_XTINY, "WORKOUT", Graphics.TEXT_JUSTIFY_CENTER);
+        currentY += 18;
         
-        // Current step
+        // ===== Current step name =====
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 18, Graphics.FONT_TINY, currentStepName, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, currentY, Graphics.FONT_SMALL, currentStepName, Graphics.TEXT_JUSTIFY_CENTER);
+        currentY += 28;
         
-        // Timer
+        // ===== Timer (largest element) =====
         dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 38, Graphics.FONT_MEDIUM, getElapsedTimeFormatted(), Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, currentY, Graphics.FONT_NUMBER_MEDIUM, getElapsedTimeFormatted(), Graphics.TEXT_JUSTIFY_CENTER);
+        currentY += 50; // Increased from 40 to add more space before progress bar
         
-        // Paused
+        // ===== Paused indicator =====
         if (isPaused) {
             dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_BLACK);
-            dc.drawText(w/2, 60, Graphics.FONT_TINY, "- PAUSED -", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(cx, currentY, Graphics.FONT_XTINY, "PAUSED", Graphics.TEXT_JUSTIFY_CENTER);
+            currentY += 18;
+        } else {
+            // Add spacing even when not paused to maintain consistent layout
+            currentY += 6;
         }
         
-        // Progress
+        // ===== Progress bar =====
         var progress = getProgress();
-        var barW = w - 20;
+        var barW = w - 60;
+        var barX = (w - barW) / 2;
+        
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.fillRectangle(10, 75, barW, 5);
+        dc.fillRectangle(barX, currentY, barW, 4);
         dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
-        dc.fillRectangle(10, 75, barW * progress / 100, 5);
+        dc.fillRectangle(barX, currentY, (barW * progress) / 100, 4);
+        currentY += 12; // Increased from 10
         
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 85, Graphics.FONT_TINY, progress + "%  " + (currentStepIndex + 1) + "/" + workout.getStepCount(), Graphics.TEXT_JUSTIFY_CENTER);
+        // Progress text
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(cx, currentY, Graphics.FONT_XTINY,
+            (currentStepIndex + 1) + "/" + workout.getStepCount() + " • " + progress + "%",
+            Graphics.TEXT_JUSTIFY_CENTER);
+        currentY += 20; // Increased from 18
         
-        // Next
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 100, Graphics.FONT_TINY, "NEXT: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
-        
-        // Show step targets if available
+        // ===== Targets =====
         var currentStep = workout.getStep(currentStepIndex);
         if (currentStep != null) {
-            var targetY = 115;
             if (currentStep.targetHRZone > 0) {
                 dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
-                dc.drawText(10, targetY, Graphics.FONT_TINY, "HR: " + WorkoutStep.getHRZoneName(currentStep.targetHRZone), Graphics.TEXT_JUSTIFY_LEFT);
+                dc.drawText(cx, currentY, Graphics.FONT_XTINY,
+                    "HR: " + WorkoutStep.getHRZoneName(currentStep.targetHRZone),
+                    Graphics.TEXT_JUSTIFY_CENTER);
+                currentY += 18; // Increased from 16 for more space
             }
+            
             if (currentStep.targetRPE > 0) {
                 dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
-                dc.drawText(w - 10, targetY, Graphics.FONT_TINY, "RPE: " + currentStep.targetRPE + " (" + WorkoutStep.getRPEDescription(currentStep.targetRPE) + ")", Graphics.TEXT_JUSTIFY_RIGHT);
+                dc.drawText(cx, currentY, Graphics.FONT_XTINY,
+                    "RPE: " + currentStep.targetRPE + " " + WorkoutStep.getRPEDescription(currentStep.targetRPE),
+                    Graphics.TEXT_JUSTIFY_CENTER);
+                currentY += 16;
             }
         }
         
-        // Done
+        // ===== Next step or completion message =====
+        currentY += 8; // Increased from 6
         if (isCompleted) {
             dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
-            dc.drawText(w/2, 130, Graphics.FONT_MEDIUM, "COMPLETED!", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(cx, currentY, Graphics.FONT_SMALL, "COMPLETE!", Graphics.TEXT_JUSTIFY_CENTER);
+        } else {
+            dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+            dc.drawText(cx, currentY, Graphics.FONT_XTINY, "NEXT: " + nextStepName, Graphics.TEXT_JUSTIFY_CENTER);
         }
         
-        // Controls
+        // ===== Controls hint at bottom (fixed position) =====
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, h - 8, Graphics.FONT_TINY, "DOWN: Pause | ENTER: End", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, h - 20, Graphics.FONT_XTINY, "DOWN=Pause ENTER=End", Graphics.TEXT_JUSTIFY_CENTER);
     }
     
     //! Draw the post-workout summary screen
     function drawSummary(dc as Dc, w as Number, h as Number) as Void {
+        var cx = w / 2;
+        var currentY = 10;
+        
         // Header
         dc.setColor(COLOR_GREEN, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 2, Graphics.FONT_TINY, "WORKOUT COMPLETE", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, currentY, Graphics.FONT_XTINY, "COMPLETE!", Graphics.TEXT_JUSTIFY_CENTER);
+        currentY += 20;
         
         // Workout name
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 20, Graphics.FONT_TINY, workout.name, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, currentY, Graphics.FONT_XTINY, workout.name, Graphics.TEXT_JUSTIFY_CENTER);
+        currentY += 20;
         
         // Phase indicator
         dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
         var phaseName = workout.getPhaseName();
-        dc.drawText(w/2, 35, Graphics.FONT_TINY, "Phase: " + phaseName, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, currentY, Graphics.FONT_XTINY, "Phase: " + phaseName, Graphics.TEXT_JUSTIFY_CENTER);
+        currentY += 22;
         
-        // Total time
+        // Total time (prominent)
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, 52, Graphics.FONT_MEDIUM, getTotalElapsedTimeFormatted(), Graphics.TEXT_JUSTIFY_CENTER);
-        
-        // Stats
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        var statsY = 75;
+        dc.drawText(cx, currentY, Graphics.FONT_NUMBER_MEDIUM, getTotalElapsedTimeFormatted(), Graphics.TEXT_JUSTIFY_CENTER);
+        currentY += 50;
         
         // Steps completed
         var completedSteps = 0;
@@ -147,7 +175,11 @@ class WorkoutSession extends WatchUi.View {
             var step = workout.getStep(i);
             if (step != null && step.completed) { completedSteps++; }
         }
-        dc.drawText(10, statsY, Graphics.FONT_TINY, "Steps: " + completedSteps + "/" + workout.getStepCount(), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(cx, currentY, Graphics.FONT_XTINY, 
+            "Steps: " + completedSteps + "/" + workout.getStepCount(), 
+            Graphics.TEXT_JUSTIFY_CENTER);
+        currentY += 22;
         
         // Compliance percentage
         var compliance = workout.getCompliancePercent();
@@ -156,27 +188,34 @@ class WorkoutSession extends WatchUi.View {
         if (compliance < 50) { complianceColor = COLOR_RED; }
         
         dc.setColor(complianceColor, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, statsY + 12, Graphics.FONT_TINY, "Compliance: " + compliance + "%", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, currentY, Graphics.FONT_XTINY, 
+            "Compliance: " + compliance + "%", 
+            Graphics.TEXT_JUSTIFY_CENTER);
+        currentY += 18;
         
         // Compliance status
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(10, statsY + 24, Graphics.FONT_TINY, "Status: " + workout.getComplianceStatus(), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
+        var status = workout.getComplianceStatus();
+        dc.drawText(cx, currentY, Graphics.FONT_XTINY, status, Graphics.TEXT_JUSTIFY_CENTER);
+        currentY += 18;
         
         // Week info
         var week = Application.getApp().completedWeeks;
-        dc.drawText(10, statsY + 36, Graphics.FONT_TINY, "Week: " + (week + 1), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
+        dc.drawText(cx, currentY, Graphics.FONT_XTINY, "Week: " + (week + 1), Graphics.TEXT_JUSTIFY_CENTER);
+        currentY += 18;
         
         // Adaptation status
         var app = Application.getApp();
         if (app.planEngine != null) {
             var adaptStatus = app.planEngine.getAdaptationStatus();
             dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_BLACK);
-            dc.drawText(w/2, statsY + 55, Graphics.FONT_TINY, adaptStatus, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(cx, currentY, Graphics.FONT_XTINY, adaptStatus, Graphics.TEXT_JUSTIFY_CENTER);
         }
         
-        // Exit hint
+        // Exit hint at bottom (fixed position)
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, h - 8, Graphics.FONT_TINY, "ENTER/ESC to exit", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, h - 16, Graphics.FONT_XTINY, "ENTER=exit", Graphics.TEXT_JUSTIFY_CENTER);
     }
     
     function onShow() as Void {
