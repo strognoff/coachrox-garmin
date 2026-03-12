@@ -265,7 +265,7 @@ class CoachroxMenuView extends WatchUi.View {
     // Footer
     // -------------------------
     function drawFooter(dc as Dc, w as Number, h as Number) as Number {
-        var footerHeight = 58;
+        var footerHeight = 32; // Reduced from 58 to 32
         var footerTopY = h - footerHeight;
 
         // Footer panel
@@ -278,19 +278,17 @@ class CoachroxMenuView extends WatchUi.View {
 
         var plan = app.getCurrentPlan();
 
-        // Progress bar only (centered + clamped for round screens)
-        var barHeight = 6;
+        // Progress bar - made more compact
+        var barHeight = 4; // Reduced from 6 to 4
 
-        // Use the smaller dimension so the bar never exceeds the round watch safe area
-        var maxBarWidth = (w < h) ? (w - 40) : (h - 40);
-        if (maxBarWidth < 40) { maxBarWidth = 40; } // safety clamp
+        // Fixed bar width and position
+        var barWidth = 110; // 195 - 85 = 110
+        var barX = 85; // Fixed start position
+        var barY = 260; // Fixed position at y=260
 
-        var barWidth = maxBarWidth;
-        var barX = (w - barWidth) / 2;
-        var barY = footerTopY + ((footerHeight - barHeight) / 2);
-
-        dc.setColor(COLOR_SURFACE_2, Graphics.COLOR_TRANSPARENT);
-        dc.fillRoundedRectangle(barX, barY, barWidth, barHeight, 3);
+        // Draw the entire bar as orange (unfilled portion)
+        dc.setColor(COLOR_ORANGE, Graphics.COLOR_TRANSPARENT);
+        dc.fillRoundedRectangle(barX, barY, barWidth, barHeight, 2);
 
         var completion = 0;
         if (plan != null) {
@@ -308,8 +306,9 @@ class CoachroxMenuView extends WatchUi.View {
             progressColor = COLOR_GREEN;
         }
 
+        // Draw the filled portion on top
         dc.setColor(progressColor, Graphics.COLOR_TRANSPARENT);
-        dc.fillRoundedRectangle(barX, barY, fillWidth, barHeight, 3);
+        dc.fillRoundedRectangle(barX, barY, fillWidth, barHeight, 2);
 
         return footerHeight;
     }
