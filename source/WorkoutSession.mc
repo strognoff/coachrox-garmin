@@ -95,6 +95,45 @@ class WorkoutSession extends WatchUi.View {
         nextStep();
     }
     
+    //! Go to previous step
+    function previousStep() as Void {
+        if (currentStepIndex > 0) {
+            // Reset the current step's completed status
+            var step = workout.getStep(currentStepIndex);
+            if (step != null) {
+                step.completed = false;
+            }
+            
+            currentStepIndex--;
+            elapsedSeconds = 0;
+            updateStepInfo();
+            
+            System.println("Previous step: " + currentStepName);
+        }
+    }
+    
+    //! Skip multiple steps forward (fast forward)
+    function fastForward(numSteps as Number) as Void {
+        for (var i = 0; i < numSteps; i++) {
+            if (currentStepIndex < workout.getStepCount() - 1) {
+                var step = workout.getStep(currentStepIndex);
+                if (step != null) {
+                    step.completed = true;
+                }
+                currentStepIndex++;
+            }
+        }
+        
+        if (currentStepIndex >= workout.getStepCount()) {
+            complete(true);
+        } else {
+            elapsedSeconds = 0;
+            updateStepInfo();
+        }
+        
+        System.println("Fast forward to step: " + currentStepIndex);
+    }
+    
     function togglePause() as Void {
         isPaused = !isPaused;
     }
