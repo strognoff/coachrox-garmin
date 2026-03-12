@@ -137,11 +137,32 @@ class SettingsView extends WatchUi.View {
             app.userLevel = newLevel;
             app.completedWeeks = 0;
         } else if (selectedOption == 2) {
+            // Reset all workout completion history
+            var maxWeeks = 12; // Cover both 8-week and 12-week plans
+            var maxSessions = 5; // Maximum sessions per week
+            
+            // Clear individual workout completion keys
+            for (var week = 0; week < maxWeeks; week++) {
+                for (var session = 0; session < maxSessions; session++) {
+                    var key = "w" + week + "s" + session;
+                    storage.setValue(key, 0);
+                }
+                // Clear weekly completion counter (THIS IS THE KEY!)
+                storage.setValue("week_" + week + "_completed", 0);
+                // Clear weekly adherence tracking
+                storage.setValue("week_" + week + "_adherence", 0);
+            }
+            
+            // Reset all user progress values
             storage.setValue("userLevel", 0);
             storage.setValue("planType", 8);
             storage.setValue("completedWeeks", 0);
             storage.setValue("adapt_success", 0);
             storage.setValue("adapt_fail", 0);
+            storage.setValue("progression_suggested", 0);
+            storage.setValue("prev_week_load", 0);
+            
+            // Reset app state
             app.userLevel = 0;
             app.completedWeeks = 0;
         }
