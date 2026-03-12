@@ -9,8 +9,8 @@ class SettingsView extends WatchUi.View {
     
     var options as Array<String> = ["Plan: 8 Week", "Level: Beginner", "Start from Phase", "Reset Progress"];
     
-    // Start from phase option (index 2)
-    var startFromPhase as Number = 1;
+    // Start from phase option (index 2) - store as phase index 0..3
+    var startFromPhase as Number = 0;
     
     const COLOR_ORANGE = 0xFF6B00;
     const COLOR_BLUE = 0x00A3E0;
@@ -41,6 +41,12 @@ class SettingsView extends WatchUi.View {
         // Load selectedPhase from storage or default to 0 (Base)
         var storedPhase = app.sessionStorage.getValue("startFromPhase");
         selectedPhase = (storedPhase != null) ? storedPhase : 0;
+        
+        // Clamp for safety (prevents simulator crash if old values exist in storage)
+        if (selectedPhase < 0) { selectedPhase = 0; }
+        if (selectedPhase >= phaseOptions.size()) { selectedPhase = phaseOptions.size() - 1; }
+        
+        startFromPhase = selectedPhase;
         
         options = [
             "Plan: " + planWeeks + " Week",
@@ -161,18 +167,27 @@ class SettingsView extends WatchUi.View {
             app.userLevel = newLevel;
             app.completedWeeks = 0;
         } else if (selectedOption == 2) {
-            // Start from Phase - cycle through phases 1 to planWeeks
-            var newStartPhase = (startFromPhase % planWeeks) + 1;
+            // Start from Phase - cycle through 0..3 (Base/Build/Specific/Taper)
+            var newStartPhase = (startFromPhase + 1) % phaseOptions.size();
             storage.setValue("startFromPhase", newStartPhase);
             startFromPhase = newStartPhase;
+            selectedPhase = newStartPhase;
             
             // Reset all workout data and progress, then start from selected phase
             resetAllProgress(storage);
             
-            // Set completedWeeks to (selected phase - 1) so next workout is that phase
-            // e.g., if starting from phase 3, completedWeeks = 2 means week 3 is next
-            storage.setValue("completedWeeks", newStartPhase - 1);
-            app.completedWeeks = newStartPhase - 1;
+            // Map phase -> starting week index (0-based)
+            var startWeek = 0;
+            if (newStartPhase == PHASE_BASE) { startWeek = 0; }
+            else if (newStartPhase == PHASE_BUILD) { startWeek = 4; }
+            else if (newStartPhase == PHASE_SPECIFIC) { startWeek = 8; }
+            else { startWeek = 11; } // Taper
+            
+            // For 8-week plan, clamp so we never start beyond week 7
+            if (planWeeks == 8 && startWeek > 7) { startWeek = 7; }
+            
+            storage.setValue("completedWeeks", startWeek);
+            app.completedWeeks = startWeek;
         } else if (selectedOption == 3) {
             // Reset all workout completion history
             resetAllProgress(storage);
@@ -181,12 +196,13 @@ class SettingsView extends WatchUi.View {
             storage.setValue("userLevel", 0);
             storage.setValue("planType", 8);
             storage.setValue("completedWeeks", 0);
-            storage.setValue("startFromPhase", 1);
+            storage.setValue("startFromPhase", 0);
             
             // Reset app state
             app.userLevel = 0;
             app.completedWeeks = 0;
-            startFromPhase = 1;
+            startFromPhase = 0;
+            selectedPhase = 0;
         }
         
         WatchUi.requestUpdate();
