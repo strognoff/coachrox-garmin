@@ -81,12 +81,24 @@ The app trains all 8 HYROX stations:
 
 ## Settings
 
-- **Level: Beginner** - New to HYROX
-- **Level: Intermediate** - Some HYROX experience
-- **Level: Advanced** - Competition level
-- **Reset Progress** - Clear all data
+- **Plan: 8/12 Week** - Toggle between 8-week and 12-week plans
+- **Level: Beginner/Intermediate/Advanced** - Difficulty level
+- **Start from Phase** - Select which phase to start from (Base/Build/Specific/Taper)
+- **Reset Progress** - Clear all workout data and start fresh
 
-*Note: Changing level resets your progress.*
+*Note: Changing level, plan, or start phase resets all progress.*
+
+### Start from Phase Feature
+
+If you missed recording workouts on your watch, you can use the "Start from Phase" setting to:
+1. Go to Settings → Start from Phase
+2. Select the phase you want to start from (Base/Build/Specific/Taper)
+3. All progress will be reset and your training will continue from that phase
+
+This is useful for:
+- Catching up after missed training days
+- Restarting a specific phase of the program
+- Beginning training from a later week
 
 ## Building
 
@@ -164,3 +176,192 @@ Application (not watchface) - optimized for workout execution with UI controls.
 ## License
 
 MIT License
+
+---
+
+# Testing Guide
+
+## Testing the App
+
+### Prerequisites
+- Garmin Connect IQ SDK installed
+- Garmin watch or simulator
+- Developer Mode enabled on watch (or use simulator)
+
+### Test Environment
+- **Device**: Forerunner 255 / Fenix 7 / Venu 3 (or simulator)
+- **SDK Version**: Connect IQ 8.x
+
+---
+
+## Test Cases
+
+### 1. App Installation
+**Steps:**
+1. Build the app: `monkeyc -y private.der -d fenix7 -o coachrox.prg -f monkey.jungle -w`
+2. Install via Garmin Express or `connectiq -d <device-ip> -o coachrox.prg`
+3. Verify app appears in your Garmin apps list
+
+**Expected:** App icon visible in menu
+
+---
+
+### 2. Menu Navigation
+**Steps:**
+1. Open COACHROX app
+2. Verify main menu displays:
+   - Start Workout
+   - My Plan
+   - Progress
+   - Settings
+3. Press UP/DOWN to navigate between options
+4. Press ENTER to select
+5. Press ESC to go back
+
+**Expected:** All menu items accessible, navigation responsive
+
+---
+
+### 3. Workout Selection
+**Steps:**
+1. From menu, select "Start Workout"
+2. Verify workout list displays (5 workouts per week)
+3. Navigate through workouts
+4. Select a workout to start
+
+**Expected:** Workout list shows all 5 weekly workouts
+
+---
+
+### 4. Workout Execution
+**Steps:**
+1. Start any workout
+2. Verify exercise name displays
+3. Verify countdown timer (5/3/1) shows before each exercise
+4. Press DOWN to pause
+5. Press DOWN again to resume
+6. Complete workout or press ENTER to finish early
+
+**Expected:** 
+- Exercise transitions work
+- Pause/Resume works
+- Workout completes successfully
+
+---
+
+### 5. Settings - Change Level
+**Steps:**
+1. Go to Settings
+2. Select "Level: Beginner" (or current)
+3. Press ENTER to cycle to next level
+4. Verify level changes
+
+**Expected:** Level cycles through Beginner → Intermediate → Advanced
+
+---
+
+### 6. Settings - Change Plan
+**Steps:**
+1. Go to Settings
+2. Select "Plan: 8 Week" (or 12)
+3. Press ENTER to toggle
+4. Verify plan changes between 8 and 12 weeks
+
+**Expected:** Plan toggles correctly
+
+---
+
+### 7. Settings - Start from Phase
+**Steps:**
+1. Go to Settings
+2. Navigate to "Start from: Base" (or current)
+3. Press ENTER to cycle through phases
+4. Select different phase (e.g., Build)
+5. Complete the selection
+
+**Expected:**
+- Phase cycles through Base → Build → Specific → Taper
+- Progress resets after selection
+
+---
+
+### 8. Settings - Reset Progress
+**Steps:**
+1. Complete some workouts to build progress
+2. Go to Settings
+3. Select "Reset Progress"
+4. Press ENTER to confirm
+
+**Expected:**
+- All workout data cleared
+- Week counter resets to 0
+- Adherence data cleared
+
+---
+
+### 9. Progress Tracking
+**Steps:**
+1. Complete workouts
+2. Go to Progress view
+3. Verify completed workouts tracked
+4. Check adherence percentages
+
+**Expected:** Progress shows completed workouts and adherence
+
+---
+
+### 10. Weekly Plan View
+**Steps:**
+1. Go to My Plan
+2. Verify current week displays
+3. Verify workout schedule for the week
+4. Check which workouts are completed vs pending
+
+**Expected:** Weekly plan shows all 5 workouts with completion status
+
+---
+
+## Running Tests on Simulator
+
+### Start Garmin Simulator
+```bash
+# List available devices
+garminconnectiq list
+
+# Start simulator for specific device
+garminconnectiq -d fenix7
+```
+
+### Deploy to Simulator
+```bash
+connectiq -d simulator -o coachrox.prg
+```
+
+### Debug
+```bash
+# View device logs
+connectiq -d <device> -l
+```
+
+---
+
+## Known Test Scenarios
+
+| Scenario | Expected Result |
+|----------|-----------------|
+| First app launch | Shows main menu, no progress |
+| Complete all 5 weekly workouts | Week advances, progress saved |
+| Miss a week | Can use "Start from Phase" to catch up |
+| Change level mid-program | Progress resets, new level applied |
+| Battery dies during workout | Workout not saved (by design) |
+| Pause for 1+ hour | Timer continues (GPS-based timing) |
+
+---
+
+## Reporting Issues
+
+If you encounter bugs:
+1. Note device model and firmware version
+2. Describe steps to reproduce
+3. Include any error messages
+4. Open issue at: https://github.com/strognoff/coachrox-garmin/issues
