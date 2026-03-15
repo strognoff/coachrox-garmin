@@ -2,6 +2,44 @@
 
 A production-ready HYROX training app for Garmin watches with 12-week structured training plans.
 
+---
+
+## 🚀 Quick Start Guide
+
+### First Time Setup
+1. **Install the app** on your Garmin watch
+2. **Open COACHROX** from your apps menu
+3. **Configure Settings:**
+   - Go to **Settings** → **Plan** (8 or 12 weeks)
+   - Go to **Settings** → **Level** (Beginner/Intermediate/Advanced)
+4. **Start Training:** Select **Start Workout** → Choose today's workout
+
+### Daily Workout Flow
+1. Open COACHROX → **Start Workout**
+2. Select the workout for today (1-5)
+3. Follow the exercises on screen:
+   - Each exercise shows **target pace/HR/RPE**
+   - **5-3-1 countdown** before each exercise
+   - **DOWN button** to pause/resume
+4. Complete all stations → Workout saved automatically
+
+### Navigation
+| Button | Action |
+|--------|--------|
+| UP/DOWN | Navigate menus |
+| ENTER | Select / Start workout |
+| ESC | Go back |
+| DOWN (in workout) | Pause/Resume |
+
+---
+
+## 📋 Menu Options
+
+- **Start Workout** - Begin today's training
+- **My Plan** - View weekly schedule & progress
+- **Progress** - See completed workouts & adherence
+- **Settings** - Configure plan, level, reset
+
 ## Features
 
 ### Training System
