@@ -125,11 +125,7 @@ class SettingsView extends WatchUi.View {
             dc.drawText(w/2, y + textOffsetY, Graphics.FONT_TINY, options[i], Graphics.TEXT_JUSTIFY_CENTER);
             y += itemHeight + itemGap;
         }
-        
-        // Help text: smaller font so it fits on round/bezel screens
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, helpY, Graphics.FONT_XTINY, "UP/DOWN | ENTER | ESC", Graphics.TEXT_JUSTIFY_CENTER);
-    }
+ }
     
     function selectNext() as Void {
         selectedOption = (selectedOption + 1) % options.size();
