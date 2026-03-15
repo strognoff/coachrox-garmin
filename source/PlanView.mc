@@ -95,7 +95,7 @@ class PlanDelegate extends WatchUi.InputDelegate {
     }
     
     function onKeyPressed(key as WatchUi.KeyEvent) as Boolean {
-        if (key.getKey() == WatchUi.KEY_ESC) {
+        if (key.getKey() == WatchUi.KEY_LAP || key.getKey() == WatchUi.KEY_ESC) {
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
             return true;
         }

@@ -251,7 +251,7 @@ class SettingsDelegate extends WatchUi.InputDelegate {
         } else if (key.getKey() == WatchUi.KEY_ENTER) {
             view.applySetting();
             return true;
-        } else if (key.getKey() == WatchUi.KEY_ESC) {
+        }else if (key.getKey() == WatchUi.KEY_LAP || key.getKey() == WatchUi.KEY_ESC) {
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
             return true;
         }

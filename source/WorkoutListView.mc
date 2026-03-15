@@ -49,9 +49,12 @@ class WorkoutListView extends WatchUi.View {
         var marginX = 10;
         var headerY = 6;
 
-        var rowH = 24; // slightly taller to match FONT_TINY on round devices
-        var highlightInsetX = 6;
-        var highlightInsetY = 2;
+        // Better spacing: increase row height and re-center list area
+        var rowH = 24;
+
+        // More inset highlight to feel like a "pill" on round/AMOLED screens
+        var highlightInsetX = 12;
+        var highlightInsetY = 3;
 
         // Footer positioning for round screens (bring it up)
         var footerH = 14;
@@ -74,10 +77,17 @@ class WorkoutListView extends WatchUi.View {
         var durationColW = 46;
         var durationRightX = w - marginX;
 
-        // Name text area ends before duration column (with a gap)
+        // Add a chevron area to the far right (only shown on selected row)
+        var chevronW = 14;
+
+        // Reserve space for a status dot at the left
+        var statusDotX = marginX;
+        var statusDotR = 3;
+
+        // Name text area ends before duration + chevron (with a gap)
         var gapBetweenCols = 10;
-        var nameLeftX = marginX;
-        var nameRightX = durationRightX - durationColW - gapBetweenCols;
+        var nameLeftX = marginX + 10; // shift text right to make room for dot
+        var nameRightX = durationRightX - durationColW - chevronW - gapBetweenCols;
         if (nameRightX < nameLeftX + 20) {
             nameRightX = nameLeftX + 20;
         }
@@ -85,7 +95,7 @@ class WorkoutListView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
 
-        // Header
+        // Header (already tiny)
         dc.setColor(COLOR_ORANGE, Graphics.COLOR_BLACK);
         dc.drawText(w/2, headerY, Graphics.FONT_TINY, "WORKOUTS", Graphics.TEXT_JUSTIFY_CENTER);
 
@@ -103,51 +113,72 @@ class WorkoutListView extends WatchUi.View {
 
                 // Row box
                 var rowTop = listTopY + (i * rowH);
-                var rowBottom = rowTop + rowH;
 
-                // Text baseline inside row (tuned for FONT_TINY)
-                var textY = rowTop + 5;
-
-                // Highlight row (use row box, not text baseline)
+                // "Pill" highlight: inset on X and Y with softer proportions
                 if (i == selectedIndex) {
+                    var hiTop = rowTop + highlightInsetY;
+                    var hiH = rowH - (highlightInsetY * 2);
+
                     dc.setColor(COLOR_BLUE, Graphics.COLOR_BLACK);
                     dc.fillRectangle(
                         highlightInsetX,
-                        rowTop + highlightInsetY,
+                        hiTop,
                         w - (highlightInsetX * 2),
-                        rowH - (highlightInsetY * 2)
+                        hiH
                     );
-                    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-                } else {
-                    dc.setColor(done ? COLOR_GREEN : Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
                 }
 
-                // Left column: workout name (truncate so it can't collide with duration)
-                var baseName = (i+1) + ". " + workout.name;
-                if (done) { baseName = "[D] " + baseName; }
+                // Keep text vertically centered within the row/highlight (tuned constant)
+                var textY = rowTop + 7;
+
+                // Status indicator (done = green, not done = dark gray)
+                dc.setColor(done ? COLOR_GREEN : Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+                dc.fillCircle(statusDotX + statusDotR, textY + 4, statusDotR);
+
+                // Left column: workout name (no numbering; reads more like a menu)
+                var baseName = workout.name;
 
                 var namePx = nameRightX - nameLeftX;
                 var displayName = _truncateByWidthEstimate(baseName, namePx);
+
+                // Text styling: selected = white, non-selected = slightly dim unless done
+                if (i == selectedIndex) {
+                    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                } else {
+                    dc.setColor(done ? COLOR_GREEN : Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+                }
                 dc.drawText(nameLeftX, textY, Graphics.FONT_TINY, displayName, Graphics.TEXT_JUSTIFY_LEFT);
 
                 // Right column: duration
-                dc.setColor((i == selectedIndex) ? Graphics.COLOR_WHITE : Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
-                dc.drawText(durationRightX, textY, Graphics.FONT_TINY, workout.durationMinutes + "m", Graphics.TEXT_JUSTIFY_RIGHT);
+                if (i == selectedIndex) {
+                    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                } else {
+                    dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+                }
+                dc.drawText(durationRightX - chevronW, textY, Graphics.FONT_TINY, workout.durationMinutes + "m", Graphics.TEXT_JUSTIFY_RIGHT);
+
+                // Chevron on selected row (simple ">" so it works everywhere)
+                if (i == selectedIndex) {
+                    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                    dc.drawText(durationRightX, textY, Graphics.FONT_TINY, ">", Graphics.TEXT_JUSTIFY_RIGHT);
+                }
             }
         }
-
-        // Footer
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
-        dc.drawText(w/2, footerY, Graphics.FONT_TINY, "UP/DOWN | ENTER | ESC", Graphics.TEXT_JUSTIFY_CENTER);
     }
     
     function selectNext() as Void {
         selectedIndex = (selectedIndex + 1) % 5;
+        if (plan != null && plan.getWorkout(selectedIndex) == null) {
+            selectedIndex = 0;
+        }
         WatchUi.requestUpdate();
     }
     
     function selectPrevious() as Void {
         selectedIndex = (selectedIndex - 1 + 5) % 5;
+        if (plan != null && plan.getWorkout(selectedIndex) == null) {
+            selectedIndex = 0;
+        }
         WatchUi.requestUpdate();
     }
     
@@ -180,7 +211,7 @@ class WorkoutListDelegate extends WatchUi.InputDelegate {
         } else if (key.getKey() == WatchUi.KEY_ENTER) {
             view.startSelected();
             return true;
-        } else if (key.getKey() == WatchUi.KEY_ESC) {
+        } else if (key.getKey() == WatchUi.KEY_LAP || key.getKey() == WatchUi.KEY_ESC) {
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
             return true;
         }
