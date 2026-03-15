@@ -133,8 +133,15 @@ class WorkoutSession extends WatchUi.View {
         
         // Progress text
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
+
+        var stepMinutesText = "";
+        var _stepForMinutes = workout.getStep(currentStepIndex);
+        if (_stepForMinutes != null && _stepForMinutes.durationSec != null && _stepForMinutes.durationSec > 0) {
+            stepMinutesText = " • " + (_stepForMinutes.durationSec / 60) + " min";
+        }
+
         dc.drawText(cx, currentY, Graphics.FONT_XTINY,
-            (currentStepIndex + 1) + "/" + workout.getStepCount() + " • " + progress + "%",
+            (currentStepIndex + 1) + "/" + workout.getStepCount() + " • " + progress + "%" + stepMinutesText,
             Graphics.TEXT_JUSTIFY_CENTER);
         currentY += 20; // Increased from 18
         
